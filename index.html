@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>زيتونة | مطعم شرقي</title>
+<style>
+  :root{--bg:#131a12;--bg2:#1c261a;--olive:#a8c256;--gold:#e3c37a;--cream:#f4efe2;--muted:#a9b39a;--card:#212d1f}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Arial,sans-serif}
+  body{background:var(--bg);color:var(--cream);overflow-x:hidden}
+  .demo-ribbon{position:fixed;top:14px;left:-42px;transform:rotate(-45deg);background:var(--olive);
+    color:#131a12;padding:6px 48px;font-size:12px;font-weight:800;z-index:60}
+  header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;
+    padding:16px 6vw;background:rgba(19,26,18,.85);backdrop-filter:blur(8px);border-bottom:1px solid #2b3a27}
+  .logo{font-size:25px;font-weight:800;color:var(--olive)}
+  nav{display:flex;gap:22px}
+  nav a{color:var(--cream);text-decoration:none;font-size:15px;font-weight:600}
+  nav a:hover{color:var(--olive)}
+  .book-btn{background:var(--olive);color:#131a12;border:none;border-radius:22px;padding:10px 22px;
+    font-weight:800;font-size:15px;cursor:pointer}
+  .hero{min-height:78vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:48px 6vw;background:
+    radial-gradient(600px 300px at 50% 0%,rgba(168,194,86,.14),transparent),
+    radial-gradient(500px 260px at 85% 100%,rgba(227,195,122,.10),transparent)}
+  .hero .tag{color:var(--gold);font-weight:700;letter-spacing:1px;font-size:14px;margin-bottom:14px}
+  .hero h1{font-size:clamp(34px,6vw,60px);line-height:1.3}
+  .hero h1 em{font-style:normal;color:var(--olive)}
+  .hero p{margin:18px 0 28px;color:var(--muted);font-size:18px;max-width:540px}
+  .cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .cta a{text-decoration:none;font-weight:700;border-radius:26px;padding:14px 30px;font-size:16px}
+  .cta .p1{background:var(--olive);color:#131a12}
+  .cta .p2{border:2px solid var(--olive);color:var(--olive)}
+  section{padding:60px 6vw;max-width:1100px;margin:auto}
+  .sec-title{text-align:center;font-size:30px;color:var(--olive);margin-bottom:6px}
+  .sec-sub{text-align:center;color:var(--muted);margin-bottom:34px;font-size:15px}
+  .note{display:inline-block;background:rgba(227,195,122,.1);border:1px dashed var(--gold);
+    color:var(--gold);font-size:12.5px;border-radius:20px;padding:5px 14px;margin-bottom:22px}
+  .center{text-align:center}
+  .tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+  .tab{background:var(--card);border:1px solid #2b3a27;color:var(--cream);border-radius:22px;
+    padding:9px 20px;font-size:14.5px;font-weight:700;cursor:pointer}
+  .tab.on{background:var(--olive);color:#131a12;border-color:var(--olive)}
+  .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+  .dish{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid #2b3a27;
+    border-radius:14px;padding:14px 16px;transition:border-color .25s,transform .25s}
+  .dish:hover{border-color:var(--olive);transform:translateY(-3px)}
+  .dish .em{font-size:34px}
+  .dish h3{font-size:16px;margin-bottom:3px}
+  .dish p{font-size:12.5px;color:var(--muted)}
+  .dish .chef{margin-right:auto;background:rgba(168,194,86,.14);color:var(--olive);font-size:11.5px;
+    font-weight:800;border-radius:12px;padding:4px 10px;white-space:nowrap}
+  .today{background:linear-gradient(135deg,#24331e,#1c261a);border:1px solid var(--gold);
+    border-radius:20px;padding:34px;display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+  .today .big{font-size:64px}
+  .today h3{color:var(--gold);font-size:24px;margin-bottom:8px}
+  .today p{color:var(--muted);font-size:14.5px;max-width:460px}
+  form{background:var(--card);border:1px solid #2b3a27;border-radius:20px;padding:30px;
+    max-width:620px;margin:auto}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  label{display:block;font-size:13.5px;color:var(--muted);margin:14px 0 6px}
+  input,select{width:100%;background:#172015;border:1px solid #33412d;color:var(--cream);
+    border-radius:10px;padding:12px 14px;font-size:15px}
+  input:focus,select:focus{outline:none;border-color:var(--olive)}
+  .submit{width:100%;margin-top:22px;background:var(--olive);color:#131a12;border:none;
+    border-radius:12px;padding:14px;font-size:16px;font-weight:800;cursor:pointer}
+  .form-note{text-align:center;font-size:12.5px;color:var(--gold);margin-top:14px}
+  .info{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+  .info .card{background:var(--card);border:1px solid #2b3a27;border-radius:16px;padding:22px;text-align:center}
+  .info .ic{font-size:34px;margin-bottom:8px}
+  .info h3{font-size:16px;margin-bottom:5px}
+  .info p{font-size:13px;color:var(--muted)}
+  footer{text-align:center;padding:34px 6vw;color:var(--muted);font-size:13px;border-top:1px solid #2b3a27}
+  footer b{color:var(--olive)}
+  @media(max-width:640px){.row{grid-template-columns:1fr}nav{display:none}}
+</style>
+</head>
+<body>
+<div class="demo-ribbon">عرض تصميم</div>
+<header>
+  <div class="logo">🫒 زيتونة</div>
+  <nav>
+    <a href="#menu">المنيو</a>
+    <a href="#today">طبق اليوم</a>
+    <a href="#info">المواعيد</a>
+  </nav>
+  <button class="book-btn" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">احجز ترابيزة</button>
+</header>
+
+<div class="hero">
+  <div class="tag">مطعم شرقي | نموذج تصميم</div>
+  <h1>أكل بيتي بطعم <em>العزومات</em></h1>
+  <p>منيو واضحة بصور الأطباق، وطبق اليوم متجدد، وحجز الترابيزة من نفس الصفحة من غير تليفونات.</p>
+  <div class="cta">
+    <a class="p1" href="#menu">شوف المنيو</a>
+    <a class="p2" href="#book">احجز دلوقتي</a>
+  </div>
+</div>
+
+<section id="menu">
+  <div class="sec-title">المنيو</div>
+  <div class="sec-sub">اختار القسم وشوف الأطباق</div>
+  <div class="center"><span class="note">الأطباق والأسماء افتراضية للعرض</span></div>
+  <div class="tabs">
+    <button class="tab on" data-cat="all">الكل</button>
+    <button class="tab" data-cat="start">مقبلات</button>
+    <button class="tab" data-cat="main">أطباق رئيسية</button>
+    <button class="tab" data-cat="sweet">حلويات</button>
+    <button class="tab" data-cat="drink">مشروبات</button>
+  </div>
+  <div class="menu-grid" id="menuGrid"></div>
+</section>
+
+<section id="today">
+  <div class="sec-title">طبق اليوم</div>
+  <div class="sec-sub">طبق مميز بيتغير كل يوم</div>
+  <div class="today">
+    <div class="big">🍖</div>
+    <div>
+      <h3>كبسة لحم ضأن على الطريقة الخليجية</h3>
+      <p>رز مبهّر بخلطة زيتونة السرية، لحم ضأن بيتطهى ٦ ساعات على نار هادية، مع سلطة دقوس ولبن رايب. متاح النهاردة بس، الكمية محدودة.</p>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="sec-title">احجز ترابيزتك</div>
+  <div class="sec-sub">من غير مكالمات، اختار معادك وعدد الأفراد</div>
+  <form onsubmit="return false">
+    <div class="row">
+      <div><label>الاسم</label><input type="text" placeholder="اسمك الكريم"></div>
+      <div><label>رقم الموبايل</label><input type="tel" placeholder="01xxxxxxxxx"></div>
+    </div>
+    <div class="row">
+      <div><label>اليوم</label><input type="date"></div>
+      <div><label>الساعة</label>
+        <select><option>1:00 ظهرًا</option><option>3:00 عصرًا</option><option>7:00 مساءً</option><option>9:00 مساءً</option><option>11:00 مساءً</option></select>
+      </div>
+    </div>
+    <label>عدد الأفراد</label>
+    <select><option>فردين</option><option>4 أفراد</option><option>6 أفراد</option><option>عزومة عائلية (8+)</option></select>
+    <button class="submit">تأكيد الحجز</button>
+    <div class="form-note">نموذج عرض فقط: لا يتم إرسال أو حفظ أي بيانات فعلية</div>
+  </form>
+</section>
+
+<section id="info">
+  <div class="sec-title">المواعيد والمكان</div>
+  <div class="sec-sub">كل اللي محتاج تعرفه قبل ما تيجي</div>
+  <div class="info">
+    <div class="card"><div class="ic">🕐</div><h3>المواعيد</h3><p>يوميًا من 12 ظهرًا لـ 12 منتصف الليل</p></div>
+    <div class="card"><div class="ic">📍</div><h3>العنوان</h3><p>شارع افتراضي للعرض، حي الزمالك</p></div>
+    <div class="card"><div class="ic">🚗</div><h3>الباركنج</h3><p>خدمة صف السيارة متاحة مساءً</p></div>
+    <div class="card"><div class="ic">🎉</div><h3>المناسبات</h3><p>ركن خاص للعزومات وأعياد الميلاد</p></div>
+  </div>
+</section>
+
+<footer>نموذج تصميم من <b>LoveCode</b> | جميع الأسماء والبيانات افتراضية لعرض التصميم فقط</footer>
+
+<script>
+const dishes=[
+ {c:'start',e:'🧆',n:'فتة ورق عنب',d:'ورق عنب محشي على فتة لبن بالسمنة البلدي',chef:''},
+ {c:'start',e:'🥗',n:'فتوش زيتونة',d:'خضار بلدي مقرمش مع خبز محمص ودبس رمان',chef:''},
+ {c:'start',e:'🫓',n:'حمص باللحمة',d:'حمص كريمي بقطع اللحم والصنوبر المحمر',chef:''},
+ {c:'main',e:'🍖',n:'كبسة لحم ضأن',d:'طبق اليوم المميز، نار هادية ٦ ساعات',chef:'اختيار الشيف'},
+ {c:'main',e:'🍗',n:'فراخ مشوية على الفحم',d:'نص فرخة متبلة ٢٤ ساعة مع أرز وثومية',chef:''},
+ {c:'main',e:'🐟',n:'صيادية سمك',d:'فيليه بوري مع أرز الصيادية وصلصة البصل',chef:''},
+ {c:'main',e:'🍲',n:'ملوخية بالأرانب',d:'ملوخية خضرا مفرومة ناعم مع أرز أبيض',chef:''},
+ {c:'sweet',e:'🍮',n:'أم علي بالمكسرات',d:'سخنة من الفرن مع قشطة ومكسرات محمصة',chef:''},
+ {c:'sweet',e:'🍯',n:'كنافة نوتيلا',d:'كنافة ناعمة محشوة نوتيلا وموز',chef:''},
+ {c:'drink',e:'🥤',n:'عصير قصب طازج',d:'بيتعصر قدامك على الماكينة',chef:''},
+ {c:'drink',e:'☕',n:'قهوة سادة على الفحم',d:'بن محوج بيترقد على فحم هادي',chef:''},
+];
+const grid=document.getElementById('menuGrid');
+function render(cat){
+  grid.innerHTML='';
+  dishes.filter(x=>cat==='all'||x.c===cat).forEach(x=>{
+    const d=document.createElement('div');d.className='dish';
+    d.innerHTML='<div class="em">'+x.e+'</div><div><h3>'+x.n+'</h3><p>'+x.d+'</p></div>'+(x.chef?'<div class="chef">'+x.chef+'</div>':'');
+    grid.appendChild(d);
+  });
+}
+render('all');
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  t.classList.add('on');render(t.dataset.cat);
+});
+</script>
+</body>
+</html>
