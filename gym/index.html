@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نبض | جيم وحصص تدريب</title>
+<style>
+  :root{--bg:#0d0f1a;--bg2:#141830;--volt:#6ef0c8;--violet:#8f7bff;--cream:#eef0fa;--muted:#9aa1c0;--card:#171c36}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Arial,sans-serif}
+  body{background:var(--bg);color:var(--cream);overflow-x:hidden}
+  .demo-ribbon{position:fixed;top:14px;left:-42px;transform:rotate(-45deg);background:var(--volt);
+    color:#0d0f1a;padding:6px 48px;font-size:12px;font-weight:800;z-index:60}
+  header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;
+    padding:16px 6vw;background:rgba(13,15,26,.85);backdrop-filter:blur(8px);border-bottom:1px solid #232a4d}
+  .logo{font-size:25px;font-weight:800;color:var(--volt)}
+  nav{display:flex;gap:22px}
+  nav a{color:var(--cream);text-decoration:none;font-size:15px;font-weight:600}
+  nav a:hover{color:var(--volt)}
+  .book-btn{background:var(--volt);color:#0d0f1a;border:none;border-radius:22px;padding:10px 22px;
+    font-weight:800;font-size:15px;cursor:pointer}
+  .hero{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:48px 6vw;background:
+    radial-gradient(640px 320px at 50% 0%,rgba(110,240,200,.12),transparent),
+    radial-gradient(560px 300px at 12% 100%,rgba(143,123,255,.14),transparent)}
+  .hero .pulse{width:74px;height:74px;border-radius:50%;border:3px solid var(--volt);display:flex;
+    align-items:center;justify-content:center;font-size:34px;margin-bottom:20px;
+    box-shadow:0 0 0 0 rgba(110,240,200,.5);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(110,240,200,.45)}70%{box-shadow:0 0 0 26px rgba(110,240,200,0)}100%{box-shadow:0 0 0 0 rgba(110,240,200,0)}}
+  .hero h1{font-size:clamp(34px,6vw,60px);line-height:1.3}
+  .hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--volt),var(--violet));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{margin:18px 0 28px;color:var(--muted);font-size:18px;max-width:540px}
+  .cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .cta a{text-decoration:none;font-weight:700;border-radius:26px;padding:14px 30px;font-size:16px}
+  .cta .p1{background:var(--volt);color:#0d0f1a}
+  .cta .p2{border:2px solid var(--volt);color:var(--volt)}
+  section{padding:60px 6vw;max-width:1100px;margin:auto}
+  .sec-title{text-align:center;font-size:30px;color:var(--volt);margin-bottom:6px}
+  .sec-sub{text-align:center;color:var(--muted);margin-bottom:34px;font-size:15px}
+  .note{display:inline-block;background:rgba(143,123,255,.1);border:1px dashed var(--violet);
+    color:var(--violet);font-size:12.5px;border-radius:20px;padding:5px 14px;margin-bottom:22px}
+  .center{text-align:center}
+  .sched{width:100%;border-collapse:separate;border-spacing:8px}
+  .sched th{color:var(--volt);font-size:13.5px;padding:8px;background:var(--card);border-radius:10px}
+  .sched td{background:var(--card);border:1px solid #232a4d;border-radius:10px;padding:12px 8px;
+    text-align:center;font-size:13px;transition:border-color .2s}
+  .sched td:hover{border-color:var(--volt)}
+  .sched .cls{font-weight:800;color:var(--cream)}
+  .sched .tm{color:var(--muted);font-size:11.5px;margin-top:3px}
+  .sched .full{opacity:.45}
+  .sched .full .cls{color:var(--muted)}
+  .legend{text-align:center;color:var(--muted);font-size:12.5px;margin-top:14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid #232a4d;border-radius:16px;padding:22px;text-align:center;
+    transition:transform .25s,border-color .25s}
+  .card:hover{transform:translateY(-5px);border-color:var(--volt)}
+  .avatar{width:74px;height:74px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;
+    justify-content:center;font-size:34px;background:linear-gradient(135deg,var(--volt),var(--violet))}
+  .card h3{font-size:16px;margin-bottom:4px}
+  .card .role{color:var(--volt);font-size:12.5px;font-weight:700;margin-bottom:8px}
+  .card p{font-size:12.5px;color:var(--muted)}
+  .plans{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+  .plan{background:var(--card);border:1px solid #232a4d;border-radius:18px;padding:28px;text-align:center;position:relative}
+  .plan.hot{border-color:var(--volt);box-shadow:0 0 30px rgba(110,240,200,.12)}
+  .plan .badge{position:absolute;top:-12px;right:50%;transform:translateX(50%);background:var(--volt);
+    color:#0d0f1a;font-size:11.5px;font-weight:800;border-radius:12px;padding:4px 12px}
+  .plan h3{font-size:19px;margin-bottom:10px}
+  .plan ul{list-style:none;color:var(--muted);font-size:13.5px;line-height:2.1}
+  .plan ul li::before{content:'✓ ';color:var(--volt);font-weight:800}
+  form{background:var(--card);border:1px solid #232a4d;border-radius:20px;padding:30px;max-width:620px;margin:auto}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  label{display:block;font-size:13.5px;color:var(--muted);margin:14px 0 6px}
+  input,select{width:100%;background:#111530;border:1px solid #2a3160;color:var(--cream);
+    border-radius:10px;padding:12px 14px;font-size:15px}
+  input:focus,select:focus{outline:none;border-color:var(--volt)}
+  .submit{width:100%;margin-top:22px;background:linear-gradient(90deg,var(--volt),var(--violet));
+    color:#0d0f1a;border:none;border-radius:12px;padding:14px;font-size:16px;font-weight:800;cursor:pointer}
+  .form-note{text-align:center;font-size:12.5px;color:var(--violet);margin-top:14px}
+  footer{text-align:center;padding:34px 6vw;color:var(--muted);font-size:13px;border-top:1px solid #232a4d}
+  footer b{color:var(--volt)}
+  @media(max-width:640px){.row{grid-template-columns:1fr}nav{display:none}.sched{font-size:11px}}
+</style>
+</head>
+<body>
+<div class="demo-ribbon">عرض تصميم</div>
+<header>
+  <div class="logo">⚡ نبض</div>
+  <nav>
+    <a href="#sched">جدول الحصص</a>
+    <a href="#coaches">الكاباتن</a>
+    <a href="#plans">الباقات</a>
+  </nav>
+  <button class="book-btn" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">احجز حصة</button>
+</header>
+
+<div class="hero">
+  <div class="pulse">💓</div>
+  <h1>جيمك بجدول <em>واضح وحصة محجوزة</em></h1>
+  <p>كل حصص الأسبوع قدامك، اختار الكابتن والمعاد، واحجز مكانك من الموبايل قبل ما الحصة تملى.</p>
+  <div class="cta">
+    <a class="p1" href="#sched">شوف الجدول</a>
+    <a class="p2" href="#book">احجز حصة تعريفية</a>
+  </div>
+</div>
+
+<section id="sched">
+  <div class="sec-title">جدول الحصص الأسبوعي</div>
+  <div class="sec-sub">الحصص المتاحة والكاباتن والمعادات</div>
+  <div class="center"><span class="note">الجدول والأسماء افتراضية للعرض</span></div>
+  <table class="sched">
+    <tr><th>اليوم</th><th>الصبح</th><th>العصر</th><th>بالليل</th></tr>
+    <tr><td class="cls">السبت</td>
+      <td><div class="cls">كارديو حرق</div><div class="tm">9:00 | كابتن سارة</div></td>
+      <td><div class="cls">كروس فيت</div><div class="tm">5:00 | كابتن عمر</div></td>
+      <td><div class="cls">حديد وبناء</div><div class="tm">8:00 | كابتن حسن</div></td></tr>
+    <tr><td class="cls">الأحد</td>
+      <td><div class="cls">يوجا صباحية</div><div class="tm">8:00 | كابتن مريم</div></td>
+      <td class="full"><div class="cls">سبينينج</div><div class="tm">6:00 | مكتملة</div></td>
+      <td><div class="cls">كيك بوكسينج</div><div class="tm">9:00 | كابتن عمر</div></td></tr>
+    <tr><td class="cls">الاتنين</td>
+      <td><div class="cls">حديد وبناء</div><div class="tm">10:00 | كابتن حسن</div></td>
+      <td><div class="cls">زومبا</div><div class="tm">5:00 | كابتن سارة</div></td>
+      <td><div class="cls">كروس فيت</div><div class="tm">8:00 | كابتن عمر</div></td></tr>
+    <tr><td class="cls">الثلاثاء</td>
+      <td><div class="cls">كارديو حرق</div><div class="tm">9:00 | كابتن سارة</div></td>
+      <td><div class="cls">بيلاتس</div><div class="tm">6:00 | كابتن مريم</div></td>
+      <td class="full"><div class="cls">سبينينج</div><div class="tm">8:00 | مكتملة</div></td></tr>
+    <tr><td class="cls">الأربعاء</td>
+      <td><div class="cls">يوجا صباحية</div><div class="tm">8:00 | كابتن مريم</div></td>
+      <td><div class="cls">كيك بوكسينج</div><div class="tm">5:00 | كابتن عمر</div></td>
+      <td><div class="cls">حديد وبناء</div><div class="tm">9:00 | كابتن حسن</div></td></tr>
+    <tr><td class="cls">الخميس</td>
+      <td><div class="cls">زومبا</div><div class="tm">10:00 | كابتن سارة</div></td>
+      <td><div class="cls">كروس فيت</div><div class="tm">6:00 | كابتن عمر</div></td>
+      <td><div class="cls">بيلاتس ليلية</div><div class="tm">9:00 | كابتن مريم</div></td></tr>
+  </table>
+  <div class="legend">الحصص الرمادية مكتملة العدد. الحجز بيقفل لما الحصة تملى.</div>
+</section>
+
+<section id="coaches">
+  <div class="sec-title">الكاباتن</div>
+  <div class="sec-sub">فريق متخصص لكل هدف</div>
+  <div class="grid">
+    <div class="card"><div class="avatar">🏋️</div><h3>كابتن حسن</h3><div class="role">حديد وبناء عضلات</div><p>10 سنين خبرة في برامج القوة وبناء الجسم</p></div>
+    <div class="card"><div class="avatar">🥊</div><h3>كابتن عمر</h3><div class="role">كروس فيت وكيك بوكسينج</div><p>بطل جمهورية سابق في الفنون القتالية</p></div>
+    <div class="card"><div class="avatar">🏃‍♀️</div><h3>كابتن سارة</h3><div class="role">كارديو وزومبا</div><p>متخصصة في برامج حرق الدهون واللياقة</p></div>
+    <div class="card"><div class="avatar">🧘‍♀️</div><h3>كابتن مريم</h3><div class="role">يوجا وبيلاتس</div><p>مرونة وتوازن وعلاج طبيعي تأهيلي</p></div>
+  </div>
+</section>
+
+<section id="plans">
+  <div class="sec-title">الباقات</div>
+  <div class="sec-sub">اختار اللي يناسب التزامك</div>
+  <div class="plans">
+    <div class="plan"><h3>شهري</h3><ul><li>دخول غير محدود للصالة</li><li>8 حصص جماعية</li><li>قياس جسم مجاني</li></ul></div>
+    <div class="plan hot"><div class="badge">الأكثر اختيارًا</div><h3>3 شهور</h3><ul><li>دخول غير محدود للصالة</li><li>حصص جماعية مفتوحة</li><li>برنامج تغذية مخصص</li><li>متابعة شهرية مع الكابتن</li></ul></div>
+    <div class="plan"><h3>سنوي</h3><ul><li>كل مميزات باقة 3 شهور</li><li>جلستين تدريب شخصي</li><li>تجميد الاشتراك مرتين</li></ul></div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="sec-title">احجز حصتك</div>
+  <div class="sec-sub">حصة تعريفية أو مكان في حصة جماعية</div>
+  <form onsubmit="return false">
+    <div class="row">
+      <div><label>الاسم</label><input type="text" placeholder="اسمك"></div>
+      <div><label>رقم الموبايل</label><input type="tel" placeholder="01xxxxxxxxx"></div>
+    </div>
+    <div class="row">
+      <div><label>الحصة</label>
+        <select><option>حصة تعريفية مجانية</option><option>كارديو حرق</option><option>كروس فيت</option><option>حديد وبناء</option><option>يوجا</option><option>كيك بوكسينج</option><option>زومبا</option></select>
+      </div>
+      <div><label>اليوم</label>
+        <select><option>السبت</option><option>الأحد</option><option>الاتنين</option><option>الثلاثاء</option><option>الأربعاء</option><option>الخميس</option></select>
+      </div>
+    </div>
+    <label>هدفك إيه؟</label>
+    <select><option>خسارة وزن</option><option>بناء عضلات</option><option>لياقة عامة</option><option>مرونة واسترخاء</option></select>
+    <button class="submit">احجز مكانك</button>
+    <div class="form-note">نموذج عرض فقط: لا يتم إرسال أو حفظ أي بيانات فعلية</div>
+  </form>
+</section>
+
+<footer>نموذج تصميم من <b>LoveCode</b> | جميع الأسماء والبيانات افتراضية لعرض التصميم فقط</footer>
+</body>
+</html>
