@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مفتاح | MIFTAH — عقارات بتشبهك</title>
+<meta name="description" content="مفتاح | MIFTAH — نموذج تصميم موقع عقارات مصري من LoveCode. البيانات افتراضية.">
+<style>
+/* ========== Design tokens ========== */
+:root{--teal:#14323a;--teal2:#1c4450;--teal3:#0d2229;--sand:#d9c7a0;--sand2:#efe6d0;--clay:#c06a3b;--clay2:#a85730;--paper:#f6f3ec;--card:#fffdf8;--ink:#10262c;--mute:#586b6f;--line:rgba(20,50,58,.15);--sh:0 22px 44px -26px rgba(20,50,58,.55);--font:"Segoe UI","Noto Sans Arabic","Geeza Pro",Tahoma,system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--paper);color:var(--ink);line-height:1.75;font-size:16px;overflow-x:hidden}
+svg{display:block}button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}a{color:inherit}ul{list-style:none}
+[hidden]{display:none!important}
+.i{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:3px solid var(--clay);outline-offset:2px}
+.wrap{width:min(1240px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-weight:800;line-height:1.3;letter-spacing:-.01em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:50px;padding:0 1.5rem;border:1.5px solid transparent;border-radius:3px;font-weight:700;text-decoration:none;transition:transform .25s,background .25s,box-shadow .25s,color .25s}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(0) scale(.98)}
+.btn .i{width:18px;height:18px}
+.btn-clay{background:var(--clay);color:#fff;box-shadow:0 12px 24px -14px var(--clay)}.btn-clay:hover{background:var(--clay2)}
+.btn-ghost{border-color:rgba(246,243,236,.45);color:var(--paper)}.btn-ghost:hover{background:rgba(246,243,236,.1)}
+.btn-teal{background:var(--teal);color:var(--paper)}.btn-teal:hover{background:var(--teal2)}
+.btn-line{border-color:var(--line);color:var(--teal)}.btn-line:hover{border-color:var(--teal)}
+/* reveal */
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease var(--d,0s),transform .7s ease var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+/* ===== Demo badge ===== */
+.demo{position:fixed;left:0;bottom:84px;z-index:40;background:var(--teal);color:var(--sand);font-size:.72rem;font-weight:700;letter-spacing:.04em;padding:.35rem .8rem .35rem .9rem;border-inline-start:3px solid var(--clay);border-radius:0 3px 3px 0;box-shadow:0 8px 20px -10px #000;pointer-events:none}
+
+/* ===== Header ===== */
+.hd{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+.hd.sc{box-shadow:0 10px 30px -20px rgba(20,50,58,.6)}
+.hd-in{display:flex;align-items:center;gap:12px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg.logo{width:40px;height:40px}
+.brand b{display:block;font-size:1.45rem;line-height:1;color:var(--teal);font-weight:800}
+.brand small{display:block;font-size:.62rem;letter-spacing:.32em;color:var(--clay);font-weight:700;margin-top:3px}
+.nav{position:absolute;inset-inline:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);padding:0 20px;max-height:0;overflow:hidden;visibility:hidden;opacity:0;transition:max-height .45s ease,opacity .3s,visibility .45s,padding .3s}
+.nav.open{max-height:520px;visibility:visible;opacity:1;padding:8px 20px 22px}
+.nav a.l{display:flex;align-items:center;justify-content:space-between;min-height:54px;border-bottom:1px solid var(--line);text-decoration:none;font-weight:600;font-size:1.05rem}
+.nav .menu-cta{margin-top:16px;width:100%}
+.favb{margin-inline-start:auto;display:flex;align-items:center;gap:6px;min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:3px;font-weight:700;font-size:.9rem;transition:.25s}
+.favb:hover,.favb[aria-pressed=true]{border-color:var(--clay);color:var(--clay)}
+.favb[aria-pressed=true] .i{fill:var(--clay)}
+.hd-cta{display:none}
+.burger{width:46px;height:46px;display:grid;place-items:center;border:1px solid var(--line);border-radius:3px}
+.burger .i{width:24px;height:24px}
+@media(min-width:1040px){
+ .burger,.menu-cta{display:none}
+ .nav{position:static;max-height:none;visibility:visible;opacity:1;padding:0;border:0;background:none;display:flex;flex:1;justify-content:center;gap:26px;overflow:visible}
+ .nav a.l{border:0;min-height:44px;font-size:.95rem;position:relative}
+ .nav a.l .i{display:none}
+ .nav a.l::after{content:"";position:absolute;inset-inline:0;bottom:6px;height:2px;background:var(--clay);transform:scaleX(0);transition:transform .3s}
+ .nav a.l:hover::after{transform:scaleX(1)}
+ .favb{margin:0}.hd-cta{display:inline-flex;min-height:44px}
+}
+/* ===== Hero ===== */
+.hero{background:var(--teal);color:var(--paper);position:relative;overflow:hidden;padding:30px 0 92px}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(217,199,160,.07) 1px,transparent 1px) 0 0/56px 56px,linear-gradient(90deg,rgba(217,199,160,.07) 1px,transparent 1px) 0 0/56px 56px;-webkit-mask:linear-gradient(#000,transparent 90%);mask:linear-gradient(#000,transparent 90%)}
+.hero::after{content:"";position:absolute;inset-inline-end:-20%;top:-30%;width:70%;aspect-ratio:1;background:radial-gradient(closest-side,rgba(192,106,59,.35),transparent);pointer-events:none}
+.hero-in{position:relative;z-index:1;display:grid;gap:26px}
+
+.eyebrow{display:flex;align-items:center;gap:12px;color:var(--sand);font-weight:700;font-size:.9rem;margin-bottom:14px}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--clay)}
+.hero h1{font-size:clamp(2.15rem,8vw,4.1rem);line-height:1.3}
+.hero h1 em{font-style:normal;color:var(--sand);display:block}
+.lead{margin:16px 0 24px;color:rgba(246,243,236,.82);font-size:1.05rem;max-width:46ch}
+.cta-row{display:flex;gap:10px}.cta-row .btn{flex:1;padding:0 .8rem}
+.art{position:relative;aspect-ratio:16/11;clip-path:polygon(0 0,100% 0,100% 100%,14% 100%,0 86%);background:#1c4450;box-shadow:inset 0 0 0 1px rgba(217,199,160,.2)}
+.art>svg{width:100%;height:100%}
+.sun{transform-origin:395px 150px;animation:pulse 7s ease-in-out infinite}.cloud{animation:drift 22s ease-in-out infinite alternate}
+.flt{position:absolute;left:14px;bottom:20px;background:var(--paper);color:var(--teal);font-weight:700;font-size:.85rem;padding:.55rem .9rem;border-inline-start:3px solid var(--clay);display:flex;gap:8px;align-items:center;box-shadow:var(--sh);animation:flt 5s ease-in-out infinite}
+.flt .i{color:var(--clay)}
+@keyframes pulse{50%{transform:scale(1.05)}}@keyframes drift{to{transform:translateX(26px)}}@keyframes flt{50%{transform:translateY(-6px)}}
+@media(min-width:900px){.hero{padding:64px 0 120px}.hero-in{grid-template-columns:1fr 1.08fr;gap:44px;align-items:center}.art{aspect-ratio:560/470}.cta-row .btn{flex:none;padding:0 1.8rem}}
+/* ===== Search ===== */
+.search{position:relative;z-index:3;margin-top:-56px;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--clay);box-shadow:var(--sh);padding:18px;display:grid;gap:14px}
+.fld{display:grid;gap:5px}.fld label{font-size:.8rem;font-weight:700;color:var(--mute)}
+select,input,textarea{width:100%;min-height:50px;padding:.6rem .9rem;background:#fff;border:1.5px solid var(--line);border-radius:3px;transition:border .2s,box-shadow .2s}
+select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2314323a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat left .8rem center/18px;padding-inline-end:.9rem;padding-left:2.4rem}
+select:focus,input:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(20,50,58,.12);outline:0}
+@media(min-width:820px){.search{grid-template-columns:repeat(3,1fr) auto;align-items:end;padding:24px 28px;gap:18px}.search .btn{min-height:50px}}
+/* ===== Section head ===== */
+.sec{padding:70px 0}
+.sh{display:grid;gap:10px;margin-bottom:30px}
+.kick{display:flex;align-items:center;gap:10px;color:var(--clay);font-weight:800;font-size:.85rem;letter-spacing:.06em}
+.kick::before{content:"";width:28px;height:2px;background:var(--clay)}
+.sh h2{font-size:clamp(1.8rem,5.4vw,2.9rem)}
+.sh p{color:var(--mute);max-width:52ch}
+@media(min-width:900px){.sh{grid-template-columns:1.1fr 1fr;align-items:end;gap:6px 48px}.sh .kick{grid-column:1/-1}}
+/* ===== Stats ===== */
+.stats{padding:54px 0 8px}
+.stg{display:grid;grid-template-columns:1fr 1fr;border-top:2px solid var(--teal)}
+.st{padding:22px 16px 20px;border-bottom:1px solid var(--line);position:relative}
+
+.st:nth-child(odd){border-inline-end:1px solid var(--line)}
+.st b{display:block;font-size:clamp(2.6rem,11vw,4.2rem);font-weight:800;line-height:1.1;color:var(--teal)}
+.st b::after{content:"";display:block;width:26px;height:3px;background:var(--clay);margin:6px 0 8px}
+.st span{font-weight:600;color:var(--mute);font-size:.95rem}
+@media(min-width:820px){.stg{grid-template-columns:repeat(4,1fr)}.st{border-bottom:0;border-inline-end:1px solid var(--line);padding:30px 26px}.st:last-child{border:0}}
+/* ===== Listings ===== */
+.tb{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+.chip{min-height:46px;padding:0 1.15rem;border:1.5px solid var(--line);font-weight:700;display:flex;align-items:center;gap:8px;transition:.25s;background:var(--card)}
+.chip:hover{border-color:var(--teal)}.chip.on{background:var(--teal);color:var(--paper);border-color:var(--teal)}
+.tb2{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;margin-bottom:24px;color:var(--mute);font-size:.95rem;min-height:44px}
+.tb2 strong{color:var(--teal)}
+.tagx{display:flex;align-items:center;gap:6px;min-height:36px;padding:0 .7rem;background:var(--sand2);border:1px solid var(--sand);font-size:.85rem;font-weight:700;color:var(--teal)}
+.tagx .i{width:14px;height:14px}
+.rst{color:var(--clay);font-weight:700;text-decoration:underline;text-underline-offset:4px;min-height:44px}
+.grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(min(100%,285px),1fr))}
+.card{background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden;cursor:pointer;transition:transform .35s,box-shadow .35s,border-color .35s;animation:up .55s both}
+@keyframes up{from{opacity:0;transform:translateY(18px)}}
+@media(hover:hover){.card:hover{transform:translateY(-7px);box-shadow:var(--sh);border-color:var(--sand)}.card:hover .media svg{transform:scale(1.06)}}
+.media{position:relative;aspect-ratio:8/5;overflow:hidden;background:var(--sand2)}
+.media svg{width:100%;height:100%;transition:transform .7s}
+.tag{position:absolute;top:12px;inset-inline-start:0;background:var(--clay);color:#fff;font-size:.75rem;font-weight:700;padding:.2rem .8rem .2rem .7rem}
+.heart{position:absolute;top:8px;inset-inline-end:8px;width:44px;height:44px;display:grid;place-items:center;background:rgba(246,243,236,.92);color:var(--teal);border-radius:3px;transition:.25s}
+.heart:hover{color:var(--clay)}.heart.on{color:var(--clay);animation:pop .4s}.heart.on .i{fill:var(--clay)}
+@keyframes pop{40%{transform:scale(1.3)}}
+.cb{padding:16px 18px 6px;display:grid;gap:6px;flex:1;align-content:start}
+.ty{display:flex;align-items:center;gap:7px;color:var(--clay);font-size:.8rem;font-weight:800;letter-spacing:.03em}
+.card h3{font-size:1.2rem}
+.loc{display:flex;align-items:center;gap:6px;color:var(--mute);font-size:.9rem}
+.specs{display:grid;grid-template-columns:repeat(3,1fr);margin-top:10px;border-top:1px solid var(--line);padding-top:12px;font-size:.85rem;font-weight:600;color:var(--teal)}
+.specs li{display:flex;align-items:center;gap:6px;padding-inline:8px;border-inline-start:1px solid var(--line)}
+.specs li:first-child{border:0;padding-inline-start:0}
+.more{display:flex;justify-content:space-between;align-items:center;min-height:50px;margin:8px 18px 4px;padding-top:4px;border-top:1px solid var(--line);color:var(--teal);font-weight:800;font-size:.92rem;text-align:start}
+
+.more .i{transition:transform .3s;color:var(--clay)}.card:hover .more .i{transform:translateX(-6px)}
+.empty{grid-column:1/-1;text-align:center;padding:48px 20px;border:1.5px dashed var(--sand);background:var(--card);display:grid;gap:10px;justify-items:center}
+.empty svg{width:120px;height:90px}.empty h3{font-size:1.3rem}.empty p{color:var(--mute);max-width:40ch}
+/* ===== Modal ===== */
+.modal{position:fixed;inset:0;z-index:100;display:grid;align-items:end;background:rgba(9,26,31,.72);backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.modal.open{opacity:1;visibility:visible}
+.sheet{background:var(--paper);width:100%;height:94vh;height:94dvh;display:flex;flex-direction:column;transform:translateY(40px);transition:transform .4s cubic-bezier(.2,.8,.2,1);overflow:hidden}
+.modal.open .sheet{transform:none}
+.sbar{flex:none;display:flex;align-items:center;justify-content:space-between;padding:6px 8px 6px 18px;border-bottom:1px solid var(--line);font-weight:800;color:var(--teal)}
+.xb{width:46px;height:46px;display:grid;place-items:center}
+.sbody{overflow:auto;flex:1;overscroll-behavior:contain}
+.gal{position:relative;aspect-ratio:8/5;background:var(--teal);overflow:hidden}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .6s}.slide.on{opacity:1}.slide svg{width:100%;height:100%}
+.gn{position:absolute;top:50%;width:44px;height:44px;margin-top:-22px;display:grid;place-items:center;background:var(--paper);color:var(--teal);transition:.2s;z-index:2}
+.gn:hover{background:var(--clay);color:#fff}.gp{right:10px}.gp .i{transform:scaleX(-1)}.gx{left:10px}
+.cap{position:absolute;top:10px;inset-inline-start:10px;background:rgba(20,50,58,.85);color:var(--sand);font-size:.75rem;font-weight:700;padding:.2rem .7rem;z-index:2}
+.dots{position:absolute;bottom:8px;inset-inline:0;display:flex;justify-content:center;gap:2px;z-index:2}
+.dots button{width:32px;height:28px;position:relative}.dots button::after{content:"";position:absolute;inset:12px 4px;background:rgba(246,243,236,.55);transition:.3s}
+.dots button[aria-current=true]::after{background:var(--clay)}
+.mi{padding:20px 18px 26px;display:grid;gap:14px;align-content:start}
+.mi h2{font-size:1.6rem}.mi p.d{color:var(--mute)}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;font-size:.9rem;font-weight:600}.feat li{display:flex;gap:7px;align-items:center}.feat .i{color:var(--clay)}
+.facts{width:100%;border-collapse:collapse;font-size:.93rem}.facts th,.facts td{text-align:start;padding:9px 0;border-bottom:1px solid var(--line)}.facts th{color:var(--mute);font-weight:600;width:40%}.facts td{font-weight:800;color:var(--teal)}
+@media(min-width:820px){.modal{place-items:center}.sheet{width:min(1060px,94vw);height:auto;max-height:90vh}.sbody{display:grid;grid-template-columns:1.05fr 1fr}.gal{aspect-ratio:auto;min-height:420px}.mi{padding:28px}}
+/* ===== Areas ===== */
+.areas{background:var(--sand2);position:relative}
+.areas::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 119px,rgba(20,50,58,.05) 119px 120px);pointer-events:none}
+.ag{position:relative;display:grid;gap:20px}
+.area{position:relative;display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line)}
+.area .ar{aspect-ratio:2/1}.area .ar svg{width:100%;height:100%}
+.area .ab{padding:20px 22px 22px;display:grid;gap:10px;flex:1;align-content:start}
+.area .no{font-size:.8rem;font-weight:800;letter-spacing:.2em;opacity:.7}
+
+.area h3{font-size:1.5rem}.area p{opacity:.88}
+.hl{display:flex;gap:8px;align-items:center;font-weight:700;font-size:.9rem;padding:10px 0;border-block:1px solid currentColor;border-color:color-mix(in srgb,currentColor 25%,transparent)}
+.area .btn{justify-self:start;min-height:46px;margin-top:4px}
+.t0{background:var(--teal);color:var(--paper)}.t1{background:var(--card);color:var(--teal)}.t2{background:var(--clay);color:#fff}.t3{background:var(--sand);color:var(--teal)}
+.t0 .btn{background:var(--sand);color:var(--teal)}.t1 .btn{background:var(--teal);color:var(--paper)}.t2 .btn{background:var(--teal);color:var(--paper)}.t3 .btn{background:var(--teal);color:var(--paper)}
+@media(min-width:900px){.ag{grid-template-columns:repeat(12,1fr)}.area:nth-child(1),.area:nth-child(4){grid-column:span 7}.area:nth-child(2),.area:nth-child(3){grid-column:span 5}.area .ar{aspect-ratio:auto;height:220px}.area:nth-child(2) .ar,.area:nth-child(3) .ar{height:220px}.area .ar svg{preserveAspectRatio:xMidYMid slice}}
+/* ===== Steps ===== */
+.how{position:relative;overflow:hidden}
+.how .plan{position:absolute;inset-inline-start:-60px;top:30px;width:340px;opacity:.07;pointer-events:none}
+.steps{position:relative;display:grid}
+.step{position:relative;display:grid;grid-template-columns:68px 1fr;gap:18px;padding-bottom:30px}
+.step:not(:last-child)::before{content:"";position:absolute;inset-inline-start:33px;top:72px;bottom:6px;border-inline-start:2px dashed var(--sand)}
+.num{width:68px;height:68px;background:var(--teal);color:var(--sand);display:grid;place-items:center;font-size:1.6rem;font-weight:800;position:relative;box-shadow:6px 6px 0 var(--sand)}
+.num::after{content:"";position:absolute;top:0;inset-inline-end:0;border:9px solid;border-color:var(--clay) var(--clay) transparent transparent}
+.step h3{font-size:1.3rem;margin:4px 0 6px}.step p{color:var(--mute)}
+@media(min-width:820px){
+ .steps{grid-template-columns:repeat(3,1fr);gap:34px}
+ .step{grid-template-columns:1fr;gap:20px;padding:0}
+ .step:not(:last-child)::before{inset:33px auto auto 72px;inset-inline-start:84px;width:calc(100% - 50px);border:0;border-top:2px dashed var(--sand);height:0}
+}
+/* ===== Calculator ===== */
+.calcs{background:#fbf8f1;border-block:1px solid var(--line)}
+.calc{display:grid;border:1px solid var(--line);background:var(--card);box-shadow:var(--sh)}
+.cin{padding:22px 20px;display:grid;gap:24px}
+.ctl label,.ctl .lb{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-weight:700;margin-bottom:4px}
+.ctl output{color:var(--clay);font-weight:800;font-size:1.05rem}
+input[type=range]{--p:50%;-webkit-appearance:none;appearance:none;height:34px;padding:0;border:0;background:none;min-height:0;direction:ltr;box-shadow:none!important}
+input[type=range]::-webkit-slider-runnable-track{height:6px;background:linear-gradient(to right,var(--clay) var(--p),var(--sand2) var(--p));border-radius:0}
+input[type=range]::-moz-range-track{height:6px;background:linear-gradient(to right,var(--clay) var(--p),var(--sand2) var(--p))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;margin-top:-10px;background:var(--teal);border:3px solid var(--paper);box-shadow:0 0 0 1.5px var(--teal);border-radius:4px}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;background:var(--teal);border:3px solid var(--paper);outline:1.5px solid var(--teal);border-radius:4px}
+.rng{display:flex;justify-content:space-between;font-size:.75rem;color:var(--mute)}
+
+.segs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.seg{position:relative}.seg input{position:absolute;opacity:0;inset:0;min-height:0;cursor:pointer}
+.seg span{display:grid;place-items:center;min-height:48px;border:1.5px solid var(--line);font-weight:700;font-size:.88rem;text-align:center;line-height:1.3;transition:.25s}
+.seg input:checked+span{background:var(--teal);color:var(--paper);border-color:var(--teal)}
+.seg input:focus-visible+span{outline:3px solid var(--clay);outline-offset:2px}
+.cout{background:var(--teal);color:var(--paper);padding:26px 22px;display:grid;gap:14px;align-content:start;position:relative;overflow:hidden}
+.cout::after{content:"";position:absolute;inset-inline-end:-40px;bottom:-40px;width:180px;height:180px;border:1px solid rgba(217,199,160,.25);box-shadow:0 0 0 24px rgba(217,199,160,.05),0 0 0 48px rgba(217,199,160,.04);pointer-events:none}
+.cout small{color:var(--sand);font-weight:700}
+.big{font-size:clamp(2.3rem,10vw,3.6rem);font-weight:800;line-height:1.15;color:#fff}.big span{font-size:1rem;color:var(--sand);font-weight:600;margin-inline-start:6px}
+.bar{display:flex;height:10px;background:var(--clay)}.bar i{display:block;background:var(--sand);transition:width .35s}
+.bl{display:flex;justify-content:space-between;font-size:.78rem;color:rgba(246,243,236,.75)}
+.rows div{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid rgba(217,199,160,.2);font-size:.93rem}.rows b{color:var(--sand)}
+.disc{margin-top:18px;padding:14px 16px;background:var(--sand2);border-inline-start:4px solid var(--clay);font-weight:600;font-size:.93rem;color:var(--teal)}
+.cout .btn{position:relative;z-index:1}
+@media(min-width:900px){.calc{grid-template-columns:1.15fr 1fr}.cin{padding:34px}.cout{padding:34px}}
+/* ===== FAQ ===== */
+.faqw{display:grid;gap:10px}
+@media(min-width:900px){.faqw{grid-template-columns:.8fr 1.2fr;gap:60px}.faqw .sh{display:block;position:sticky;top:96px;align-self:start}}
+.fq{border-bottom:1px solid var(--line)}.fq:first-child{border-top:2px solid var(--teal)}
+.fq>button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:64px;text-align:start;font-weight:800;font-size:1.05rem;color:var(--teal)}
+.fq>button .i{transition:transform .35s;color:var(--clay)}.fq.open>button .i{transform:rotate(45deg)}
+.pn{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}.fq.open .pn{grid-template-rows:1fr}.pn>div{overflow:hidden}.pn p{padding:0 0 20px;color:var(--mute);max-width:60ch}
+/* ===== Contact ===== */
+.contact{background:var(--teal);color:var(--paper);position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(217,199,160,.06) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,rgba(217,199,160,.06) 1px,transparent 1px) 0 0/48px 48px;pointer-events:none}
+.cg{position:relative;display:grid;gap:30px}
+.cg .sh p{color:rgba(246,243,236,.78)}.cg .sh{margin:0}
+.democ{display:grid;gap:12px;margin-top:22px;font-size:.93rem;color:rgba(246,243,236,.85)}
+.democ li{display:flex;gap:10px;align-items:center}.democ .i{color:var(--sand)}
+.form{background:var(--paper);color:var(--ink);padding:22px 18px;border-top:4px solid var(--clay);display:grid;gap:16px;box-shadow:0 30px 60px -30px #000}
+.row2{display:grid;gap:16px}.f{display:grid;gap:5px}.f label{font-weight:700;font-size:.9rem}.f label small{color:var(--mute);font-weight:500}
+textarea{min-height:100px;resize:vertical}
+
+.err{color:#b3401a;font-size:.82rem;font-weight:600;min-height:1.2em}
+.bad{border-color:#b3401a!important;background:#fff6f2}
+.ok{text-align:center;display:grid;gap:12px;justify-items:center;padding:20px 6px}.ok .ck{width:64px;height:64px;background:var(--teal);color:var(--sand);display:grid;place-items:center}.ok .ck .i{width:32px;height:32px}
+.ok h3{font-size:1.4rem}.ok p{color:var(--mute);max-width:36ch}
+@media(min-width:600px){.row2{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.cg{grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}.form{padding:34px}}
+/* ===== Footer ===== */
+.ft{background:var(--teal3);color:rgba(246,243,236,.78);padding:56px 0 24px;font-size:.93rem}
+.fg{display:grid;gap:30px}.ft h4{color:var(--sand);margin-bottom:10px;font-size:.95rem}.ft .brand b{color:var(--paper)}
+.ft ul{display:grid;gap:2px}.ft a{text-decoration:none;display:inline-block;padding:5px 0;transition:color .2s}.ft a:hover{color:var(--sand)}
+.soc{display:flex;gap:10px;margin-top:14px}.soc a{width:44px;height:44px;border:1px solid rgba(217,199,160,.35);display:grid;place-items:center;color:var(--sand);padding:0}.soc a:hover{background:var(--sand);color:var(--teal)}
+.fb{margin-top:34px;padding-top:20px;border-top:1px solid rgba(217,199,160,.2);display:grid;gap:14px;font-size:.82rem}
+.fb .warn{border-inline-start:3px solid var(--clay);padding:6px 12px;background:rgba(246,243,236,.04)}
+.lc{display:flex;justify-content:space-between;align-items:center;gap:12px;color:rgba(246,243,236,.55)}.lc b{color:var(--sand);letter-spacing:.06em}
+.top{width:46px;height:46px;display:grid;place-items:center;background:var(--clay);color:#fff;transition:transform .25s}.top:hover{transform:translateY(-4px)}
+@media(min-width:820px){.fg{grid-template-columns:1.5fr 1fr 1.2fr}}
+@media(max-width:380px){.cta-row .btn{font-size:.88rem}.brand small{display:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.js .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<!-- ===== Icon sprite ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M20 12H5M10 6.5L4.5 12l5.5 5.5"/></symbol>
+<symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="1.6"/></symbol>
+<symbol id="i-bath" viewBox="0 0 24 24"><path d="M3 12h18v2.5a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4zM6 12V6.5A2.5 2.5 0 0 1 8.5 4 2.5 2.5 0 0 1 11 6M7 19v2M17 19v2"/></symbol>
+<symbol id="i-area" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+<symbol id="i-apt" viewBox="0 0 24 24"><path d="M6 21V4h12v17M3 21h18M9.5 8H11M13 8h1.5M9.5 12H11M13 12h1.5M10.5 21v-4h3v4"/></symbol>
+<symbol id="i-villa" viewBox="0 0 24 24"><path d="M3 11l9-6.5 9 6.5M5.5 9.5V20h13V9.5M10 20v-5h4v5"/></symbol>
+
+<symbol id="i-duplex" viewBox="0 0 24 24"><path d="M4 21V9l8-5v5h8v12M2.5 21h19M8 13h1M8 17h1M15 13h1M15 17h1"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+<symbol id="i-up" viewBox="0 0 24 24"><path d="M12 20V5M6.5 10.5L12 5l5.5 5.5"/></symbol>
+<symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8h2.5V4.5H14a3.5 3.5 0 0 0-3.5 3.5v2H8v3.5h2.5V21H14v-7.5h2.5l.5-3.5h-3V8z"/></symbol>
+<symbol id="i-ig" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><path d="M17 7h.01"/></symbol>
+<symbol id="i-in" viewBox="0 0 24 24"><path d="M5 9.5v9M5 5.5v.1M9.5 18.5v-9M9.5 13a3.5 3.5 0 0 1 7 0v5.5"/></symbol>
+</defs></svg>
+
+<div class="demo">نموذج تصميم</div>
+
+<!-- ===== Header ===== -->
+<header class="hd" id="hd"><div class="wrap hd-in">
+ <a class="brand" href="#home" aria-label="مفتاح — الرئيسية">
+  <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" fill="#14323a"/><rect x="10" y="6" width="20" height="15" fill="none" stroke="#d9c7a0" stroke-width="2"/><path d="M20 6v15M10 13.5h20" stroke="#d9c7a0" stroke-width="1.2"/><path d="M20 21v14" stroke="#c06a3b" stroke-width="3"/><path d="M20 28h6M20 33h4" stroke="#c06a3b" stroke-width="3"/></svg>
+  <span><b>مفتاح</b><small>MIFTAH</small></span>
+ </a>
+ <nav class="nav" id="nav" aria-label="القائمة الرئيسية">
+  <a class="l" href="#home">الرئيسية</a><a class="l" href="#listings">العقارات</a><a class="l" href="#areas">المناطق</a><a class="l" href="#how">طريقة الشغل</a><a class="l" href="#calc">احسب قسطك</a><a class="l" href="#contact">تواصل معانا</a>
+  <a class="btn btn-clay menu-cta" href="#contact">كلمنا دلوقتي <svg class="i"><use href="#i-arrow"/></svg></a>
+ </nav>
+ <button class="favb" id="favb" type="button" aria-pressed="false" aria-label="عرض المفضلة فقط"><svg class="i"><use href="#i-heart"/></svg><span class="fc">٠</span></button>
+ <a class="btn btn-clay hd-cta" href="#contact">كلمنا دلوقتي</a>
+ <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="فتح القائمة"><svg class="i"><use href="#i-menu"/></svg></button>
+</div></header>
+
+<main>
+<!-- ===== Hero ===== -->
+
+<section class="hero" id="home"><div class="wrap hero-in">
+ <div>
+  <p class="eyebrow rv">اختيارك الصح بيبدأ من هنا</p>
+  <h1 class="rv" style="--d:.08s">مش مجرد شقة...<em>دي بداية حكاية جديدة.</em></h1>
+  <p class="lead rv" style="--d:.16s">بنساعدك تلاقي المكان اللي يناسب حياتك، سواء بتدور على بيت جديد أو فرصة استثمار.</p>
+  <div class="cta-row rv" style="--d:.24s"><a class="btn btn-clay" href="#listings">اكتشف العقارات <svg class="i"><use href="#i-arrow"/></svg></a><a class="btn btn-ghost" href="#calc">احسب قسطك</a></div>
+ </div>
+ <div class="art rv" style="--d:.15s">
+  <svg viewBox="0 0 560 470" preserveAspectRatio="xMidYMax slice" role="img" aria-label="رسم معماري لأبراج سكنية عند الغروب">
+   <defs>
+    <linearGradient id="hs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14323a"/><stop offset=".55" stop-color="#235562"/><stop offset="1" stop-color="#c06a3b" stop-opacity=".8"/></linearGradient>
+    <pattern id="hg" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#d9c7a0" stroke-opacity=".1"/></pattern>
+    <pattern id="hw" width="14" height="18" patternUnits="userSpaceOnUse"><rect x="3" y="4" width="8" height="10" fill="#14323a" opacity=".55"/></pattern>
+    <pattern id="hl" width="14" height="18" patternUnits="userSpaceOnUse"><rect x="3" y="4" width="8" height="10" fill="#f6f3ec" opacity=".7"/></pattern>
+   </defs>
+   <rect width="560" height="470" fill="url(#hs)"/><rect width="560" height="470" fill="url(#hg)"/>
+   <g class="sun"><circle cx="395" cy="150" r="56" fill="#d9c7a0"/><circle cx="395" cy="150" r="76" fill="none" stroke="#d9c7a0" stroke-opacity=".4"/><circle cx="395" cy="150" r="98" fill="none" stroke="#d9c7a0" stroke-opacity=".18" stroke-dasharray="3 7"/></g>
+   <g class="cloud" stroke="#f6f3ec" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"><path d="M60 90h90M90 104h60M300 60h110M330 74h60"/></g>
+   <g fill="#2f6270" opacity=".75"><rect x="14" y="250" width="40" height="170"/><rect x="480" y="236" width="52" height="184"/><rect x="170" y="290" width="36" height="130"/><rect x="340" y="270" width="30" height="150"/></g>
+   <rect x="56" y="162" width="112" height="258" fill="#d9c7a0"/><rect x="56" y="162" width="112" height="258" fill="url(#hw)"/><rect x="48" y="152" width="128" height="10" fill="#14323a"/>
+   <rect x="210" y="108" width="126" height="312" fill="#f6f3ec"/><rect x="210" y="108" width="126" height="312" fill="url(#hw)" opacity=".8"/>
+   <g fill="#c06a3b"><rect x="204" y="96" width="138" height="12"/><rect x="210" y="162" width="126" height="3"/><rect x="210" y="216" width="126" height="3"/><rect x="210" y="270" width="126" height="3"/><rect x="210" y="324" width="126" height="3"/></g>
+   <path d="M246 108v312M300 108v312" stroke="#14323a" stroke-opacity=".25" stroke-width="3"/><rect x="272" y="70" width="2" height="26" fill="#f6f3ec"/>
+   <rect x="378" y="216" width="98" height="204" fill="#c06a3b"/><rect x="378" y="216" width="98" height="204" fill="url(#hl)"/><rect x="370" y="206" width="114" height="10" fill="#d9c7a0"/>
+   <rect x="0" y="420" width="560" height="50" fill="#0d2229"/><path d="M0 446h560" stroke="#d9c7a0" stroke-opacity=".5" stroke-dasharray="14 12"/>
+   <g fill="#2f6b57"><circle cx="190" cy="410" r="14"/><circle cx="352" cy="412" r="12"/><circle cx="500" cy="408" r="16"/></g><g fill="#3b3226"><rect x="189" y="410" width="2" height="10"/><rect x="351" y="412" width="2" height="8"/><rect x="499" y="408" width="2" height="12"/></g>
+  </svg>
+  <div class="flt"><svg class="i"><use href="#i-area"/></svg>مساحات تناسب طموحك</div>
+ </div>
+</div></section>
+
+<div class="wrap">
+
+<form class="search rv" id="sf" aria-label="بحث عن عقار">
+ <div class="fld"><label for="sTy">نوع العقار</label><select id="sTy"><option value="all">الكل</option><option>شقة</option><option>فيلا</option><option>دوبلكس</option></select></div>
+ <div class="fld"><label for="sAr">المنطقة</label><select id="sAr"><option value="all">كل المناطق</option><option>التجمع الخامس</option><option>الشيخ زايد</option><option>العاصمة الإدارية</option><option>المعادي</option></select></div>
+ <div class="fld"><label for="sRm">عدد الغرف</label><select id="sRm"><option value="any">أي عدد</option><option value="1">غرفة واحدة</option><option value="2">غرفتين</option><option value="3">3 غرف</option><option value="4">4 غرف أو أكثر</option></select></div>
+ <button class="btn btn-clay" type="submit"><svg class="i"><use href="#i-search"/></svg>دور على عقارك</button>
+</form>
+</div>
+
+<!-- ===== Stats ===== -->
+<section class="stats" aria-label="أرقام النموذج"><div class="wrap stg">
+ <div class="st rv"><b data-n="8">٨</b><span>وحدات متنوعة</span></div>
+ <div class="st rv" style="--d:.08s"><b data-n="4">٤</b><span>مناطق مميزة</span></div>
+ <div class="st rv" style="--d:.16s"><b data-n="3">٣</b><span>أنواع عقارات</span></div>
+ <div class="st rv" style="--d:.24s"><b data-n="1">١</b><span>خطوة أقرب لبيتك</span></div>
+</div></section>
+
+<!-- ===== Listings ===== -->
+<section class="sec" id="listings"><div class="wrap">
+ <div class="sh rv"><p class="kick">العقارات</p><h2>اختار المكان اللي شبهك</h2><p>مجموعة من الوحدات المتنوعة، بتفاصيل تساعدك تقارن وتختار براحتك.</p></div>
+ <div class="tb" role="group" aria-label="فلتر نوع العقار">
+  <button class="chip on" data-ty="all" type="button" aria-pressed="true">الكل</button>
+  <button class="chip" data-ty="شقة" type="button" aria-pressed="false"><svg class="i"><use href="#i-apt"/></svg>شقة</button>
+  <button class="chip" data-ty="فيلا" type="button" aria-pressed="false"><svg class="i"><use href="#i-villa"/></svg>فيلا</button>
+  <button class="chip" data-ty="دوبلكس" type="button" aria-pressed="false"><svg class="i"><use href="#i-duplex"/></svg>دوبلكس</button>
+ </div>
+ <div class="tb2"><span id="cnt" aria-live="polite"></span><span id="act" style="display:contents"></span><button class="rst" id="rst" type="button" hidden>مسح الفلاتر</button></div>
+ <div class="grid" id="grid"></div>
+</div></section>
+
+<!-- ===== Areas ===== -->
+<section class="sec areas" id="areas"><div class="wrap">
+ <div class="sh rv"><p class="kick">المناطق</p><h2>كل منطقة وليها حكاية</h2><p>اعرف أكتر عن المناطق اللي ممكن تلاقي فيها بيتك الجاي.</p></div>
+
+ <div class="ag" id="ag"></div>
+</div></section>
+
+<!-- ===== How ===== -->
+<section class="sec how" id="how">
+ <svg class="plan" viewBox="0 0 200 160" fill="none" stroke="#14323a" stroke-width="3" aria-hidden="true"><rect x="4" y="4" width="192" height="152"/><path d="M80 4v90M80 94h116M4 94h50M54 94v62M130 94v62M130 40h66"/></svg>
+ <div class="wrap">
+  <div class="sh rv"><p class="kick">طريقة الشغل</p><h2>مشوار بيتك أسهل مما تتخيل</h2></div>
+  <ol class="steps">
+   <li class="step rv"><div class="num">٠١</div><div><h3>حدد اللي بتدور عليه</h3><p>قولنا نوع العقار والمنطقة والمساحة اللي تناسب احتياجاتك.</p></div></li>
+   <li class="step rv" style="--d:.12s"><div class="num">٠٢</div><div><h3>قارن واختار</h3><p>شوف التفاصيل وقارن بين الوحدات المتاحة في النموذج.</p></div></li>
+   <li class="step rv" style="--d:.24s"><div class="num">٠٣</div><div><h3>ابدأ الاستفسار</h3><p>اختار الوحدة اللي عجبتك وسيب بياناتك عشان نقدر نتواصل معاك.</p></div></li>
+  </ol>
+ </div>
+</section>
+
+<!-- ===== Calculator ===== -->
+<section class="sec calcs" id="calc"><div class="wrap">
+ <div class="sh rv"><p class="kick">الحاسبة</p><h2>خطط لخطوتك الجاية</h2><p>احسب قسط تقريبي يساعدك تكون عندك صورة أوضح عن ميزانيتك.</p></div>
+ <div class="calc rv">
+  <div class="cin">
+   <div class="ctl"><label for="cV">قيمة العقار <output id="oV"></output></label><input type="range" id="cV" min="1000000" max="20000000" step="100000" value="5000000"><div class="rng"><span>١ مليون</span><span>٢٠ مليون</span></div></div>
+   <div class="ctl"><label for="cD">المقدم <output id="oD"></output></label><input type="range" id="cD" min="0" max="60" step="5" value="20"><div class="rng"><span>٠٪</span><span>٦٠٪</span></div></div>
+   <div class="ctl"><span class="lb" id="yl">مدة السداد</span>
+    <div class="segs" role="radiogroup" aria-labelledby="yl">
+     <label class="seg"><input type="radio" name="yrs" value="5"><span>٥ سنين</span></label><label class="seg"><input type="radio" name="yrs" value="10" checked><span>١٠ سنين</span></label><label class="seg"><input type="radio" name="yrs" value="15"><span>١٥ سنة</span></label><label class="seg"><input type="radio" name="yrs" value="20"><span>٢٠ سنة</span></label>
+    </div></div>
+   <div class="ctl"><label for="cI">نسبة الفائدة السنوية <output id="oI"></output></label><input type="range" id="cI" min="0" max="30" step="0.5" value="14"><div class="rng"><span>٠٪</span><span>٣٠٪</span></div></div>
+  </div>
+  <div class="cout" aria-live="polite">
+   <small>القسط الشهري التقريبي</small>
+   <div class="big"><b id="rM">—</b><span>جنيه / شهر</span></div>
+
+   <div><div class="bar"><i id="bD"></i></div><div class="bl"><span>المقدم</span><span>المبلغ الممول</span></div></div>
+   <div class="rows"><div><span>قيمة العقار</span><b id="rV"></b></div><div><span>المقدم</span><b id="rD"></b></div><div><span>المبلغ الممول</span><b id="rF"></b></div><div><span>إجمالي الفوائد التقريبي</span><b id="rT"></b></div></div>
+   <button class="btn btn-ghost" id="cRs" type="button">رجّع القيم الافتراضية</button>
+  </div>
+ </div>
+ <p class="disc rv">الحاسبة للتوضيح فقط، والنتائج تقديرية وليست عرض تمويل أو موافقة ائتمانية.</p>
+</div></section>
+
+<!-- ===== FAQ ===== -->
+<section class="sec" id="faq"><div class="wrap faqw">
+ <div class="sh rv"><p class="kick">الأسئلة</p><h2>أسئلة ممكن تكون في بالك</h2></div>
+ <div id="fql"></div>
+</div></section>
+
+<!-- ===== Contact ===== -->
+<section class="sec contact" id="contact"><div class="wrap cg">
+ <div>
+  <div class="sh rv"><p class="kick" style="color:var(--sand)">تواصل معانا</p><h2>خلينا نساعدك تلاقي مفتاح بيتك</h2><p>سيب بياناتك وقلنا بتدور على إيه.</p></div>
+  <ul class="democ rv"><li><svg class="i"><use href="#i-phone"/></svg>رقم افتراضي: 01X XXXX XXXX</li><li><svg class="i"><use href="#i-mail"/></svg>hello@miftah.example</li><li><svg class="i"><use href="#i-pin"/></svg>عنوان افتراضي للعرض فقط</li></ul>
+ </div>
+ <div class="form rv" style="--d:.1s">
+  <form id="cf" novalidate style="display:grid;gap:16px">
+   <div class="row2">
+    <div class="f"><label for="fN">الاسم</label><input id="fN" autocomplete="name" placeholder="اسمك بالكامل" aria-describedby="eN"><span class="err" id="eN"></span></div>
+    <div class="f"><label for="fP">رقم الموبايل</label><input id="fP" type="tel" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX" aria-describedby="eP"><span class="err" id="eP"></span></div>
+   </div>
+   <div class="row2">
+    <div class="f"><label for="fT">نوع العقار المطلوب</label><select id="fT" aria-describedby="eT"><option value="">اختار النوع</option><option>شقة</option><option>فيلا</option><option>دوبلكس</option></select><span class="err" id="eT"></span></div>
+    <div class="f"><label for="fA">المنطقة المفضلة</label><select id="fA" aria-describedby="eA"><option value="">اختار المنطقة</option><option>التجمع الخامس</option><option>الشيخ زايد</option><option>العاصمة الإدارية</option><option>المعادي</option></select><span class="err" id="eA"></span></div>
+   </div>
+   <div class="f"><label for="fM">رسالة إضافية <small>(اختياري)</small></label><textarea id="fM" placeholder="قولنا أي تفاصيل تهمك"></textarea></div>
+   <button class="btn btn-clay" type="submit">ابعت استفسارك <svg class="i"><use href="#i-arrow"/></svg></button>
+
+  </form>
+  <div class="ok" id="ok" hidden tabindex="-1"><div class="ck"><svg class="i"><use href="#i-check"/></svg></div><h3>تمام!</h3><p>تم اختبار النموذج بنجاح. ده نموذج عرض بس ومفيش بيانات اتبعتت فعلياً.</p><button class="btn btn-line" id="okR" type="button">جرّب تاني</button></div>
+ </div>
+</div></section>
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="ft"><div class="wrap">
+ <div class="fg">
+  <div>
+   <a class="brand" href="#home"><svg class="logo" viewBox="0 0 40 40" aria-hidden="true" style="width:44px;height:44px"><rect width="40" height="40" fill="#14323a" stroke="#d9c7a0" stroke-opacity=".4"/><rect x="10" y="6" width="20" height="15" fill="none" stroke="#d9c7a0" stroke-width="2"/><path d="M20 6v15M10 13.5h20" stroke="#d9c7a0" stroke-width="1.2"/><path d="M20 21v14M20 28h6M20 33h4" stroke="#c06a3b" stroke-width="3"/></svg><span><b>مفتاح</b><small>MIFTAH</small></span></a>
+   <p style="margin-top:14px;max-width:40ch">اسم تخيلي لشركة عقارات بتحاول تخلي رحلة البحث عن البيت أبسط وأوضح.</p>
+   <div class="soc"><a href="#" aria-label="فيسبوك"><svg class="i"><use href="#i-fb"/></svg></a><a href="#" aria-label="إنستجرام"><svg class="i"><use href="#i-ig"/></svg></a><a href="#" aria-label="لينكدإن"><svg class="i"><use href="#i-in"/></svg></a></div>
+  </div>
+  <div><h4>الأقسام</h4><ul><li><a href="#listings">العقارات</a></li><li><a href="#areas">المناطق</a></li><li><a href="#how">طريقة الشغل</a></li><li><a href="#calc">احسب قسطك</a></li><li><a href="#faq">الأسئلة الشائعة</a></li><li><a href="#contact">تواصل معانا</a></li></ul></div>
+  <div><h4>بيانات افتراضية</h4><ul><li>هاتف: 01X XXXX XXXX</li><li>بريد: hello@miftah.example</li><li>العنوان: افتراضي للعرض فقط</li></ul></div>
+ </div>
+ <div class="fb">
+  <p class="warn">تنبيه: الموقع ده نموذج تصميم عرض من LoveCode. بيانات العقارات والأرقام المعروضة افتراضية، ونموذج التواصل لا يرسل أي بيانات.</p>
+  <div class="lc"><span>Designed by <b>LoveCode</b></span><button class="top" id="top" type="button" aria-label="رجوع لأعلى الصفحة"><svg class="i"><use href="#i-up"/></svg></button></div>
+ </div>
+</div></footer>
+
+<!-- ===== Property modal ===== -->
+<div class="modal" id="modal" aria-hidden="true">
+ <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mT">
+  <div class="sbar"><span>تفاصيل الوحدة</span><button class="xb" id="mX" type="button" aria-label="إغلاق"><svg class="i"><use href="#i-close"/></svg></button></div>
+  <div class="sbody">
+   <div class="gal" role="group" aria-roledescription="معرض صور" aria-label="صور الوحدة">
+    <div id="slides"></div>
+    <button class="gn gp" id="gP" type="button" aria-label="الصورة السابقة"><svg class="i"><use href="#i-arrow"/></svg></button>
+    <button class="gn gx" id="gN" type="button" aria-label="الصورة التالية"><svg class="i"><use href="#i-arrow"/></svg></button>
+
+    <span class="cap" id="cap"></span><div class="dots" id="dots"></div>
+   </div>
+   <div class="mi">
+    <span class="ty" id="mTy"></span><h2 id="mT"></h2><p class="loc" id="mL"></p><p class="d" id="mD"></p>
+    <ul class="feat" id="mF"></ul>
+    <table class="facts"><tbody id="mTb"></tbody></table>
+    <button class="btn btn-clay" id="mQ" type="button">استفسر عن الوحدة <svg class="i"><use href="#i-arrow"/></svg></button>
+   </div>
+  </div>
+ </div>
+</div>
+
+<script>
+(()=>{'use strict';
+document.documentElement.classList.add('js');
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const nf=new Intl.NumberFormat('ar-EG');
+const go=id=>{const e=document.getElementById(id);e&&e.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})};
+const ic=(n)=>`<svg class="i" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+
+/* ---------- Illustration helpers ---------- */
+const R=(x,y,w,h,f,x2='')=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}" ${x2}/>`;
+const Tr=(x,y,s,c)=>`<rect x="${x-1.5}" y="${y-s*.55}" width="3" height="${s*.55}" fill="#3b3226"/><circle cx="${x}" cy="${y-s*.8}" r="${s*.5}" fill="${c}"/>`;
+const palm=(x,y,h,c)=>`<path d="M${x} ${y}q2-${h*.5} 0-${h}" stroke="#3b3226" stroke-width="2.5" fill="none"/><path d="M${x} ${y-h}q-16-4-22 8M${x} ${y-h}q16-4 22 8M${x} ${y-h}q-8-12-20-8M${x} ${y-h}q8-12 20-8" stroke="${c}" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+const wins=(x,y,cols,rows,gx,gy,w,h,f,l,sd)=>{let o='';for(let r=0;r<rows;r++)for(let c=0;c<cols;c++)o+=R(x+c*gx,y+r*gy,w,h,(r*7+c*3+sd)%5<2?l:f);return o};
+
+const stTower=(p,c)=>{const W=p.cols*34+22,H=p.rows*26+22,x=(400-W)/2,y=210-H;
+ let o=R(x-78,150,60,60,c.wall,'opacity=".75"')+wins(x-70,160,3,3,18,16,10,9,c.f,c.l,3)+R(x+W+18,134,66,76,c.wall,'opacity=".75"')+wins(x+W+26,144,3,4,19,16,10,9,c.f,c.l,5);
+ o+=R(x,y,W,H,c.wall)+R(x-6,y-8,W+12,8,c.acc)+wins(x+12,y+12,p.cols,p.rows,34,26,22,15,c.f,c.l,p.id);
+ if(p.bal)for(let r=1;r<p.rows;r+=2)o+=R(x+6,y+12+r*26+17,W-12,3,c.acc,'opacity=".9"');
+ return o+R(x+W/2-12,190,24,20,c.f)+R(x+W/2-1,190,2,20,c.acc)};
+
+const stHigh=(p,c)=>{const W=84,H=150,x=158,y=210-H;
+ let o=R(60,120,60,90,c.wall,'opacity=".6"')+R(290,100,70,110,c.wall,'opacity=".6"')+wins(68,130,3,4,17,18,9,10,c.f,c.l,2)+wins(298,112,4,5,16,18,9,10,c.f,c.l,4);
+ o+=R(x,y,W,H,c.wall)+R(x+16,y-34,W-32,34,c.wall)+R(x+W/2-1,y-58,2,26,c.acc)+R(x-5,y+56,W+10,5,c.acc)+R(x+22,y-24,W-44,16,c.f);
+ for(let i=0;i<7;i++)o+=R(x+6+i*12,y,3,H,c.acc,'opacity=".3"');
+ return o+wins(x+7,y+10,5,7,15,18,11,11,c.f,c.l,p.id)};
+const stVilla=(p,c)=>{const ux=p.v?60:120;
+ let o=R(52,150,200,60,c.wall)+R(44,144,216,6,c.acc)+R(ux,112,150,32,c.wall)+R(ux-8,106,166,6,c.acc);
+ o+=R(62,160,64,40,c.f)+R(93,160,2,40,c.wall)+R(142,166,34,34,c.l)+R(186,164,28,46,c.acc)+R(222,166,22,34,c.f);
+ o+=R(ux+12,120,54,18,c.f)+R(ux+82,120,54,18,c.l);
+ return o+R(270,200,92,10,'#7bbcc6')+R(270,198,92,2,'#fff','opacity=".5"')+palm(264,212,56,c.g)};
+const stDuplex=(p,c)=>{const ux=p.v?136:60,tx=p.v?60:184;
+ let o=R(60,148,200,62,c.wall)+R(ux,96,124,52,c.wall)+R(ux-6,90,136,6,c.acc);
+ for(let i=0;i<3;i++)o+=R(ux+10+i*38,106,28,32,i===1?c.l:c.f);
+ for(let i=0;i<4;i++)o+=R(72+i*46,162,32,34,i===2?c.acc:c.f);
+ for(let i=0;i<=9;i++)o+=R(tx+i*8,134,2,14,c.acc);
+ o+=R(tx,134,76,2,c.acc)+R(tx,110,78,3,c.acc)+R(tx,110,3,24,c.acc)+R(tx+75,110,3,24,c.acc);
+ for(let i=0;i<6;i++)o+=R(tx+4+i*13,107,2,6,c.acc);
+ return o+R(tx+22,126,14,8,c.g)+R(tx+46,124,14,10,c.g)};
+function ill(p,mode,pre){const d=mode===2,[s0,s1,wall,acc,gl,gr]=p.pal,c={wall,acc,f:d?'#27485c':gl,l:d?'#ffe2a0':'#cfe6e9',g:d?'#1c3d36':'#3f7a62'},id=pre+p.id+mode;
+ let o=`<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${d?'#18304a':s0}"/><stop offset="1" stop-color="${d?'#e0956a':s1}"/></linearGradient></defs><rect width="400" height="250" fill="url(#${id})"/><circle cx="${40+p.id*38}" cy="46" r="20" fill="${d?'#f6f3ec':'#fff'}" opacity="${d?.9:.55}"/>`;
+ for(let i=0;i<9;i++){const h=28+((i*37+p.id*17)%58);o+=R(i*46-8,210-h,40,h,d?'#13263a':'#fff',`opacity="${d?.55:.22}"`)}
+ o+=R(0,210,400,40,d?'#0f1f2b':gr)+R(0,210,400,3,'#fff','opacity=".25"');
+ o+=({tower:stTower,high:stHigh,villa:stVilla,duplex:stDuplex})[p.st](p,c);
+ return o+Tr(24+(p.id*13)%30,214,30,c.g)+Tr(376-(p.id*7)%30,214,38,c.g)+'</svg>'}
+function plan(p){const cell=(x,y,w,h,l)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="rgba(217,199,160,.08)" stroke="#d9c7a0" stroke-width="2"/><text x="${x+w/2}" y="${y+h/2+4}" text-anchor="middle" fill="#d9c7a0" font-size="12" font-family="inherit">${l}</text>`;
+ let o=`<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><pattern id="pg${p.id}" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#d9c7a0" stroke-opacity=".12"/></pattern></defs><rect width="400" height="250" fill="#14323a"/><rect width="400" height="250" fill="url(#pg${p.id})"/>`;
+ o+=cell(20,18,150,110,'معيشة')+cell(20,128,75,104,'مطبخ');
+ for(let i=0;i<p.ba;i++)o+=cell(95,128+i*104/p.ba,75,104/p.ba,'حمام');
+ for(let i=0;i<p.rm;i++)o+=cell(170,18+i*214/p.rm,210,214/p.rm,'غرفة '+nf.format(i+1));
+ return o+'<rect x="150" y="124" width="40" height="8" fill="#c06a3b"/></svg>'}
+
+/* ---------- Data ---------- */
+
+const P=[
+{id:1,t:'شقة بإطلالة مفتوحة',ty:'شقة',ar:'التجمع الخامس',rm:3,ba:2,sz:165,tag:'تشطيب مميز',st:'tower',rows:6,cols:4,bal:1,pal:['#bcd7d9','#f1e6cf','#f6f3ec','#c06a3b','#5f8f9a','#1d4450'],d:'شقة في دور عالي بواجهة واسعة وإضاءة طبيعية طول اليوم. وصف تخيلي لأغراض العرض فقط.',f:['إطلالة مفتوحة','بلكونة واسعة','مطبخ مفتوح','غرفة ماستر']},
+{id:2,t:'فيلا بحديقة خاصة',ty:'فيلا',ar:'الشيخ زايد',rm:4,ba:3,sz:280,tag:'حديقة خاصة',st:'villa',v:0,pal:['#e8d8b5','#f6f3ec','#d9c7a0','#14323a','#3d6b75','#2d5a50'],d:'فيلا بتصميم هادي وحديقة خاصة تكمّل المساحة الداخلية. بيانات افتراضية للعرض.',f:['حديقة خاصة','مسبح صغير','جراج','تراس علوي']},
+{id:3,t:'دوبلكس بتصميم عصري',ty:'دوبلكس',ar:'المعادي',rm:3,ba:2,sz:210,tag:'تصميم عصري',st:'duplex',v:0,pal:['#c9dbd8','#efe3c8','#e9dcc0','#c06a3b','#2c5a66','#2d5a50'],d:'دوبلكس على دورين بتراس خاص وتقسيم عصري. الوصف تخيلي وغرضه التوضيح بس.',f:['تراس خاص','سلم داخلي','إضاءة طبيعية','مساحة معيشة كبيرة']},
+{id:4,t:'شقة في كمبوند هادي',ty:'شقة',ar:'العاصمة الإدارية',rm:2,ba:2,sz:125,tag:'موقع مميز',st:'high',pal:['#a9c6cc','#e6efe9','#cfd9d6','#14323a','#4f7f8c','#1d4450'],d:'شقة مدمجة في برج حديث ومناسبة لبداية جديدة. بيانات تخيلية لأغراض التصميم.',f:['برج حديث','مدخل أنيق','جراج مغطى','حديقة مشتركة']},
+{id:5,t:'شقة واسعة للعيلة',ty:'شقة',ar:'التجمع الخامس',rm:4,ba:3,sz:195,tag:'مساحة واسعة',st:'tower',rows:5,cols:5,bal:0,pal:['#f0d9b8','#f6f3ec','#f2ece0','#14323a','#6b97a1','#1d4450'],d:'شقة بمساحة سخية وغرف متوازنة تناسب العيلة الكبيرة. وصف افتراضي.',f:['٤ غرف نوم','ريسبشن كبير','غرفة غسيل','بلكونتين']},
+{id:6,t:'فيلا بتصميم مفتوح',ty:'فيلا',ar:'الشيخ زايد',rm:5,ba:4,sz:320,tag:'مناسبة للعيلة',st:'villa',v:1,pal:['#cfe0dc','#f1e6cf','#d6a07c','#14323a','#4d7e8a','#2d5a50'],d:'فيلا بمساحات مفتوحة على بعضها وتراس علوي للقعدات العائلية. بيانات تخيلية.',f:['تصميم مفتوح','٥ غرف نوم','مسبح','غرفة خدمات']},
+{id:7,t:'شقة عملية ومميزة',ty:'شقة',ar:'المعادي',rm:2,ba:1,sz:110,tag:'تصميم عملي',st:'tower',rows:4,cols:4,bal:1,pal:['#d6e2de','#f6ecd8','#e3b99a','#14323a','#4d7e8a','#1d4450'],d:'شقة بتقسيم عملي بدون مساحات مهدرة، مناسبة لبداية مستقلة. وصف افتراضي.',f:['تقسيم عملي','مطبخ مجهز','بلكونة','قريبة من الخضرة']},
+{id:8,t:'دوبلكس بإطلالة مميزة',ty:'دوبلكس',ar:'العاصمة الإدارية',rm:4,ba:3,sz:235,tag:'إطلالة مميزة',st:'duplex',v:1,pal:['#e4d3b0','#f6f3ec','#f6f3ec','#c06a3b','#2c5a66','#1d4450'],d:'دوبلكس بتراس على الدور العلوي وإطلالة مفتوحة. الوصف تخيلي للعرض فقط.',f:['تراس بإطلالة','سلم مفتوح','غرفة ماستر','مدخل مستقل']}];
+const tyIc={شقة:'apt',فيلا:'villa',دوبلكس:'duplex'},rmL={1:'غرفة واحدة',2:'غرفتين',3:'3 غرف',4:'4 غرف أو أكثر'};
+
+/* ---------- Header / menu ---------- */
+const nav=$('#nav'),bg=$('#burger'),hd=$('#hd');
+const menu=o=>{nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);bg.setAttribute('aria-label',o?'إغلاق القائمة':'فتح القائمة');bg.innerHTML=ic(o?'close':'menu')};
+bg.onclick=()=>menu(!nav.classList.contains('open'));
+$$('#nav a').forEach(a=>a.addEventListener('click',()=>menu(false)));
+addEventListener('resize',()=>innerWidth>=1040&&menu(false));
+addEventListener('scroll',()=>hd.classList.toggle('sc',scrollY>8),{passive:true});
+$('#top').onclick=()=>scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+$$('.soc a').forEach(a=>a.onclick=e=>e.preventDefault());
+
+/* ---------- Listings + filters ---------- */
+const S={ty:'all',ar:'all',rm:'any',fav:false},fav=new Set(),grid=$('#grid');
+const card=(p,i)=>{const f=fav.has(p.id);return `<article class="card" data-id="${p.id}" style="animation-delay:${Math.min(i,7)*60}ms"><div class="media">${ill(p,0,'c')}<span class="tag">${p.tag}</span><button class="heart${f?' on':''}" type="button" aria-pressed="${f}" aria-label="${f?'إزالة':'إضافة'} ${p.t} ${f?'من':'إلى'} المفضلة">${ic('heart')}</button></div><div class="cb"><span class="ty">${ic(tyIc[p.ty])}${p.ty}</span><h3>${p.t}</h3><p class="loc">${ic('pin')}${p.ar}</p><ul class="specs"><li>${ic('bed')}${nf.format(p.rm)} غرف</li><li>${ic('bath')}${nf.format(p.ba)} حمام</li><li>${ic('area')}${nf.format(p.sz)} م²</li></ul></div><button class="more" type="button">شوف التفاصيل ${ic('arrow')}</button></article>`};
+const emptyHTML=`<div class="empty"><svg viewBox="0 0 120 90" fill="none" stroke="#c06a3b" stroke-width="2.5" aria-hidden="true"><path d="M20 84h80M34 84V30h34v54M68 84V50h22v34M42 40h6M54 40h6M42 54h6M54 54h6M42 68h6M54 68h6"/><path d="M8 84h104" stroke="#d9c7a0"/></svg><h3>مفيش وحدات بالمواصفات دي</h3><p>جرّب تغيّر الفلاتر أو ارجع للعرض الكامل وشوف كل الوحدات.</p><button class="btn btn-teal" type="button" data-reset>اعرض كل الوحدات</button></div>`;
+function favCount(){$$('.fc').forEach(e=>e.textContent=nf.format(fav.size))}
+function apply(){
+ const L=P.filter(p=>(S.ty==='all'||p.ty===S.ty)&&(S.ar==='all'||p.ar===S.ar)&&(S.rm==='any'||(S.rm==='4'?p.rm>=4:p.rm===+S.rm))&&(!S.fav||fav.has(p.id)));
+ grid.innerHTML=L.length?L.map(card).join(''):(S.fav&&!fav.size?emptyHTML.replace('مفيش وحدات بالمواصفات دي','لسه مضفتش وحدات للمفضلة').replace('جرّب تغيّر الفلاتر أو ارجع للعرض الكامل وشوف كل الوحدات.','دوس على القلب في أي وحدة عشان تحفظها هنا.'):emptyHTML);
+ $('#cnt').innerHTML=`عرض <strong>${nf.format(L.length)}</strong> من ${nf.format(P.length)} وحدات`;
+ $$('.chip').forEach(c=>{const on=c.dataset.ty===S.ty;c.classList.toggle('on',on);c.setAttribute('aria-pressed',on)});
+ $('#sTy').value=S.ty;$('#sAr').value=S.ar;$('#sRm').value=S.rm;
+
+ const tg=[];S.ar!=='all'&&tg.push(['ar','المنطقة: '+S.ar]);S.rm!=='any'&&tg.push(['rm','الغرف: '+rmL[S.rm]]);S.fav&&tg.push(['fav','المفضلة فقط']);
+ $('#act').innerHTML=tg.map(([k,l])=>`<button class="tagx" type="button" data-rm="${k}" aria-label="شيل فلتر ${l}">${l}${ic('close')}</button>`).join('');
+ $('#rst').hidden=!(tg.length||S.ty!=='all');
+ const fb=$('#favb');fb.setAttribute('aria-pressed',S.fav);favCount();
+}
+const reset=()=>{Object.assign(S,{ty:'all',ar:'all',rm:'any',fav:false});apply()};
+$('#rst').onclick=reset;
+$$('.chip').forEach(c=>c.onclick=()=>{S.ty=c.dataset.ty;apply()});
+$('#act').onclick=e=>{const b=e.target.closest('[data-rm]');if(!b)return;const k=b.dataset.rm;S[k]=k==='fav'?false:(k==='ar'?'all':'any');apply()};
+$('#sf').onsubmit=e=>{e.preventDefault();S.ty=$('#sTy').value;S.ar=$('#sAr').value;S.rm=$('#sRm').value;apply();go('listings')};
+$('#favb').onclick=()=>{S.fav=!S.fav;apply();go('listings')};
+grid.onclick=e=>{
+ if(e.target.closest('[data-reset]')){reset();return}
+ const h=e.target.closest('.heart');
+ if(h){e.stopPropagation();const id=+h.closest('.card').dataset.id,p=P.find(x=>x.id===id);
+  fav.has(id)?fav.delete(id):fav.add(id);
+  if(S.fav&&!fav.has(id)){apply();return}
+  const on=fav.has(id);h.classList.remove('on');void h.offsetWidth;h.classList.toggle('on',on);h.setAttribute('aria-pressed',on);h.setAttribute('aria-label',`${on?'إزالة':'إضافة'} ${p.t} ${on?'من':'إلى'} المفضلة`);favCount();return}
+ const c=e.target.closest('.card');c&&openM(+c.dataset.id)};
+
+/* ---------- Modal ---------- */
+const modal=$('#modal');let cur=null,sl=0,last=null;const CAP=['واجهة الوحدة','مسقط توضيحي تقريبي','إطلالة مسائية'];
+function setSlide(n){sl=(n+3)%3;$$('.slide').forEach((s,i)=>s.classList.toggle('on',i===sl));$$('#dots button').forEach((b,i)=>b.setAttribute('aria-current',i===sl));$('#cap').textContent=CAP[sl]}
+function openM(id){const p=P.find(x=>x.id===id);cur=p;last=document.activeElement;
+ $('#slides').innerHTML=[ill(p,0,'m'),plan(p),ill(p,2,'m')].map((s,i)=>`<div class="slide" role="group" aria-label="صورة ${nf.format(i+1)} من ٣">${s}</div>`).join('');
+ $('#dots').innerHTML=[0,1,2].map(i=>`<button type="button" aria-label="اعرض الصورة ${nf.format(i+1)}"></button>`).join('');
+ $$('#dots button').forEach((b,i)=>b.onclick=()=>setSlide(i));
+ $('#mTy').innerHTML=ic(tyIc[p.ty])+p.ty;$('#mT').textContent=p.t;$('#mL').innerHTML=ic('pin')+p.ar;$('#mD').textContent=p.d;
+ $('#mF').innerHTML=p.f.map(x=>`<li>${ic('check')}${x}</li>`).join('');
+ $('#mTb').innerHTML=[['النوع',p.ty],['المساحة',nf.format(p.sz)+' م²'],['الغرف',nf.format(p.rm)],['الحمامات',nf.format(p.ba)],['المنطقة',p.ar]].map(([a,b])=>`<tr><th>${a}</th><td>${b}</td></tr>`).join('');
+ setSlide(0);$('.sbody',modal).scrollTop=0;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';setTimeout(()=>$('#mX').focus(),50)}
+function closeM(){if(!modal.classList.contains('open'))return;modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';last&&last.focus&&last.focus()}
+
+$('#mX').onclick=closeM;modal.onclick=e=>{e.target===modal&&closeM()};
+$('#gP').onclick=()=>setSlide(sl-1);$('#gN').onclick=()=>setSlide(sl+1);
+$('#mQ').onclick=()=>{const p=cur;last=null;closeM();$('#fT').value=p.ty;$('#fA').value=p.ar;$('#fM').value=`أنا مهتم بوحدة: ${p.t} (${p.ar})`;setTimeout(()=>go('contact'),60)};
+addEventListener('keydown',e=>{
+ if(modal.classList.contains('open')){
+  if(e.key==='Escape')closeM();
+  else if(e.key==='ArrowLeft')setSlide(sl+1);else if(e.key==='ArrowRight')setSlide(sl-1);
+  else if(e.key==='Tab'){const f=$$('button',modal).filter(b=>b.offsetParent!==null);if(!f.length)return;const a=f[0],z=f[f.length-1];
+   if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+ }else if(e.key==='Escape')menu(false)});
+
+/* ---------- Areas ---------- */
+function sky(k,[a,b,d,g]){let o=`<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true">`;
+ if(k===0){[[14,90,34],[54,130,40],[100,70,30],[136,150,44],[186,100,34],[226,125,38],[270,80,32],[306,140,42],[354,95,36]].forEach(([x,h,w],i)=>{o+=R(x,190-h,w,h,i%3===1?d:a);for(let y=190-h+10;y<180;y+=14)for(let xx=x+6;xx<x+w-8;xx+=10)o+=R(xx,y,4,6,b,'opacity=".75"')});
+  o+=`<path d="M0 190h400" stroke="${a}" stroke-width="3"/>`+Tr(20,192,24,g)+Tr(376,192,28,g)}
+ else if(k===1){o+=`<path d="M0 150Q100 110 200 140T400 125V200H0Z" fill="${g}" opacity=".55"/><path d="M0 172Q120 140 240 166T400 158V200H0Z" fill="${g}"/>`;
+  [[30,150],[120,142],[250,148],[330,138]].forEach(([x,y],i)=>{o+=R(x,y,50,30,a)+`<polygon points="${x-5},${y} ${x+25},${y-18} ${x+55},${y}" fill="${d}"/>`+R(x+10,y+8,10,10,b)+R(x+30,y+8,10,10,b)});
+  o+=palm(94,176,54,b)+palm(300,176,46,b)+Tr(212,178,30,b)}
+ else if(k===2){o+=`<path d="M10 175Q200 70 390 175" stroke="${d}" stroke-width="3" fill="none"/><polygon points="184,190 190,50 200,6 210,50 216,190" fill="${a}"/><polygon points="92,190 92,92 142,64 142,190" fill="${a}" opacity=".85"/><polygon points="258,190 258,76 312,100 312,190" fill="${a}" opacity=".85"/><polygon points="30,190 30,130 70,116 70,190" fill="${a}" opacity=".6"/><polygon points="330,190 330,126 372,140 372,190" fill="${a}" opacity=".6"/>`;
+  for(let y=70;y<186;y+=16)o+=R(190,y,20,3,b,'opacity=".6"')+R(98,y+6,38,2,b,'opacity=".5"')+R(264,y+8,40,2,b,'opacity=".5"');
+  o+=R(0,190,400,10,d)}
+ else{o+=R(120,120,150,70,a)+`<polygon points="110,120 195,76 280,120" fill="${d}"/>`+R(142,138,26,26,b)+R(186,138,26,26,b)+R(230,138,26,26,b)+R(180,166,30,24,d);
+  [[50,150,38],[330,146,44],[98,170,26],[290,172,26]].forEach(([x,y,r])=>{o+=`<circle cx="${x}" cy="${y-r*.7}" r="${r}" fill="${g}"/><circle cx="${x+r*.6}" cy="${y-r*.4}" r="${r*.75}" fill="${g}" opacity=".85"/>`+R(x-3,y-r*.5,6,r*.5+8,'#3b3226')});
+  o+=`<path d="M0 186q25-10 50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0" stroke="${b}" stroke-width="3" fill="none"/>`+R(0,192,400,8,b,'opacity=".35"')}
+ return o+'</svg>'}
+const TH=[['t0',['#d9c7a0','#14323a','#c06a3b','#2f6b57']],['t1',['#14323a','#d9c7a0','#c06a3b','#5f8f6f']],['t2',['#14323a','#d9c7a0','#f6f3ec','#2f6b57']],['t3',['#14323a','#f6f3ec','#c06a3b','#3f7a62']]];
+const AR=[['التجمع الخامس','منطقة عصرية ومنظمة، والخدمات فيها قريبة من كل حاجة.','قرب الخدمات والمساحات المفتوحة'],['الشيخ زايد','هدوء مناسب للعيلة ومساحات واسعة تحسسك إنك بعيد عن الزحمة.','أجواء هادية ومساحات خضرا'],['العاصمة الإدارية','تطوير عمراني حديث، شكل مدينة جديدة بتتشكل قدامك.','تخطيط حديث ومناطق عمرانية جديدة'],['المعادي','منطقة عريقة وخضرا وليها شخصية مميزة مش بتتكرر.','شوارع هادية وطابع مميز']];
+$('#ag').innerHTML=AR.map(([n,d,h],i)=>`<article class="area ${TH[i][0]} rv" style="--d:${i%2*.1}s"><div class="ar">${sky(i,TH[i][1])}</div><div class="ab"><span class="no">٠${nf.format(i+1)}</span><h3>${n}</h3><p>${d}</p><div class="hl">${ic('pin')}${h}</div><button class="btn" type="button" data-area="${n}">شوف عقارات ${n} ${ic('arrow')}</button></div></article>`).join('');
+$('#ag').onclick=e=>{const b=e.target.closest('[data-area]');if(!b)return;Object.assign(S,{ty:'all',rm:'any',fav:false,ar:b.dataset.area});apply();go('listings')};
+
+/* ---------- Calculator ---------- */
+const cV=$('#cV'),cD=$('#cD'),cI=$('#cI'),fm=n=>nf.format(Math.round(n))+' جنيه';
+
+function calc(){
+ const V=+cV.value,dp=+cD.value,rate=+cI.value,n=+$('input[name=yrs]:checked').value*12,down=V*dp/100,Pr=V-down,r=rate/100/12;
+ const m=r===0?Pr/n:Pr*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+ $('#oV').textContent=fm(V);$('#oD').textContent=nf.format(dp)+'٪ ('+fm(down)+')';$('#oI').textContent=nf.format(rate)+'٪';
+ $('#rM').textContent=nf.format(Math.round(m));$('#rV').textContent=fm(V);$('#rD').textContent=fm(down);$('#rF').textContent=fm(Pr);$('#rT').textContent=fm(m*n-Pr);
+ $('#bD').style.width=dp+'%';
+ [cV,cD,cI].forEach(s=>s.style.setProperty('--p',(s.value-s.min)/(s.max-s.min)*100+'%'));
+}
+[cV,cD,cI].forEach(s=>s.addEventListener('input',calc));$$('input[name=yrs]').forEach(r=>r.addEventListener('change',calc));
+$('#cRs').onclick=()=>{cV.value=5000000;cD.value=20;cI.value=14;$('input[name=yrs][value="10"]').checked=true;calc()};
+
+/* ---------- FAQ ---------- */
+const FQ=[['إزاي أختار العقار المناسب ليا؟','ابدأ بالأهم عندك: نوع العقار والمنطقة وعدد الغرف. بعدين استخدم الفلاتر وقارن بين الوحدات وخد وقتك في الاختيار.'],['هل ممكن أشوف تفاصيل الوحدة قبل ما أقرر؟','أكيد. دوس على أي وحدة هتفتحلك نافذة فيها المساحة والغرف والحمامات ووصف ومعرض صور توضيحية. التفاصيل هنا افتراضية لأن الموقع نموذج عرض.'],['إيه الفرق بين الشقة والدوبلكس والفيلا؟','الشقة وحدة جوه عمارة على دور واحد، والدوبلكس شقة على دورين متصلين بسلم داخلي، والفيلا بيت مستقل غالباً بحديقة ومساحة أكبر.'],['هل الحاسبة بتعرض القسط النهائي؟','لأ، الحاسبة بتعطيك رقم تقديري للتوضيح بس، وهي مش عرض تمويل ولا موافقة ائتمانية. الأرقام الفعلية بتختلف حسب الجهة وشروطها.'],['إزاي أقدر أستفسر عن وحدة معينة؟','افتح تفاصيل الوحدة واضغط "استفسر عن الوحدة"، وهننقلك للنموذج ومعاه اسمها. خد بالك إن النموذج هنا للعرض فقط ومبيبعتش أي بيانات.']];
+$('#fql').innerHTML=FQ.map(([q,a],i)=>`<div class="fq rv" style="--d:${i*.05}s"><button type="button" aria-expanded="false" aria-controls="fa${i}" id="fh${i}">${q}${ic('plus')}</button><div class="pn" id="fa${i}" role="region" aria-labelledby="fh${i}"><div><p>${a}</p></div></div></div>`).join('');
+$('#fql').onclick=e=>{const b=e.target.closest('.fq>button');if(!b)return;const it=b.parentElement,o=!it.classList.contains('open');
+ $$('.fq').forEach(x=>{x.classList.remove('open');$('button',x).setAttribute('aria-expanded',false)});
+ if(o){it.classList.add('open');b.setAttribute('aria-expanded',true)}};
+
+/* ---------- Form ---------- */
+const cf=$('#cf');
+const chk=(id,er,ok,msg)=>{const el=$(id);el.classList.toggle('bad',!ok);el.setAttribute('aria-invalid',!ok);$(er).textContent=ok?'':msg;return ok};
+const normPhone=s=>s.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[\s\-()]/g,'').replace(/^(\+20|0020)/,'0');
+cf.addEventListener('input',e=>{if(e.target.classList.contains('bad')){e.target.classList.remove('bad');e.target.removeAttribute('aria-invalid');const er=$('#e'+e.target.id.slice(1));er&&(er.textContent='')}});
+cf.onsubmit=e=>{e.preventDefault();
+ const a=chk('#fN','#eN',$('#fN').value.trim().length>=2,'اكتب اسمك من فضلك'),
+  b=chk('#fP','#eP',/^01[0125]\d{8}$/.test(normPhone($('#fP').value)),'اكتب رقم موبايل مصري صحيح، زي 01012345678'),
+  c=chk('#fT','#eT',!!$('#fT').value,'اختار نوع العقار'),d=chk('#fA','#eA',!!$('#fA').value,'اختار المنطقة');
+ if(!(a&&b&&c&&d)){const f=$('.bad',cf);f&&f.focus();return}
+ cf.hidden=true;$('#ok').hidden=false;$('#ok').focus();cf.reset()};
+$('#okR').onclick=()=>{$('#ok').hidden=true;cf.hidden=false;$('#fN').focus()};
+
+/* ---------- Reveal + counters ---------- */
+
+const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'}):null;
+$$('.rv').forEach(el=>io?io.observe(el):el.classList.add('in'));
+const cio='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);const el=e.target,n=+el.dataset.n,t0=performance.now();
+ const step=t=>{const k=Math.min((t-t0)/1100,1);el.textContent=nf.format(Math.round(n*(1-Math.pow(1-k,3))));k<1&&requestAnimationFrame(step)};
+ reduce?el.textContent=nf.format(n):requestAnimationFrame(step)}),{threshold:.6}):null;
+$$('[data-n]').forEach(el=>{if(cio&&!reduce){el.textContent=nf.format(0);cio.observe(el)}});
+
+apply();calc();
+})();
+</script>
+</body>
+</html>
