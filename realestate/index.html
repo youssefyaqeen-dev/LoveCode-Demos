@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مفتاح | عقارات</title>
+<style>
+:root{--bg:#f3efe7;--ink:#14323a;--teal:#1f7a78;--sand:#d9c7a0;--clay:#c06a3b;--card:#fffdf8;--muted:#6a7a7c}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Arial,sans-serif}
+body{background:var(--bg);color:var(--ink);overflow-x:hidden}
+.ribbon{position:fixed;bottom:22px;top:auto;left:-42px;transform:rotate(45deg);background:var(--clay);color:#fff;padding:6px 48px;font-size:12px;font-weight:800;z-index:60}
+header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:14px 6vw;background:rgba(243,239,231,.92);backdrop-filter:blur(8px);border-bottom:1px solid #ded6c4}
+.logo{font-size:27px;font-weight:800;color:var(--teal)}
+nav{display:flex;gap:20px}nav a{color:var(--ink);text-decoration:none;font-size:15px;font-weight:600}
+.btn{background:var(--teal);color:#fff;border:none;border-radius:12px;padding:11px 24px;font-weight:800;font-size:15px;cursor:pointer;text-decoration:none;display:inline-block}
+.hero{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 6vw;background:linear-gradient(180deg,#e7dfcb,var(--bg))}
+.skyl{display:flex;align-items:flex-end;gap:8px;margin-bottom:22px;height:90px}
+.skyl i{display:block;width:26px;background:var(--teal);border-radius:4px 4px 0 0}
+.skyl i:nth-child(2){background:var(--clay)}.skyl i:nth-child(4){background:var(--sand)}
+.hero h1{font-size:clamp(34px,6vw,58px);line-height:1.3}.hero h1 em{font-style:normal;color:var(--teal)}
+.hero p{margin:16px 0 26px;color:var(--muted);font-size:18px;max-width:520px}
+section{padding:58px 6vw;max-width:1080px;margin:auto}
+.t{text-align:center;font-size:30px;color:var(--teal);margin-bottom:6px}
+.s{text-align:center;color:var(--muted);margin-bottom:28px;font-size:15px}
+.note{display:inline-block;background:#fff;border:1px dashed var(--clay);color:var(--clay);font-size:12.5px;border-radius:20px;padding:5px 14px;margin-bottom:20px}
+.c{text-align:center}
+.chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.chip{border:1.5px solid var(--teal);background:transparent;color:var(--teal);border-radius:12px;padding:8px 18px;font-weight:700;cursor:pointer;font-size:14px}
+.chip.on{background:var(--teal);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.pr{background:var(--card);border-radius:20px;overflow:hidden;border:1px solid #e3dbc8;transition:transform .2s}
+.pr:hover{transform:translateY(-4px)}
+.pic{height:140px;display:flex;align-items:flex-end;justify-content:center;gap:6px;padding:0 20px}
+.pic i{display:block;background:rgba(255,255,255,.75);border-radius:4px 4px 0 0;width:30px}
+.pr .b{padding:16px}.pr b{font-size:18px;display:block}.pr span{color:var(--muted);font-size:13px}
+.tags{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.tags em{font-style:normal;background:#efe8d6;border-radius:8px;padding:4px 10px;font-size:12.5px;font-weight:700}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.w{background:var(--card);border-radius:18px;padding:22px;text-align:center;border:1px solid #e3dbc8}
+.w div{font-size:32px;margin-bottom:8px}.w b{display:block;margin-bottom:4px}.w span{font-size:13px;color:var(--muted)}
+.box{background:var(--card);border:1px solid #e3dbc8;border-radius:22px;padding:26px;max-width:520px;margin:auto}
+.box input,.box select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #d6ccb4;margin-bottom:12px;font-size:15px;background:#fff}
+.done{display:none;margin-top:12px;color:var(--teal);font-weight:700}
+footer{text-align:center;padding:34px 6vw;color:var(--muted);font-size:13px;border-top:1px solid #ded6c4}
+@media(max-width:600px){nav{gap:10px}nav a{font-size:12.5px}.btn{white-space:nowrap;padding:9px 14px;font-size:13px}header{padding:12px 4vw}.logo{font-size:23px}}</style></head><body>
+<div class="ribbon">نموذج تصميم</div>
+<header><div class="logo">مفتاح</div><nav><a href="#list">الوحدات</a><a href="#why">ليه مفتاح</a><a href="#ask">اسأل</a></nav><a class="btn" href="#ask">اطلب معاينة</a></header>
+<div class="hero"><div class="skyl"><i style="height:50px"></i><i style="height:90px"></i><i style="height:66px"></i><i style="height:78px"></i><i style="height:40px"></i></div>
+<h1>عقارك <em>في صفحة</em><br>مش في ١٠٠ رسالة</h1>
+<p>وحدات مرتبة بالمنطقة والغرف والمساحة، وتطلب معاينة بضغطة.</p><a class="btn" href="#list">شوف الوحدات</a></div>
+<section id="list"><div class="t">الوحدات المتاحة</div><div class="s">فلتر بالنوع وشوف النتيجة فورًا</div>
+<div class="c"><span class="note">وحدات وبيانات افتراضية لعرض التصميم</span></div>
+<div class="chips"><button class="chip on" data-k="all">الكل</button><button class="chip" data-k="apt">شقق</button><button class="chip" data-k="vil">فيلات</button><button class="chip" data-k="off">مكاتب</button></div>
+<div class="grid" id="g"></div></section>
+<section id="why"><div class="t">ليه مفتاح</div><div class="s">تصميم بيسهّل القرار</div>
+<div class="why"><div class="w"><div>📍</div><b>مناطق واضحة</b><span>كل وحدة بموقعها</span></div><div class="w"><div>📐</div><b>تفاصيل مرتبة</b><span>مساحة وغرف وطابق</span></div><div class="w"><div>🗓️</div><b>معاينة بسرعة</b><span>اختار يوم وابعت</span></div></div></section>
+<section id="ask"><div class="t">اطلب معاينة</div><div class="s">سيب بياناتك ويتواصلوا معاك</div>
+<div class="box"><div class="c"><span class="note">النموذج للعرض فقط ومش بيرسل بيانات</span></div>
+<select><option>شقة</option><option>فيلا</option><option>مكتب</option></select><input placeholder="الاسم"><input placeholder="رقم الموبايل">
+<button class="btn" style="width:100%" id="go">أرسل الطلب</button><div class="done" id="d">✓ ده عرض فقط، لو ده موقعك كان الطلب وصل لشركتك</div></div></section>
+<footer>نموذج تصميم من LoveCode، البيانات افتراضية.</footer>
+<script>
+const U=[["apt","شقة ٣ غرف","التجمع، دور ٤","١٦٠ م²","٣ غرف","٢ حمام","#1f7a78",[60,90,74]],["vil","فيلا مستقلة","الشيخ زايد","٤٢٠ م²","٥ غرف","٤ حمام","#c06a3b",[80,110,70]],["off","مكتب إداري","المعادي","٩٠ م²","٣ غرف","١ حمام","#14323a",[100,60,90]],["apt","شقة ٢ غرفة","مدينة نصر، دور ٢","١١٠ م²","٢ غرفة","١ حمام","#a8905a",[50,76,60]],["vil","تاون هاوس","أكتوبر","٢٨٠ م²","٤ غرف","٣ حمام","#3d8a6a",[84,64,96]],["apt","استوديو","الزمالك، دور ٦","٧٠ م²","غرفة","١ حمام","#8a5a44",[64,92,56]]];
+const G=document.getElementById('g');
+function show(k){G.innerHTML=U.filter(u=>k=='all'||u[0]==k).map(u=>`<div class="pr"><div class="pic" style="background:${u[6]}">${u[7].map(h=>`<i style="height:${h}px"></i>`).join('')}</div><div class="b"><b>${u[1]}</b><span>📍 ${u[2]}</span><div class="tags"><em>${u[3]}</em><em>${u[4]}</em><em>${u[5]}</em></div></div></div>`).join('')}
+show('all');
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{document.querySelectorAll('.chip').forEach(a=>a.classList.remove('on'));c.classList.add('on');show(c.dataset.k)});
+document.getElementById('go').onclick=()=>document.getElementById('d').style.display='block';
+</script></body></html>
