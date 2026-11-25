@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="
+#123D3B">
+<meta name="description" content="ابتسامة | Ebtesama — رعاية متكاملة لأسنانك وأسنان أسرتك في مكان واحد.">
+<title>ابتسامة | Ebtesama — عيادة أسنان</title>
+<style>
+/* ===== Design tokens ===== */
+:root{
+--petrol:
+#123D3B; --petrol-2:
+#0C2B2A; --petrol-3:
+#1D5450;
+--ivory:
+#F7F4EC; --ivory-2:
+#EFEADD; --sage:
+#C9D8C7; --sage-2:
+#E4ECE2;
+--champ:
+#D6B982; --champ-d:
+#8A6A2C; --char:
+#252C2A; --muted:
+#55615E; --white:#fff;
+--err:
+#A63A2B;
+--r-lg:28px; --r-md:18px;
+--shadow-1:0 1px 2px rgba(18,61,59,.06),0 8px 24px rgba(18,61,59,.08);
+--shadow-2:0 2px 4px rgba(18,61,59,.08),0 22px 48px rgba(18,61,59,.16);
+--font:"Segoe UI","Noto Sans Arabic","Geeza Pro",Tahoma,Arial,system-ui,sans-serif;
+--serif:Georgia,"Times New Roman",serif;
+--ease:cubic-bezier(.22,.8,.3,1);
+--header-h:68px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font);background:var(--ivory);color:var(--char);line-height:1.85;font-size:1rem;overflow-x:clip}
+body.lock{overflow:hidden}
+img,svg{max-width:100%}
+h1,h2,h3,p,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+section[id]{scroll-margin-top:var(--header-h)}
+[tabindex="-1"]:focus{outline:none}
+:focus-visible{outline:3px solid var(--champ-d);outline-offset:3px;border-radius:6px}
+.on-dark :focus-visible,.dark :focus-visible{outline-color:var(--champ)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;inset-inline-start:12px;top:-60px;background:var(--petrol);color:var(--ivory);padding:10px 16px;border-radius:10px;z-index:200;transition:top .2s}
+.skip:focus{top:10px}
+.wrap{width:100%;max-width:1200px;margin-inline:auto;padding-inline:20px}
+@media(min-width:768px){.wrap{padding-inline:36px}}
+.section{position:relative;padding-block:76px;overflow:hidden}
+@media(min-width:1024px){.section{padding-block:116px}}
+.dark{background:var(--petrol);color:var(--ivory)}
+.shape{position:absolute;pointer-events:none;border-radius:50%}
+
+/* ===== Reusable ===== */
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--serif);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--champ-d);font-weight:700}
+.kicker::before{content:””;width:28px;height:1.5px;background:currentColor;display:inline-block}
+.dark .kicker{color:var(--champ)}
+.sec-head{max-width:720px;margin-bottom:44px}
+.sec-head h2{font-size:clamp(1.85rem,5.4vw,3.1rem);line-height:1.35;font-weight:800;margin-top:12px;color:var(--petrol);letter-spacing:-.2px}
+.dark .sec-head h2{color:var(--ivory)}
+.sec-head p{margin-top:14px;color:var(--muted);font-size:1.06rem;max-width:560px}
+.dark .sec-head p{color:var(--sage)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 26px;border-radius:999px;border:1.5px solid transparent;font-weight:700;font-size:1rem;line-height:1;transition:transform .25s var(--ease),box-shadow .25s,background .25s,color .25s,border-color .25s;white-space:nowrap}
+.btn svg{width:18px;height:18px;flex:none;transition:transform .25s var(--ease)}
+.btn:hover svg{transform:translateX(-4px)}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--petrol);color:var(--ivory);box-shadow:0 10px 24px rgba(18,61,59,.28)}
+.btn-primary:hover{background:var(--petrol-3);transform:translateY(-2px)}
+.btn-gold{background:var(--champ);color:var(--petrol-2);box-shadow:0 10px 26px rgba(214,185,130,.28)}
+.btn-gold:hover{background:
+#E2C994;transform:translateY(-2px)}
+.btn-ghost{background:transparent;border-color:rgba(18,61,59,.3);color:var(--petrol)}
+.btn-ghost:hover{background:rgba(18,61,59,.06);transform:translateY(-2px)}
+.btn-sm{min-height:42px;padding:0 20px;font-size:.95rem}
+.reveal{}
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* ===== Header ===== */
+.hdr{position:sticky;top:0;z-index:100;background:rgba(247,244,236,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid rgba(18,61,59,.08)}
+.hdr-in{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:11px}
+.brand svg{width:42px;height:42px;flex:none}
+.brand-t{display:flex;flex-direction:column;line-height:1.15}
+.brand-t b{font-size:1.45rem;font-weight:800;color:var(--petrol)}
+.brand-t small{font-family:var(--serif);font-size:.58rem;letter-spacing:.2em;color:var(--champ-d);font-weight:700;margin-top:2px}
+.nav{position:absolute;top:100%;inset-inline:0;background:var(--ivory);border-bottom:1px solid rgba(18,61,59,.1);box-shadow:0 24px 40px rgba(18,61,59,.14);padding:12px 20px 24px;visibility:hidden;opacity:0;transform:translateY(-10px);transition:opacity .3s var(--ease),transform .3s var(--ease),visibility .3s}
+.nav.open{visibility:visible;opacity:1;transform:none}
+.nav ul{display:flex;flex-direction:column}
+.nav a.lnk{display:block;padding:14px 4px;font-weight:600;font-size:1.05rem;border-bottom:1px solid rgba(18,61,59,.08);position:relative}
+.nav a.lnk[aria-current="true"]{color:var(--champ-d)}
+.nav .btn{width:100%;margin-top:18px}
+.hdr-cta{display:none}
+.burger{width:46px;height:46px;border-radius:14px;border:1.5px solid rgba(18,61,59,.2);background:transparent;display:grid;place-content:center;gap:5px;padding:0}
+.burger span{display:block;width:20px;height:2px;background:var(--petrol);border-radius:2px;transition:transform .3s var(--ease),opacity .2s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(min-width:1100px){
+.burger{display:none}
+.nav{position:static;visibility:visible;opacity:1;transform:none;background:none;border:0;box-shadow:none;padding:0;display:flex;align-items:center;gap:26px}
+.nav ul{flex-direction:row;gap:22px}
+.nav a.lnk{padding:8px 0;border:0;font-size:.95rem}
+.nav a.lnk::after{content:””;position:absolute;inset-inline:0;bottom:0;height:2px;background:var(--champ);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
+.nav a.lnk:hover::after,.nav a.lnk[aria-current="true"]::after{transform:scaleX(1)}
+.nav .btn{width:auto;margin:0}
+}
+
+/* ===== Hero ===== */
+.hero{position:relative;padding-block:34px 120px;overflow:hidden;background:
+radial-gradient(60% 50% at 85% 10%,rgba(201,216,199,.55),transparent 70%),
+radial-gradient(40% 40% at 5% 90%,rgba(214,185,130,.18),transparent 70%),var(--ivory)}
+.hero-grid{display:grid;gap:30px;align-items:center}
+.hero-copy{position:relative;z-index:2}
+.hero h1{font-size:clamp(2.35rem,9vw,4.5rem);line-height:1.22;font-weight:800;color:var(--petrol);margin-top:16px;letter-spacing:-.5px}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 66%,rgba(214,185,130,.6) 66% 92%,transparent 92%);padding-inline:4px}
+.hero-lead{margin-top:18px;font-size:1.1rem;color:var(--muted);max-width:520px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero-note{display:flex;align-items:flex-start;gap:10px;margin-top:26px;font-size:.92rem;color:var(--muted);max-width:480px;padding-top:20px;border-top:1px solid rgba(18,61,59,.14)}
+.hero-note svg{width:20px;height:20px;flex:none;margin-top:5px;color:var(--champ-d)}
+.hero-art-wrap{position:relative;width:min(100%,540px);margin-inline:auto}
+.hero-art{width:100%;height:auto;display:block;overflow:visible}
+.chip{position:absolute;inset-inline-start:-4px;bottom:9%;background:var(--white);border-radius:16px;padding:10px 16px 10px 14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-2);font-weight:700;font-size:.9rem;color:var(--petrol);animation:floaty 5s ease-in-out 4 alternate both}
+.chip i{width:34px;height:34px;border-radius:50%;background:var(--sage-2);display:grid;place-items:center;color:var(--petrol)}
+.chip svg{width:18px;height:18px}
+@keyframes floaty{from{transform:translateY(0)}to{transform:translateY(-10px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.fl-a{animation:floaty 5s ease-in-out 4 alternate both}
+.fl-b{animation:floaty 7s ease-in-out 3 alternate both;animation-delay:.6s}
+.fl-c{animation:floaty 6s ease-in-out 4 alternate-reverse both}
+.fl-a,.fl-b,.fl-c{transform-box:fill-box}
+@media(min-width:900px){
+.hero{padding-block:70px 150px}
+.hero-grid{grid-template-columns:1.05fr 1fr;gap:40px}
+}
+
+/* ===== Stats ===== */
+.stats{position:relative;z-index:5;margin-top:-76px}
+.stats-in{background:var(--petrol);border-radius:var(--r-lg);color:var(--ivory);display:grid;grid-template-columns:1fr 1fr;box-shadow:var(--shadow-2);position:relative;overflow:hidden}
+.stats-in::before{content:””;position:absolute;inset-inline-end:-60px;top:-60px;width:180px;height:180px;border-radius:50%;border:1.5px solid rgba(214,185,130,.35)}
+.stat{padding:26px 18px;position:relative;display:flex;flex-direction:column;gap:6px}
+.stat:nth-child(odd){border-inline-end:1px solid rgba(214,185,130,.22)}
+.stat:nth-child(-n+2){border-bottom:1px solid rgba(214,185,130,.22)}
+.stat-top{display:flex;align-items:center;gap:10px}
+.stat svg{width:30px;height:30px;color:var(--champ);flex:none}
+.stat-num{font-family:var(--serif);font-size:2.6rem;font-weight:700;line-height:1;color:var(--champ);font-variant-numeric:tabular-nums}
+.stat p{font-size:.92rem;color:var(--sage);line-height:1.6}
+@media(min-width:900px){
+.stats-in{grid-template-columns:repeat(4,1fr)}
+.stat{padding:34px 28px}
+.stat,.stat:nth-child(odd),.stat:nth-child(-n+2){border:0;border-inline-end:1px solid rgba(214,185,130,.22)}
+.stat:last-child{border-inline-end:0}
+.stat-num{font-size:3.1rem}
+}
+
+/* ===== Services ===== */
+#services{background:var(--ivory)}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.fbtn{min-height:44px;padding:0 20px;border-radius:999px;border:1.5px solid rgba(18,61,59,.2);background:transparent;font-weight:700;font-size:.95rem;color:var(--petrol);transition:all .25s var(--ease)}
+.fbtn:hover{background:rgba(18,61,59,.06)}
+.fbtn[aria-pressed="true"]{background:var(--petrol);color:var(--ivory);border-color:var(--petrol)}
+.svc-grid{display:grid;gap:20px;grid-template-columns:1fr}
+@media(min-width:700px){.svc-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.svc-grid{grid-template-columns:repeat(3,1fr);gap:24px}}
+.svc{position:relative;background:var(--white);border-radius:var(--r-lg) var(--r-lg) var(--r-lg) 8px;padding:28px 24px 24px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow-1);cursor:pointer;overflow:hidden;border:1px solid rgba(18,61,59,.06);transition:opacity .5s var(--ease),transform .4s var(--ease),box-shadow .4s}
+.svc[hidden]{display:none}
+.js .svc.reveal{transition:opacity .6s var(--ease),transform .4s var(--ease),box-shadow .4s;transition-delay:var(--d,0s)}
+.js .svc.in:hover{transform:translateY(-8px);box-shadow:var(--shadow-2);transition-delay:0s}
+.svc.is-out{opacity:0!important;transform:scale(.95)!important;transition-delay:0s!important}
+.svc::after{content:””;position:absolute;inset-inline-end:-40px;top:-40px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(214,185,130,.28),transparent 70%);transition:transform .5s var(--ease)}
+.svc:hover::after{transform:scale(1.5)}
+.svc-idx{position:absolute;inset-inline-end:22px;top:20px;font-family:var(--serif);font-size:.8rem;letter-spacing:.2em;color:var(--champ-d);font-weight:700;z-index:1}
+.svc-ico{width:72px;height:72px;border-radius:24px 24px 24px 8px;background:var(--sage-2);color:var(--petrol);display:grid;place-items:center;position:relative;transition:transform .5s var(--ease),background .3s,color .3s}
+.svc-ico::before{content:””;position:absolute;inset:-6px;border-radius:28px 28px 28px 12px;border:1.5px dashed rgba(138,106,44,.45);transition:transform .8s var(--ease)}
+.svc:hover .svc-ico{background:var(--petrol);color:var(--champ)}
+.svc:hover .svc-ico::before{transform:rotate(8deg) scale(1.04)}
+.svc-ico svg{width:44px;height:44px}
+.svc h3{font-size:1.3rem;font-weight:800;color:var(--petrol);margin-top:6px}
+.svc>p{color:var(--muted);font-size:.98rem}
+.svc ul{display:grid;gap:6px;margin-top:2px}
+.svc li{display:flex;gap:10px;font-size:.93rem;align-items:flex-start}
+.svc li::before{content:””;width:12px;height:2px;background:var(--champ);margin-top:.85em;flex:none;border-radius:2px}
+.svc-more{margin-top:auto;padding:12px 0 0;border:0;background:none;font-weight:700;color:var(--petrol);display:inline-flex;align-items:center;gap:8px;align-self:flex-start;border-top:1px solid rgba(18,61,59,.1);width:100%}
+.svc-more svg{width:18px;height:18px;transition:transform .3s var(--ease);color:var(--champ-d)}
+.svc:hover .svc-more svg{transform:translateX(-6px)}
+
+/* ===== Modal ===== */
+.modal{position:fixed;inset:0;z-index:300;display:flex;align-items:flex-end;justify-content:center;background:rgba(12,43,42,.62);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;transition:opacity .3s}
+.modal[hidden]{display:none}
+.modal.open{opacity:1}
+.m-panel{position:relative;background:var(--ivory);width:100%;max-width:640px;max-height:92vh;overflow:auto;border-radius:28px 28px 0 0;padding:32px 22px 28px;transform:translateY(40px);transition:transform .4s var(--ease);box-shadow:var(--shadow-2)}
+.modal.open .m-panel{transform:none}
+@media(min-width:700px){.modal{align-items:center;padding:24px}.m-panel{border-radius:var(--r-lg);padding:40px}}
+.m-close{position:absolute;inset-inline-start:14px;top:14px;width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(18,61,59,.2);background:var(--white);display:grid;place-items:center;transition:transform .3s var(--ease),background .2s}
+.m-close:hover{transform:rotate(90deg);background:var(--sage-2)}
+.m-close svg{width:18px;height:18px}
+.m-ico{width:76px;height:76px;border-radius:26px 26px 26px 8px;background:var(--petrol);color:var(--champ);display:grid;place-items:center;margin-bottom:14px}
+.m-ico svg{width:46px;height:46px}
+.m-panel h2{font-size:1.7rem;font-weight:800;color:var(--petrol);line-height:1.3}
+.m-desc{margin-top:8px;color:var(--muted)}
+.m-cols{display:grid;gap:18px;margin-top:22px}
+@media(min-width:700px){.m-cols{grid-template-columns:1fr 1fr}}
+.m-box{background:var(--white);border-radius:var(--r-md);padding:18px;border:1px solid rgba(18,61,59,.07)}
+.m-box h3{font-size:.8rem;font-family:var(--serif);letter-spacing:.14em;color:var(--champ-d);text-transform:uppercase;margin-bottom:8px}
+.m-box h3 span{font-family:var(--font);letter-spacing:0;font-size:1rem;color:var(--petrol);display:block;text-transform:none}
+.m-box ul{display:grid;gap:8px}
+.m-box li{display:flex;gap:10px;font-size:.95rem}
+.m-box li::before{content:””;width:8px;height:8px;border-radius:50%;background:var(--champ);margin-top:.75em;flex:none}
+.m-note{font-size:.85rem;color:var(--muted);margin-top:16px}
+.m-foot{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+
+/* ===== Before / After ===== */
+#results{background:var(--petrol)}
+.cmp-grid{display:grid;gap:34px;align-items:center}
+@media(min-width:1000px){.cmp-grid{grid-template-columns:1.25fr .75fr;gap:56px}}
+.cmp{position:relative;direction:ltr;width:100%;aspect-ratio:5/3;border-radius:var(--r-lg);overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.35);border:1.5px solid rgba(214,185,130,.4);--pos:50%;user-select:none;-webkit-user-select:none;touch-action:pan-y;background:var(--sage-2)}
+.cmp svg.layer{position:absolute;inset:0;width:100%;height:100%;display:block}
+.cmp .after{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.cmp-line{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;margin-left:-1.5px;background:var(--champ);box-shadow:0 0 0 1px rgba(12,43,42,.2);pointer-events:none}
+.cmp-handle{position:absolute;top:50%;left:var(--pos);width:50px;height:50px;margin:-25px 0 0 -25px;border-radius:50%;background:var(--champ);color:var(--petrol-2);display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.3);pointer-events:none;transition:transform .2s var(--ease)}
+.cmp-handle svg{width:26px;height:26px}
+.cmp:active .cmp-handle{transform:scale(1.12)}
+.cmp input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;touch-action:pan-y;-webkit-appearance:none;appearance:none}
+.cmp input:focus-visible~.cmp-handle{outline:3px solid var(--white);outline-offset:3px}
+.tag{position:absolute;top:14px;padding:6px 16px;border-radius:999px;background:rgba(12,43,42,.82);color:var(--ivory);font-weight:700;font-size:.88rem;direction:rtl;pointer-events:none;border:1px solid rgba(214,185,130,.5)}
+.tag.a{left:14px}.tag.b{right:14px}
+.cmp-side p{color:var(--sage);margin-top:10px}
+.cmp-side ul{display:grid;gap:14px;margin-top:22px}
+.cmp-side li{display:flex;gap:14px;align-items:flex-start}
+.cmp-side li i{width:38px;height:38px;border-radius:12px;background:rgba(214,185,130,.16);color:var(--champ);display:grid;place-items:center;flex:none}
+.cmp-side li svg{width:20px;height:20px}
+.cmp-side li span{font-size:.97rem;color:var(--ivory)}
+.cmp-cap{margin-top:22px;padding:14px 16px;border-radius:14px;border:1px dashed rgba(214,185,130,.5);font-size:.88rem;color:var(--sage)}
+.cmp-hint{margin-top:12px;font-size:.88rem;color:var(--sage);display:flex;align-items:center;gap:8px}
+.cmp-hint svg{width:18px;height:18px;color:var(--champ)}
+
+/* ===== Doctors ===== */
+#doctors{background:var(--ivory-2)}
+.docs{display:grid;gap:24px}
+@media(min-width:760px){.docs{grid-template-columns:repeat(3,1fr);align-items:start}.doc:nth-child(2){margin-top:38px}}
+.doc{background:var(--white);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-1);transition:transform .4s var(--ease),box-shadow .4s;border:1px solid rgba(18,61,59,.06)}
+.doc:hover{transform:translateY(-8px);box-shadow:var(--shadow-2)}
+.doc-art{height:230px;position:relative;display:grid;place-items:end center;overflow:hidden}
+.doc-art svg.portrait{width:190px;height:auto;display:block;transition:transform .5s var(--ease)}
+.doc:hover .portrait{transform:scale(1.05) translateY(-4px)}
+.doc-art .deco{position:absolute;inset:0;width:100%;height:100%}
+.doc.d1 .doc-art{background:var(--sage)}
+.doc.d2 .doc-art{background:var(--petrol)}
+.doc.d3 .doc-art{background:
+#EBDDBD}
+.doc-body{padding:22px 22px 26px;position:relative}
+.doc-badge{position:absolute;inset-inline-end:22px;top:-22px;width:44px;height:44px;border-radius:50%;background:var(--champ);color:var(--petrol-2);display:grid;place-items:center;border:4px solid var(--white);box-shadow:var(--shadow-1)}
+.doc-badge svg{width:22px;height:22px}
+.doc h3{font-size:1.3rem;font-weight:800;color:var(--petrol)}
+.doc .spec{display:inline-block;margin-top:6px;font-size:.84rem;font-weight:700;color:var(--champ-d);background:rgba(214,185,130,.2);padding:2px 12px;border-radius:999px}
+.doc p{margin-top:12px;color:var(--muted);font-size:.96rem}
+.doc-line{display:flex;align-items:center;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(18,61,59,.1);font-size:.85rem;color:var(--petrol);font-weight:600}
+.doc-line svg{width:16px;height:16px;color:var(--champ-d)}
+
+/* ===== Journey ===== */
+#journey{background:var(--sage-2)}
+.journey{display:grid;gap:0;counter-reset:j}
+.j{position:relative;padding-inline-start:84px;padding-bottom:34px;min-height:100px}
+.j:last-child{padding-bottom:0}
+.j::after{content:””;position:absolute;inset-inline-start:27px;top:60px;bottom:4px;width:0;border-inline-start:2px dashed var(--champ-d);opacity:.55}
+.j:last-child::after{display:none}
+.j-mark{position:absolute;inset-inline-start:0;top:0;width:56px;height:56px;border-radius:50%;background:var(--petrol);color:var(--champ);display:grid;place-items:center;box-shadow:0 10px 22px rgba(18,61,59,.25);transition:transform .4s var(--ease)}
+.j:hover .j-mark{transform:scale(1.08) rotate(-6deg)}
+.j-mark svg{width:28px;height:28px}
+.j-num{position:absolute;inset-inline-end:-8px;top:-8px;min-width:28px;height:28px;border-radius:14px;background:var(--champ);color:var(--petrol-2);font-family:var(--serif);font-weight:700;font-size:.74rem;display:grid;place-items:center;border:2px solid var(--sage-2);padding-inline:4px}
+.j h3{font-size:1.25rem;font-weight:800;color:var(--petrol);padding-top:4px}
+.j p{color:var(--muted);margin-top:4px;max-width:300px}
+@media(min-width:900px){
+.journey{grid-template-columns:repeat(4,1fr);gap:24px}
+.j{padding:84px 0 0;min-height:0}
+.j-mark{inset-inline-start:0;width:64px;height:64px}
+.j::after{inset-inline-start:64px;top:31px;bottom:auto;width:calc(100% - 40px);height:0;border-inline-start:0;border-top:2px dashed var(--champ-d)}
+.j:last-child::after{display:none}
+}
+
+/* ===== Estimator ===== */
+#planner{background:var(--ivory)}
+.est{display:grid;gap:26px;background:var(--white);border-radius:var(--r-lg);padding:26px 22px;box-shadow:var(--shadow-2);border:1px solid rgba(18,61,59,.06);position:relative}
+@media(min-width:900px){.est{grid-template-columns:.9fr 1.1fr;padding:42px;gap:44px}}
+.est label{font-weight:700;color:var(--petrol);display:block;margin-bottom:10px}
+.sel{position:relative}
+.sel::after{content:””;position:absolute;inset-inline-end:18px;top:50%;width:9px;height:9px;border-inline-end:2.5px solid var(--petrol);border-bottom:2.5px solid var(--petrol);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+select,input[type=text],input[type=tel],input[type=date]{width:100%;min-height:54px;border-radius:14px;border:1.5px solid rgba(18,61,59,.25);background:var(--ivory);padding:0 16px;font-size:1rem;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+select{padding-inline-end:44px;cursor:pointer}
+select:focus,input:focus{border-color:var(--petrol);box-shadow:0 0 0 4px rgba(18,61,59,.12);outline:none}
+.est-hint{font-size:.88rem;color:var(--muted);margin-top:16px;padding:12px 14px;background:var(--ivory);border-radius:12px;border-inline-start:3px solid var(--champ)}
+.est-res{background:var(--petrol);color:var(--ivory);border-radius:var(--r-md);padding:26px 22px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:12px;min-height:260px}
+.est-res::before{content:””;position:absolute;inset-inline-end:-50px;bottom:-50px;width:170px;height:170px;border-radius:50%;border:1.5px solid rgba(214,185,130,.35)}
+.est-res small{font-family:var(--serif);letter-spacing:.18em;font-size:.72rem;text-transform:uppercase;color:var(--champ)}
+.est-val{font-size:clamp(1.6rem,5vw,2.3rem);font-weight:800;line-height:1.35;color:var(--champ)}
+.est-sub{color:var(--sage);font-size:.98rem}
+.dots{display:flex;align-items:center;gap:0;margin-block:4px}
+.dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--champ);flex:none;transition:background .3s}
+.dot.f{background:var(--champ)}
+.dot.d{border-style:dashed;opacity:.75}
+.dline{width:26px;height:2px;background:var(--champ);opacity:.5;flex:none}
+.est-res .btn{align-self:flex-start;margin-top:auto}
+.est-res.swap .est-val,.est-res.swap .est-sub,.est-res.swap .dots{animation:fadeup .45s var(--ease) both}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ===== FAQ ===== */
+#faq{background:var(--ivory-2)}
+.faq-grid{display:grid;gap:36px}
+@media(min-width:960px){.faq-grid{grid-template-columns:.8fr 1.2fr;gap:70px;align-items:start}.faq-grid .sec-head{position:sticky;top:110px;margin-bottom:0}}
+.faq-item{background:var(--white);border-radius:var(--r-md);margin-bottom:12px;border:1px solid rgba(18,61,59,.07);transition:box-shadow .3s,border-color .3s}
+.faq-item.open{box-shadow:var(--shadow-1);border-color:rgba(214,185,130,.7)}
+.faq-item h3{font-size:1rem}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;min-height:64px;background:none;border:0;text-align:start;font-weight:700;font-size:1.05rem;color:var(--petrol);border-radius:var(--r-md)}
+.faq-ico{width:32px;height:32px;border-radius:50%;background:var(--sage-2);position:relative;flex:none;transition:background .3s,transform .4s var(--ease)}
+.faq-ico::before,.faq-ico::after{content:””;position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;background:var(--petrol);border-radius:2px;transition:transform .4s var(--ease)}
+.faq-ico::after{transform:rotate(90deg)}
+.faq-item.open .faq-ico{background:var(--champ)}
+.faq-item.open .faq-ico::after{transform:rotate(0)}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease)}
+.faq-item.open .faq-a{grid-template-rows:1fr}
+.faq-a>div{overflow:hidden;visibility:hidden;transition:visibility .4s}
+.faq-item.open .faq-a>div{visibility:visible}
+.faq-a p{padding:0 20px 20px;color:var(--muted)}
+
+/* ===== Booking ===== */
+#booking{background:var(--sage-2)}
+.book{display:grid;gap:0;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-2)}
+@media(min-width:960px){.book{grid-template-columns:.8fr 1.2fr}}
+.book-side{background:var(--petrol);color:var(--ivory);padding:34px 26px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:20px}
+.book-side h3{font-size:1.5rem;font-weight:800;color:var(--champ);line-height:1.4}
+.book-side ul{display:grid;gap:16px;position:relative;z-index:1}
+.book-side li{display:flex;gap:12px;align-items:flex-start;color:var(--sage)}
+.book-side li svg{width:22px;height:22px;color:var(--champ);flex:none;margin-top:5px}
+.book-art{position:absolute;inset-inline-end:-30px;bottom:-30px;width:240px;opacity:.9}
+.book-form{background:var(--white);padding:30px 22px}
+@media(min-width:768px){.book-form,.book-side{padding:44px}}
+.book-form .row{display:grid;gap:18px}
+@media(min-width:700px){.book-form .row.two{grid-template-columns:1fr 1fr}}
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:700;color:var(--petrol);margin-bottom:8px;font-size:.98rem}
+.field .hint{font-weight:400;color:var(--muted);font-size:.85rem}
+.field input[aria-invalid="true"],.field select[aria-invalid="true"]{border-color:var(--err);border-width:2px;background:
+#FFF6F4}
+.err{display:flex;align-items:flex-start;gap:8px;margin-top:8px;color:var(--err);font-size:.9rem;font-weight:600}
+.err[hidden]{display:none}
+.err svg{width:18px;height:18px;flex:none;margin-top:4px}
+.book-form .btn{width:100%;margin-top:6px}
+.success{text-align:center;padding:10px 0}
+.success[hidden],.book-form form[hidden]{display:none}
+.success svg.ok{width:150px;height:150px;margin-inline:auto;display:block}
+.success h3{font-size:1.4rem;color:var(--petrol);font-weight:800;margin-top:10px;line-height:1.6}
+.success p{color:var(--muted);margin-top:10px}
+.success .sum{display:inline-flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+.success .sum span{background:var(--sage-2);padding:4px 14px;border-radius:999px;font-weight:700;font-size:.9rem;color:var(--petrol)}
+.success .btn{margin-top:24px}
+.success .ok-draw{stroke-dasharray:60;stroke-dashoffset:60;animation:draw .8s .2s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* ===== Final CTA ===== */
+.cta{background:var(--petrol);color:var(--ivory);text-align:center;padding-block:96px;position:relative;overflow:hidden}
+.cta .wrap{position:relative;z-index:2}
+.cta h2{font-size:clamp(2rem,6.5vw,3.8rem);font-weight:800;line-height:1.3;color:var(--ivory)}
+.cta h2 em{font-style:normal;color:var(--champ)}
+.cta p{margin:16px auto 30px;max-width:520px;color:var(--sage);font-size:1.1rem}
+.cta-art{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+
+/* ===== Footer ===== */
+.foot{background:var(--petrol-2);color:var(--sage);padding-block:64px 28px}
+.foot-grid{display:grid;gap:36px}
+@media(min-width:800px){.foot-grid{grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px}}
+.foot .brand-t b{color:var(--ivory)}
+.foot .brand-t small{color:var(--champ)}
+.foot-about{margin-top:16px;font-size:.95rem;max-width:320px}
+.foot h4{margin:0 0 14px;color:var(--ivory);font-size:1rem;font-weight:800;display:flex;align-items:center;gap:10px}
+.foot h4::after{content:””;height:1px;width:28px;background:var(--champ)}
+.foot ul{display:grid;gap:4px}
+.foot li a,.foot li button{background:none;border:0;padding:6px 0;color:var(--sage);font-size:.95rem;text-align:start;transition:color .2s,transform .2s}
+.foot li a:hover,.foot li button:hover{color:var(--champ);transform:translateX(-4px)}
+.foot-bottom{margin-top:44px;padding-top:22px;border-top:1px solid rgba(214,185,130,.22);display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;font-size:.88rem}
+.totop{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1.5px solid rgba(214,185,130,.5);color:var(--champ);border-radius:999px;min-height:42px;padding:0 18px;font-weight:700;transition:background .25s,transform .25s var(--ease)}
+.totop:hover{background:rgba(214,185,130,.14);transform:translateY(-3px)}
+.totop svg{width:16px;height:16px}
+
+/* ===== Reduced motion ===== /
+@media(prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+,::before,::after{animation:none!important;transition:none!important}
+.js .reveal{opacity:1;transform:none}
+}
+</style>
+
+</head>
+<body>
+<!-- Shared SVG sprite: brand mark, tooth shape, gradients -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+<linearGradient id="g-tooth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="
+#FFFFFF"/><stop offset="1" stop-color="
+#E8E3D4"/></linearGradient>
+<linearGradient id="g-tooth-y" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="
+#EFE3B8"/><stop offset="1" stop-color="
+#D9C88E"/></linearGradient>
+<linearGradient id="g-lip" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="
+#DA968C"/><stop offset="1" stop-color="
+#B46C67"/></linearGradient>
+<linearGradient id="g-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="
+#EBD6A6"/><stop offset="1" stop-color="
+#B8934F"/></linearGradient>
+<linearGradient id="g-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="
+#F1F5EE"/><stop offset="1" stop-color="
+#B9CDB8"/></linearGradient>
+<radialGradient id="g-bg" cx="50%" cy="38%" r="75%"><stop offset="0" stop-color="
+#2A6A65"/><stop offset="1" stop-color="
+#0C2B2A"/></radialGradient>
+<symbol id="tooth" viewBox="0 0 64 64"><path d="M32 10C24 4 12 8 12 22c0 10 4 14 6 24 1 8 4 12 7 10 3-2 3-12 7-12s4 10 7 12c3 2 6-2 7-10 2-10 6-14 6-24 0-14-12-18-20-12z"/></symbol>
+<symbol id="mark" viewBox="0 0 48 48">
+<circle cx="24" cy="24" r="23" fill="
+#123D3B" stroke="
+#D6B982" stroke-width="1.5"/>
+<g transform="translate(8.5 9) scale(.5)"><path d="M32 10C24 4 12 8 12 22c0 10 4 14 6 24 1 8 4 12 7 10 3-2 3-12 7-12s4 10 7 12c3 2 6-2 7-10 2-10 6-14 6-24 0-14-12-18-20-12z" fill="
+#F7F4EC" transform="translate(0 0) scale(1.4) translate(-9.5 -6.5)"/></g>
+<path d="M17.5 24.5q6.5 6 13 0" fill="none" stroke="
+#123D3B" stroke-width="2" stroke-linecap="round"/>
+<path d="M36 8v6M33 11h6" stroke="
+#D6B982" stroke-width="1.8" stroke-linecap="round"/>
+</symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 12.5l3 3 6-6.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs>
+</svg>
+
+<a class="skip" href="#main">تخطي إلى المحتوى</a>
+
+<!-- ===== SECTION 01: NAVIGATION ===== -->
+
+<header class="hdr" id="top">
+<div class="wrap hdr-in">
+<a class="brand" href="#home" aria-label="ابتسامة — الرئيسية">
+<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#mark"/></svg>
+<span class="brand-t"><b>ابتسامة</b><small>EBTESAMA DENTAL CARE</small></span>
+</a>
+<nav class="nav" id="site-nav" aria-label="القائمة الرئيسية">
+<ul>
+<li><a class="lnk" href="#home">الرئيسية</a></li>
+<li><a class="lnk" href="#services">خدماتنا</a></li>
+<li><a class="lnk" href="#results">قبل وبعد</a></li>
+<li><a class="lnk" href="#doctors">الأطباء</a></li>
+<li><a class="lnk" href="#journey">رحلتك معانا</a></li>
+<li><a class="lnk" href="#faq">الأسئلة الشائعة</a></li>
+</ul>
+<a class="btn btn-primary btn-sm" href="#booking">احجز معادك</a>
+</nav>
+<button class="burger" id="burger" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+</div>
+</header>
+
+<main id="main">
+
+<!-- ===== SECTION 02: HERO ===== -->
+
+<section class="hero" id="home" aria-labelledby="hero-title">
+<div class="wrap hero-grid">
+<div class="hero-copy">
+<span class="kicker">Premium Dental Care</span>
+<h1 id="hero-title">ابتسامتك تستاهل <em>أفضل</em> رعاية</h1>
+<p class="hero-lead">إحنا هنا علشان راحتك وابتسامتك. رعاية متكاملة لأسنانك وأسنان أسرتك في مكان واحد، بأسلوب هادي وبسيط من أول زيارة.</p>
+<div class="hero-ctas">
+<a class="btn btn-primary" href="#booking">احجز كشفك <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#arrow"/></svg></a>
+<a class="btn btn-ghost" href="#services">اكتشف خدماتنا</a>
+</div>
+<p class="hero-note"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#check"/></svg><span>بنستقبل حجوزاتك 7 أيام في الأسبوع، وفريقنا بيتابع معاك لتأكيد التفاصيل.</span></p>
+</div>
+
+
+<div class="hero-art-wrap">
+  <svg class="hero-art" viewBox="0 0 520 520" role="img" aria-labelledby="ha-t ha-d">
+    <title id="ha-t">رسم لابتسامة مشرقة</title>
+    <desc id="ha-d">ابتسامة بأسنان بيضاء متناسقة، ومعاها مراية وأداة فحص أسنان داخل إطار أخضر أنيق.</desc>
+    <defs>
+      <clipPath id="hero-mouth"><path d="M122 252C170 232 218 240 260 246C302 240 350 232 398 252C384 335 330 378 260 380C190 378 136 335 122 252Z"/></clipPath>
+      <filter id="hero-sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000" flood-opacity=".3"/></filter>
+    </defs>
+    <circle cx="260" cy="260" r="252" fill="none" stroke="#D6B982" stroke-width="1.3" stroke-dasharray="3 9" opacity=".75"/>
+    <circle cx="260" cy="260" r="236" fill="url(#g-bg)"/>
+    <circle cx="260" cy="260" r="205" fill="none" stroke="#D6B982" stroke-opacity=".3" stroke-width="1.2"/>
+    <path d="M60 330A210 210 0 0 0 200 462" fill="none" stroke="#C9D8C7" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+    <g class="fl-b" fill="#D6B982"><path d="M96 130l5 14 14 5-14 5-5 14-5-14-14-5 14-5z"/></g>
+    <g class="fl-c" fill="#F7F4EC" opacity=".85"><path d="M440 318l3.5 10 10 3.5-10 3.5-3.5 10-3.5-10-10-3.5 10-3.5z"/></g>
+    <g class="fl-a" fill="#C9D8C7"><circle cx="70" cy="250" r="5" opacity=".7"/><circle cx="452" cy="420" r="7" opacity=".5"/><circle cx="150" cy="70" r="3.5" fill="#D6B982"/></g>
+    <g transform="translate(0 -22)" filter="url(#hero-sh)">
+      <path d="M92 252C146 200 216 214 260 228C304 214 374 200 428 252C412 352 342 412 260 414C178 412 108 352 92 252Z" fill="url(#g-lip)"/>
+      <path d="M122 252C170 232 218 240 260 246C302 240 350 232 398 252C384 335 330 378 260 380C190 378 136 335 122 252Z" fill="#35181C"/>
+      <g clip-path="url(#hero-mouth)">
+        <ellipse cx="260" cy="382" rx="86" ry="30" fill="#8C4448"/>
+        <g fill="#E9E4D6" stroke="#CFC9B6" stroke-width=".8">
+          <rect x="191" y="318" width="27" height="72" rx="11"/><rect x="219" y="318" width="27" height="72" rx="11"/><rect x="247" y="318" width="27" height="72" rx="11"/><rect x="275" y="318" width="27" height="72" rx="11"/><rect x="303" y="318" width="27" height="72" rx="11"/>
+        </g>
+        <g fill="url(#g-tooth)" stroke="#D5CFBC" stroke-width=".9">
+          <rect x="228" y="226" width="31" height="80" rx="13"/><rect x="261" y="226" width="31" height="80" rx="13"/>
+          <rect x="195" y="226" width="31" height="72" rx="13"/><rect x="294" y="226" width="31" height="72" rx="13"/>
+          <rect x="162" y="226" width="31" height="62" rx="13"/><rect x="327" y="226" width="31" height="62" rx="13"/>
+          <rect x="130" y="230" width="30" height="50" rx="13"/><rect x="360" y="230" width="30" height="50" rx="13"/>
+        </g>
+        <g fill="#fff" opacity=".75"><rect x="236" y="258" width="5" height="30" rx="2.5"/><rect x="270" y="258" width="5" height="30" rx="2.5"/><rect x="203" y="256" width="4" height="24" rx="2"/><rect x="302" y="256" width="4" height="24" rx="2"/></g>
+        <rect x="110" y="236" width="300" height="22" fill="#000" opacity=".16"/>
+      </g>
+      <path d="M122 252C170 232 218 240 260 246C302 240 350 232 398 252" fill="none" stroke="#9C5A58" stroke-width="2" stroke-linecap="round"/>
+      <path d="M168 392C208 410 312 410 352 392" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="5" stroke-linecap="round"/>
+      <path d="M96 246q-10-6-14-18M424 246q10-6 14-18" fill="none" stroke="#B46C67" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <g class="fl-a">
+      <g transform="translate(404 100)">
+        <g transform="rotate(-28)"><rect x="-6" y="46" width="12" height="104" rx="6" fill="url(#g-gold)"/><rect x="-8" y="96" width="16" height="6" rx="3" fill="#8A6A2C" opacity=".5"/></g>
+        <circle r="56" fill="url(#g-gold)"/>
+        <circle r="46" fill="url(#g-glass)"/>
+        <use href="#tooth" x="-22" y="-24" width="44" height="44" fill="#fff" fill-opacity=".9"/>
+        <path d="M-32 -18A38 38 0 0 1 -12 -36" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+      </g>
+    </g>
+    <g class="fl-c">
+      <g transform="translate(26 474) rotate(-20)">
+        <rect x="0" y="-8" width="104" height="16" rx="8" fill="url(#g-gold)"/>
+        <g stroke="#8A6A2C" stroke-opacity=".45" stroke-width="2"><path d="M14 -8v16M26 -8v16M38 -8v16M50 -8v16"/></g>
+        <path d="M104 0H150q26 0 26-24" fill="none" stroke="#E4ECE2" stroke-width="6" stroke-linecap="round"/>
+      </g>
+    </g>
+  </svg>
+  <div class="chip"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15 14.5c3 0 6 1.5 6 5"/></svg></i>رعاية لكل الأسرة</div>
+</div>
+
+</div>
+</section>
+
+<!-- ===== SECTION 03: TRUST & STATS ===== -->
+
+<section class="stats" aria-label="لمحة عن خدماتنا">
+<div class="wrap">
+<div class="stats-in" id="stats">
+<div class="stat">
+<div class="stat-top">
+<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#tooth" width="32" height="32"/><path d="M26 3v5M23.5 5.5h5"/></svg>
+<span class="stat-num"><span data-count="6">6</span></span>
+</div>
+<p>تخصصات في مكان واحد</p>
+</div>
+<div class="stat">
+<div class="stat-top">
+<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 26h6V18h6v-6h6V6h6"/><circle cx="7" cy="12" r="0.1"/></svg>
+<span class="stat-num"><span data-count="4">4</span></span>
+</div>
+<p>خطوات بسيطة لزيارتك</p>
+</div>
+<div class="stat">
+<div class="stat-top">
+<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="6" width="24" height="22" rx="5"/><path d="M4 13h24M11 3v6M21 3v6"/></svg>
+<span class="stat-num"><span data-count="7">7</span></span>
+</div>
+<p>أيام في الأسبوع لاستقبال حجوزاتك</p>
+</div>
+<div class="stat">
+<div class="stat-top">
+<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:38px;height:38px"><circle cx="11" cy="10" r="4"/><circle cx="22" cy="12" r="3"/><path d="M3 27c0-5 3.5-8 8-8s8 3 8 8M19 20c4 0 9 1.5 9 7"/></svg>
+</div>
+<p>رعاية متكاملة لكل أفراد الأسرة</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== SECTION 04: SERVICES ===== -->
+
+<section class="section" id="services" aria-labelledby="svc-title">
+<div class="shape" style="width:380px;height:380px;background:radial-gradient(circle,rgba(201,216,199,.5),transparent 70%);inset-inline-start:-140px;top:60px"></div>
+<div class="wrap" style="position:relative">
+<div class="sec-head reveal">
+<span class="kicker">Our Services</span>
+<h2 id="svc-title">كل اللي تحتاجه ابتسامتك في مكان واحد</h2>
+<p>بنقدملك رعاية متكاملة لأسنانك، باهتمام يناسب احتياجاتك.</p>
+</div>
+<div class="filters reveal" role="group" aria-label="فلترة الخدمات" id="filters">
+<button class="fbtn" type="button" data-filter="all" aria-pressed="true">الكل</button>
+<button class="fbtn" type="button" data-filter="basic" aria-pressed="false">العلاجات الأساسية</button>
+<button class="fbtn" type="button" data-filter="cosmetic" aria-pressed="false">تجميل الأسنان</button>
+<button class="fbtn" type="button" data-filter="kids" aria-pressed="false">العناية بالأطفال</button>
+</div>
+<div class="svc-grid" id="svc-grid" aria-live="polite"></div>
+</div>
+</section>
+
+<!-- ===== SECTION 05: BEFORE & AFTER ===== -->
+
+<section class="section dark" id="results" aria-labelledby="res-title">
+<div class="shape" style="width:460px;height:460px;border:1.5px solid rgba(214,185,130,.25);inset-inline-end:-200px;top:-120px"></div>
+<div class="shape" style="width:300px;height:300px;background:radial-gradient(circle,rgba(214,185,130,.12),transparent 70%);inset-inline-start:-100px;bottom:-60px"></div>
+<div class="wrap" style="position:relative">
+<div class="sec-head reveal">
+<span class="kicker">Before &amp; After</span>
+<h2 id="res-title">الفرق بيبدأ من اهتمامك</h2>
+<p>شوف إزاي العناية المناسبة ممكن تساعد في تحسين مظهر الابتسامة.</p>
+</div>
+<div class="cmp-grid">
+<div class="reveal">
+<div class="cmp" id="cmp">
+<!-- BEFORE -->
+<svg class="layer" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" role="img" aria-label="رسم لابتسامة قبل العناية: أسنان غير منتظمة ولون أقل تجانساً">
+<defs><clipPath id="cp-b"><path d="M100 182C160 140 250 150 300 160C350 150 440 140 500 182C485 255 410 298 300 300C190 298 115 255 100 182Z"/></clipPath></defs>
+<rect width="600" height="360" fill="
+#DCE5D9"/>
+<circle cx="300" cy="180" r="200" fill="
+#E9EFE6"/>
+<path d="M70 180C140 110 240 120 300 140C360 120 460 110 530 180C510 280 410 330 300 332C190 330 90 280 70 180Z" fill="url(#g-lip)"/>
+<path d="M100 182C160 140 250 150 300 160C350 150 440 140 500 182C485 255 410 298 300 300C190 298 115 255 100 182Z" fill="
+#35181C"/>
+<g clip-path="url(#cp-b)">
+<ellipse cx="300" cy="305" rx="90" ry="30" fill="
+#8C4448"/>
+<g fill="
+#D8C98E" stroke="
+#BFAE72" stroke-width="1">
+<rect x="208" y="242" width="30" height="52" rx="11" transform="rotate(-6 223 268)"/>
+<rect x="240" y="236" width="28" height="60" rx="10"/>
+<rect x="271" y="246" width="30" height="48" rx="11" transform="rotate(5 286 270)"/>
+<rect x="306" y="240" width="31" height="56" rx="11"/>
+<rect x="340" y="248" width="28" height="46" rx="10" transform="rotate(-8 354 270)"/>
+<rect x="372" y="250" width="26" height="40" rx="10"/>
+</g>
+<g fill="url(#g-tooth-y)" stroke="
+#BFAE72" stroke-width="1">
+<rect x="268" y="148" width="33" height="82" rx="13" transform="rotate(-4 284 190)"/>
+<rect x="306" y="156" width="35" height="70" rx="13"/>
+<rect x="226" y="148" width="38" height="64" rx="14" transform="rotate(6 245 180)"/>
+<rect x="344" y="150" width="34" height="76" rx="13" transform="rotate(-7 361 188)"/>
+<rect x="186" y="156" width="34" height="56" rx="13" transform="rotate(-3 203 184)"/>
+<rect x="382" y="156" width="32" height="48" rx="13" transform="rotate(5 398 180)"/>
+<rect x="152" y="160" width="30" height="42" rx="12"/>
+<rect x="418" y="162" width="28" height="40" rx="12"/>
+</g>
+<g fill="
+#B8923F" opacity=".28"><circle cx="287" cy="205" r="4"/><circle cx="326" cy="200" r="3"/><circle cx="352" cy="214" r="3.5"/><circle cx="238" cy="196" r="3"/></g>
+<rect x="90" y="150" width="420" height="24" fill="#000" opacity=".18"/>
+</g>
+<path d="M100 182C160 140 250 150 300 160C350 150 440 140 500 182" fill="none" stroke="
+#9C5A58" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
+<!-- AFTER -->
+<svg class="layer after" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" role="img" aria-label="رسم لابتسامة بعد العناية: أسنان أكثر انتظاماً ولون أفتح">
+<defs><clipPath id="cp-a"><path d="M100 182C160 140 250 150 300 160C350 150 440 140 500 182C485 255 410 298 300 300C190 298 115 255 100 182Z"/></clipPath></defs>
+<rect width="600" height="360" fill="
+#DCE5D9"/>
+<circle cx="300" cy="180" r="200" fill="
+#F1F5EE"/>
+<path d="M70 180C140 110 240 120 300 140C360 120 460 110 530 180C510 280 410 330 300 332C190 330 90 280 70 180Z" fill="url(#g-lip)"/>
+<path d="M100 182C160 140 250 150 300 160C350 150 440 140 500 182C485 255 410 298 300 300C190 298 115 255 100 182Z" fill="
+#35181C"/>
+<g clip-path="url(#cp-a)">
+<ellipse cx="300" cy="305" rx="90" ry="30" fill="
+#8C4448"/>
+<g fill="
+#EDE8DA" stroke="
+#D2CCBA" stroke-width="1">
+<rect x="205" y="245" width="30" height="60" rx="11"/><rect x="237" y="245" width="30" height="60" rx="11"/><rect x="269" y="245" width="30" height="60" rx="11"/><rect x="301" y="245" width="30" height="60" rx="11"/><rect x="333" y="245" width="30" height="60" rx="11"/><rect x="365" y="245" width="30" height="60" rx="11"/>
+</g>
+<g fill="url(#g-tooth)" stroke="
+#D5CFBC" stroke-width="1">
+<rect x="264" y="150" width="34" height="82" rx="14"/><rect x="302" y="150" width="34" height="82" rx="14"/>
+<rect x="226" y="150" width="36" height="74" rx="14"/><rect x="338" y="150" width="36" height="74" rx="14"/>
+<rect x="188" y="152" width="36" height="64" rx="14"/><rect x="376" y="152" width="36" height="64" rx="14"/>
+<rect x="152" y="156" width="34" height="50" rx="14"/><rect x="414" y="156" width="34" height="50" rx="14"/>
+</g>
+<g fill="#fff" opacity=".8"><rect x="272" y="178" width="6" height="34" rx="3"/><rect x="316" y="178" width="6" height="34" rx="3"/><rect x="236" y="178" width="5" height="28" rx="2.5"/><rect x="352" y="178" width="5" height="28" rx="2.5"/><rect x="198" y="178" width="5" height="22" rx="2.5"/><rect x="390" y="178" width="5" height="22" rx="2.5"/></g>
+<rect x="90" y="150" width="420" height="24" fill="#000" opacity=".14"/>
+</g>
+<path d="M100 182C160 140 250 150 300 160C350 150 440 140 500 182" fill="none" stroke="
+#9C5A58" stroke-width="2.5" stroke-linecap="round"/>
+<g fill="
+#D6B982"><path d="M508 70l4 11 11 4-11 4-4 11-4-11-11-4 11-4z"/><path d="M82 62l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/></g>
+</svg>
+<span class="tag a" aria-hidden="true">بعد</span><span class="tag b" aria-hidden="true">قبل</span>
+<div class="cmp-line" aria-hidden="true"></div>
+<input type="range" id="cmp-range" min="0" max="100" step="1" value="50" aria-label="شريط المقارنة بين قبل وبعد" aria-valuetext="نص الصورة ظاهر من كل جهة">
+<div class="cmp-handle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></div>
+</div>
+<p class="cmp-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 8l-4 4 4 4M17 8l4 4-4 4"/></svg>اسحب الشريط يمين وشمال، أو استخدم الأسهم من الكيبورد.</p>
+</div>
+<div class="cmp-side reveal" style="--d:.15s">
+<h3 style="color:var(--champ);font-size:1.3rem;font-weight:800">اهتمام بالتفاصيل</h3>
+<p>كل ابتسامة ليها احتياجاتها، وخطة العناية بتتحدد بعد فحص حالتك.</p>
+<ul>
+<li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></i><span>فحص دقيق لحالة الأسنان واللثة</span></li>
+<li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8M4 12v7h14"/></svg></i><span>خطة واضحة بخطوات مفهومة</span></li>
+<li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21C5 16 3 12 3 8.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 9 1.5C21 12 19 16 12 21z"/></svg></i><span>متابعة بتراعي راحتك</span></li>
+</ul>
+<p class="cmp-cap">ملحوظة: مدى مناسبة العلاج والنتائج بتختلف من شخص للتاني، وبتتحدد حسب تقييم الطبيب لحالتك.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== SECTION 06: DENTISTS ===== -->
+
+<section class="section" id="doctors" aria-labelledby="doc-title">
+<div class="wrap">
+<div class="sec-head reveal">
+<span class="kicker">Our Dentists</span>
+<h2 id="doc-title">فريق طبي يهتم بتفاصيل ابتسامتك</h2>
+</div>
+<div class="docs">
+<article class="doc d1 reveal">
+<div class="doc-art">
+<svg class="deco" viewBox="0 0 300 230" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="240" cy="50" r="70" fill="#fff" opacity=".28"/><circle cx="50" cy="180" r="50" fill="
+#123D3B" opacity=".08"/><path d="M40 40l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="
+#8A6A2C" opacity=".6"/></svg>
+<svg class="portrait" viewBox="0 0 160 180" role="img" aria-label="رسم تعبيري لـ د. مريم أحمد">
+<path d="M14 180C14 142 46 128 80 128S146 142 146 180Z" fill="#fff"/>
+<path d="M62 128l18 30 18-30" fill="
+#C9D8C7"/>
+<path d="M80 28C50 28 40 56 42 82c2 20 10 30 38 32 28-2 36-12 38-32 2-26-8-54-38-54z" fill="
+#1D5450"/>
+<path d="M80 118c-14 0-22 6-24 14l24 26 24-26c-2-8-10-14-24-14z" fill="
+#1D5450"/>
+<ellipse cx="80" cy="80" rx="25" ry="31" fill="
+#E8C4A0"/>
+<path d="M56 70c6-14 20-20 24-20s18 6 24 20c-8-6-16-9-24-9s-16 3-24 9z" fill="
+#1D5450"/>
+<circle cx="70" cy="82" r="2.4" fill="
+#252C2A"/><circle cx="90" cy="82" r="2.4" fill="
+#252C2A"/>
+<path d="M71 98q9 8 18 0" fill="none" stroke="
+#B46C67" stroke-width="2.6" stroke-linecap="round"/>
+<path d="M60 140q20 22 40 0" fill="none" stroke="
+#D6B982" stroke-width="2.2" stroke-linecap="round"/>
+</svg>
+</div>
+<div class="doc-body">
+<span class="doc-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.4 5.6 6 .6-4.5 4 1.3 6L12 16l-5.2 3.2 1.3-6-4.5-4 6-.6z"/></svg></span>
+<h3>د. مريم أحمد</h3>
+<span class="spec">أخصائية تجميل الأسنان</span>
+<p>بتهتم بتفاصيل الابتسامة وبتسمع لرغبتك علشان تقترح عليك الخيارات الأنسب لحالتك.</p>
+<div class="doc-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3 7 7 1-5 5 1 7-6-4-6 4 1-7-5-5 7-1z"/></svg>جزء من فريق ابتسامة</div>
+</div>
+</article>
+
+
+  <article class="doc d2 reveal" style="--d:.1s">
+    <div class="doc-art">
+      <svg class="deco" viewBox="0 0 300 230" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="60" cy="50" r="64" fill="#fff" opacity=".07"/><circle cx="250" cy="170" r="60" fill="none" stroke="#D6B982" stroke-opacity=".4"/><path d="M250 36l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#D6B982"/></svg>
+      <svg class="portrait" viewBox="0 0 160 180" role="img" aria-label="رسم تعبيري لـ د. عمر خالد">
+        <path d="M14 180C14 142 46 128 80 128S146 142 146 180Z" fill="#fff"/>
+        <path d="M62 128l18 28 18-28" fill="#C9D8C7"/>
+        <rect x="70" y="108" width="20" height="24" rx="8" fill="#D9A878"/>
+        <ellipse cx="80" cy="76" rx="26" ry="32" fill="#D9A878"/>
+        <path d="M53 70c-2-24 12-40 28-40s30 14 26 40c-4-10-10-16-26-16s-24 6-28 16z" fill="#2B2420"/>
+        <circle cx="70" cy="80" r="9" fill="none" stroke="#123D3B" stroke-width="2.2"/><circle cx="92" cy="80" r="9" fill="none" stroke="#123D3B" stroke-width="2.2"/><path d="M79 80h4" stroke="#123D3B" stroke-width="2.2"/>
+        <circle cx="70" cy="80" r="2.2" fill="#252C2A"/><circle cx="92" cy="80" r="2.2" fill="#252C2A"/>
+        <path d="M72 97q9 7 18 0" fill="none" stroke="#9C5A58" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M54 134q26 26 52 0" fill="none" stroke="#D6B982" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="doc-body">
+      <span class="doc-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.4 5.6 6 .6-4.5 4 1.3 6L12 16l-5.2 3.2 1.3-6-4.5-4 6-.6z"/></svg></span>
+      <h3>د. عمر خالد</h3>
+      <span class="spec">أخصائي تقويم الأسنان</span>
+      <p>بيتابع خطة تقويم الأسنان خطوة بخطوة، وبيشرحلك كل مرحلة بوضوح وبساطة.</p>
+      <div class="doc-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3 7 7 1-5 5 1 7-6-4-6 4 1-7-5-5 7-1z"/></svg>جزء من فريق ابتسامة</div>
+    </div>
+  </article>
+
+  <article class="doc d3 reveal" style="--d:.2s">
+    <div class="doc-art">
+      <svg class="deco" viewBox="0 0 300 230" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="250" cy="60" r="56" fill="#fff" opacity=".35"/><circle cx="40" cy="170" r="44" fill="#D6B982" opacity=".35"/><circle cx="60" cy="50" r="6" fill="#8A6A2C" opacity=".55"/><circle cx="90" cy="30" r="3.5" fill="#8A6A2C" opacity=".4"/></svg>
+      <svg class="portrait" viewBox="0 0 160 180" role="img" aria-label="رسم تعبيري لـ د. سارة محمود">
+        <path d="M14 180C14 142 46 128 80 128S146 142 146 180Z" fill="#fff"/>
+        <path d="M62 128l18 28 18-28" fill="#EBDDBD"/>
+        <path d="M48 64c0-28 16-40 32-40s32 12 32 40v50c0 8-8 10-14 4V74H62v44c-6 6-14 4-14-4z" fill="#5A3A2A"/>
+        <rect x="70" y="108" width="20" height="24" rx="8" fill="#F0CDA8"/>
+        <ellipse cx="80" cy="80" rx="25" ry="30" fill="#F0CDA8"/>
+        <path d="M54 72c2-18 14-26 28-26 14 0 24 8 24 26-6-8-14-12-26-12s-20 4-26 12z" fill="#5A3A2A"/>
+        <circle cx="70" cy="82" r="2.4" fill="#252C2A"/><circle cx="90" cy="82" r="2.4" fill="#252C2A"/>
+        <path d="M71 98q9 8 18 0" fill="none" stroke="#B46C67" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M60 140q20 22 40 0" fill="none" stroke="#8A6A2C" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M120 48l2.5 7 7 2.5-7 2.5-2.5 7-2.5-7-7-2.5 7-2.5z" fill="#D6B982"/>
+      </svg>
+    </div>
+    <div class="doc-body">
+      <span class="doc-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.4 5.6 6 .6-4.5 4 1.3 6L12 16l-5.2 3.2 1.3-6-4.5-4 6-.6z"/></svg></span>
+      <h3>د. سارة محمود</h3>
+      <span class="spec">أخصائية أسنان الأطفال</span>
+      <p>بتتعامل مع الأطفال بهدوء ولطف، علشان أول زيارة تبقى مريحة ليهم ولأهاليهم.</p>
+      <div class="doc-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3 7 7 1-5 5 1 7-6-4-6 4 1-7-5-5 7-1z"/></svg>جزء من فريق ابتسامة</div>
+    </div>
+  </article>
+</div>
+
+</div>
+</section>
+
+<!-- ===== SECTION 07: JOURNEY ===== -->
+
+<section class="section" id="journey" aria-labelledby="jr-title">
+<div class="wrap">
+<div class="sec-head reveal">
+<span class="kicker">Your Journey</span>
+<h2 id="jr-title">رحلتك معانا بسيطة ومريحة</h2>
+</div>
+<ol class="journey">
+<li class="j reveal">
+<span class="j-mark"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="12" width="48" height="44" rx="8"/><path d="M8 26h48M20 6v12M44 6v12M24 41l6 6 11-12"/></svg><span class="j-num">01</span></span>
+<h3>احجز معادك</h3><p>اختار الخدمة واليوم المناسب ليك.</p>
+</li>
+<li class="j reveal" style="--d:.1s">
+<span class="j-mark"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 12h44a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H34L20 56V44H10a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4z"/><path d="M18 24h28M18 33h18"/></svg><span class="j-num">02</span></span>
+<h3>نتعرف على حالتك</h3><p>بنفهم احتياجاتك وبنسمع منك.</p>
+</li>
+<li class="j reveal" style="--d:.2s">
+<span class="j-mark"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="12" y="10" width="40" height="46" rx="7"/><rect x="24" y="4" width="16" height="10" rx="4"/><path d="M22 28h20M22 36h12M36 46l4 4 8-9"/></svg><span class="j-num">03</span></span>
+<h3>خطة مناسبة ليك</h3><p>بنشرحلك الخيارات والخطوات بوضوح.</p>
+</li>
+<li class="j reveal" style="--d:.3s">
+<span class="j-mark"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 55C14 42 8 33 8 23a13 13 0 0 1 24-6 13 13 0 0 1 24 6c0 10-6 19-24 32z"/><path d="M22 29l7 7 13-14"/></svg><span class="j-num">04</span></span>
+<h3>نتابع معاك</h3><p>نهتم بمتابعة حالتك خلال رحلة العلاج.</p>
+</li>
+</ol>
+</div>
+</section>
+
+<!-- ===== SECTION 08: ESTIMATOR ===== -->
+
+<section class="section" id="planner" aria-labelledby="est-title">
+<div class="wrap">
+<div class="sec-head reveal">
+<span class="kicker">Treatment Planner</span>
+<h2 id="est-title">خطط رحلتك العلاجية</h2>
+<p>اختار نوع العلاج علشان تاخد فكرة مبدئية عن عدد الجلسات الممكن تحتاجها.</p>
+</div>
+<div class="est reveal">
+<div>
+<label for="est-select">نوع العلاج</label>
+<div class="sel">
+<select id="est-select">
+<option value="cleaning">تنظيف الأسنان</option>
+<option value="filling">حشو الأسنان</option>
+<option value="whitening">تبييض الأسنان</option>
+<option value="braces">تقويم الأسنان</option>
+<option value="implant">زراعة الأسنان</option>
+</select>
+</div>
+<p class="est-hint">التقدير ده للتخطيط العام بس، وعدد الزيارات الفعلي بيعتمد على التقييم الإكلينيكي من الدكتور.</p>
+</div>
+<div class="est-res" id="est-res" aria-live="polite">
+<small>Estimated Visits</small>
+<div class="dots" id="est-dots" aria-hidden="true"></div>
+<div class="est-val" id="est-val"></div>
+<p class="est-sub" id="est-sub"></p>
+<a class="btn btn-gold" id="est-cta" href="#booking" data-book="cleaning">احجز معاد التقييم <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#arrow"/></svg></a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== SECTION 09: FAQ ===== -->
+
+<section class="section" id="faq" aria-labelledby="faq-title">
+<div class="wrap faq-grid">
+<div class="sec-head reveal">
+<span class="kicker">FAQ</span>
+<h2 id="faq-title">عندك سؤال؟ إحنا هنا نساعدك</h2>
+</div>
+<div id="faq-list" class="reveal" style="--d:.1s"></div>
+</div>
+</section>
+
+<!-- ===== SECTION 10: BOOKING ===== -->
+
+<section class="section" id="booking" aria-labelledby="bk-title">
+<div class="wrap">
+<div class="sec-head reveal">
+<span class="kicker">Book Your Visit</span>
+<h2 id="bk-title">ابتسامتك الجديدة تبدأ من هنا</h2>
+<p>املأ بياناتك، واختار الخدمة واليوم المناسب، وخلي أول خطوة علينا.</p>
+</div>
+<div class="book reveal">
+<aside class="book-side">
+<h3>حجزك بياخد دقيقة واحدة</h3>
+<ul>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#check"/></svg><span>بياناتك بتساعدنا نجهز لزيارتك.</span></li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#check"/></svg><span>فريقنا بيتابع معاك لتأكيد التفاصيل.</span></li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#check"/></svg><span>حجز مناسب لكل أفراد الأسرة.</span></li>
+</ul>
+<svg class="book-art" viewBox="0 0 240 240" fill="none" stroke="
+#D6B982" stroke-width="2" aria-hidden="true"><circle cx="150" cy="150" r="100" opacity=".4"/><circle cx="150" cy="150" r="70" opacity=".3"/><rect x="100" y="104" width="100" height="92" rx="14" opacity=".7"/><path d="M100 132h100M126 96v18M174 96v18" stroke-linecap="round" opacity=".7"/><use href="#tooth" x="128" y="140" width="44" height="44" opacity=".8"/></svg>
+</aside>
+<div class="book-form">
+<form id="booking-form" novalidate>
+<div class="field">
+<label for="f-name">الاسم بالكامل</label>
+<input type="text" id="f-name" name="name" autocomplete="name" required aria-describedby="e-name">
+<p class="err" id="e-name" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16.5v.5"/></svg><span></span></p>
+</div>
+<div class="field">
+<label for="f-phone">رقم الموبايل <span class="hint">(مثال: 01012345678)</span></label>
+<input type="tel" id="f-phone" name="phone" inputmode="tel" autocomplete="tel" dir="ltr" style="text-align:start" required aria-describedby="e-phone">
+<p class="err" id="e-phone" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16.5v.5"/></svg><span></span></p>
+</div>
+<div class="row two">
+<div class="field">
+<label for="f-service">الخدمة المطلوبة</label>
+<div class="sel">
+<select id="f-service" name="service" required aria-describedby="e-service">
+<option value="">اختار الخدمة</option>
+<option value="cleaning">تنظيف الأسنان</option>
+<option value="filling">حشو الأسنان</option>
+<option value="braces">تقويم الأسنان</option>
+<option value="implant">زراعة الأسنان</option>
+<option value="whitening">تبييض الأسنان</option>
+<option value="kids">أسنان الأطفال</option>
+</select>
+</div>
+<p class="err" id="e-service" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16.5v.5"/></svg><span></span></p>
+</div>
+<div class="field">
+<label for="f-date">اليوم المناسب للزيارة</label>
+<input type="date" id="f-date" name="date" required aria-describedby="e-date">
+<p class="err" id="e-date" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16.5v.5"/></svg><span></span></p>
+</div>
+</div>
+<button class="btn btn-primary" type="submit">سجّل طلب الحجز <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#arrow"/></svg></button>
+</form>
+<div class="success" id="success" hidden role="status" tabindex="-1">
+<svg class="ok" viewBox="0 0 160 160" aria-hidden="true">
+<circle cx="80" cy="80" r="70" fill="
+#E4ECE2"/>
+<circle cx="80" cy="80" r="70" fill="none" stroke="
+#D6B982" stroke-width="2" stroke-dasharray="3 8"/>
+<circle cx="80" cy="80" r="46" fill="
+#123D3B"/>
+<path class="ok-draw" d="M58 82l15 15 30-33" fill="none" stroke="
+#D6B982" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M126 26l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="
+#D6B982"/><circle cx="30" cy="44" r="4" fill="
+#C9D8C7"/><circle cx="132" cy="122" r="5" fill="
+#D6B982" opacity=".6"/>
+</svg>
+<h3>شكراً ليك! تم تسجيل طلب الحجز بنجاح. فريقنا هيتابع معاك لتأكيد التفاصيل.</h3>
+<div class="sum" id="sum"></div>
+<button class="btn btn-ghost" type="button" id="again">اعمل طلب حجز تاني</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== SECTION 11: FINAL CTA ===== -->
+
+<section class="cta" aria-labelledby="cta-title">
+<svg class="cta-art" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="none" stroke="
+#D6B982">
+<circle cx="1080" cy="80" r="220" stroke-opacity=".25" stroke-width="1.5"/><circle cx="1080" cy="80" r="150" stroke-opacity=".18"/>
+<circle cx="90" cy="440" r="200" stroke-opacity=".22" stroke-width="1.5"/><circle cx="90" cy="440" r="120" stroke-opacity=".15"/>
+<use href="#tooth" x="140" y="60" width="90" height="90" stroke-opacity=".35" stroke-width="1.5" transform="rotate(-14 185 105)"/>
+<use href="#tooth" x="980" y="330" width="110" height="110" stroke="
+#C9D8C7" stroke-opacity=".3" stroke-width="1.5" transform="rotate(12 1035 385)"/>
+<g fill="
+#D6B982" stroke="none"><path d="M300 360l5 14 14 5-14 5-5 14-5-14-14-5 14-5z" opacity=".7"/><path d="M900 90l4 11 11 4-11 4-4 11-4-11-11-4 11-4z" opacity=".8"/><circle cx="600" cy="460" r="4" opacity=".5"/><circle cx="220" cy="250" r="3" opacity=".6"/></g>
+</svg>
+<div class="wrap reveal">
+<span class="kicker">Start Today</span>
+<h2 id="cta-title" style="margin-top:12px">خلي ابتسامتك <em>أولويتك</em></h2>
+<p>اهتم بصحة أسنانك، وخد أول خطوة ناحية ابتسامة مرتاح لها.</p>
+<a class="btn btn-gold" href="#booking">احجز معادك دلوقتي <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#arrow"/></svg></a>
+</div>
+</section>
+</main>
+
+<!-- ===== SECTION 12: FOOTER ===== -->
+
+<footer class="foot">
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<div class="brand"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#mark"/></svg><span class="brand-t"><b>ابتسامة</b><small>EBTESAMA</small></span></div>
+<p class="foot-about">رعاية أسنان متكاملة بلمسة دافئة واهتمام بالتفاصيل، علشان كل زيارة تبقى مريحة وبسيطة.</p>
+</div>
+<div>
+<h4>روابط سريعة</h4>
+<ul>
+<li><a href="#home">الرئيسية</a></li><li><a href="#services">خدماتنا</a></li><li><a href="#results">قبل وبعد</a></li><li><a href="#doctors">الأطباء</a></li><li><a href="#faq">الأسئلة الشائعة</a></li>
+</ul>
+</div>
+<div>
+<h4>خدماتنا</h4>
+<ul id="foot-services"></ul>
+</div>
+<div>
+<h4>تواصل معانا</h4>
+<p>للاستفسار والحجز، تواصل مع فريق العيادة.</p>
+<a class="btn btn-gold btn-sm" href="#booking" style="margin-top:16px">احجز معادك</a>
+</div>
+</div>
+<div class="foot-bottom">
+<span>© <span id="year">2026</span> ابتسامة | Ebtesama. جميع الحقوق محفوظة.</span>
+<button class="totop" type="button" id="totop">للأعلى <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+</div>
+</div>
+</footer>
+
+<!-- Service details modal -->
+
+<div class="modal" id="svc-modal" hidden>
+<div class="m-panel" role="dialog" aria-modal="true" aria-labelledby="m-title" aria-describedby="m-desc" tabindex="-1">
+<button class="m-close" type="button" id="m-close" aria-label="إغلاق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+<div class="m-ico" id="m-ico"></div>
+<h2 id="m-title"></h2>
+<p class="m-desc" id="m-desc"></p>
+<div class="m-cols">
+<div class="m-box"><h3>Overview<span>نظرة على العلاج</span></h3><ul id="m-over"></ul></div>
+<div class="m-box"><h3>Who Benefits<span>مين ممكن يستفيد؟</span></h3><p id="m-who" style="font-size:.95rem"></p></div>
+</div>
+<p class="m-note">الخطة المناسبة بتتحدد بعد تقييم الدكتور لحالتك.</p>
+<div class="m-foot"><button class="btn btn-primary" type="button" id="m-book">احجز معاد</button></div>
+</div>
+</div>
+
+<script>
+(function () {
+'use strict';
+document.documentElement.classList.add('js');
+
+/* ---------- Helpers ---------- */
+var $ = function (s, r) { return (r || document).querySelector(s); };
+var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+var reduceMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
+var reduce = function () { return reduceMQ.matches; };
+var hasIO = 'IntersectionObserver' in window;
+
+/* ---------- Data ---------- */
+var SVG_OPEN = '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+var ICONS = {
+cleaning: SVG_OPEN + '<use href="#tooth" x="8" y="12" width="42" height="42"/><path d="M52 6v12M46 12h12M14 6v6M11 9h6M22 28c0-4 3-7 7-7"/></svg>',
+filling: SVG_OPEN + '<use href="#tooth" x="8" y="6" width="48" height="48"/><circle cx="32" cy="27" r="6" fill="currentColor" fill-opacity=".2"/><path d="M32 24v6M29 27h6"/></svg>',
+braces: SVG_OPEN + '<rect x="5" y="20" width="16" height="24" rx="6"/><rect x="24" y="17" width="16" height="27" rx="6"/><rect x="43" y="20" width="16" height="24" rx="6"/><path d="M2 32h60"/><rect x="10" y="29" width="6" height="6" rx="1.5" fill="currentColor"/><rect x="29" y="29" width="6" height="6" rx="1.5" fill="currentColor"/><rect x="48" y="29" width="6" height="6" rx="1.5" fill="currentColor"/></svg>',
+implant: SVG_OPEN + '<path d="M18 6h28c4 0 6 4 5 9l-2 11H15L13 15c-1-5 1-9 5-9z"/><path d="M25 26h14v5H25zM23 36h18M24 42h16M26 48h12M29 54l3 4 3-4"/></svg>',
+whitening: SVG_OPEN + '<use href="#tooth" x="6" y="14" width="44" height="44"/><path d="M50 6l2.5 7 7 2.5-7 2.5L50 25l-2.5-7-7-2.5 7-2.5zM12 6v8M8 10h8"/></svg>',
+kids: SVG_OPEN + '<use href="#tooth" x="8" y="8" width="46" height="50"/><circle cx="26" cy="27" r="1.6" fill="currentColor"/><circle cx="38" cy="27" r="1.6" fill="currentColor"/><path d="M26 34q6 5 12 0M55 8v8M51 12h8"/></svg>'
+};
+var SERVICES = [
+{ id: 'cleaning', title: 'تنظيف الأسنان', cats: ['basic', 'kids'],
+desc: 'عناية بنظافة الفم وصحة اللثة بأسلوب مريح.',
+points: ['إزالة الجير والبلاك.', 'العناية بصحة اللثة.', 'الحفاظ على نظافة الفم.'],
+overview: ['فحص مبدئي للأسنان واللثة.', 'إزالة الجير والبلاك بأدوات مناسبة.', 'تلميع الأسنان ونصايح للعناية اليومية.'],
+who: 'أي حد عايز يحافظ على نظافة فمه وصحة لثته، أو لاحظ تراكم جير أو نزيف عند التفريش.' },
+{ id: 'filling', title: 'حشو الأسنان', cats: ['basic', 'kids'],
+desc: 'علاج التسوس وإعادة السن لشكله ووظيفته.',
+points: ['علاج التسوس.', 'استعادة شكل ووظيفة الأسنان.', 'خيارات علاج مناسبة لكل حالة.'],
+overview: ['فحص السن وتحديد مدى التسوس.', 'تنظيف الجزء المتأثر وتجهيزه.', 'الحشو وضبط الشكل والإطباق.'],
+who: 'اللي عنده تسوس أو كسر بسيط في السن، أو حساسية في سن معين بعد الفحص.' },
+{ id: 'braces', title: 'تقويم الأسنان', cats: ['cosmetic'],
+desc: 'خطة منظمة لتحسين اصطفاف الأسنان وتناسق الابتسامة.',
+points: ['تنظيم اصطفاف الأسنان.', 'تحسين تناسق الابتسامة.', 'متابعة خطة العلاج.'],
+overview: ['تقييم الأسنان والفكين.', 'وضع خطة علاج مناسبة.', 'جلسات متابعة دورية.'],
+who: 'أطفال ومراهقين وكبار عايزين ينظموا اصطفاف أسنانهم، حسب تقييم الطبيب.' },
+{ id: 'implant', title: 'زراعة الأسنان', cats: ['basic'],
+desc: 'حلول لتعويض الأسنان المفقودة بعد تقييم دقيق للحالة.',
+points: ['تعويض الأسنان المفقودة.', 'تقييم الحالة قبل العلاج.', 'متابعة مراحل الزراعة.'],
+overview: ['كشف وتقييم الحالة.', 'تخطيط مراحل العلاج.', 'متابعة بعد الزراعة.'],
+who: 'اللي فقد سن أو أكتر، بعد ما الدكتور يقيّم مدى مناسبة الحالة.' },
+{ id: 'whitening', title: 'تبييض الأسنان', cats: ['cosmetic'],
+desc: 'اهتمام بمظهر لون الأسنان بطريقة تراعي راحتك.',
+points: ['تحسين مظهر لون الأسنان.', 'اختيار الطريقة المناسبة.', 'الاهتمام براحة المريض.'],
+overview: ['فحص الأسنان واللثة قبل البدء.', 'اختيار الطريقة الأنسب لحالتك.', 'إرشادات بعد الجلسة.'],
+who: 'اللي عايز يحسّن مظهر لون أسنانه، بعد التأكد إن حالته مناسبة.' },
+{ id: 'kids', title: 'أسنان الأطفال', cats: ['kids'],
+desc: 'رعاية لطيفة لأسنان الصغار من أول زيارة.',
+points: ['فحص الأسنان اللبنية.', 'متابعة نمو الأسنان.', 'توعية الأطفال بالعناية اليومية.'],
+overview: ['استقبال لطيف وتعريف الطفل بالعيادة.', 'فحص الأسنان اللبنية.', 'نصايح لولي الأمر وتوعية للطفل.'],
+who: 'أطفال في أي سن، من أول ما تظهر أسنانهم، ولأهاليهم اللي عايزين يطمنوا على نمو الأسنان.' }
+];
+var FAQ = [
+{ q: 'إمتى أحتاج أزور دكتور الأسنان؟', a: 'الأفضل تعمل كشف دوري، وكمان لو حسيت بألم أو حساسية أو نزيف في اللثة أو لاحظت تغيير في شكل أسنانك. الدكتور هو اللي يحدد المواعيد المناسبة ليك.' },
+{ q: 'هل تنظيف الأسنان بيسبب ألم؟', a: 'غالباً بيكون مريح، لكن ممكن تحس بحساسية بسيطة، خصوصاً لو في التهاب في اللثة أو جير متراكم. قول للدكتور على أي حساسية قبل الجلسة وهيراعي راحتك.' },
+{ q: 'هل التبييض مناسب لكل الحالات؟', a: 'مش دايماً. الدكتور بيفحص أسنانك ولثتك الأول ويشوف الأنسب ليك، لأن في حالات زي وجود تسوس أو حساسية شديدة محتاجة تتعالج قبل التبييض.' },
+{ q: 'هل تقويم الأسنان للكبار بس؟', a: 'لأ، التقويم مش للكبار بس ولا للأطفال بس. ممكن يناسب أعمار مختلفة، والدكتور بيحدد التوقيت والخطة المناسبة بعد الفحص.' },
+{ q: 'إزاي أجهز طفلي لأول زيارة؟', a: 'كلمه عن الزيارة بشكل بسيط ومطمّن، وبلاش تقوله حاجات تخوّفه. اختار وقت يكون فيه هادي، ولو عنده لعبة بيحبها خليه ياخدها معاه. وقول للدكتور على أي حساسية أو أدوية بياخدها.' },
+{ q: 'إيه اللي بيحصل في أول كشف؟', a: 'الدكتور بيسمع منك الأول، وبعدين يفحص أسنانك ولثتك، وممكن يطلب أشعة لو لزم الأمر. بعد كده بيشرحلك الوضع والخيارات المتاحة وخطوات الخطة المناسبة.' }
+];
+var EST = {
+cleaning: { label: 'تنظيف الأسنان', val: '1 جلسة', sub: 'غالباً بتكفي جلسة واحدة، والدكتور بيحدد بعد الفحص لو حالتك محتاجة أكتر.', dots: ['f'], cta: 'احجز جلسة تنظيف' },
+filling: { label: 'حشو الأسنان', val: '1–2 جلسة', sub: 'بيختلف حسب عدد الأسنان ومدى التسوس، والدكتور هو اللي يحدد.', dots: ['f', 'd'], cta: 'احجز كشف للحشو' },
+whitening: { label: 'تبييض الأسنان', val: '1–2 جلسة', sub: 'بيعتمد على الطريقة المناسبة لحالتك، وبعد فحص أسنانك ولثتك.', dots: ['f', 'd'], cta: 'احجز كشف للتبييض' },
+braces: { label: 'تقويم الأسنان', val: 'جلسة تقييم، ثم متابعة دورية حسب الخطة', sub: 'بنبدأ بتقييم الحالة، وبعدها بتتحدد مواعيد المتابعة حسب خطة العلاج.', dots: ['f', 'd', 'd', 'd'], cta: 'احجز جلسة التقييم' },
+implant: { label: 'زراعة الأسنان', val: 'عدة مراحل علاجية', sub: 'ويحدد الطبيب عدد المواعيد بعد التقييم.', dots: ['f', 'd', 'd', 'd', 'd'], cta: 'احجز جلسة التقييم' }
+};
+
+/* ---------- Reveal on scroll ---------- */
+var revealIO = null;
+function initReveal(root) {
+var els = $$('.reveal:not(.in)', root);
+if (!hasIO || reduce()) { els.forEach(function (el) { el.classList.add('in'); }); return; }
+if (!revealIO) {
+revealIO = new IntersectionObserver(function (entries) {
+entries.forEach(function (en) {
+if (!en.isIntersecting) return;
+var el = en.target;
+revealIO.unobserve(el);
+el.classList.add('in');
+setTimeout(function () { el.style.removeProperty('--d'); }, 1200);
+});
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}
+els.forEach(function (el) { revealIO.observe(el); });
+}
+
+/* ---------- Navigation ---------- */
+var burger = $('#burger'), nav = $('#site-nav');
+function setMenu(open) {
+nav.classList.toggle('open', open);
+burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+burger.setAttribute('aria-label', open ? 'إغلاق القائمة' : 'فتح القائمة');
+}
+function menuOpen() { return nav.classList.contains('open'); }
+burger.addEventListener('click', function (e) { e.stopPropagation(); setMenu(!menuOpen()); });
+document.addEventListener('click', function (e) {
+if (menuOpen() && !nav.contains(e.target) && !burger.contains(e.target)) setMenu(false);
+});
+window.addEventListener('resize', function () { if (window.innerWidth >= 1100 && menuOpen()) setMenu(false); }, { passive: true });
+
+function goTo(id) {
+var target = document.getElementById(id);
+if (!target) return;
+target.scrollIntoView({ behavior: reduce() ? 'auto' : 'smooth', block: 'start' });
+try { history.replaceState(null, '', '#' + id); } catch (err) { /* ignore */ }
+if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+try { target.focus({ preventScroll: true }); } catch (err) { /* ignore */ }
+}
+document.addEventListener('click', function (e) {
+var a = e.target.closest('a[href^="#"]');
+if (!a) return;
+var href = a.getAttribute('href');
+if (href.length < 2) return;
+var bookId = a.getAttribute('data-book');
+if (bookId) setBookingService(bookId);
+e.preventDefault();
+if (menuOpen()) setMenu(false);
+goTo(href.slice(1));
+});
+
+function initActiveNav() {
+var links = $$('a.lnk', nav);
+var map = {};
+links.forEach(function (l) { map[l.getAttribute('href').slice(1)] = l; });
+if (!hasIO) return;
+var io = new IntersectionObserver(function (entries) {
+entries.forEach(function (en) {
+if (!en.isIntersecting) return;
+links.forEach(function (l) { l.removeAttribute('aria-current'); });
+var l = map[en.target.id];
+if (l) l.setAttribute('aria-current', 'true');
+});
+}, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+$$('main > section[id]').forEach(function (s) { io.observe(s); });
+}
+
+/* ---------- Counters ---------- */
+function initCounters() {
+var els = $$('[data-count]');
+if (!els.length || !hasIO || reduce()) return;
+els.forEach(function (el) { el.textContent = '0'; });
+var io = new IntersectionObserver(function (entries, obs) {
+entries.forEach(function (en) {
+if (!en.isIntersecting) return;
+obs.unobserve(en.target);
+runCount(en.target);
+});
+}, { threshold: 0.4 });
+els.forEach(function (el) { io.observe(el); });
+}
+function runCount(el) {
+var end = parseInt(el.getAttribute('data-count'), 10) || 0;
+var dur = 1400, start = null;
+function step(ts) {
+if (start === null) start = ts;
+var p = Math.min((ts - start) / dur, 1);
+var eased = 1 - Math.pow(1 - p, 3);
+el.textContent = String(Math.round(end * eased));
+if (p < 1) requestAnimationFrame(step); else el.textContent = String(end);
+}
+requestAnimationFrame(step);
+}
+
+/* ---------- Services ---------- */
+var grid = $('#svc-grid');
+function renderServices() {
+grid.innerHTML = SERVICES.map(function (s, i) {
+return '<article class="svc reveal" data-id="' + s.id + '" data-cats="' + s.cats.join(' ') + '" style="--d:' + (i % 3) * 0.1 + 's">' +
+'<span class="svc-idx" aria-hidden="true">0' + (i + 1) + '</span>' +
+'<div class="svc-ico">' + ICONS[s.id] + '</div>' +
+'<h3>' + s.title + '</h3><p>' + s.desc + '</p>' +
+'<ul>' + s.points.map(function (p) { return '<li>' + p + '</li>'; }).join('') + '</ul>' +
+'<button class="svc-more" type="button" data-open-svc="' + s.id + '" aria-haspopup="dialog">اعرف التفاصيل <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#arrow"/></svg></button>' +
+'</article>';
+}).join('');
+$('#foot-services').innerHTML = SERVICES.map(function (s) {
+return '<li><button type="button" data-open-svc="' + s.id + '" aria-haspopup="dialog">' + s.title + '</button></li>';
+}).join('');
+initReveal(grid);
+}
+function applyFilter(cat) {
+$$('.svc', grid).forEach(function (card) {
+var match = cat === 'all' || card.getAttribute('data-cats').split(' ').indexOf(cat) > -1;
+clearTimeout(card._t);
+if (match) {
+if (card.hidden) {
+card.hidden = false;
+card.classList.add('is-out');
+void card.offsetWidth;
+}
+card.classList.remove('is-out');
+} else {
+card.classList.add('is-out');
+card._t = setTimeout(function () { card.hidden = true; }, reduce() ? 0 : 320);
+}
+});
+}
+$('#filters').addEventListener('click', function (e) {
+var b = e.target.closest('.fbtn');
+if (!b) return;
+$$('.fbtn').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+applyFilter(b.getAttribute('data-filter'));
+});
+
+/* ---------- Modal ---------- */
+var modal = $('#svc-modal'), panel = $('.m-panel', modal), lastFocus = null, closeTimer = null, currentSvc = null;
+function openModal(id, trigger) {
+var s = SERVICES.filter(function (x) { return x.id === id; })[0];
+if (!s) return;
+currentSvc = s;
+lastFocus = trigger || document.activeElement;
+$('#m-ico').innerHTML = ICONS[s.id];
+$('#m-title').textContent = s.title;
+$('#m-desc').textContent = s.desc;
+$('#m-over').innerHTML = s.overview.map(function (o) { return '<li>' + o + '</li>'; }).join('');
+$('#m-who').textContent = s.who;
+$('#m-book').textContent = 'احجز معاد ' + s.title;
+clearTimeout(closeTimer);
+modal.hidden = false;
+document.body.classList.add('lock');
+void modal.offsetWidth;
+modal.classList.add('open');
+panel.focus();
+}
+function closeModal() {
+if (modal.hidden) return;
+modal.classList.remove('open');
+document.body.classList.remove('lock');
+closeTimer = setTimeout(function () { modal.hidden = true; }, reduce() ? 0 : 320);
+if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (err) { /* ignore */ } }
+}
+document.addEventListener('click', function (e) {
+var opener = e.target.closest('[data-open-svc]');
+if (opener) { openModal(opener.getAttribute('data-open-svc'), opener); return; }
+var card = e.target.closest('.svc');
+if (card && grid.contains(card)) openModal(card.getAttribute('data-id'), card.querySelector('.svc-more'));
+});
+modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+$('#m-close').addEventListener('click', closeModal);
+$('#m-book').addEventListener('click', function () {
+var id = currentSvc ? currentSvc.id : '';
+modal.classList.remove('open');
+document.body.classList.remove('lock');
+modal.hidden = true;
+lastFocus = null;
+if (id) setBookingService(id);
+goTo('booking');
+});
+modal.addEventListener('keydown', function (e) {
+if (e.key !== 'Tab') return;
+var f = $$('button,[href],input,select', panel).filter(function (el) { return !el.disabled && el.offsetParent !== null; });
+if (!f.length) return;
+var first = f[0], last = f[f.length - 1];
+if (e.shiftKey && (document.activeElement === first || document.activeElement === panel)) { e.preventDefault(); last.focus(); }
+else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
+document.addEventListener('keydown', function (e) {
+if (e.key !== 'Escape') return;
+if (!modal.hidden) { closeModal(); }
+else if (menuOpen()) { setMenu(false); burger.focus(); }
+});
+
+/* ---------- Before / After slider ---------- */
+function initCompare() {
+var box = $('#cmp'), range = $('#cmp-range');
+if (!box || !range) return;
+function setPos(v) {
+v = Math.max(0, Math.min(100, Number(v)));
+box.style.setProperty('--pos', v + '%');
+range.setAttribute('aria-valuetext', 'مساحة "بعد" الظاهرة ' + Math.round(v) + ' من 100');
+}
+range.addEventListener('input', function () { setPos(range.value); });
+range.value = 50;
+setPos(50);
+}
+
+/* ---------- Estimator ---------- */
+function renderEstimate(key, animate) {
+var d = EST[key] || EST.cleaning;
+$('#est-val').textContent = d.val;
+$('#est-sub').textContent = d.sub;
+$('#est-dots').innerHTML = d.dots.map(function (t, i) {
+return (i ? '<span class="dline"></span>' : '') + '<span class="dot ' + t + '"></span>';
+}).join('');
+var cta = $('#est-cta');
+cta.setAttribute('data-book', key);
+cta.firstChild.textContent = d.cta + ' ';
+var res = $('#est-res');
+if (animate && !reduce()) {
+res.classList.remove('swap'); void res.offsetWidth; res.classList.add('swap');
+}
+}
+function initEstimator() {
+var sel = $('#est-select');
+renderEstimate(sel.value, false);
+sel.addEventListener('change', function () { renderEstimate(sel.value, true); });
+}
+
+/* ---------- FAQ ---------- */
+function renderFaq() {
+var list = $('#faq-list');
+list.innerHTML = FAQ.map(function (f, i) {
+return '<div class="faq-item' + (i === 0 ? ' open' : '') + '">' +
+'<h3><button class="faq-q" type="button" id="fq' + i + '" aria-expanded="' + (i === 0) + '" aria-controls="fa' + i + '"><span>' + f.q + '</span><span class="faq-ico" aria-hidden="true"></span></button></h3>' +
+'<div class="faq-a" id="fa' + i + '" role="region" aria-labelledby="fq' + i + '"><div><p>' + f.a + '</p></div></div></div>';
+}).join('');
+list.addEventListener('click', function (e) {
+var btn = e.target.closest('.faq-q');
+if (!btn) return;
+var item = btn.closest('.faq-item');
+var willOpen = !item.classList.contains('open');
+$$('.faq-item', list).forEach(function (it) {
+it.classList.remove('open');
+$('.faq-q', it).setAttribute('aria-expanded', 'false');
+});
+if (willOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+});
+list.addEventListener('keydown', function (e) {
+var btns = $$('.faq-q', list), i = btns.indexOf(document.activeElement);
+if (i < 0) return;
+var n = null;
+if (e.key === 'ArrowDown') n = btns[(i + 1) % btns.length];
+else if (e.key === 'ArrowUp') n = btns[(i - 1 + btns.length) % btns.length];
+else if (e.key === 'Home') n = btns[0];
+else if (e.key === 'End') n = btns[btns.length - 1];
+if (n) { e.preventDefault(); n.focus(); }
+});
+}
+
+/* ---------- Booking form ---------- */
+var form = $('#booking-form'), success = $('#success');
+var fName = $('#f-name'), fPhone = $('#f-phone'), fService = $('#f-service'), fDate = $('#f-date');
+function setBookingService(id) { if (fService && $('option[value="' + id + '"]', fService)) fService.value = id; }
+function pad(n) { return (n < 10 ? '0' : '') + n; }
+function todayStr() { var d = new Date(); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+function normalizePhone(v) {
+var map = { '٠': '0', '١': '1', '٢': '2', '٣': '3', '٤': '4', '٥': '5', '٦': '6', '٧': '7', '٨': '8', '٩': '9', '۰': '0', '۱': '1', '۲': '2', '۳': '3', '۴': '4', '۵': '5', '۶': '6', '۷': '7', '۸': '8', '۹': '9' };
+v = String(v).replace(/[٠-٩۰-۹]/g, function (c) { return map[c]; });
+return v.replace(/[\s\-().]/g, '');
+}
+var PHONE_RE = /^(?:\+20|0020|0)(1[0125]\d{8})$/;
+var validators = {
+name: function () {
+var v = fName.value.replace(/\s+/g, ' ').trim();
+if (!v) return 'اكتب اسمك بالكامل.';
+if (v.length < 3) return 'الاسم قصير شوية، اكتبه بالكامل لو سمحت.';
+if (!/^[\p{L}\s.'\-]+$/u.test(v)) return 'الاسم لازم يكون حروف بس.';
+return '';
+},
+phone: function () {
+var v = normalizePhone(fPhone.value);
+if (!v) return 'اكتب رقم الموبايل.';
+if (!PHONE_RE.test(v)) return 'اكتب رقم موبايل مصري صحيح، زي 01012345678.';
+return '';
+},
+service: function () { return fService.value ? '' : 'اختار الخدمة المطلوبة.'; },
+date: function () {
+var v = fDate.value;
+if (!v) return 'اختار اليوم المناسب للزيارة.';
+if (isNaN(new Date(v + 'T00:00:00').getTime())) return 'التاريخ مش صحيح، اختار يوم تاني.';
+if (v < todayStr()) return 'اختار تاريخ النهاردة أو بعده.';
+return '';
+}
+};
+var fields = { name: fName, phone: fPhone, service: fService, date: fDate };
+function showError(key, msg) {
+var el = fields[key], box = $('#e-' + key);
+if (!el || !box) return;
+if (msg) { el.setAttribute('aria-invalid', 'true'); $('span', box).textContent = msg; box.hidden = false; }
+else { el.removeAttribute('aria-invalid'); box.hidden = true; }
+}
+function validateAll() {
+var firstBad = null;
+Object.keys(validators).forEach(function (k) {
+var m = validators[k]();
+showError(k, m);
+if (m && !firstBad) firstBad = fields[k];
+});
+return firstBad;
+}
+function initForm() {
+fDate.min = todayStr();
+Object.keys(fields).forEach(function (k) {
+var touched = false;
+fields[k].addEventListener('blur', function () { touched = true; showError(k, validators[k]()); });
+['input', 'change'].forEach(function (ev) {
+fields[k].addEventListener(ev, function () { if (touched || fields[k].hasAttribute('aria-invalid')) showError(k, validators[k]()); });
+});
+});
+form.addEventListener('submit', function (e) {
+e.preventDefault();
+var bad = validateAll();
+if (bad) { bad.focus(); return; }
+var svc = SERVICES.filter(function (s) { return s.id === fService.value; })[0];
+var parts = fDate.value.split('-');
+var dateTxt = parts.length === 3 ? parts[2] + '/' + parts[1] + '/' + parts[0] : fDate.value;
+$('#sum').innerHTML = '<span>' + (svc ? svc.title : '') + '</span><span>' + dateTxt + '</span>';
+form.hidden = true;
+success.hidden = false;
+success.focus();
+});
+$('#again').addEventListener('click', function () {
+form.reset();
+Object.keys(fields).forEach(function (k) { showError(k, ''); });
+fDate.min = todayStr();
+success.hidden = true;
+form.hidden = false;
+fName.focus();
+});
+}
+
+/* ---------- Footer & misc ---------- */
+function initMisc() {
+var y = $('#year'); if (y) y.textContent = String(new Date().getFullYear());
+$('#totop').addEventListener('click', function () {
+window.scrollTo({ top: 0, behavior: reduce() ? 'auto' : 'smooth' });
+var h = $('#home'); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+});
+}
+
+/* ---------- Startup ---------- */
+function init() {
+renderServices();
+renderFaq();
+initEstimator();
+initCompare();
+initForm();
+initMisc();
+initActiveNav();
+initCounters();
+initReveal(document);
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+
+</body>
+</html>
