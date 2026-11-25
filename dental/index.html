@@ -836,13 +836,13 @@ html{scroll-behavior:auto}
 <section class="section" id="planner" aria-labelledby="est-title">
 <div class="wrap">
 <div class="sec-head reveal">
-<span class="kicker">Treatment Planner</span>
-<h2 id="est-title">خطط رحلتك العلاجية</h2>
-<p>اختار نوع العلاج علشان تاخد فكرة مبدئية عن عدد الجلسات الممكن تحتاجها.</p>
+<span class="kicker">Visit Prep</span>
+<h2 id="est-title">جهّز زيارتك</h2>
+<p>اختار نوع الخدمة وشوف إيه اللي تجهّزه قبل ما تيجي.</p>
 </div>
 <div class="est reveal">
 <div>
-<label for="est-select">نوع العلاج</label>
+<label for="est-select">نوع الخدمة</label>
 <div class="sel">
 <select id="est-select">
 <option value="cleaning">تنظيف الأسنان</option>
@@ -852,10 +852,10 @@ html{scroll-behavior:auto}
 <option value="implant">زراعة الأسنان</option>
 </select>
 </div>
-<p class="est-hint">التقدير ده للتخطيط العام بس، وعدد الزيارات الفعلي بيعتمد على التقييم الإكلينيكي من الدكتور.</p>
+<p class="est-hint">دي حاجات بسيطة تجهّزها قبل الزيارة، والدكتور هو اللي يحدد خطة العلاج بعد الفحص.</p>
 </div>
 <div class="est-res" id="est-res" aria-live="polite">
-<small>Estimated Visits</small>
+<small>Visit Prep</small>
 <div class="dots" id="est-dots" aria-hidden="true"></div>
 <div class="est-val" id="est-val"></div>
 <p class="est-sub" id="est-sub"></p>
@@ -1091,11 +1091,11 @@ var FAQ = [
 { q: 'إيه اللي بيحصل في أول كشف؟', a: 'الدكتور بيسمع منك الأول، وبعدين يفحص أسنانك ولثتك، وممكن يطلب أشعة لو لزم الأمر. بعد كده بيشرحلك الوضع والخيارات المتاحة وخطوات الخطة المناسبة.' }
 ];
 var EST = {
-cleaning: { label: 'تنظيف الأسنان', val: '1 جلسة', sub: 'غالباً بتكفي جلسة واحدة، والدكتور بيحدد بعد الفحص لو حالتك محتاجة أكتر.', dots: ['f'], cta: 'احجز جلسة تنظيف' },
-filling: { label: 'حشو الأسنان', val: '1–2 جلسة', sub: 'بيختلف حسب عدد الأسنان ومدى التسوس، والدكتور هو اللي يحدد.', dots: ['f', 'd'], cta: 'احجز كشف للحشو' },
-whitening: { label: 'تبييض الأسنان', val: '1–2 جلسة', sub: 'بيعتمد على الطريقة المناسبة لحالتك، وبعد فحص أسنانك ولثتك.', dots: ['f', 'd'], cta: 'احجز كشف للتبييض' },
-braces: { label: 'تقويم الأسنان', val: 'جلسة تقييم، ثم متابعة دورية حسب الخطة', sub: 'بنبدأ بتقييم الحالة، وبعدها بتتحدد مواعيد المتابعة حسب خطة العلاج.', dots: ['f', 'd', 'd', 'd'], cta: 'احجز جلسة التقييم' },
-implant: { label: 'زراعة الأسنان', val: 'عدة مراحل علاجية', sub: 'ويحدد الطبيب عدد المواعيد بعد التقييم.', dots: ['f', 'd', 'd', 'd', 'd'], cta: 'احجز جلسة التقييم' }
+cleaning: { label: 'تنظيف الأسنان', val: 'زيارة التنظيف', sub: 'هات هويتك وأي تقارير أو أشعة قديمة عندك، ووصّل قبل ميعادك بعشر دقايق.', dots: [], cta: 'احجز معادك' },
+filling: { label: 'حشو الأسنان', val: 'زيارة الحشو', sub: 'قولنا لو في وجع أو حساسية بتحس بيها، وهات أي تقارير سابقة.', dots: [], cta: 'احجز معادك' },
+whitening: { label: 'تبييض الأسنان', val: 'زيارة التبييض', sub: 'جهّز أسئلتك للدكتور، وقولنا لو عندك أي حساسية.', dots: [], cta: 'احجز معادك' },
+braces: { label: 'تقويم الأسنان', val: 'زيارة التقويم', sub: 'هات أي أشعة أو صور سابقة لأسنانك لو عندك، وجهّز أسئلتك.', dots: [], cta: 'احجز معادك' },
+implant: { label: 'زراعة الأسنان', val: 'زيارة الزراعة', sub: 'هات التقارير والأشعة القديمة، وجهّز أسئلتك للدكتور.', dots: [], cta: 'احجز معادك' }
 };
 
 /* ---------- Reveal on scroll ---------- */
