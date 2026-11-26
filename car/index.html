@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101820">
+<title>مسار | MASAR — معرض سيارات</title>
+<meta name="description" content="مسار — اكتشف اختيارات مميزة من السيارات، قارن بينها، واحجز تجربة قيادتك.">
+<style>
+:root{--navy:#101820;--char:#202830;--ivory:#F5F2EA;--silver:#B9C1C8;--gold:#C7A978;--gold-ink:#7d6232;--white:#fff;--ink:#101820;--muted:#58636d;--line:rgba(16,24,32,.12);--hh:72px;--ease:cubic-bezier(.2,.7,.2,1)}
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html.lock,html.lock body{overflow:hidden}
+body{font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:var(--ivory);color:var(--ink);line-height:1.75;font-size:16px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:8px}
+.wrap{width:100%;max-width:1200px;margin-inline:auto;padding-inline:clamp(16px,5vw,40px)}
+.ic{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+ 
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:14px;border:1.5px solid transparent;font-weight:700;font-size:.98rem;text-decoration:none;transition:transform .25s var(--ease),background .25s,color .25s,border-color .25s,box-shadow .25s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn-gold{background:linear-gradient(135deg,#E2CDA2,#C7A978 55%,#B08F5C);color:#101820;box-shadow:0 10px 26px -12px rgba(199,169,120,.8)}
+.btn-gold:hover{box-shadow:0 14px 30px -10px rgba(199,169,120,.9)}
+.btn-ghost{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.3);color:#fff}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-dark:hover{background:#1b2733}
+.btn-line{background:#fff;border-color:rgba(16,24,32,.2);color:var(--ink)}
+.btn-line:hover{border-color:var(--gold-ink)}
+.btn-line.on{background:#F3EAD6;border-color:var(--gold-ink);color:#5a4420}
+.btn .ic{width:1.15em;height:1.15em}
+ 
+/* header */
+.hdr{position:fixed;inset:0 0 auto 0;height:var(--hh);z-index:60;display:flex;align-items:center;border-bottom:1px solid transparent;transition:background .35s,border-color .35s,box-shadow .35s}
+.hdr.scrolled,.hdr.open{background:rgba(16,24,32,.95);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-color:rgba(199,169,120,.25)}
+.hdr.scrolled{box-shadow:0 10px 30px -18px rgba(0,0,0,.7)}
+.hdr .wrap{display:flex;align-items:center;gap:10px;height:100%}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;flex:none}
+.logo{width:42px;height:42px;display:block}
+.brand-t{display:grid;line-height:1.1}
+.brand-t b{font-size:1.3rem;font-weight:800}
+.brand-t small{font-size:.6rem;letter-spacing:.38em;color:var(--gold);font-weight:700;margin-top:3px}
+.nav{position:absolute;top:100%;inset-inline:0;background:rgba(16,24,32,.98);border-bottom:1px solid rgba(199,169,120,.25);padding:8px clamp(16px,5vw,40px) 22px;visibility:hidden;opacity:0;transform:translateY(-12px);transition:opacity .3s,transform .35s var(--ease),visibility .3s}
+.hdr.open .nav{visibility:visible;opacity:1;transform:none}
+.nav ul{list-style:none;padding:0;display:grid}
+.nav a{display:block;padding:15px 4px;color:rgba(255,255,255,.88);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(255,255,255,.08);position:relative}
+.nav a.active{color:var(--gold)}
+.nav-cta{margin-top:16px;display:flex}
+.nav-cta .btn{width:100%}
+.hdr-cta{margin-inline-start:auto;min-height:44px;padding:0 14px;font-size:.84rem;border-radius:12px}
+.burger{width:46px;height:46px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.04);display:grid;place-items:center;color:#fff;flex:none}
+.burger svg{width:24px;height:24px;stroke:currentColor;stroke-width:2;stroke-linecap:round;fill:none}
+.burger line{transition:transform .35s var(--ease),opacity .2s;transform-box:fill-box;transform-origin:center}
+.hdr.open .l1{transform:translateY(6px) rotate(45deg)}
+.hdr.open .l2{opacity:0;transform:scaleX(.2)}
+.hdr.open .l3{transform:translateY(-6px) rotate(-45deg)}
+@media(max-width:379px){.hdr-cta{display:none}.burger{margin-inline-start:auto}}
+@media(min-width:980px){
+ .burger,.nav-cta{display:none}
+ .nav{position:static;visibility:visible;opacity:1;transform:none;background:none;border:0;padding:0;margin-inline:auto}
+ .nav ul{display:flex;gap:4px}
+ .nav a{border:0;padding:10px 14px;font-size:.95rem}
+ .nav a::after{content:"";position:absolute;inset-inline:14px;bottom:2px;height:2px;border-radius:2px;background:var(--gold);transform:scaleX(0);transition:transform .3s var(--ease)}
+ .nav a:hover::after,.nav a.active::after{transform:scaleX(1)}
+ .nav a:hover{color:#fff}
+ .hdr-cta{margin-inline-start:0;font-size:.95rem;padding:0 22px;min-height:48px}
+}
+ 
+/* hero */
+.hero{position:relative;overflow:hidden;color:#fff;min-height:100svh;display:flex;align-items:center;padding:calc(var(--hh) + 24px) 0 36px;background:radial-gradient(60% 55% at 28% 42%,rgba(199,169,120,.16),transparent 70%),radial-gradient(70% 60% at 85% 100%,rgba(185,193,200,.09),transparent 65%),linear-gradient(180deg,#0a1017 0%,#101820 55%,#18212a 100%)}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.6}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero-grid{position:relative;display:grid;gap:10px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.82rem;font-weight:700;letter-spacing:.06em;color:var(--gold-ink)}
+.eyebrow::before{content:"";width:28px;height:2px;background:currentColor;border-radius:2px}
+.dark .eyebrow,.hero .eyebrow{color:var(--gold)}
+.hero h1{font-size:clamp(2.3rem,9.2vw,4.7rem);line-height:1.18;font-weight:800;margin:14px 0 16px;letter-spacing:-.01em}
+.hero h1 .gold{background:linear-gradient(135deg,#F0DDB4,#C7A978 50%,#A98A58);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{color:rgba(255,255,255,.78);font-size:clamp(1rem,3.6vw,1.2rem);max-width:520px}
+.cta-row{display:grid;gap:12px;margin-top:26px}
+@media(min-width:480px){.cta-row{display:flex;flex-wrap:wrap}}
+.quick{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:26px;color:rgba(255,255,255,.7);font-size:.88rem}
+.quick span{display:inline-flex;align-items:center;gap:7px}
+.quick .ic{color:var(--gold);width:1.1em;height:1.1em}
+.hero-art{position:relative;margin-inline:-16px}
+.hero-svg{display:block;width:100%;height:auto;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent),linear-gradient(180deg,#000 82%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent),linear-gradient(180deg,#000 82%,transparent);mask-composite:intersect}
+@media(min-width:960px){
+ .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:20px}
+ .hero-art{margin-inline:-40px -10px}
+}
+@keyframes dash{to{transform:translateX(140px)}}
+@keyframes streak{from{transform:translateX(-70px)}to{transform:translateX(70px)}}
+@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-1.6px)}}
+@keyframes sweep{0%{transform:translateX(0)}55%,100%{transform:translateX(520px)}}
+@keyframes beam{from{opacity:.55}to{opacity:.9}}
+@keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.8}}
+.dashes{animation:dash 2.8s linear infinite}
+.streaks{animation:streak 11s ease-in-out infinite alternate}
+.bob{animation:bob 3.2s ease-in-out infinite alternate}
+.sweep{animation:sweep 7s ease-in-out infinite}
+.beam{animation:beam 3.6s ease-in-out infinite alternate}
+.tw{animation:twinkle 4s ease-in-out infinite}
+.tw:nth-child(2){animation-delay:1s}.tw:nth-child(3){animation-delay:2s}.tw:nth-child(4){animation-delay:.5s}.tw:nth-child(5){animation-delay:2.6s}
+ 
+/* sections */
+.sec{padding:clamp(56px,9vw,104px) 0;scroll-margin-top:calc(var(--hh) - 2px)}
+.dark{background:var(--navy);color:#fff}
+.char{background:var(--char);color:#fff}
+.white{background:#fbfaf6}
+.head{max-width:660px;margin-bottom:clamp(26px,5vw,46px)}
+.head h2{font-size:clamp(1.7rem,5.6vw,2.8rem);line-height:1.3;font-weight:800;margin-top:12px}
+.head p{margin-top:12px;color:var(--muted);font-size:1.02rem}
+.dark .head p,.char .head p{color:rgba(255,255,255,.72)}
+.rv{}
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+ 
+/* category chips */
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chip{--ic-bg:#fff;display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px 10px 16px;border-radius:20px;background:#fff;border:1.5px solid var(--line);color:var(--ink);font-weight:700;transition:transform .3s var(--ease),border-color .3s,background .3s,color .3s,box-shadow .3s;min-height:104px}
+.chip svg{width:72px;height:32px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;color:var(--gold-ink);transition:color .3s}
+.chip svg circle{fill:var(--ic-bg);transition:fill .3s}
+.chip:hover{transform:translateY(-4px);border-color:var(--gold-ink);box-shadow:0 16px 30px -22px rgba(16,24,32,.5)}
+.chip[aria-pressed="true"]{--ic-bg:#101820;background:var(--navy);color:#fff;border-color:var(--gold);box-shadow:0 18px 34px -20px rgba(16,24,32,.8)}
+.chip[aria-pressed="true"] svg{color:var(--gold)}
+.chip.all{grid-column:1/-1;flex-direction:row;justify-content:center;min-height:56px;padding:12px}
+.chip.all svg{width:26px;height:26px}
+@media(min-width:760px){.chips{grid-template-columns:repeat(5,1fr)}.chip.all{grid-column:auto;flex-direction:column;min-height:104px}.chip.all svg{width:72px;height:32px}}
+ 
+/* inventory */
+.inv-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:20px;color:var(--muted);font-size:.95rem}
+.link-btn{background:none;border:0;padding:6px 2px;color:var(--gold-ink);font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.grid{display:grid;gap:18px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:640px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1280px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .35s var(--ease),box-shadow .35s,border-color .35s;animation:up .55s var(--ease) both;animation-delay:calc(var(--i,0) * 50ms)}
+.card:hover{transform:translateY(-6px);box-shadow:0 26px 44px -28px rgba(16,24,32,.55);border-color:rgba(199,169,120,.7)}
+.stage{position:relative;padding:34px 10px 6px;background:radial-gradient(ellipse 70% 55% at 50% 88%,rgba(199,169,120,.26),transparent 70%),linear-gradient(160deg,#1b2630,#0d141b);border-bottom:1px solid rgba(199,169,120,.25)}
+.stage svg{display:block;width:100%;height:auto;transition:transform .5s var(--ease)}
+.card:hover .stage svg{transform:scale(1.04) translateX(-4px)}
+.badge{position:absolute;top:12px;inset-inline-start:12px;background:rgba(245,242,234,.12);border:1px solid rgba(245,242,234,.3);color:var(--ivory);font-size:.78rem;font-weight:700;padding:3px 12px;border-radius:99px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.fav{position:absolute;top:8px;inset-inline-end:8px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(245,242,234,.3);background:rgba(16,24,32,.5);color:var(--ivory);display:grid;place-items:center;transition:transform .3s var(--ease),background .3s,color .3s}
+.fav:hover{transform:scale(1.1)}
+.fav .ic{width:22px;height:22px;transition:fill .3s,stroke .3s}
+.fav.on{background:rgba(199,169,120,.22);border-color:var(--gold);color:var(--gold)}
+.fav.on .ic{fill:var(--gold);stroke:var(--gold);animation:pop .45s var(--ease)}
+@keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.3)}100%{transform:scale(1)}}
+.cbody{padding:18px 18px 18px;display:flex;flex-direction:column;gap:14px;flex:1}
+.cbody h3{font-size:1.18rem;letter-spacing:.1em;font-weight:800}
+.specs{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:14px;background:#faf8f2}
+.specs div{padding:9px 8px;text-align:center;min-width:0}
+.specs div+div{border-inline-start:1px solid var(--line)}
+.specs small{display:block;font-size:.72rem;color:var(--muted)}
+.specs strong{display:block;font-size:.88rem;line-height:1.4}
+.acts{display:flex;gap:8px;margin-top:auto}
+.acts .btn{flex:1;min-height:46px;padding:0 10px;font-size:.92rem}
+.empty{grid-column:1/-1;text-align:center;padding:44px 20px;border:1.5px dashed rgba(16,24,32,.25);border-radius:22px;background:#fff;color:var(--muted)}
+.empty svg{width:64px;height:64px;color:var(--gold-ink);margin-bottom:8px}
+.empty h3{color:var(--ink);font-size:1.15rem;margin-bottom:6px}
+.empty .btn{margin-top:14px}
+.favbar{margin-top:26px;padding:16px 18px;border-radius:18px;background:var(--navy);color:#fff;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.favbar b{color:var(--gold);display:inline-flex;align-items:center;gap:8px}
+.favbar .ic{fill:var(--gold);stroke:var(--gold)}
+.fchip{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(199,169,120,.45);background:rgba(199,169,120,.1);color:#fff;border-radius:99px;padding:4px 6px 4px 12px;font-size:.85rem;letter-spacing:.06em}
+.fchip button{width:26px;height:26px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;display:grid;place-items:center}
+.fchip .ic{width:14px;height:14px;fill:none;stroke:currentColor}
+ 
+/* compare */
+.cmp-box{max-width:900px}
+.cmp-hint{margin-bottom:14px;padding:12px 16px;border-radius:14px;background:rgba(199,169,120,.12);border:1px solid rgba(199,169,120,.35);color:#f0e4c9;font-size:.95rem}
+.cmp-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border:1px solid rgba(199,169,120,.3);border-radius:24px;overflow:hidden;background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.015))}
+.cc{padding:12px 10px;border-bottom:1px solid rgba(255,255,255,.08);min-width:0;text-align:center}
+.cc:nth-child(odd){border-inline-end:1px solid rgba(255,255,255,.08)}
+.cc.art{padding:18px 6px 4px;background:radial-gradient(ellipse 70% 55% at 50% 88%,rgba(199,169,120,.22),transparent 70%)}
+.cc.art svg{display:block;width:100%;height:auto}
+.cc h3{font-size:.98rem;letter-spacing:.08em;font-weight:800}
+.cc .k{display:block;font-size:.74rem;color:var(--silver)}
+.cc strong{display:block;font-size:.95rem;font-weight:700}
+.cc.diff{background:rgba(199,169,120,.1)}
+.cc.diff strong{color:var(--gold)}
+.cc.slot{display:grid;place-items:center;align-content:center;gap:8px;color:var(--silver);font-size:.88rem;min-height:150px;background:repeating-linear-gradient(135deg,transparent 0 12px,rgba(255,255,255,.025) 12px 24px)}
+.cc.slot svg{width:36px;height:36px;color:var(--gold)}
+.cc .btn{min-height:40px;padding:0 14px;font-size:.85rem}
+.cmp-tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.cmp-empty{text-align:center;padding:48px 20px;border:1.5px dashed rgba(199,169,120,.4);border-radius:24px;color:rgba(255,255,255,.75)}
+.cmp-empty svg{width:56px;height:56px;color:var(--gold);margin-bottom:8px}
+.cmp-empty h3{color:#fff;font-size:1.2rem;margin-bottom:6px}
+.cmp-empty .btn{margin-top:16px}
+ 
+/* finder */
+.finder{background:#fff;border:1px solid var(--line);border-radius:26px;padding:clamp(18px,4vw,30px);display:grid;gap:16px;box-shadow:0 30px 50px -40px rgba(16,24,32,.5)}
+@media(min-width:760px){.finder{grid-template-columns:1fr 1fr auto auto;align-items:end}}
+.field{display:grid;gap:7px}
+.field label{font-weight:700;font-size:.93rem}
+.sel{position:relative}
+.sel select,.field input{width:100%;min-height:52px;border-radius:14px;border:1.5px solid #cfc8b8;background:#fff;padding:0 16px;transition:border-color .25s,box-shadow .25s,background .25s}
+.sel select{appearance:none;-webkit-appearance:none;padding-inline-end:42px}
+.sel svg{position:absolute;inset-inline-end:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;pointer-events:none;color:var(--muted)}
+.sel select:focus,.field input:focus{outline:none;border-color:var(--gold-ink);box-shadow:0 0 0 4px rgba(199,169,120,.3)}
+.res-meta{margin:26px 0 16px;font-weight:700;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.hint{padding:22px;border-radius:20px;border:1.5px dashed rgba(16,24,32,.22);background:#fbfaf6;color:var(--muted);margin-top:22px;display:flex;gap:14px;align-items:center}
+.hint svg{width:34px;height:34px;color:var(--gold-ink)}
+ 
+/* services */
+.svcs{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:640px){.svcs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1100px){.svcs{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.svc{position:relative;padding:28px 24px 26px;border-radius:24px;border:1px solid rgba(199,169,120,.25);background:linear-gradient(165deg,rgba(255,255,255,.06),rgba(255,255,255,.01));overflow:hidden;transition:transform .35s var(--ease),border-color .35s,background .35s}
+.svc::before{content:"";position:absolute;top:0;inset-inline:24px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.7}
+.svc:hover{transform:translateY(-8px);border-color:rgba(199,169,120,.75);background:linear-gradient(165deg,rgba(199,169,120,.12),rgba(255,255,255,.02))}
+.svc .num{position:absolute;top:14px;inset-inline-end:20px;font-size:2.6rem;font-weight:800;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.14);letter-spacing:.04em}
+.ico{width:68px;height:68px;display:grid;place-items:center;border-radius:20px;background:rgba(199,169,120,.1);border:1px solid rgba(199,169,120,.4);color:var(--gold);margin-bottom:20px;transition:transform .4s var(--ease),background .3s}
+.ico svg{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.svc:hover .ico{transform:rotate(-8deg) scale(1.06);background:rgba(199,169,120,.2)}
+.svc h3{font-size:1.2rem;margin-bottom:8px}
+.svc p{color:rgba(255,255,255,.72);font-size:.96rem}
+ 
+/* steps */
+.steps{position:relative;display:grid;gap:30px;counter-reset:s}
+.steps::before{content:"";position:absolute;inset-block:30px;inset-inline-start:27px;width:10px;margin-inline-start:-1px;border-radius:6px;background:repeating-linear-gradient(180deg,var(--gold) 0 12px,transparent 12px 24px) center/2px 100% no-repeat,var(--char)}
+.step{position:relative;display:grid;grid-template-columns:56px 1fr;gap:18px;align-items:start}
+.mk{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--gold);border:2px solid var(--gold);font-weight:800;font-size:1.1rem;letter-spacing:.04em;position:relative;z-index:1;box-shadow:0 0 0 6px var(--ivory)}
+.white .mk{box-shadow:0 0 0 6px #fbfaf6}
+.step h3{font-size:1.2rem;margin-top:4px}
+.step p{color:var(--muted)}
+@media(min-width:860px){
+ .steps{grid-template-columns:repeat(3,1fr);gap:24px}
+ .steps::before{inset-block:auto;inset-inline:16%;top:23px;height:10px;width:auto;margin:0;background:repeating-linear-gradient(90deg,var(--gold) 0 14px,transparent 14px 28px) center/100% 2px no-repeat,var(--char)}
+ .step{grid-template-columns:1fr;justify-items:center;text-align:center;gap:14px}
+ .step h3{margin-top:0}
+ .mk{margin-top:0}
+}
+.cta-c{margin-top:34px;display:flex;justify-content:center}
+ 
+/* faq */
+.faq{max-width:860px;display:grid;gap:12px}
+.faq-item{border:1px solid var(--line);border-radius:18px;background:#fff;transition:border-color .3s,box-shadow .3s}
+.faq-item.open{border-color:var(--gold-ink);box-shadow:0 18px 34px -26px rgba(16,24,32,.5)}
+.faq-q{all:unset;box-sizing:border-box;width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 20px;cursor:pointer;font-weight:700;font-size:1.02rem;line-height:1.6;min-height:60px;border-radius:18px}
+.faq-q:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.pm{width:26px;height:26px;flex:none;fill:none;stroke:var(--gold-ink);stroke-width:2;stroke-linecap:round;padding:3px;border-radius:50%;border:1.5px solid var(--gold-ink);box-sizing:content-box;transition:background .3s}
+.pm .v{transform-origin:center;transform-box:fill-box;transition:transform .35s var(--ease)}
+.faq-item.open .pm{background:rgba(199,169,120,.25)}
+.faq-item.open .pm .v{transform:scaleY(0)}
+.faq-a{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .4s var(--ease),visibility .4s}
+.faq-item.open .faq-a{grid-template-rows:1fr;visibility:visible}
+.faq-a>div{overflow:hidden;min-height:0}
+.faq-a p{padding:0 20px 20px;color:var(--muted)}
+ 
+/* booking */
+.book-grid{display:grid;gap:26px}
+@media(min-width:920px){.book-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:start;gap:40px}}
+.form-card{background:var(--ivory);color:var(--ink);border-radius:28px;padding:clamp(20px,4.5vw,36px);display:grid;gap:18px;box-shadow:0 40px 70px -40px rgba(0,0,0,.8);border:1px solid rgba(199,169,120,.5)}
+.form-card .row{display:grid;gap:18px}
+@media(min-width:620px){.form-card .row{grid-template-columns:1fr 1fr}}
+.field.invalid input,.field.invalid select{border-color:#b9423f;background:#fff7f6}
+.field.valid input,.field.valid select{border-color:#3d9a72}
+.err{display:none;color:#a8322f;font-size:.86rem;font-weight:600}
+.field.invalid .err{display:block;animation:up .3s var(--ease)}
+#f-phone{direction:ltr;text-align:right}
+.form-card .btn{width:100%;min-height:56px;font-size:1.05rem}
+.done{background:var(--ivory);color:var(--ink);border-radius:28px;padding:clamp(22px,4.5vw,38px);border:1px solid var(--gold);box-shadow:0 40px 70px -40px rgba(0,0,0,.8);animation:up .5s var(--ease)}
+.done .tick{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--gold);margin-bottom:14px}
+.done .tick .ic{width:28px;height:28px;stroke-width:2.4}
+.done h3{font-size:1.3rem;line-height:1.5}
+.done h3:focus{outline:none}
+.done>p{color:var(--muted);margin-top:4px}
+.sum{margin:20px 0;border:1px solid var(--line);border-radius:18px;background:#fff;overflow:hidden}
+.sum div{display:flex;justify-content:space-between;gap:14px;padding:13px 16px;align-items:baseline}
+.sum div+div{border-top:1px solid var(--line)}
+.sum dt{color:var(--muted);font-size:.9rem;flex:none}
+.sum dd{font-weight:700;text-align:end;min-width:0;overflow-wrap:anywhere}
+.done .acts .btn{min-height:50px}
+.prev{border-radius:28px;overflow:hidden;border:1px solid rgba(199,169,120,.35);background:linear-gradient(160deg,#17212b,#0b1118);padding:22px 14px 22px;text-align:center}
+.prev .pstage{min-height:140px;display:grid;place-items:center;padding-top:10px}
+.prev svg.car,.prev .pstage>svg{display:block;width:100%;height:auto}
+.prev h3{letter-spacing:.1em;margin-top:6px}
+.prev p{color:rgba(255,255,255,.7);font-size:.95rem;margin-top:6px}
+.prev .big{width:84px;height:84px}
+.roadline{display:block;width:100%;height:34px;margin-top:18px;color:var(--gold)}
+ 
+/* footer */
+.foot{background:#0a0f15;color:rgba(255,255,255,.75);padding:54px 0 28px;position:relative}
+.foot::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.6}
+.foot-grid{display:grid;gap:28px}
+@media(min-width:820px){.foot-grid{grid-template-columns:1.3fr 1fr auto;align-items:start}}
+.foot .brand{margin-bottom:12px}
+.foot ul{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px 22px}
+.foot ul a{text-decoration:none;padding:6px 0;display:inline-block;transition:color .25s}
+.foot ul a:hover{color:var(--gold)}
+.top{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 18px;border-radius:14px;border:1px solid rgba(199,169,120,.5);background:transparent;color:var(--gold);font-weight:700;transition:background .25s,transform .25s}
+.top:hover{background:rgba(199,169,120,.14);transform:translateY(-2px)}
+.copy{margin-top:34px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:.88rem;color:rgba(255,255,255,.55);text-align:center}
+ 
+/* modal */
+.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-end;justify-content:center}
+.modal .bd{position:absolute;inset:0;background:rgba(6,10,14,.72);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);opacity:0;transition:opacity .3s}
+.sheet{position:relative;width:100%;max-width:620px;max-height:92svh;overflow:auto;background:var(--ivory);border-radius:28px 28px 0 0;transform:translateY(60px);opacity:0;transition:transform .4s var(--ease),opacity .3s;overscroll-behavior:contain}
+.modal.open .bd{opacity:1}
+.modal.open .sheet{transform:none;opacity:1}
+.m-stage{position:relative;padding:44px 14px 10px;background:radial-gradient(ellipse 70% 55% at 50% 88%,rgba(199,169,120,.3),transparent 70%),linear-gradient(160deg,#1b2630,#0b1118);border-bottom:1px solid rgba(199,169,120,.3)}
+.m-stage svg{display:block;width:100%;height:auto}
+.m-close{position:absolute;top:10px;inset-inline-end:10px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(245,242,234,.35);background:rgba(16,24,32,.6);color:#fff;display:grid;place-items:center;z-index:2;transition:transform .3s var(--ease),background .25s}
+.m-close:hover{transform:rotate(90deg);background:rgba(199,169,120,.3)}
+.m-body{padding:22px clamp(18px,4vw,30px) 26px;display:grid;gap:16px}
+.m-body h3{font-size:1.5rem;letter-spacing:.1em;font-weight:800}
+.m-body .badge{position:static;display:inline-block;background:var(--navy);color:var(--gold);border-color:var(--gold);margin-inline-start:10px;vertical-align:middle;letter-spacing:0}
+.m-specs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.m-specs div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 6px;text-align:center}
+.m-specs small{display:block;color:var(--muted);font-size:.76rem}
+.m-specs strong{display:block;font-size:.95rem}
+.m-body p{color:var(--muted)}
+.m-acts{display:grid;gap:10px}
+.m-mini{display:flex;gap:10px}
+.m-mini .btn{flex:1;min-height:46px;font-size:.9rem;padding:0 10px}
+.m-mini .btn-line .ic{fill:none}
+.m-mini .btn-line.on .ic.h{fill:var(--gold-ink)}
+@media(min-width:700px){.modal{align-items:center;padding:24px}.sheet{border-radius:28px;transform:translateY(24px) scale(.97)}.modal.open .sheet{transform:none}}
+ 
+/* toast + pill */
+.toasts{position:fixed;top:calc(var(--hh) + 10px);inset-inline:0;z-index:120;display:grid;justify-items:center;gap:8px;padding:0 16px;pointer-events:none}
+.toast{background:var(--navy);color:#fff;border:1px solid rgba(199,169,120,.6);border-radius:14px;padding:11px 18px;font-size:.93rem;font-weight:600;box-shadow:0 18px 36px -16px rgba(0,0,0,.7);max-width:440px;animation:up .35s var(--ease) both;display:flex;gap:10px;align-items:center}
+.toast.warn{border-color:#d6a35a}
+.toast.out{opacity:0;transform:translateY(-8px);transition:opacity .3s,transform .3s}
+.pill{position:fixed;inset-inline-start:14px;bottom:14px;z-index:70;display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 18px;border-radius:99px;background:var(--navy);color:#fff;border:1px solid var(--gold);text-decoration:none;font-weight:700;font-size:.9rem;box-shadow:0 18px 36px -14px rgba(0,0,0,.7);animation:up .4s var(--ease)}
+.pill .ic{color:var(--gold)}
+ 
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+ .js .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+ 
+<!-- SVG symbol library -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+ <defs>
+  <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EBD7AC"/><stop offset="1" stop-color="#B08F5C"/></linearGradient>
+ </defs>
+ <symbol id="logo" viewBox="0 0 48 48">
+  <rect x="1.5" y="1.5" width="45" height="45" rx="14" fill="#101820" stroke="url(#lg)" stroke-width="1.6"/>
+  <path d="M9 41 C13 31 19 24 21 7" fill="none" stroke="url(#lg)" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M39 41 C35 31 29 24 27 7" fill="none" stroke="url(#lg)" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M24 41 C24 31 24 22 24 8" fill="none" stroke="#F5F2EA" stroke-width="1.6" stroke-dasharray="3.5 4" stroke-linecap="round" opacity=".85"/>
+  <circle cx="24" cy="7.5" r="1.8" fill="url(#lg)"/>
+ </symbol>
+ <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5C5 15.2 3 11.6 3 8.8 3 6.3 5 4.5 7.3 4.5c1.9 0 3.6 1 4.7 2.7 1.1-1.7 2.8-2.7 4.7-2.7C19 4.5 21 6.3 21 8.8c0 2.8-2 6.4-9 11.7Z"/></symbol>
+ <symbol id="i-compare" viewBox="0 0 24 24"><path d="M4 8h14M14 4l4 4-4 4M20 16H6M10 12l-4 4 4 4"/></symbol>
+ <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+ <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+ <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l5 5L19 7"/></symbol>
+ <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+ <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+ <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8v.2"/></symbol>
+ <symbol id="i-road" viewBox="0 0 24 24"><path d="M7 21L10 3M17 21L14 3M12 20v-3M12 13v-3M12 6V4"/></symbol>
+ <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16v-3l2-5a2 2 0 0 1 2-1.4h8A2 2 0 0 1 18 8l2 5v3M4 16h16M4 16v2h3v-2M17 16v2h3v-2"/><circle cx="8" cy="13" r=".6"/><circle cx="16" cy="13" r=".6"/></symbol>
+ <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+ <symbol id="i-all" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.6"/></symbol>
+ <symbol id="i-sedan" viewBox="0 0 80 36"><path d="M5 27 7 21c1-2.5 4-3.5 9-4.5l13-2C34 9 41 6.5 49 6.5h5c6 1 11 5 14 9l6 2c3 1 4 4 4 7.500V27Z"/><path d="M31 14.500C35 11 41 9.500 47 9.500h6c4 .5 7 3 10 5.500Z"/><circle cx="21" cy="27" r="5.5" style="fill:var(--ic-bg,#fff)"/><circle cx="62" cy="27" r="5.5" style="fill:var(--ic-bg,#fff)"/></symbol>
+ <symbol id="i-suv" viewBox="0 0 80 36"><path d="M5 27V17c0-2 2-3 5-3.500l8-1.500 6-5.500c1-1 3-1.500 5-1.500h29c3 0 5 1.500 7 4l5 5 4 1c3 1 4 3 4 6V27Z"/><path d="M26 12l3-4h28l5 4Z"/><circle cx="21" cy="27" r="5.5" style="fill:var(--ic-bg,#fff)"/><circle cx="62" cy="27" r="5.5" style="fill:var(--ic-bg,#fff)"/></symbol>
+ <symbol id="i-hatch" viewBox="0 0 80 36"><path d="M8 27v-8l8-10c2-2 5-3 9-3h27c6 0 10 3 14 8l6 2c4 1 5 4 5 8v3Z"/><path d="M20 13l4-4h26l8 4Z"/><circle cx="23" cy="27" r="5.5" style="fill:var(--ic-bg,#fff)"/><circle cx="61" cy="27" r="5.5" style="fill:var(--ic-bg,#fff)"/></symbol>
+ <symbol id="i-ev" viewBox="0 0 80 36"><path d="M5 27 7 21c1-2.500 5-3.500 11-5C28 8 40 6 50 6c8 0 16 6 19 10l5 2c3 1 4 4 4 9Z"/><path d="M43 10.500 38 18h5l-2 5.500 7-8h-5Z"/><circle cx="21" cy="27" r="5.5" style="fill:var(--ic-bg,#fff)"/><circle cx="62" cy="27" r="5.5" style="fill:var(--ic-bg,#fff)"/></symbol>
+ <symbol id="i-inspect" viewBox="0 0 48 48"><circle cx="21" cy="21" r="12"/><path d="M30 30l11 11M15.500 21.500l4 4 7-8"/></symbol>
+ <symbol id="i-docs" viewBox="0 0 48 48"><rect x="10" y="7" width="24" height="32" rx="4"/><path d="M16 15h12M16 21h12M16 27h7"/><path d="M38 14v24a4 4 0 0 1-4 4H18"/></symbol>
+ <symbol id="i-shield" viewBox="0 0 48 48"><path d="M24 5l15 5.500V23c0 9.500-6.500 16.500-15 20-8.500-3.500-15-10.500-15-20V10.500Z"/><path d="M17 24l5 5 9-10"/></symbol>
+ <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.700 6.300a1 1 0 0 0 0 1.400l1.600 1.600a1 1 0 0 0 1.400 0l3.770-3.770a6 6 0 0 1-7.940 7.940l-6.910 6.910a2.120 2.120 0 0 1-3-3l6.910-6.910a6 6 0 0 1 7.940-7.940l-3.760 3.760z"/></symbol>
+</svg>
+ 
+<header class="hdr" id="hdr">
+ <div class="wrap">
+  <a class="brand" href="#home" aria-label="مسار MASAR — الرئيسية">
+   <svg class="logo" aria-hidden="true"><use href="#logo"/></svg>
+   <span class="brand-t"><b>مسار</b><small>MASAR</small></span>
+  </a>
+  <nav class="nav" id="nav" aria-label="القائمة الرئيسية">
+   <ul>
+    <li><a href="#home" data-nav="home">الرئيسية</a></li>
+    <li><a href="#cars" data-nav="cars">السيارات</a></li>
+    <li><a href="#services" data-nav="services">خدماتنا</a></li>
+    <li><a href="#drive" data-nav="drive">تجربة القيادة</a></li>
+    <li><a href="#faq" data-nav="faq">الأسئلة الشائعة</a></li>
+   </ul>
+   <div class="nav-cta"><a class="btn btn-gold" href="#book">احجز تجربة قيادة</a></div>
+  </nav>
+  <a class="btn btn-gold hdr-cta" href="#book">احجز تجربة قيادة</a>
+  <button class="burger" id="burger" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="nav">
+   <svg viewBox="0 0 24 24" aria-hidden="true"><line class="l1" x1="4" y1="6" x2="20" y2="6"/><line class="l2" x1="4" y1="12" x2="20" y2="12"/><line class="l3" x1="4" y1="18" x2="20" y2="18"/></svg>
+  </button>
+ </div>
+</header>
+ 
+<main>
+<!-- HERO -->
+<section class="hero" id="home" aria-labelledby="h-title">
+ <svg class="hero-bg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <g fill="none" stroke="#C7A978" stroke-opacity=".13">
+   <circle cx="1020" cy="380" r="250"/><circle cx="1020" cy="380" r="380"/><circle cx="1020" cy="380" r="520"/>
+  </g>
+  <g stroke="#B9C1C8" stroke-opacity=".07" stroke-width="1">
+   <path d="M0 640 L1440 520"/><path d="M0 700 L1440 590"/><path d="M0 120 L760 0"/><path d="M700 800 L1440 690"/>
+  </g>
+ </svg>
+ <div class="wrap hero-grid">
+  <div class="hero-copy">
+   <span class="eyebrow">MASAR · معرض سيارات</span>
+   <h1 id="h-title">طريقك لعربية <span class="gold">تستاهلها</span></h1>
+   <p class="lead">اكتشف اختيارات مميزة من السيارات، واختار اللي يناسب احتياجاتك، وابدأ رحلتك مع مسار.</p>
+   <div class="cta-row">
+    <a class="btn btn-gold" href="#cars">اكتشف السيارات</a>
+    <a class="btn btn-ghost" href="#book">احجز تجربة قيادة</a>
+   </div>
+   <div class="quick" aria-hidden="true">
+    <span><svg class="ic"><use href="#i-compare"/></svg>قارن بين عربيتين</span>
+    <span><svg class="ic"><use href="#i-info"/></svg>تفاصيل كل عربية</span>
+    <span><svg class="ic"><use href="#i-road"/></svg>اختار يوم تجربتك</span>
+   </div>
+  </div>
+  <div class="hero-art">
+   <svg class="hero-svg" viewBox="0 0 800 420" role="img" aria-label="رسم توضيحي لسيارة سيدان على طريق ممتد">
+    <defs>
+     <linearGradient id="hb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f8f9"/><stop offset=".36" stop-color="#cdd4da"/><stop offset=".7" stop-color="#8d98a3"/><stop offset="1" stop-color="#4b5762"/></linearGradient>
+     <linearGradient id="hsh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset=".4" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>
+     <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b9cddc"/><stop offset=".45" stop-color="#2d3d4a"/><stop offset="1" stop-color="#0f161c"/></linearGradient>
+     <linearGradient id="hrim" gradientUnits="userSpaceOnUse" x1="-18" y1="-18" x2="18" y2="18"><stop offset="0" stop-color="#f5f7f8"/><stop offset=".5" stop-color="#b3bcc4"/><stop offset="1" stop-color="#6a7681"/></linearGradient>
+     <linearGradient id="hroad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#232e37"/><stop offset="1" stop-color="#0a0f14"/></linearGradient>
+     <radialGradient id="hglow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#C7A978" stop-opacity=".4"/><stop offset="1" stop-color="#C7A978" stop-opacity="0"/></radialGradient>
+     <radialGradient id="hshadow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".75"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+     <linearGradient id="hbeam" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff6dc" stop-opacity=".6"/><stop offset="1" stop-color="#fff6dc" stop-opacity="0"/></linearGradient>
+     <linearGradient id="hstreak" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#B9C1C8" stop-opacity="0"/><stop offset=".5" stop-color="#B9C1C8" stop-opacity=".55"/><stop offset="1" stop-color="#B9C1C8" stop-opacity="0"/></linearGradient>
+     <clipPath id="hclip"><path d="M26 122 C26 110 32 106 46 103 L92 97 C112 80 150 66 192 65 L240 65 C268 66 292 82 308 96 L350 101 C368 104 376 112 376 122 L376 132 Q376 134 372 134 L30 134 Q26 134 26 132 Z"/></clipPath>
+     <clipPath id="hbelow"><rect x="0" y="0" width="400" height="134"/></clipPath>
+     <g id="hw">
+      <circle r="22" fill="#0a0f14"/><circle r="20" fill="none" stroke="#222d36" stroke-width="2"/>
+      <circle r="15.500" fill="url(#hrim)"/><circle r="13" fill="#161e25"/>
+      <g fill="url(#hrim)">
+       <path d="M-2 -3 L-3.600 -12.400 L3.600 -12.400 L2 -3Z"/>
+       <path d="M-2 -3 L-3.600 -12.400 L3.600 -12.400 L2 -3Z" transform="rotate(72)"/>
+       <path d="M-2 -3 L-3.600 -12.400 L3.600 -12.400 L2 -3Z" transform="rotate(144)"/>
+       <path d="M-2 -3 L-3.600 -12.400 L3.600 -12.400 L2 -3Z" transform="rotate(216)"/>
+       <path d="M-2 -3 L-3.600 -12.400 L3.600 -12.400 L2 -3Z" transform="rotate(288)"/>
+      </g>
+      <path d="M4 -13 A13.600 13.600 0 0 1 12.400 -5 L8 -3.400 Z" fill="#C7A978" opacity=".85"/>
+      <circle r="4" fill="#0d1318" stroke="#C7A978" stroke-width="1"/>
+     </g>
+    </defs>
+ 
+    <ellipse cx="400" cy="250" rx="340" ry="160" fill="url(#hglow)"/>
+    <g fill="#C7A978"><circle class="tw" cx="120" cy="70" r="1.800"/><circle class="tw" cx="300" cy="40" r="1.400"/><circle class="tw" cx="560" cy="64" r="1.800"/><circle class="tw" cx="690" cy="120" r="1.400"/><circle class="tw" cx="60" cy="170" r="1.400"/></g>
+    <g class="streaks" opacity=".8">
+     <rect x="30" y="272" width="240" height="1.500" fill="url(#hstreak)"/>
+     <rect x="420" y="286" width="300" height="1.500" fill="url(#hstreak)"/>
+     <rect x="150" y="300" width="200" height="1.500" fill="url(#hstreak)"/>
+     <rect x="520" y="262" width="180" height="1.500" fill="url(#hstreak)"/>
+    </g>
+    <!-- road -->
+    <path d="M0 322 H800 V420 H0Z" fill="url(#hroad)"/>
+    <path d="M0 322 H800" stroke="#B9C1C8" stroke-opacity=".3" stroke-width="1.500"/>
+    <path d="M0 334 H800" stroke="#C7A978" stroke-opacity=".35" stroke-width="1"/>
+    <path d="M0 408 H800" stroke="#C7A978" stroke-opacity=".35" stroke-width="1"/>
+    <g class="dashes" fill="#C7A978" opacity=".6">
+     <path d="M-140 376 L-70 376 L-78 383 L-148 383Z"/><path d="M0 376 L70 376 L62 383 L-8 383Z"/><path d="M140 376 L210 376 L202 383 L132 383Z"/><path d="M280 376 L350 376 L342 383 L272 383Z"/><path d="M420 376 L490 376 L482 383 L412 383Z"/><path d="M560 376 L630 376 L622 383 L552 383Z"/><path d="M700 376 L770 376 L762 383 L692 383Z"/><path d="M840 376 L910 376 L902 383 L832 383Z"/>
+    </g>
+    <ellipse cx="400" cy="352" rx="310" ry="13" fill="url(#hshadow)"/>
+ 
+    <g class="bob">
+     <g transform="translate(60 95) scale(1.700) translate(400 0) scale(-1 1)">
+      <path class="beam" d="M372 106 L470 82 L470 152 L372 120Z" fill="url(#hbeam)"/>
+      <path d="M26 122 C26 110 32 106 46 103 L92 97 C112 80 150 66 192 65 L240 65 C268 66 292 82 308 96 L350 101 C368 104 376 112 376 122 L376 132 Q376 134 372 134 L30 134 Q26 134 26 132 Z" fill="url(#hb)"/>
+      <path d="M26 122 C26 110 32 106 46 103 L92 97 C112 80 150 66 192 65 L240 65 C268 66 292 82 308 96 L350 101 C368 104 376 112 376 122 L376 132 Q376 134 372 134 L30 134 Q26 134 26 132 Z" fill="url(#hsh)"/>
+      <path d="M28 119 L374 119 L376 132 Q376 134 372 134 L30 134 Q26 134 26 132 Z" fill="#0d1319" opacity=".32"/>
+      <path d="M48 104 L96 98 C116 82 152 68 192 67 L240 67 C266 68 290 83 306 97 L350 102" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1"/>
+      <path d="M60 114 C150 110 250 110 346 112" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.200"/>
+      <path d="M44 118 L346 117" stroke="#C7A978" stroke-width="1.400" fill="none" opacity=".85"/>
+      <!-- glass -->
+      <path d="M120 95 C140 78 164 71 192 71 L236 71 C256 72 272 82 288 95 Z" fill="url(#hg)"/>
+      <path d="M120 95 C140 78 164 71 192 71 L236 71 C256 72 272 82 288 95 Z" fill="none" stroke="#dfe5ea" stroke-opacity=".7" stroke-width="1.300"/>
+      <path d="M150 94 L176 72 L192 72 L168 94Z" fill="#fff" opacity=".14"/>
+      <path d="M200 94 L218 72 L226 72 L212 94Z" fill="#fff" opacity=".09"/>
+      <path d="M196 71 L196 131 M130 98 L130 131 M262 97 L262 131" stroke="#0b1015" stroke-opacity=".45" fill="none" stroke-width="1"/>
+      <path d="M166 108 H184 M232 108 H250" stroke="#0b1015" stroke-opacity=".6" stroke-width="2.200" stroke-linecap="round"/>
+      <path d="M290 96 L305 97 L302 103 L288 102 Z" fill="#7c8791"/>
+      <!-- lights -->
+      <path d="M352 104 L373 110 L373 116 L350 111 Z" fill="#fff6dc"/>
+      <path d="M352 104 L373 110" stroke="#C7A978" stroke-width="1.200"/>
+      <path d="M366 113 L376 116 L376 128 L360 126 Z" fill="#0d1319"/>
+      <path d="M363 119 H375 M363 122 H375" stroke="#B9C1C8" stroke-opacity=".6" stroke-width="1"/>
+      <path d="M338 125 L372 127" stroke="#0d1319" stroke-width="2.500" stroke-linecap="round"/>
+      <path d="M27 108 L42 105 L42 112 L27 114 Z" fill="#c9514f"/>
+      <path d="M27 108 L42 105" stroke="#ff9a96" stroke-width="1"/>
+      <!-- body reflection sweep -->
+      <g clip-path="url(#hclip)"><g class="sweep"><path d="M-70 40 L-30 40 L40 150 L0 150Z" fill="#fff" opacity=".3"/></g></g>
+      <!-- arches + wheels -->
+      <g clip-path="url(#hbelow)"><circle cx="95" cy="128" r="27.500" fill="#0a0f14"/><circle cx="308" cy="128" r="27.500" fill="#0a0f14"/></g>
+      <use href="#hw" x="95" y="128"/><use href="#hw" x="308" y="128"/>
+      <path d="M26 122 C26 110 32 106 46 103 L92 97 C112 80 150 66 192 65 L240 65 C268 66 292 82 308 96 L350 101 C368 104 376 112 376 122" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width=".8"/>
+     </g>
+    </g>
+   </svg>
+  </div>
+ </div>
+</section>
+ 
+<!-- CATEGORIES -->
+<section class="sec" id="cars" aria-labelledby="t-cats" style="padding-bottom:clamp(36px,6vw,64px)">
+ <div class="wrap">
+  <div class="head rv">
+   <span class="eyebrow">الفئات</span>
+   <h2 id="t-cats">اختار فئة عربيتك</h2>
+   <p>كل رحلة ليها اختيارها المناسب.</p>
+  </div>
+  <div class="chips rv" role="group" aria-label="فلتر فئات السيارات">
+   <button class="chip all" type="button" data-act="cat" data-cat="all" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-all"/></svg><span>الكل</span></button>
+   <button class="chip" type="button" data-act="cat" data-cat="sedan" aria-pressed="false"><svg viewBox="0 0 80 36" aria-hidden="true"><use href="#i-sedan"/></svg><span>سيدان</span></button>
+   <button class="chip" type="button" data-act="cat" data-cat="suv" aria-pressed="false"><svg viewBox="0 0 80 36" aria-hidden="true"><use href="#i-suv"/></svg><span>SUV</span></button>
+   <button class="chip" type="button" data-act="cat" data-cat="hatch" aria-pressed="false"><svg viewBox="0 0 80 36" aria-hidden="true"><use href="#i-hatch"/></svg><span>هاتشباك</span></button>
+   <button class="chip" type="button" data-act="cat" data-cat="ev" aria-pressed="false"><svg viewBox="0 0 80 36" aria-hidden="true"><use href="#i-ev"/></svg><span>كهربائية</span></button>
+  </div>
+ </div>
+</section>
+ 
+<!-- INVENTORY -->
+<section class="sec" id="inventory" aria-labelledby="t-inv" style="padding-top:clamp(20px,4vw,36px)">
+ <div class="wrap">
+  <div class="head rv">
+   <span class="eyebrow">المجموعة</span>
+   <h2 id="t-inv">اكتشف اختيارات مسار</h2>
+   <p>مجموعة متنوعة من التصميمات والفئات، عشان تلاقي العربية الأقرب لأسلوبك.</p>
+  </div>
+  <div class="inv-bar"><span id="invStatus" aria-live="polite"></span><button class="link-btn" type="button" data-act="reset-all" id="invReset" hidden>إلغاء الفلاتر</button></div>
+  <div class="grid" id="carGrid"></div>
+  <div class="favbar" id="favBar" hidden></div>
+ </div>
+</section>
+ 
+<!-- COMPARE -->
+<section class="sec dark" id="compare" aria-labelledby="t-cmp">
+ <div class="wrap">
+  <div class="head rv">
+   <span class="eyebrow">المقارنة</span>
+   <h2 id="t-cmp">قارن واختار براحتك</h2>
+   <p>حط عربيتين جنب بعض وشوف الفرق بينهم.</p>
+  </div>
+  <div class="cmp-box" id="cmpOut" aria-live="polite"></div>
+ </div>
+</section>
+ 
+<!-- FINDER -->
+<section class="sec" id="finder" aria-labelledby="t-find">
+ <div class="wrap">
+  <div class="head rv">
+   <span class="eyebrow">البحث</span>
+   <h2 id="t-find">ابحث بميزانيتك</h2>
+   <p>حدد الفئة وعدد المقاعد، وشوف العربيات اللي تناسب احتياجك.</p>
+  </div>
+  <form class="finder rv" id="finderForm" novalidate>
+   <div class="field"><label for="fx-cat">فئة العربية</label>
+    <div class="sel"><select id="fx-cat" name="cat"><option value="all">الكل</option><option value="sedan">سيدان</option><option value="suv">SUV</option><option value="hatch">هاتشباك</option><option value="ev">كهربائية</option></select><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></div></div>
+   <div class="field"><label for="fx-seats">عدد المقاعد</label>
+    <div class="sel"><select id="fx-seats" name="seats"><option value="all">الكل</option><option value="4">4 مقاعد</option><option value="5">5 مقاعد</option><option value="7">7 مقاعد</option></select><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></div></div>
+   <button class="btn btn-dark" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>اعرض العربيات المناسبة</button>
+   <button class="btn btn-line" type="button" data-act="reset-all">إعادة ضبط</button>
+  </form>
+  <div id="finderOut" aria-live="polite"></div>
+ </div>
+</section>
+ 
+<!-- SERVICES -->
+<section class="sec char" id="services" aria-labelledby="t-svc">
+ <div class="wrap">
+  <div class="head rv">
+   <span class="eyebrow">الخدمات</span>
+   <h2 id="t-svc">مش بس بنعرض عربيات... بنسهّل عليك الرحلة</h2>
+   <p>من أول اختيار العربية لحد ما تكون جاهز تنطلق.</p>
+  </div>
+  <div class="svcs">
+   <article class="svc rv"><span class="num" aria-hidden="true">01</span><div class="ico"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-inspect"/></svg></div><h3>فحص قبل الشراء</h3><p>مراجعة حالة العربية ومساعدتك في التعرف على تفاصيلها قبل اتخاذ قرار الشراء.</p></article>
+   <article class="svc rv"><span class="num" aria-hidden="true">02</span><div class="ico"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-docs"/></svg></div><h3>التسجيل والإجراءات</h3><p>مساعدة في خطوات التسجيل وتجهيز المستندات والإجراءات المطلوبة.</p></article>
+   <article class="svc rv"><span class="num" aria-hidden="true">03</span><div class="ico"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-shield"/></svg></div><h3>التأمين</h3><p>مساعدتك في التعرف على خيارات التأمين المناسبة لاحتياجاتك.</p></article>
+   <article class="svc rv"><span class="num" aria-hidden="true">04</span><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wrench"/></svg></div><h3>الصيانة</h3><p>خدمات متابعة وصيانة تساعدك تهتم بعربيتك وتحافظ عليها.</p></article>
+  </div>
+ </div>
+</section>
+ 
+<!-- TEST DRIVE STEPS -->
+<section class="sec" id="drive" aria-labelledby="t-drive">
+ <div class="wrap">
+  <div class="head rv">
+   <span class="eyebrow">تجربة القيادة</span>
+   <h2 id="t-drive">تجربة العربية تبدأ من هنا</h2>
+  </div>
+  <div class="steps">
+   <div class="step rv"><div class="mk" aria-hidden="true">01</div><div><h3>اختار عربيتك</h3><p>حدد الموديل اللي حابب تتعرف عليه.</p></div></div>
+   <div class="step rv"><div class="mk" aria-hidden="true">02</div><div><h3>حدد معادك</h3><p>اختار اليوم المناسب لتجربة القيادة.</p></div></div>
+   <div class="step rv"><div class="mk" aria-hidden="true">03</div><div><h3>استعد للتجربة</h3><p>راجع تفاصيل طلبك واستعد لخطوتك الجاية.</p></div></div>
+  </div>
+  <div class="cta-c"><a class="btn btn-dark" href="#book">ابدأ من هنا</a></div>
+ </div>
+</section>
+ 
+<!-- FAQ -->
+<section class="sec white" id="faq" aria-labelledby="t-faq">
+ <div class="wrap">
+  <div class="head rv">
+   <span class="eyebrow">الأسئلة الشائعة</span>
+   <h2 id="t-faq">أسئلة بتدور في بالك</h2>
+  </div>
+  <div class="faq" id="faqList">
+   <div class="faq-item rv"><h3><button class="faq-q" type="button" id="q1" aria-expanded="false" aria-controls="a1"><span>إزاي أقدر أحجز تجربة قيادة؟</span><svg class="pm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12H19"/><path class="v" d="M12 5V19"/></svg></button></h3><div class="faq-a" id="a1" role="region" aria-labelledby="q1"><div><p>اختار العربية اللي تعجبك، وبعدها اكتب اسمك ورقم موبايلك وحدد اليوم المناسب في نموذج الحجز اللي في آخر الصفحة، وراجع بياناتك على الشاشة.</p></div></div></div>
+   <div class="faq-item rv"><h3><button class="faq-q" type="button" id="q2" aria-expanded="false" aria-controls="a2"><span>هل ممكن أقارن بين عربيتين؟</span><svg class="pm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12H19"/><path class="v" d="M12 5V19"/></svg></button></h3><div class="faq-a" id="a2" role="region" aria-labelledby="q2"><div><p>أكيد. اضغط على زر «قارن» في كارت أي عربيتين، وهتظهرلك جنب بعض في قسم المقارنة مع الفروق بينهم.</p></div></div></div>
+   <div class="faq-item rv"><h3><button class="faq-q" type="button" id="q3" aria-expanded="false" aria-controls="a3"><span>هل أقدر أعرف تفاصيل العربية قبل الزيارة؟</span><svg class="pm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12H19"/><path class="v" d="M12 5V19"/></svg></button></h3><div class="faq-a" id="a3" role="region" aria-labelledby="q3"><div><p>أيوه، كل عربية ليها نافذة تفاصيل فيها الفئة ونوع الوقود وناقل الحركة وعدد المقاعد، ونبذة بسيطة عنها.</p></div></div></div>
+   <div class="faq-item rv"><h3><button class="faq-q" type="button" id="q4" aria-expanded="false" aria-controls="a4"><span>هل المعرض بيوفر خدمة فحص قبل الشراء؟</span><svg class="pm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12H19"/><path class="v" d="M12 5V19"/></svg></button></h3><div class="faq-a" id="a4" role="region" aria-labelledby="q4"><div><p>فحص قبل الشراء من الخدمات اللي بنعرّفك بيها، وهدفها تساعدك تتعرف على حالة العربية وتفاصيلها قبل ما تاخد قرارك.</p></div></div></div>
+   <div class="faq-item rv"><h3><button class="faq-q" type="button" id="q5" aria-expanded="false" aria-controls="a5"><span>إيه المستندات المطلوبة لإجراءات التسجيل؟</span><svg class="pm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12H19"/><path class="v" d="M12 5V19"/></svg></button></h3><div class="faq-a" id="a5" role="region" aria-labelledby="q5"><div><p>المستندات بتختلف حسب نوع العربية وحالتك، وغالبًا بتشمل إثبات الشخصية وبيانات العربية. خدمة التسجيل والإجراءات بتساعدك تجهّز المطلوب خطوة بخطوة.</p></div></div></div>
+   <div class="faq-item rv"><h3><button class="faq-q" type="button" id="q6" aria-expanded="false" aria-controls="a6"><span>هل ممكن أختار يوم مناسب لتجربة القيادة؟</span><svg class="pm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12H19"/><path class="v" d="M12 5V19"/></svg></button></h3><div class="faq-a" id="a6" role="region" aria-labelledby="q6"><div><p>طبعًا، في نموذج الحجز بتحدد اليوم اللي يناسبك، ولازم يكون النهاردة أو أي يوم بعده.</p></div></div></div>
+  </div>
+ </div>
+</section>
+ 
+<!-- BOOKING -->
+<section class="sec dark" id="book" aria-labelledby="t-book">
+ <div class="wrap">
+  <div class="head rv">
+   <span class="eyebrow">الحجز</span>
+   <h2 id="t-book">احجز تجربة قيادتك</h2>
+   <p>اختار عربيتك، وحدد اليوم المناسب، وابدأ خطوتك الأولى مع مسار.</p>
+  </div>
+  <div class="book-grid">
+   <div>
+    <form class="form-card rv" id="bookForm" novalidate>
+     <div class="field" data-f="name"><label for="f-name">الاسم</label><input id="f-name" name="name" type="text" autocomplete="name" required placeholder="اسمك بالكامل" aria-describedby="e-name"><p class="err" id="e-name" role="alert"></p></div>
+     <div class="field" data-f="phone"><label for="f-phone">رقم الموبايل</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="01XXXXXXXXX" aria-describedby="e-phone"><p class="err" id="e-phone" role="alert"></p></div>
+     <div class="row">
+      <div class="field" data-f="car"><label for="f-car">السيارة</label><div class="sel"><select id="f-car" name="car" required aria-describedby="e-car"></select><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></div><p class="err" id="e-car" role="alert"></p></div>
+      <div class="field" data-f="date"><label for="f-date">اليوم المناسب</label><input id="f-date" name="date" type="date" required aria-describedby="e-date"><p class="err" id="e-date" role="alert"></p></div>
+     </div>
+     <button class="btn btn-gold" type="submit">عرض ملخص الطلب</button>
+    </form>
+    <div class="done" id="bookDone" hidden role="status">
+     <div class="tick"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></div>
+     <h3 id="doneTitle" tabindex="-1">تم تسجيل بيانات طلبك على الشاشة بنجاح.</h3>
+     <p>راجع التفاصيل التالية للتأكد من اختيارك.</p>
+     <dl class="sum">
+      <div><dt>الاسم</dt><dd id="s-name"></dd></div>
+      <div><dt>رقم الموبايل</dt><dd id="s-phone" dir="ltr"></dd></div>
+      <div><dt>السيارة</dt><dd id="s-car"></dd></div>
+      <div><dt>اليوم</dt><dd id="s-date"></dd></div>
+     </dl>
+     <div class="acts"><button class="btn btn-dark" type="button" data-act="edit-book">تعديل البيانات</button><button class="btn btn-line" type="button" data-act="close-book">إغلاق</button></div>
+    </div>
+   </div>
+   <aside class="prev rv" aria-label="معاينة العربية المختارة">
+    <div class="pstage" id="prevStage"></div>
+    <h3 id="prevName"></h3>
+    <p id="prevText"></p>
+    <svg class="roadline" viewBox="0 0 300 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26 C70 26 80 8 150 8 S240 26 300 26" fill="none" stroke="currentColor" stroke-width="1.500" stroke-dasharray="7 7" stroke-linecap="round" opacity=".7"/><circle cx="150" cy="8" r="3" fill="currentColor"/></svg>
+   </aside>
+  </div>
+ </div>
+</section>
+</main>
+ 
+<footer class="foot">
+ <div class="wrap">
+  <div class="foot-grid">
+   <div>
+    <a class="brand" href="#home" aria-label="مسار MASAR"><svg class="logo" aria-hidden="true"><use href="#logo"/></svg><span class="brand-t"><b>مسار</b><small>MASAR</small></span></a>
+    <p>مسار... اختيارك لعربية تناسب طريقك.</p>
+   </div>
+   <nav aria-label="روابط الفوتر"><ul>
+    <li><a href="#home">الرئيسية</a></li><li><a href="#cars">السيارات</a></li><li><a href="#services">خدماتنا</a></li><li><a href="#drive">تجربة القيادة</a></li><li><a href="#faq">الأسئلة الشائعة</a></li>
+   </ul></nav>
+   <button class="top" type="button" data-act="top"><svg class="ic" aria-hidden="true"><use href="#i-up"/></svg>لفوق</button>
+  </div>
+  <p class="copy">© MASAR — جميع الحقوق محفوظة</p>
+ </div>
+</footer>
+ 
+<!-- modal -->
+<div class="modal" id="modal" hidden>
+ <div class="bd" data-act="close-modal"></div>
+ <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mTitle" id="sheet">
+  <button class="m-close" type="button" data-act="close-modal" aria-label="إغلاق"><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button>
+  <div id="mContent"></div>
+ </div>
+</div>
+ 
+<a class="pill" id="cmpPill" href="#compare" hidden><svg class="ic" aria-hidden="true"><use href="#i-compare"/></svg><span id="pillText"></span></a>
+<div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+ 
+<script>
+(function(){
+'use strict';
+document.documentElement.classList.add('js');
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+var CATS={sedan:'سيدان',suv:'SUV',hatch:'هاتشباك',ev:'كهربائية'};
+var ico=function(n,c){return '<svg class="'+(c||'ic')+'" aria-hidden="true" focusable="false"><use href="#i-'+n+'"/></svg>'};
+var k=function(n){return +(+n).toFixed(2)};
+ 
+/* ---------- vehicle illustration engine ---------- */
+function wheel(cx,cy,r,st,u){
+  var ri=r*.7,f='fill="url(#rm'+u+')"',ln='stroke="url(#rm'+u+')" fill="none" stroke-linecap="round"',i,s;
+  s='<g transform="translate('+cx+' '+cy+')"><circle r="'+r+'" fill="#0a0f14"/><circle r="'+k(r*.9)+'" fill="none" stroke="#212c35" stroke-width="1.6"/><circle r="'+k(ri)+'" '+f+'/><circle r="'+k(ri*.86)+'" fill="#161e25"/>';
+  if(st==='five'){for(i=0;i<5;i++)s+='<path '+f+' transform="rotate('+i*72+')" d="M'+k(-ri*.13)+' '+k(-ri*.2)+' L'+k(-ri*.24)+' '+k(-ri*.86)+' L'+k(ri*.24)+' '+k(-ri*.86)+' L'+k(ri*.13)+' '+k(-ri*.2)+'Z"/>'}
+  else if(st==='split'){for(i=0;i<5;i++){[-9,9].forEach(function(a){s+='<path '+ln+' stroke-width="'+k(r*.07)+'" transform="rotate('+(i*72+a)+')" d="M0 '+k(-ri*.22)+' L0 '+k(-ri*.84)+'"/>'})}}
+  else if(st==='turbine'){for(i=0;i<8;i++)s+='<path '+ln+' stroke-width="'+k(r*.08)+'" transform="rotate('+i*45+')" d="M0 '+k(-ri*.2)+' Q'+k(ri*.4)+' '+k(-ri*.5)+' '+k(ri*.24)+' '+k(-ri*.86)+'"/>'}
+  else if(st==='multi'){for(i=0;i<12;i++)s+='<path '+ln+' stroke-width="'+k(r*.04)+'" transform="rotate('+i*30+')" d="M0 '+k(-ri*.2)+' L0 '+k(-ri*.86)+'"/>'}
+  else if(st==='blade'){for(i=0;i<6;i++)s+='<path '+f+' transform="rotate('+i*60+')" d="M0 '+k(-ri*.18)+' L'+k(ri*.34)+' '+k(-ri*.8)+' L'+k(-ri*.06)+' '+k(-ri*.86)+'Z"/>'}
+  else if(st==='disc'){s+='<circle r="'+k(ri*.86)+'" '+f+'/><circle r="'+k(ri*.62)+'" fill="none" stroke="#2b3640" stroke-width="1"/>';for(i=0;i<5;i++)s+='<circle transform="rotate('+i*72+')" cy="'+k(-ri*.4)+'" r="'+k(r*.05)+'" fill="#2b3640"/>'}
+  s+='<circle r="'+k(r*.15)+'" fill="#0d1318" stroke="#C7A978" stroke-width=".9"/></g>';
+  return s;
+}
+ 
+var CARS=[
+{id:'vela',name:'MASAR VELA',cat:'sedan',fuel:'بنزين',trans:'أوتوماتيك',seats:5,
+ desc:'سيدان أنيقة بخطوط انسيابية وكابينة مريحة، مناسبة للمشاوير اليومية وللسفر بنفس الراحة والثقة.',
+ col:['#f1f3f5','#b6bec5','#6c7883'],
+ d:{body:'M26 122 C26 110 32 106 46 103 L92 97 C112 80 150 66 192 65 L240 65 C268 66 292 82 308 96 L350 101 C368 104 376 112 376 122 L376 132 Q376 134 372 134 L30 134 Q26 134 26 132 Z',clip:134,
+ glass:['M120 95 C140 78 164 71 192 71 L236 71 C256 72 272 82 288 95 Z'],
+ seams:['M196 71 L196 131','M130 98 L130 131','M262 97 L262 131','M166 108 H182','M232 108 H248'],
+ lights:[['M352 104 L372 110 L372 115 L350 110 Z','#fff6dc'],['M27 108 L42 105 L42 111 L27 113 Z','#c9514f']],
+ extra:'<path d="M60 119 L340 118" stroke="#C7A978" stroke-width="1.4" fill="none" opacity=".8"/><path d="M290 96 L304 97 L301 102 L288 101 Z" fill="#6d7882"/>',
+ wheels:[[95,128,22,'split'],[308,128,22,'split']],sill:[60,345]}},
+{id:'torq',name:'MASAR TORQ',cat:'suv',fuel:'ديزل',trans:'أوتوماتيك',seats:7,
+ desc:'SUV بحضور قوي ومساحة واسعة للعيلة والمشاوير الطويلة، وتصميم بيدّيك إحساس بالثقة على أي طريق.',
+ col:['#ecdcb8','#c7a978','#7a6236'],
+ d:{body:'M26 122 L26 100 C26 92 32 88 44 86 L96 80 C112 58 140 46 176 45 L246 45 C270 45 288 60 304 80 L350 86 C366 89 376 97 376 110 L376 132 Q376 134 372 134 L30 134 Q26 134 26 132 Z',clip:134,
+ glass:['M118 78 C132 60 154 52 180 52 L244 52 C260 52 274 64 286 78 Z'],
+ seams:['M192 52 L192 78','M138 80 L138 132','M192 80 L192 132','M254 80 L254 132','M162 96 H178','M214 96 H230'],
+ lights:[['M354 92 L373 97 L373 104 L352 100 Z','#fff6dc'],['M27 92 L40 90 L40 98 L27 100 Z','#c9514f']],
+ extra:'<path d="M27 120 L375 120 L376 132 Q376 134 372 134 L30 134 Q26 134 26 132 Z" fill="#0e141a" opacity=".38"/><path d="M122 56 C142 44 160 41 182 41 L244 41" stroke="#1a2128" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M288 82 L302 83 L299 88 L286 87 Z" fill="#7a6236"/>',
+ wheels:[[100,125,25,'turbine'],[304,125,25,'turbine']],sill:[75,330]}},
+{id:'nova',name:'MASAR NOVA',cat:'ev',fuel:'كهرباء',trans:'أوتوماتيك',seats:5,
+ desc:'عربية كهربائية بتصميم مستقبلي هادي وانسيابي، تناسب اللي عايز تجربة قيادة عصرية وسلسة جوه المدينة.',
+ col:['#ffffff','#d3dae0','#8995a0'],
+ d:{body:'M24 122 C24 112 32 108 48 105 L108 98 C138 74 180 60 222 60 C262 60 296 84 316 98 L352 103 C368 106 376 113 376 122 L376 132 Q376 134 372 134 L28 134 Q24 134 24 132 Z',clip:134,
+ glass:['M122 96 C148 76 184 67 220 67 C250 67 276 84 296 97 Z'],
+ seams:['M200 67 L200 98','M148 100 L148 132','M236 100 L236 132','M176 110 H190'],
+ lights:[['M350 104 L374 110 L374 114 L350 108 Z','#ffffff'],['M25 108 L38 106 L38 111 L25 113 Z','#c9514f']],
+ extra:'<path d="M40 113 L346 107" stroke="#8fd3ff" stroke-width="1.6" fill="none" opacity=".9"/><path d="M60 121 L340 121" stroke="#C7A978" stroke-width="1.2" fill="none" opacity=".7"/>',
+ wheels:[[98,128,22,'disc'],[302,128,22,'disc']],sill:[60,340]}},
+{id:'pulse',name:'MASAR PULSE',cat:'hatch',fuel:'بنزين',trans:'يدوي',seats:5,
+ desc:'هاتشباك مدمجة وخفيفة الحركة، سهلة في الركنة وفي زحمة المدينة، وبشخصية رياضية واضحة.',
+ col:['#b0c5d8','#6f8ea8','#344b5e'],
+ d:{body:'M38 124 L38 100 L62 72 C70 60 84 52 104 51 L236 51 C260 51 276 64 288 78 L334 85 C350 88 360 96 360 108 L360 132 Q360 134 356 134 L42 134 Q38 134 38 132 Z',clip:134,
+ glass:['M72 76 C80 64 90 58 106 58 L236 58 C250 58 262 66 274 78 Z'],
+ seams:['M170 58 L170 78','M170 80 L170 132','M232 80 L232 132','M196 98 H210'],
+ lights:[['M338 93 L358 98 L358 105 L336 100 Z','#fff6dc'],['M39 97 L48 91 L52 97 L39 107 Z','#c9514f']],
+ extra:'<path d="M44 70 L84 62 L90 66 L50 76 Z" fill="#10161c"/><path d="M274 80 L288 81 L285 86 L272 85 Z" fill="#46627a"/><path d="M60 118 L340 117" stroke="#fff" stroke-opacity=".35" fill="none"/>',
+ wheels:[[110,128,22,'split'],[290,128,22,'split']],sill:[70,330]}},
+{id:'aero',name:'MASAR AERO',cat:'sedan',fuel:'هجين',trans:'أوتوماتيك',seats:4,
+ desc:'سيدان بخطوط منخفضة وحضور راقٍ، لأصحاب الذوق اللي بيدوّروا على شكل مميز وإحساس فخم.',
+ col:['#5a6876','#2f3a45','#141b21'],edge:'#aeb9c3',
+ d:{body:'M22 122 C22 114 30 110 46 107 L102 100 C132 82 172 70 214 69 C250 69 282 84 304 98 L356 102 C372 105 380 112 380 122 L380 132 Q380 134 376 134 L26 134 Q22 134 22 132 Z',clip:134,
+ glass:['M130 98 C154 82 184 75 214 75 C244 75 268 86 290 98 Z'],
+ seams:['M200 75 L200 99','M150 101 L150 132','M240 101 L240 132','M176 112 H190'],
+ lights:[['M356 105 L378 110 L378 114 L354 110 Z','#fff6dc'],['M24 111 L38 108 L38 113 L24 115 Z','#e0605d']],
+ extra:'<path d="M26 108 L20 97 L58 95 L60 100 Z" fill="#0f151b"/><path d="M44 121 L350 118" stroke="#C7A978" stroke-width="2" fill="none"/><path d="M318 115 H350 M318 119 H350 M318 123 H350" stroke="#0a0f14" stroke-width="1.6"/>',
+ wheels:[[92,128,22,'turbine'],[312,128,22,'turbine']],sill:[56,350]}},
+{id:'ridge',name:'MASAR RIDGE',cat:'suv',fuel:'ديزل',trans:'أوتوماتيك',seats:7,
+ desc:'SUV بهيكل قوي وتصميم مربع بيدّي إحساس بالصلابة، ومساحة مرنة تناسب الرحلات والعيلة الكبيرة.',
+ col:['#bccbc2','#7d948a','#40504a'],
+ d:{body:'M26 114 L26 90 C26 84 30 80 38 78 L92 72 L106 50 C109 45 114 43 122 43 L278 43 C286 43 292 46 296 52 L312 74 L352 80 C368 83 376 90 376 100 L376 128 Q376 130 372 130 L30 130 Q26 130 26 128 Z',clip:130,
+ glass:['M116 50 L276 50 L292 72 L108 72 Z'],
+ seams:['M150 50 L148 72','M200 50 L200 72','M252 50 L254 72','M150 74 L150 128','M214 74 L214 128','M262 74 L262 128','M176 90 H190'],
+ lights:[['M354 84 L374 88 L374 96 L352 92 Z','#fff6dc'],['M27 86 L36 85 L36 98 L27 98 Z','#c9514f']],
+ extra:'<path d="M27 108 L375 108 L376 128 Q376 130 372 130 L30 130 Q26 130 26 128 Z" fill="#0e141a" opacity=".4"/><path d="M118 40 L278 40 M132 43 V37 M264 43 V37" stroke="#C7A978" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="20" cy="92" r="13" fill="#10161c" stroke="#5a6a63" stroke-width="2"/><circle cx="20" cy="92" r="6" fill="#1b242b"/><path d="M292 74 L306 76 L303 81 L290 80 Z" fill="#40504a"/>',
+ wheels:[[98,123,27,'five'],[304,123,27,'five']],sill:[70,335]}},
+{id:'luma',name:'MASAR LUMA',cat:'ev',fuel:'كهرباء',trans:'أوتوماتيك',seats:5,
+ desc:'كهربائية بتصميم عصري وزجاج واسع بيدّي إحساس بالانفتاح، وتناسب الاستخدام اليومي بهدوء.',
+ col:['#e8f3fa','#a9c4d4','#5b7687'],
+ d:{body:'M28 122 C28 108 36 102 52 99 L104 94 C124 70 158 57 200 56 C246 56 282 72 304 94 L348 99 C366 102 376 110 376 122 L376 132 Q376 134 372 134 L32 134 Q28 134 28 132 Z',clip:134,
+ glass:['M112 92 C130 72 160 63 198 63 C238 63 270 76 290 92 Z'],
+ seams:['M198 63 L198 93','M168 96 L168 132','M236 96 L236 132','M186 108 H200'],
+ lights:[['M340 100 L376 108 L376 111 L338 104 Z','#d6ecff'],['M28 104 L48 100 L48 104 L28 108 Z','#d96a6a']],
+ extra:'<path d="M150 58 C172 52 228 52 252 60" stroke="#fff" stroke-opacity=".7" stroke-width="1.6" fill="none"/><path d="M50 121 L340 121" stroke="#C7A978" stroke-width="1.4" fill="none" opacity=".8"/>',
+ wheels:[[100,128,23,'blade'],[300,128,23,'blade']],sill:[60,340]}},
+{id:'shift',name:'MASAR SHIFT',cat:'hatch',fuel:'بنزين',trans:'يدوي',seats:4,
+ desc:'هاتشباك بروح رياضية وناقل حركة يدوي لمحبي القيادة التفاعلية، ومناسبة للمدينة والطرق المفتوحة.',
+ col:['#e1ae8c','#a06a48','#58341f'],
+ d:{body:'M40 124 L40 104 C40 96 44 92 52 90 L86 84 C96 64 112 55 132 54 L214 54 C240 54 258 64 272 78 L328 86 C346 90 358 98 358 112 L358 132 Q358 134 354 134 L44 134 Q40 134 40 132 Z',clip:134,
+ glass:['M86 82 C94 66 108 60 130 60 L214 60 C236 60 250 68 262 80 Z'],
+ seams:['M172 60 L172 80','M172 82 L172 132','M236 84 L236 132','M196 100 H210'],
+ lights:[['M336 95 L356 100 L356 107 L334 102 Z','#fff6dc'],['M41 99 L50 95 L52 101 L41 109 Z','#e0605d']],
+ extra:'<path d="M44 76 L100 66 L102 72 L48 82 Z" fill="#10161c"/><path d="M44 76 L100 66" stroke="#C7A978" stroke-width="1.6"/><path d="M44 106 L340 101" stroke="#C7A978" stroke-width="3" fill="none" opacity=".9"/><path d="M262 82 L276 84 L272 89 L260 87 Z" fill="#58341f"/>',
+ wheels:[[108,128,22,'multi'],[290,128,22,'multi']],sill:[70,330]}}
+];
+var byId=function(id){for(var i=0;i<CARS.length;i++)if(CARS[i].id===id)return CARS[i];return null};
+ 
+function carArt(c,u){
+  var d=c.d,col=c.col,edge=c.edge||'rgba(255,255,255,.4)',s;
+  s='<svg viewBox="0 0 400 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="رسم توضيحي لسيارة '+c.name+'" preserveAspectRatio="xMidYMid meet"><defs>'+
+  '<linearGradient id="b'+u+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+col[0]+'"/><stop offset=".5" stop-color="'+col[1]+'"/><stop offset="1" stop-color="'+col[2]+'"/></linearGradient>'+
+  '<linearGradient id="sh'+u+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset=".42" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>'+
+  '<linearGradient id="g'+u+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b9cddc"/><stop offset=".45" stop-color="#2d3d4a"/><stop offset="1" stop-color="#0f161c"/></linearGradient>'+
+  '<linearGradient id="rm'+u+'" gradientUnits="userSpaceOnUse" x1="-18" y1="-18" x2="18" y2="18"><stop offset="0" stop-color="#f5f7f8"/><stop offset=".5" stop-color="#b3bcc4"/><stop offset="1" stop-color="#6a7681"/></linearGradient>'+
+  '<radialGradient id="gs'+u+'" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".7"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>'+
+  '<clipPath id="cl'+u+'"><rect x="0" y="0" width="400" height="'+d.clip+'"/></clipPath></defs>'+
+  '<ellipse cx="200" cy="151" rx="180" ry="8" fill="url(#gs'+u+')"/>'+
+  '<g transform="translate(400 0) scale(-1 1)">'+
+  '<path d="'+d.body+'" fill="url(#b'+u+')"/><path d="'+d.body+'" fill="url(#sh'+u+')"/>'+
+  (d.extra||'');
+  d.glass.forEach(function(g){s+='<path d="'+g+'" fill="url(#g'+u+')"/><path d="'+g+'" fill="none" stroke="#dfe5ea" stroke-opacity=".6" stroke-width="1.2"/>'});
+  s+='<path d="'+d.seams.join(' ')+'" fill="none" stroke="#0b1015" stroke-opacity=".42" stroke-width="1" stroke-linecap="round"/>';
+  s+='<path d="M'+d.sill[0]+' '+(d.clip-1)+' L'+d.sill[1]+' '+(d.clip-1)+'" stroke="#0a0f14" stroke-width="3" opacity=".5"/>';
+  d.lights.forEach(function(l){s+='<path d="'+l[0]+'" fill="'+l[1]+'"/>'});
+  s+='<g clip-path="url(#cl'+u+')">';
+  d.wheels.forEach(function(w){s+='<circle cx="'+w[0]+'" cy="'+w[1]+'" r="'+(w[2]+6)+'" fill="#0a0f14"/>'});
+  s+='</g>';
+  d.wheels.forEach(function(w){s+=wheel(w[0],w[1],w[2],w[3],u)});
+  s+='<path d="'+d.body+'" fill="none" stroke="'+edge+'" stroke-width=".8"/></g></svg>';
+  return s;
+}
+ 
+/* ---------- state ---------- */
+var state={cat:'all',seats:'all',finderOn:false,favs:[],cmp:[]};
+var lastFocus=null,modalOpen=false;
+var els={};
+ 
+function filtered(){return CARS.filter(function(c){return (state.cat==='all'||c.cat===state.cat)&&(state.seats==='all'||String(c.seats)===String(state.seats))})}
+function filtersActive(){return state.cat!=='all'||state.seats!=='all'}
+ 
+function toast(msg,type){
+  var t=document.createElement('div');t.className='toast'+(type==='warn'?' warn':'');
+  t.innerHTML=ico(type==='warn'?'info':'check')+'<span></span>';t.lastChild.textContent=msg;
+  els.toasts.appendChild(t);
+  while(els.toasts.children.length>3)els.toasts.removeChild(els.toasts.firstChild);
+  setTimeout(function(){t.classList.add('out');setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t)},reduce.matches?0:320)},2600);
+}
+ 
+/* ---------- cards ---------- */
+function cardHTML(c,pre,i){
+  var fav=state.favs.indexOf(c.id)>-1,cmp=state.cmp.indexOf(c.id)>-1;
+  return '<article class="card" data-id="'+c.id+'" style="--i:'+i+'">'+
+  '<div class="stage">'+carArt(c,pre+c.id)+'<span class="badge">'+CATS[c.cat]+'</span>'+
+  '<button class="fav'+(fav?' on':'')+'" type="button" data-act="fav" data-id="'+c.id+'" aria-pressed="'+fav+'" aria-label="المفضلة: '+c.name+'">'+ico('heart')+'</button></div>'+
+  '<div class="cbody"><h3><bdi>'+c.name+'</bdi></h3>'+
+  '<div class="specs"><div><small>الوقود</small><strong>'+c.fuel+'</strong></div><div><small>ناقل الحركة</small><strong>'+c.trans+'</strong></div><div><small>المقاعد</small><strong>'+c.seats+' مقاعد</strong></div></div>'+
+  '<div class="acts"><button class="btn btn-line'+(cmp?' on':'')+'" type="button" data-act="cmp" data-id="'+c.id+'" aria-pressed="'+cmp+'">'+ico('compare')+'<span>'+(cmp?'في المقارنة':'قارن')+'</span></button>'+
+  '<button class="btn btn-dark" type="button" data-act="details" data-id="'+c.id+'">التفاصيل '+ico('arrow')+'</button></div></div></article>';
+}
+function emptyHTML(){
+  return '<div class="empty"><svg viewBox="0 0 24 24" class="ic" aria-hidden="true" style="width:64px;height:64px"><use href="#i-search"/></svg><h3>مفيش عربيات مطابقة للاختيارات دي</h3><p>جرّب تغيّر الفئة أو عدد المقاعد.</p><button class="btn btn-dark" type="button" data-act="reset-all">إعادة ضبط الفلاتر</button></div>';
+}
+function renderInventory(){
+  var list=filtered();
+  els.grid.innerHTML=list.length?list.map(function(c,i){return cardHTML(c,'g',i)}).join(''):emptyHTML();
+  els.status.textContent='عرض '+list.length+' من '+CARS.length+' عربيات';
+  els.invReset.hidden=!filtersActive();
+  $$('.chip').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-cat')===state.cat))});
+}
+function renderFinder(){
+  els.fcat.value=state.cat;els.fseats.value=state.seats;
+  if(!state.finderOn){
+    els.finderOut.innerHTML='<div class="hint">'+ico('search').replace('class="ic"','class="ic" style="width:34px;height:34px"')+'<p>اختار الفئة وعدد المقاعد، وبعدين اضغط «اعرض العربيات المناسبة» وهتظهر النتائج هنا.</p></div>';
+    return;
+  }
+  var list=filtered();
+  els.finderOut.innerHTML='<div class="res-meta"><span>لقينا '+list.length+(list.length===1?' عربية':' عربيات')+' مناسبة</span><button class="link-btn" type="button" data-act="reset-all">إعادة ضبط الفلاتر</button></div>'+
+  '<div class="grid">'+(list.length?list.map(function(c,i){return cardHTML(c,'f',i)}).join(''):emptyHTML())+'</div>';
+}
+function syncButtons(){
+  $$('[data-act="fav"]').forEach(function(b){var on=state.favs.indexOf(b.getAttribute('data-id'))>-1;b.classList.toggle('on',on);b.setAttribute('aria-pressed',String(on));if(b.classList.contains('btn')){b.classList.toggle('on',on)}});
+  $$('[data-act="cmp"]').forEach(function(b){var on=state.cmp.indexOf(b.getAttribute('data-id'))>-1;b.classList.toggle('on',on);b.setAttribute('aria-pressed',String(on));var sp=b.querySelector('span');if(sp)sp.textContent=on?'في المقارنة':'قارن'});
+  renderFavBar();renderPill();
+}
+function renderFavBar(){
+  if(!state.favs.length){els.favBar.hidden=true;els.favBar.innerHTML='';return}
+  els.favBar.hidden=false;
+  els.favBar.innerHTML='<b>'+ico('heart')+'مفضلتك</b>'+state.favs.map(function(id){var c=byId(id);return '<span class="fchip"><bdi>'+c.name+'</bdi><button type="button" data-act="fav" data-id="'+id+'" aria-label="شيل '+c.name+' من المفضلة">'+ico('close')+'</button></span>'}).join('');
+}
+function renderPill(){
+  var n=state.cmp.length;
+  if(!n){els.pill.hidden=true;return}
+  els.pill.hidden=false;els.pillText.textContent='المقارنة ('+n+'/2)';
+}
+ 
+/* ---------- compare ---------- */
+function renderCompare(){
+  var n=state.cmp.length,out=els.cmp;
+  if(!n){
+    out.innerHTML='<div class="cmp-empty">'+ico('compare').replace('class="ic"','class="ic" style="width:56px;height:56px"')+'<h3>لسه ما اخترتش عربيات للمقارنة</h3><p>اضغط على «قارن» في كارت أي عربية، وتقدر تختار عربيتين.</p><button class="btn btn-gold" type="button" data-act="goto" data-target="inventory">تصفح السيارات</button></div>';
+    return;
+  }
+  var a=byId(state.cmp[0]),b=state.cmp[1]?byId(state.cmp[1]):null,h='';
+  if(!b)h+='<p class="cmp-hint">اخترت عربية واحدة. ضيف عربية تانية عشان تبدأ المقارنة.</p>';
+  var rows=[['الفئة',function(c){return CATS[c.cat]}],['الوقود',function(c){return c.fuel}],['ناقل الحركة',function(c){return c.trans}],['المقاعد',function(c){return c.seats+' مقاعد'}]];
+  h+='<div class="cmp-grid">';
+  [a,b].forEach(function(c,i){
+    h+=c?'<div class="cc art">'+carArt(c,'c'+i+c.id)+'</div>':'<div class="cc slot">'+ico('car').replace('class="ic"','class="ic" style="width:36px;height:36px"')+'<span>اختار عربية تانية</span><button class="btn btn-line" type="button" data-act="goto" data-target="inventory" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.3)">تصفح</button></div>';
+  });
+  [a,b].forEach(function(c){h+='<div class="cc">'+(c?'<h3><bdi>'+c.name+'</bdi></h3>':'<span class="k">—</span>')+'</div>'});
+  rows.forEach(function(r){
+    var va=r[1](a),vb=b?r[1](b):null,diff=b&&va!==vb;
+    h+='<div class="cc'+(diff?' diff':'')+'"><span class="k">'+r[0]+'</span><strong>'+va+'</strong></div>';
+    h+=b?'<div class="cc'+(diff?' diff':'')+'"><span class="k">'+r[0]+'</span><strong>'+vb+'</strong></div>':'<div class="cc"><span class="k">'+r[0]+'</span><strong>—</strong></div>';
+  });
+  [a,b].forEach(function(c){h+='<div class="cc">'+(c?'<button class="btn btn-ghost" type="button" data-act="cmp-remove" data-id="'+c.id+'">'+ico('close')+'شيل</button>':'')+'</div>'});
+  h+='</div><div class="cmp-tools"><button class="btn btn-ghost" type="button" data-act="cmp-clear">مسح المقارنة</button><button class="btn btn-ghost" type="button" data-act="cmp-reset">إعادة اختيار العربيات</button></div>';
+  out.innerHTML=h;
+}
+function toggleFav(id){
+  var c=byId(id);if(!c)return;var i=state.favs.indexOf(id);
+  if(i>-1){state.favs.splice(i,1);toast('اتشالت '+c.name+' من المفضلة')}else{state.favs.push(id);toast('اتضافت '+c.name+' للمفضلة')}
+  syncButtons();
+}
+function toggleCmp(id){
+  var c=byId(id);if(!c)return;var i=state.cmp.indexOf(id);
+  if(i>-1){state.cmp.splice(i,1);toast('اتشالت '+c.name+' من المقارنة')}
+  else{
+    if(state.cmp.length>=2){toast('تقدر تقارن بين عربيتين بس. شيل واحدة الأول وبعدين اختار التانية.','warn');return}
+    state.cmp.push(id);toast(state.cmp.length===2?'تمام! العربيتين جاهزين للمقارنة.':'اتضافت '+c.name+' للمقارنة. اختار عربية تانية.');
+  }
+  syncButtons();renderCompare();
+}
+ 
+/* ---------- filters ---------- */
+function setCat(cat){state.cat=cat;renderInventory();renderFinder();syncButtons()}
+function resetAll(){state.cat='all';state.seats='all';state.finderOn=false;renderInventory();renderFinder();syncButtons()}
+ 
+/* ---------- scrolling ---------- */
+function scrollToId(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:reduce.matches?'auto':'smooth',block:'start'})}
+ 
+/* ---------- modal ---------- */
+function openModal(id,opener){
+  var c=byId(id);if(!c)return;
+  lastFocus=opener||document.activeElement;
+  var fav=state.favs.indexOf(id)>-1,cmp=state.cmp.indexOf(id)>-1;
+  els.mContent.innerHTML='<div class="m-stage">'+carArt(c,'m'+c.id)+'</div><div class="m-body">'+
+  '<div><h3 id="mTitle" style="display:inline"><bdi>'+c.name+'</bdi></h3><span class="badge">'+CATS[c.cat]+'</span></div>'+
+  '<div class="m-specs"><div><small>الفئة</small><strong>'+CATS[c.cat]+'</strong></div><div><small>الوقود</small><strong>'+c.fuel+'</strong></div><div><small>ناقل الحركة</small><strong>'+c.trans+'</strong></div><div style="grid-column:1/-1"><small>عدد المقاعد</small><strong>'+c.seats+' مقاعد</strong></div></div>'+
+  '<p>'+c.desc+'</p>'+
+  '<div class="m-acts"><button class="btn btn-gold" type="button" data-act="book" data-id="'+id+'">احجز تجربة قيادة</button>'+
+  '<div class="m-mini"><button class="btn btn-line'+(fav?' on':'')+'" type="button" data-act="fav" data-id="'+id+'" aria-pressed="'+fav+'">'+ico('heart','ic h')+'<span>المفضلة</span></button>'+
+  '<button class="btn btn-line'+(cmp?' on':'')+'" type="button" data-act="cmp" data-id="'+id+'" aria-pressed="'+cmp+'">'+ico('compare')+'<span>'+(cmp?'في المقارنة':'قارن')+'</span></button></div></div></div>';
+  els.modal.hidden=false;modalOpen=true;
+  document.documentElement.classList.add('lock');
+  requestAnimationFrame(function(){requestAnimationFrame(function(){els.modal.classList.add('open')})});
+  var cb=$('.m-close',els.modal);if(cb)cb.focus({preventScroll:true});
+}
+function closeModal(){
+  if(!modalOpen)return;modalOpen=false;
+  els.modal.classList.remove('open');document.documentElement.classList.remove('lock');
+  var done=function(){if(!modalOpen){els.modal.hidden=true;els.mContent.innerHTML=''}if(lastFocus&&lastFocus.focus&&document.contains(lastFocus))lastFocus.focus({preventScroll:true})};
+  if(reduce.matches)done();else setTimeout(done,300);
+}
+function trapTab(e){
+  if(!modalOpen||e.key!=='Tab')return;
+  var f=$$('button,[href],input,select,[tabindex]:not([tabindex="-1"])',els.sheet).filter(function(x){return !x.disabled&&x.offsetParent!==null});
+  if(!f.length)return;
+  var first=f[0],last=f[f.length-1];
+  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+}
+ 
+/* ---------- booking form ---------- */
+var F={};
+var PHONE=/^(?:(?:\+|00)?20|0)1[0125]\d{8}$/;
+function normPhone(v){return v.replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d)}).replace(/[۰-۹]/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)}).replace(/[\s\-().]/g,'')}
+function todayStr(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+var rules={
+  name:function(v){v=v.trim();if(!v)return 'اكتب اسمك من فضلك.';if(v.length<2||!/[A-Za-z\u0600-\u06FF]/.test(v))return 'اكتب اسمك بشكل صحيح.';return ''},
+  phone:function(v){if(!v.trim())return 'اكتب رقم الموبايل.';return PHONE.test(normPhone(v))?'':'رقم الموبايل مش صحيح. مثال: 01XXXXXXXXX'},
+  car:function(v){return v?'':'اختار العربية اللي عايز تجربها.'},
+  date:function(v){if(!v)return 'اختار اليوم المناسب.';if(v<todayStr())return 'اليوم لازم يكون النهاردة أو بعده.';return ''}
+};
+var touched={};
+function validate(name,show){
+  var msg=rules[name](F[name].value),box=F[name].closest('.field'),err=$('#e-'+name);
+  if(show){
+    box.classList.toggle('invalid',!!msg);box.classList.toggle('valid',!msg);
+    err.textContent=msg;F[name].setAttribute('aria-invalid',msg?'true':'false');
+  }
+  return msg;
+}
+function updatePreview(){
+  var c=byId(F.car.value);
+  if(c){els.prevStage.innerHTML=carArt(c,'p'+c.id);els.prevName.innerHTML='<bdi>'+c.name+'</bdi>';els.prevText.textContent=CATS[c.cat]+' · '+c.fuel+' · '+c.trans+' · '+c.seats+' مقاعد'}
+  else{els.prevStage.innerHTML='<svg class="logo big" aria-hidden="true"><use href="#logo"/></svg>';els.prevName.textContent='عربيتك هنا';els.prevText.textContent='اختار عربية من القايمة وهتظهر لك هنا.'}
+}
+function selectCar(id){F.car.value=id;touched.car=true;validate('car',true);updatePreview()}
+function fmtDate(v){
+  try{var d=new Date(v+'T00:00:00');var s=d.toLocaleDateString('ar-EG',{weekday:'long',year:'numeric',month:'long',day:'numeric'});return s&&s!=='Invalid Date'?s:v}catch(e){return v}
+}
+function onSubmit(e){
+  e.preventDefault();
+  var first=null;
+  ['name','phone','car','date'].forEach(function(n){touched[n]=true;if(validate(n,true)&&!first)first=F[n]});
+  if(first){first.focus();return}
+  $('#s-name').textContent=F.name.value.trim();
+  $('#s-phone').textContent=F.phone.value.trim();
+  $('#s-car').textContent=byId(F.car.value).name;
+  $('#s-date').textContent=fmtDate(F.date.value);
+  els.form.hidden=true;els.done.hidden=false;
+  var t=$('#doneTitle');t.focus({preventScroll:true});
+  els.done.scrollIntoView({behavior:reduce.matches?'auto':'smooth',block:'center'});
+}
+function clearForm(){
+  els.form.reset();touched={};
+  $$('.field',els.form).forEach(function(f){f.classList.remove('invalid','valid')});
+  $$('.err',els.form).forEach(function(p){p.textContent=''});
+  ['name','phone','car','date'].forEach(function(n){F[n].removeAttribute('aria-invalid')});
+  updatePreview();
+}
+ 
+/* ---------- nav / header ---------- */
+function initHeader(){
+  var hdr=$('#hdr'),burger=$('#burger');
+  function setOpen(o){hdr.classList.toggle('open',o);burger.setAttribute('aria-expanded',String(o));burger.setAttribute('aria-label',o?'إغلاق القائمة':'فتح القائمة')}
+  burger.addEventListener('click',function(){setOpen(!hdr.classList.contains('open'))});
+  $$('#nav a').forEach(function(a){a.addEventListener('click',function(){setOpen(false)})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&hdr.classList.contains('open')){setOpen(false);burger.focus()}});
+  window.addEventListener('resize',function(){if(window.innerWidth>=980)setOpen(false)});
+  var map=[['home','home'],['cars','cars'],['inventory','cars'],['compare','cars'],['finder','cars'],['services','services'],['drive','drive'],['book','drive'],['faq','faq']];
+  var ticking=false;
+  function onScroll(){
+    hdr.classList.toggle('scrolled',window.scrollY>24);
+    var cur='home',y=window.scrollY+(parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hh'))||72)+60;
+    map.forEach(function(m){var el=document.getElementById(m[0]);if(el&&el.offsetTop<=y)cur=m[1]});
+    if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4)cur='drive';
+    $$('[data-nav]').forEach(function(a){var on=a.getAttribute('data-nav')===cur;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
+  onScroll();
+}
+ 
+function initFaq(){
+  var items=$$('.faq-item');
+  items.forEach(function(it){
+    var q=$('.faq-q',it);
+    q.addEventListener('click',function(){
+      var open=it.classList.contains('open');
+      items.forEach(function(o){o.classList.remove('open');$('.faq-q',o).setAttribute('aria-expanded','false')});
+      if(!open){it.classList.add('open');q.setAttribute('aria-expanded','true')}
+    });
+    q.addEventListener('keydown',function(e){
+      var qs=items.map(function(o){return $('.faq-q',o)}),i=qs.indexOf(q),n=null;
+      if(e.key==='ArrowDown')n=qs[(i+1)%qs.length];else if(e.key==='ArrowUp')n=qs[(i-1+qs.length)%qs.length];else if(e.key==='Home')n=qs[0];else if(e.key==='End')n=qs[qs.length-1];
+      if(n){e.preventDefault();n.focus()}
+    });
+  });
+}
+ 
+function initReveal(){
+  var list=$$('.rv');
+  var showAll=function(){list.forEach(function(e){e.classList.add('in')})};
+  if(!('IntersectionObserver' in window)){showAll();return}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+  list.forEach(function(e,i){e.style.transitionDelay=(i%4)*60+'ms';io.observe(e)});
+  setTimeout(showAll,4000);
+}
+ 
+/* ---------- events ---------- */
+function onClick(e){
+  var t=e.target.closest('[data-act]');if(!t)return;
+  var act=t.getAttribute('data-act'),id=t.getAttribute('data-id');
+  switch(act){
+    case 'fav':toggleFav(id);break;
+    case 'cmp':toggleCmp(id);break;
+    case 'details':openModal(id,t);break;
+    case 'close-modal':closeModal();break;
+    case 'book':selectCar(id);closeModal();setTimeout(function(){scrollToId('book');setTimeout(function(){F.date.focus({preventScroll:true})},reduce.matches?0:750)},reduce.matches?0:60);break;
+    case 'cat':setCat(t.getAttribute('data-cat'));break;
+    case 'reset-all':resetAll();break;
+    case 'cmp-remove':toggleCmp(id);break;
+    case 'cmp-clear':state.cmp=[];syncButtons();renderCompare();toast('اتمسحت المقارنة');break;
+    case 'cmp-reset':state.cmp=[];syncButtons();renderCompare();scrollToId('inventory');toast('اختار عربيتين من جديد');break;
+    case 'goto':scrollToId(t.getAttribute('data-target'));break;
+    case 'edit-book':els.done.hidden=true;els.form.hidden=false;F.name.focus();break;
+    case 'close-book':els.done.hidden=true;els.form.hidden=false;clearForm();break;
+    case 'top':window.scrollTo({top:0,behavior:reduce.matches?'auto':'smooth'});break;
+  }
+}
+ 
+function init(){
+  els={grid:$('#carGrid'),status:$('#invStatus'),invReset:$('#invReset'),favBar:$('#favBar'),cmp:$('#cmpOut'),finderOut:$('#finderOut'),
+    fcat:$('#fx-cat'),fseats:$('#fx-seats'),toasts:$('#toasts'),modal:$('#modal'),sheet:$('#sheet'),mContent:$('#mContent'),
+    pill:$('#cmpPill'),pillText:$('#pillText'),form:$('#bookForm'),done:$('#bookDone'),prevStage:$('#prevStage'),prevName:$('#prevName'),prevText:$('#prevText')};
+  F={name:$('#f-name'),phone:$('#f-phone'),car:$('#f-car'),date:$('#f-date')};
+  F.car.innerHTML='<option value="">اختار العربية</option>'+CARS.map(function(c){return '<option value="'+c.id+'">'+c.name+' — '+CATS[c.cat]+'</option>'}).join('');
+  F.date.min=todayStr();
+ 
+  renderInventory();renderFinder();renderCompare();renderFavBar();renderPill();updatePreview();
+ 
+  document.addEventListener('click',onClick);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();trapTab(e)});
+  $('#finderForm').addEventListener('submit',function(e){e.preventDefault();state.cat=els.fcat.value;state.seats=els.fseats.value;state.finderOn=true;renderInventory();renderFinder();syncButtons()});
+  els.form.addEventListener('submit',onSubmit);
+  ['name','phone','car','date'].forEach(function(n){
+    F[n].addEventListener('blur',function(){touched[n]=true;validate(n,true)});
+    F[n].addEventListener(n==='car'||n==='date'?'change':'input',function(){if(touched[n])validate(n,true);if(n==='car')updatePreview()});
+  });
+  initHeader();initFaq();initReveal();
+}
+ 
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+</body>
+</html>
+ 
