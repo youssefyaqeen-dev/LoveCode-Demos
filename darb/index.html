@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دَرب — Darb | أكاديمية تعلّم أونلاين</title>
+<meta name="description" content="دَرب: مساحة للتعلّم والاستكشاف. اختار مجالك، حدد بدايتك، وامشي في طريقك خطوة بخطوة.">
+<meta name="theme-color" content="#F7F2E8">
+<style>
+:root{--ink:#24251F;--ink2:#3B3C33;--ivory:#F7F2E8;--terra:#C86F4A;--terra-d:#B5593A;--apricot:#E9B68E;--sage:#A8B69B;--lav:#B9A8C9;--must:#D8B65F;--sand:#E9E0D2;--muted:#5D5C52;--hh:68px;--r:24px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Segoe UI","Tahoma","Noto Naskh Arabic","Noto Sans Arabic","Arial",sans-serif;background:var(--ivory);color:var(--ink);line-height:1.85;font-size:17px;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body.lock{overflow:hidden}
+img,svg{display:block;max-width:100%}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit}
+ul,ol{list-style:none}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{width:100%;max-width:1200px;margin-inline:auto;padding-inline:20px}
+section{scroll-margin-top:var(--hh)}
+.sec{padding-block:clamp(56px,9vw,112px)}
+.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--terra-d);font-family:"Segoe UI",Arial,sans-serif;direction:ltr}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--terra)}
+.h2{font-size:clamp(1.9rem,5.6vw,3.3rem);line-height:1.3;font-weight:800;margin-block:10px 12px;letter-spacing:-.01em}
+.lead{font-size:1.08rem;color:var(--muted);max-width:34em}
+.shead{margin-bottom:clamp(28px,5vw,52px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:50px;padding:0 26px;border-radius:999px;border:2px solid var(--ink);background:transparent;font-weight:800;text-decoration:none;transition:transform .25s,background .25s,color .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(36,37,31,.15)}
+.btn:active{transform:translateY(0)}
+.btn-primary{background:var(--terra-d);border-color:var(--terra-d);color:#fff}
+.btn-primary:hover{background:var(--ink);border-color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--ivory)}
+.btn-sm{min-height:44px;padding:0 20px;font-size:.95rem}
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease;transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+ 
+/* header */
+.hdr{position:sticky;top:0;z-index:50;height:var(--hh);background:rgba(247,242,232,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+.hdr.sc{border-color:rgba(36,37,31,.14);background:rgba(247,242,232,.95)}
+.hdr .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:42px;height:42px}
+.brand b{display:block;font-size:1.55rem;line-height:1;font-weight:800}
+.brand small{display:block;font-size:.62rem;letter-spacing:.34em;font-weight:800;color:var(--terra-d);font-family:Arial,sans-serif;direction:ltr;text-align:start;margin-top:3px}
+.nav{position:absolute;top:100%;inset-inline:0;background:var(--ivory);border-bottom:2px solid var(--ink);padding:10px 20px 20px;display:grid;gap:2px;visibility:hidden;opacity:0;transform:translateY(-10px);transition:.25s}
+.nav.open{visibility:visible;opacity:1;transform:none}
+.nav a{display:block;padding:12px 6px;font-weight:700;text-decoration:none;border-bottom:1px dashed rgba(36,37,31,.2);position:relative}
+.nav a.act{color:var(--terra-d)}
+.hdr-r{display:flex;align-items:center;gap:8px}
+.burger{width:46px;height:46px;border-radius:50%;border:2px solid var(--ink);background:transparent;display:grid;place-items:center}
+.burger span,.burger span::before,.burger span::after{display:block;width:18px;height:2.5px;background:var(--ink);border-radius:2px;transition:.25s;position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;inset-inline-start:0}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.burger[aria-expanded=true] span{background:transparent}
+.burger[aria-expanded=true] span::before{top:0;transform:rotate(45deg)}
+.burger[aria-expanded=true] span::after{top:0;transform:rotate(-45deg)}
+.hdr .btn{min-height:44px;padding:0 16px;font-size:.92rem}
+@media(min-width:960px){
+ .burger{display:none}
+ .nav{position:static;visibility:visible;opacity:1;transform:none;background:none;border:0;padding:0;display:flex;gap:6px}
+ .nav a{border:0;padding:8px 14px;border-radius:999px;transition:background .25s}
+ .nav a:hover{background:var(--sand)}
+ .nav a.act{background:var(--ink);color:var(--ivory)}
+ .hdr .btn{padding:0 24px;font-size:1rem}
+}
+ 
+/* hero */
+.hero{padding-block:clamp(28px,6vw,72px) clamp(40px,7vw,90px);position:relative}
+.hero-g{display:grid;gap:28px;align-items:center}
+.hero h1{font-size:clamp(2.7rem,11.5vw,5.6rem);line-height:1.18;font-weight:800;letter-spacing:-.02em;margin-block:14px 18px}
+.hl{background:linear-gradient(transparent 64%,rgba(233,182,142,.9) 64%);padding-inline:4px;color:var(--ink)}
+.hero p.lead{font-size:1.15rem;margin-bottom:28px}
+.hero-act{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px}
+.tlink{font-weight:800;text-decoration:none;border-bottom:3px solid var(--terra);padding-bottom:2px;display:inline-flex;gap:8px;align-items:center;transition:gap .25s}
+.tlink:hover{gap:14px}
+.hero-art{width:100%;max-width:600px;margin-inline:auto}
+.hero-art svg{width:100%;height:auto;overflow:visible}
+.hero-note{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.hero-note span{font-size:.85rem;font-weight:700;background:var(--sand);padding:4px 14px;border-radius:999px}
+@media(min-width:960px){.hero-g{grid-template-columns:1fr 1.1fr;gap:40px}}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes pop{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:scale(1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.route{stroke-dasharray:1;stroke-dashoffset:0;animation:draw 5s .4s cubic-bezier(.45,.05,.3,1) both}
+.pop{transform-box:fill-box;transform-origin:center;animation:pop .7s var(--d) cubic-bezier(.2,1.5,.4,1) both}
+.fadeu{animation:fadeUp .9s var(--d) ease both}
+.flt{animation:float 6s ease-in-out infinite;animation-delay:var(--fd,0s)}
+.spinr{transform-box:fill-box;transform-origin:center;animation:spin 40s linear infinite}
+ 
+/* cats */
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cat{display:flex;flex-direction:column;align-items:flex-start;gap:12px;text-align:start;padding:16px;border-radius:20px;border:2px solid var(--ink);background:var(--bg,#fff);font-weight:800;position:relative;transition:transform .25s,box-shadow .25s,background .25s}
+.cat:hover{transform:translateY(-4px);box-shadow:0 8px 0 rgba(36,37,31,.14)}
+.cat .ci{width:54px;height:54px;border-radius:16px;background:var(--ivory);display:grid;place-items:center;border:2px solid var(--ink);transition:transform .35s}
+.cat:hover .ci{transform:rotate(-8deg) scale(1.08)}
+.cat .ci .ic{width:30px;height:30px}
+.cat[aria-pressed=true]{background:var(--ink);color:var(--ivory);box-shadow:0 8px 0 var(--terra)}
+.cat[aria-pressed=true] .ci{background:var(--bg,#fff);color:var(--ink)}
+.cat[aria-pressed=true]::after{content:"✓";position:absolute;top:12px;inset-inline-end:14px;font-size:1rem;width:26px;height:26px;border-radius:50%;background:var(--terra);display:grid;place-items:center;color:#fff}
+.cat.all{grid-column:1/-1;flex-direction:row;align-items:center;--bg:var(--sand)}
+.c-code{--bg:var(--sage)}.c-design{--bg:var(--lav)}.c-lang{--bg:var(--apricot)}.c-mkt{--bg:var(--must)}
+@media(min-width:760px){.cats{grid-template-columns:repeat(5,1fr)}.cat.all{grid-column:auto;flex-direction:column;align-items:flex-start}}
+ 
+.chead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;margin-block:clamp(48px,8vw,84px) 28px}
+.favtog{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;border-radius:999px;border:2px solid var(--ink);background:#fff;font-weight:800;transition:.25s}
+.favtog .n{min-width:26px;height:26px;border-radius:13px;background:var(--sand);display:grid;place-items:center;font-size:.85rem;padding-inline:6px}
+.favtog[aria-pressed=true]{background:var(--terra-d);border-color:var(--terra-d);color:#fff}
+.favtog[aria-pressed=true] .n{background:#fff;color:var(--terra-d)}
+.favtog[aria-pressed=true] .ic{fill:#fff}
+.status{font-size:.95rem;color:var(--muted);margin-bottom:18px;font-weight:700}
+.grid{display:grid;gap:22px;grid-template-columns:1fr}
+@media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1280px){.grid{grid-template-columns:repeat(4,1fr);gap:24px}}
+.card{background:#fff;border:2px solid var(--ink);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+.js .card{animation:fadeUp .6s calc(var(--i)*.06s) ease both}
+.card:hover{transform:translateY(-6px);box-shadow:8px 8px 0 var(--ink)}
+.card-art{border-bottom:2px solid var(--ink);overflow:hidden;aspect-ratio:16/10}
+.card-art svg{width:100%;height:100%;transition:transform .6s}
+.card:hover .card-art svg{transform:scale(1.06)}
+.card-body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tag{font-size:.8rem;font-weight:800;padding:3px 14px;border-radius:999px;border:1.5px solid var(--ink)}
+.t-code{background:var(--sage)}.t-design{background:var(--lav)}.t-lang{background:var(--apricot)}.t-mkt{background:var(--must)}
+.fav{width:46px;height:46px;border-radius:50%;border:2px solid var(--ink);background:#fff;display:grid;place-items:center;transition:.25s}
+.fav:hover{background:var(--sand)}
+.fav.on{background:var(--terra-d);border-color:var(--terra-d);color:#fff}
+.fav.on .ic{fill:#fff;animation:pop .45s cubic-bezier(.2,1.6,.4,1)}
+.card h3{font-size:1.28rem;line-height:1.45;font-weight:800}
+.card p{color:var(--muted);font-size:.98rem;line-height:1.75}
+.meta{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:.88rem;font-weight:700;margin-block:4px 8px;margin-top:auto}
+.meta li{display:flex;align-items:center;gap:6px}
+.meta .ic{width:18px;height:18px}
+.lv{display:inline-flex;gap:3px}
+.lv i{width:8px;height:14px;border-radius:3px;background:var(--sand);border:1.5px solid var(--ink)}
+.lv[data-l="1"] i:nth-child(1),.lv[data-l="2"] i:nth-child(-n+2),.lv[data-l="3"] i{background:var(--terra)}
+.card .btn{width:100%}
+.empty{text-align:center;padding:48px 20px;border:2px dashed var(--ink);border-radius:var(--r);background:var(--sand)}
+.empty h3{font-size:1.4rem;margin-bottom:8px}
+ 
+/* modal */
+.ov{position:fixed;inset:0;z-index:100;background:rgba(36,37,31,.62);display:flex;align-items:center;justify-content:center;padding:16px;animation:ovin .25s ease both}
+.ov[hidden]{display:none}
+.ov.closing{animation:ovout .22s ease both}
+@keyframes ovin{from{opacity:0}to{opacity:1}}
+@keyframes ovout{from{opacity:1}to{opacity:0}}
+@keyframes mdin{from{opacity:0;transform:translateY(30px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes mdout{to{opacity:0;transform:translateY(20px) scale(.97)}}
+.dlg{background:var(--ivory);border:2px solid var(--ink);border-radius:28px;width:100%;max-width:900px;max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contain;position:relative;animation:mdin .35s cubic-bezier(.2,.9,.3,1) both}
+.ov.closing .dlg{animation:mdout .22s ease both}
+.dlg-x{position:absolute;top:12px;inset-inline-start:12px;z-index:3;width:46px;height:46px;border-radius:50%;border:2px solid var(--ink);background:var(--ivory);display:grid;place-items:center;transition:.25s}
+.dlg-x:hover{background:var(--ink);color:var(--ivory);transform:rotate(90deg)}
+.dlg-art{border-bottom:2px solid var(--ink);aspect-ratio:16/8}
+.dlg-art svg{width:100%;height:100%}
+.dlg-b{padding:22px 20px 26px;display:grid;gap:18px}
+.dlg h2{font-size:clamp(1.5rem,5vw,2.2rem);line-height:1.35;font-weight:800}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips li{display:flex;align-items:center;gap:7px;padding:4px 14px;border-radius:999px;background:#fff;border:1.5px solid var(--ink);font-size:.88rem;font-weight:700}
+.chips .ic{width:17px;height:17px}
+.dlg h4{font-size:1.05rem;font-weight:800;margin-bottom:8px}
+.goals li{position:relative;padding-inline-start:30px;margin-bottom:6px;color:var(--ink2)}
+.goals li::before{content:"";position:absolute;inset-inline-start:0;top:.55em;width:16px;height:16px;border-radius:50% 50% 50% 4px;background:var(--terra)}
+.dlg .btn{width:100%}
+@media(min-width:820px){
+ .dlg{display:grid;grid-template-columns:.85fr 1.15fr}
+ .dlg-art{aspect-ratio:auto;height:100%;min-height:340px;border-bottom:0;border-inline-end:2px solid var(--ink)}
+ .dlg-art svg{position:sticky;top:0}
+ .dlg-b{padding:56px 34px 30px}
+}
+ 
+/* accordion */
+.acc-item{border:2px solid var(--ink);border-radius:18px;background:#fff;margin-bottom:10px;overflow:hidden;transition:background .3s}
+.acc-item.open{background:var(--sand)}
+.acc-btn{width:100%;background:none;border:0;display:flex;align-items:center;justify-content:space-between;gap:14px;text-align:start;padding:14px 16px;min-height:56px;font-weight:800;font-size:1.02rem}
+.acc-btn .u{display:flex;align-items:center;gap:12px}
+.acc-btn .un{width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--ivory);display:grid;place-items:center;font-size:.8rem;flex:none}
+.pm{width:26px;height:26px;position:relative;flex:none;border-radius:50%;border:2px solid var(--ink)}
+.pm::before,.pm::after{content:"";position:absolute;top:50%;left:50%;width:10px;height:2.5px;background:var(--ink);border-radius:2px;transform:translate(-50%,-50%);transition:transform .3s}
+.pm::after{transform:translate(-50%,-50%) rotate(90deg)}
+.acc-item.open .pm::after{transform:translate(-50%,-50%) rotate(0)}
+.acc-item.open .pm{background:var(--terra);border-color:var(--ink)}
+.acc-p{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.acc-item.open .acc-p{grid-template-rows:1fr}
+.acc-p>div{overflow:hidden}
+.acc-p p{padding:0 18px 16px;color:var(--ink2);font-size:.98rem}
+ 
+/* builder */
+.builder{background:var(--sand);border-block:2px solid var(--ink);position:relative;overflow:hidden}
+.bgrid{display:grid;gap:30px}
+.bsteps{display:grid;gap:30px}
+.step-t{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.12rem;margin-bottom:14px}
+.step-t b{width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--ivory);display:grid;place-items:center;font-size:.9rem;flex:none}
+.opts{display:grid;gap:10px}
+.opts.f4{grid-template-columns:1fr 1fr}
+.opt{display:block;position:relative}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;cursor:pointer;margin:0;z-index:2}
+.opt span{display:flex;align-items:center;gap:12px;min-height:56px;padding:10px 16px;background:#fff;border:2px solid var(--ink);border-radius:18px;font-weight:700;transition:.25s}
+.opt:hover span{transform:translateY(-2px);box-shadow:0 5px 0 rgba(36,37,31,.14)}
+.opt input:checked+span{background:var(--ink);color:var(--ivory);box-shadow:0 5px 0 var(--terra)}
+.opt input:focus-visible+span{outline:3px solid var(--terra-d);outline-offset:3px}
+.opts.f4 .opt span{flex-direction:column;align-items:flex-start;padding:14px;gap:10px}
+.opts.f4 .ci{width:48px;height:48px;border-radius:14px;border:2px solid var(--ink);background:var(--bg);display:grid;place-items:center;color:var(--ink)}
+.opts.f4 .ci .ic{width:28px;height:28px}
+.bact{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.msg{font-weight:700;color:var(--terra-d);min-height:1.6em;margin-top:10px}
+.result{background:var(--ivory);border:2px solid var(--ink);border-radius:var(--r);padding:22px 18px;box-shadow:8px 8px 0 var(--ink);align-self:start}
+.result .ph{display:grid;place-items:center;text-align:center;gap:14px;padding:20px 6px;color:var(--muted)}
+.result .ph svg{width:170px;height:auto}
+.rintro{font-weight:700;margin-bottom:20px}
+.path{position:relative;display:grid;gap:18px}
+.pi{position:relative;display:grid;grid-template-columns:auto 1fr;gap:14px;animation:fadeUp .6s calc(var(--k)*.25s) ease both}
+.pn{width:48px;height:48px;border-radius:50%;background:var(--terra-d);color:#fff;border:2px solid var(--ink);display:grid;place-items:center;font-weight:800;position:relative;z-index:1}
+.pi:not(:last-child)::before{content:"";position:absolute;inset-inline-start:23px;top:48px;bottom:-18px;border-inline-start:3px dotted var(--ink)}
+.pc{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:14px 16px;display:grid;gap:8px}
+.pc h3{font-size:1.1rem;line-height:1.5}
+.pc .note{font-size:.85rem;font-weight:800;color:var(--terra-d)}
+.pc .meta{margin:0}
+.pc .btn{justify-self:start}
+.fine{font-size:.9rem;color:var(--muted);margin-top:20px;padding-top:14px;border-top:2px dashed rgba(36,37,31,.3)}
+@media(min-width:960px){.bgrid{grid-template-columns:1.1fr .9fr;gap:48px}.result{position:sticky;top:calc(var(--hh) + 20px)}}
+@media(min-width:640px){.opts.f3{grid-template-columns:repeat(3,1fr)}}
+ 
+/* timeline */
+.steps{display:grid;gap:0}
+.step{position:relative;padding-inline-start:84px;padding-bottom:42px;min-height:96px}
+.step:last-child{padding-bottom:0}
+.step::before{content:"";position:absolute;inset-inline-start:27px;top:60px;bottom:6px;border-inline-start:3px dashed var(--terra)}
+.step:last-child::before{display:none}
+.snum{position:absolute;inset-inline-start:0;top:0;width:56px;height:56px;border-radius:50%;background:var(--ink);color:var(--ivory);display:grid;place-items:center;font-weight:800;font-size:.95rem;letter-spacing:.06em;font-family:Arial,sans-serif;transition:transform .4s,background .4s}
+.step:hover .snum{transform:scale(1.1) rotate(-8deg);background:var(--terra-d)}
+.sym{width:64px;height:64px;margin-bottom:8px}
+.step h3{font-size:1.35rem;font-weight:800;margin-bottom:4px}
+.step p{color:var(--muted)}
+@media(min-width:900px){
+ .steps{grid-template-columns:repeat(4,1fr);gap:28px}
+ .step{padding:84px 0 0;min-height:0}
+ .step::before{inset-inline-start:68px;inset-inline-end:-28px;top:27px;bottom:auto;height:0;border-inline-start:0;border-top:3px dashed var(--terra)}
+ .step:nth-child(even){margin-top:34px}
+}
+ 
+/* player */
+.psec{background:var(--ink);color:var(--ivory);border-radius:clamp(28px,5vw,56px);margin-inline:clamp(0px,1.5vw,20px)}
+.psec .eyebrow{color:var(--apricot)}
+.psec .eyebrow::before{background:var(--apricot)}
+.psec .lead{color:#CFC8B8}
+.pg{display:grid;gap:24px}
+.player{background:var(--ivory);color:var(--ink);border-radius:26px;border:3px solid var(--apricot);overflow:hidden}
+.stage{position:relative;aspect-ratio:16/10;background:#F3E6D3}
+.stage>svg{width:100%;height:100%}
+.pttl{position:absolute;top:12px;inset-inline-start:12px;background:var(--ink);color:var(--ivory);padding:3px 14px;border-radius:999px;font-size:.8rem;font-weight:800;z-index:2}
+.bigp{position:absolute;inset:0;margin:auto;width:84px;height:84px;border-radius:50%;border:3px solid var(--ink);background:var(--terra-d);color:#fff;display:grid;place-items:center;transition:transform .3s,opacity .3s,background .3s;z-index:2;box-shadow:0 6px 0 var(--ink)}
+.bigp:hover{transform:scale(1.08)}
+.bigp .ic{width:36px;height:36px;fill:currentColor;stroke:currentColor}
+.player.playing .bigp{opacity:0;pointer-events:none}
+.player.playing .stage:hover .bigp,.player.playing .stage:focus-within .bigp{opacity:.9;pointer-events:auto}
+.sub{position:absolute;inset-inline:10px;bottom:10px;background:rgba(36,37,31,.9);color:#fff;border-radius:14px;padding:8px 14px;text-align:center;font-weight:700;font-size:clamp(.9rem,3.4vw,1.15rem);min-height:44px;display:grid;place-items:center;z-index:2}
+.ctrl{display:flex;align-items:center;gap:12px;padding:12px 14px;border-top:3px solid var(--ink);background:#fff}
+.sp{width:46px;height:46px;border-radius:50%;border:2px solid var(--ink);background:var(--terra-d);color:#fff;display:grid;place-items:center;flex:none}
+.sp .ic{fill:currentColor;stroke:currentColor;width:20px;height:20px}
+.bar{flex:1;height:30px;display:flex;align-items:center;cursor:pointer;touch-action:none}
+.bar>div{width:100%;height:12px;border-radius:6px;background:var(--sand);border:2px solid var(--ink);overflow:hidden;position:relative}
+.bar i{display:block;height:100%;width:0;background:var(--terra);border-radius:0}
+.tm{font-family:Arial,sans-serif;font-weight:700;font-size:.88rem;direction:ltr;white-space:nowrap}
+.tr{display:grid;gap:8px;align-content:start}
+.tr h3{font-size:1.1rem;margin-bottom:6px;color:var(--apricot)}
+.tr li{padding:10px 14px;border-radius:14px;border:2px solid rgba(247,242,232,.25);color:#CFC8B8;transition:.3s;display:flex;gap:10px;align-items:center;font-size:.98rem}
+.tr li b{font-family:Arial,sans-serif;font-size:.75rem;background:rgba(247,242,232,.15);padding:2px 8px;border-radius:999px;color:#fff}
+.tr li.cur{background:var(--apricot);color:var(--ink);border-color:var(--apricot);font-weight:800}
+.tr li.cur b{background:var(--ink)}
+.pcard{opacity:0;transform:translateY(10px) scale(.9);transition:.6s;transform-box:fill-box;transform-origin:center}
+.pcard.on{opacity:1;transform:none}
+@media(min-width:960px){.pg{grid-template-columns:1.5fr 1fr;gap:40px;align-items:center}}
+ 
+/* instructors */
+.ins{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ic-card{background:#fff;border:2px solid var(--ink);border-radius:var(--r);overflow:hidden;text-align:center;transition:transform .3s,box-shadow .3s}
+.ic-card:hover{transform:translateY(-6px);box-shadow:6px 6px 0 var(--ink)}
+.ic-card svg{width:100%;height:auto;border-bottom:2px solid var(--ink)}
+.ic-card div{padding:12px 8px 16px}
+.ic-card h3{font-size:1.3rem;font-weight:800}
+.ic-card span{display:inline-block;margin-top:4px;font-size:.82rem;font-weight:800;padding:2px 14px;border-radius:999px;border:1.5px solid var(--ink)}
+@media(min-width:900px){.ins{grid-template-columns:repeat(4,1fr);gap:24px}.ins .ic-card:nth-child(even){margin-top:44px}.ic-card{border-radius:140px 140px var(--r) var(--r)}}
+ 
+/* faq */
+.faqg{display:grid;gap:30px}
+.faq .acc-item{background:#fff}
+.faq .acc-item.open{background:var(--apricot)}
+.faq .acc-btn{font-size:1.05rem;padding:16px 18px;min-height:64px}
+.faqart{display:none}
+@media(min-width:960px){.faqg{grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}.faqart{display:block;position:sticky;top:calc(var(--hh) + 30px)}}
+ 
+/* cta */
+.cta{background:var(--terra-d);color:#fff;position:relative;overflow:hidden;border-radius:clamp(28px,5vw,56px) clamp(28px,5vw,56px) 0 0}
+.cta .eyebrow{color:var(--apricot)}
+.cta .eyebrow::before{background:var(--apricot)}
+.cta .lead{color:#FBE9DB}
+.cg{display:grid;gap:36px;position:relative;z-index:1}
+.cta h2{font-size:clamp(2.1rem,7vw,4rem);line-height:1.25;font-weight:800;margin-block:10px 14px}
+.cta-art{width:100%;max-width:420px;margin-top:18px}
+.fcard{background:var(--ivory);color:var(--ink);border:3px solid var(--ink);border-radius:var(--r);padding:24px 20px;box-shadow:10px 10px 0 var(--ink)}
+.fcard h3{font-size:1.6rem;font-weight:800;margin-bottom:16px}
+.fld{margin-bottom:16px}
+.fld label{display:block;font-weight:800;margin-bottom:6px;font-size:.98rem}
+.fld input,.fld select{width:100%;min-height:52px;border:2px solid var(--ink);border-radius:16px;padding:0 16px;background:#fff;font-size:1rem;outline:none;transition:.2s}
+.fld select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);background-position:calc(0% + 22px) 50%,calc(0% + 16px) 50%;background-size:6px 6px;background-repeat:no-repeat;padding-inline-start:44px}
+.fld input:focus,.fld select:focus{border-color:var(--terra-d);box-shadow:0 0 0 4px rgba(200,111,74,.25)}
+.fld [aria-invalid=true]{border-color:#B3261E;background:#FFF4F2}
+.err{display:block;color:#B3261E;font-weight:700;font-size:.88rem;min-height:0;margin-top:4px}
+.frow{display:grid;gap:0}
+.fcard .btn{width:100%}
+.conf{text-align:center;display:grid;gap:14px;justify-items:center}
+.conf svg{width:130px;height:auto}
+.conf .msgb{font-size:1.15rem;font-weight:700;line-height:1.8}
+.dl{width:100%;text-align:start;background:#fff;border:2px solid var(--ink);border-radius:18px;padding:6px 16px}
+.dl div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed rgba(36,37,31,.3)}
+.dl div:last-child{border:0}
+.dl dt{color:var(--muted);font-weight:700}
+.dl dd{font-weight:800;word-break:break-all;text-align:end}
+.cbtn{display:grid;gap:10px;width:100%}
+@media(min-width:960px){.cg{grid-template-columns:1fr 1fr;gap:60px;align-items:center}.fcard{padding:34px 32px}.frow{grid-template-columns:1fr 1fr;gap:16px}}
+ 
+/* footer */
+.ftr{background:var(--ink);color:var(--ivory);padding-block:clamp(44px,7vw,80px) 28px;position:relative;overflow:hidden}
+.fg{display:grid;gap:30px}
+.ftr .brand small{color:var(--apricot)}
+.ftr p.d{color:#CFC8B8;max-width:24em;margin-top:14px}
+.fnav{display:flex;flex-wrap:wrap;gap:8px 22px}
+.fnav a{text-decoration:none;font-weight:700;padding:6px 0;border-bottom:2px solid transparent;transition:.25s}
+.fnav a:hover{border-color:var(--terra)}
+.froute{width:100%;max-width:420px}
+.copy{margin-top:36px;padding-top:20px;border-top:1px solid rgba(247,242,232,.2);color:#CFC8B8;font-size:.92rem}
+@media(min-width:900px){.fg{grid-template-columns:1.2fr 1fr 1fr;align-items:center;gap:50px}}
+ 
+/* toast */
+.toast{position:fixed;bottom:22px;inset-inline:16px;margin-inline:auto;width:max-content;max-width:calc(100vw - 32px);z-index:200;background:var(--ink);color:var(--ivory);padding:12px 22px;border-radius:999px;font-weight:700;border:2px solid var(--apricot);opacity:0;transform:translateY(20px);pointer-events:none;transition:.3s;text-align:center}
+.toast.show{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{animation:none!important;transition:none!important}
+ .js .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+ 
+<!-- icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+ <symbol id="ic-code" viewBox="0 0 48 48"><path d="M17 15 7 24l10 9M31 15l10 9-10 9M27 11l-6 26"/></symbol>
+ <symbol id="ic-design" viewBox="0 0 48 48"><path d="M24 6C13 6 6 14 6 24s8 18 17 18c4 0 5-3 3-6-2-3 0-6 4-6h6c4 0 6-2 6-6C42 13 34 6 24 6z"/><circle cx="15" cy="23" r="2.4"/><circle cx="22" cy="14" r="2.4"/><circle cx="32" cy="16" r="2.4"/></symbol>
+ <symbol id="ic-lang" viewBox="0 0 48 48"><path d="M8 9h22a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H20l-7 6v-6H8a4 4 0 0 1-4-4V13a4 4 0 0 1 4-4z"/><path d="M38 19h2a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-2v5l-6-5h-9a4 4 0 0 1-4-4"/><path d="M12 16h14M12 21h8"/></symbol>
+ <symbol id="ic-mkt" viewBox="0 0 48 48"><path d="M7 20v8h9l17 9V11L16 20H7z"/><path d="M39 18c2.5 3 2.5 9 0 12M16 28l3 11h5l-2-9"/></symbol>
+ <symbol id="ic-all" viewBox="0 0 48 48"><rect x="7" y="7" width="14" height="14" rx="4"/><rect x="27" y="7" width="14" height="14" rx="4"/><rect x="7" y="27" width="14" height="14" rx="4"/><rect x="27" y="27" width="14" height="14" rx="4"/></symbol>
+ <symbol id="ic-heart" viewBox="0 0 48 48"><path d="M24 41S6 30 6 17a9 9 0 0 1 18-3 9 9 0 0 1 18 3c0 13-18 24-18 24z"/></symbol>
+ <symbol id="ic-clock" viewBox="0 0 48 48"><circle cx="24" cy="24" r="17"/><path d="M24 13v11l7 5"/></symbol>
+ <symbol id="ic-book" viewBox="0 0 48 48"><path d="M6 10c7-2 13-1 18 3v26c-5-4-11-5-18-3zM42 10c-7-2-13-1-18 3v26c5-4 11-5 18-3z"/></symbol>
+ <symbol id="ic-close" viewBox="0 0 48 48"><path d="M12 12l24 24M36 12 12 36"/></symbol>
+ <symbol id="ic-play" viewBox="0 0 48 48"><path d="M14 8l26 16-26 16z"/></symbol>
+ <symbol id="ic-pause" viewBox="0 0 48 48"><path d="M13 8h8v32h-8zM27 8h8v32h-8z"/></symbol>
+ <symbol id="ic-replay" viewBox="0 0 48 48"><path d="M10 24a14 14 0 1 0 5-10.7M10 7v8h8"/></symbol>
+ <symbol id="ic-arrow" viewBox="0 0 48 48"><path d="M40 24H8m14-14L8 24l14 14"/></symbol>
+</svg>
+ 
+<header class="hdr" id="hdr">
+ <div class="wrap">
+  <a class="brand" href="#home" aria-label="دَرب — الصفحة الرئيسية">
+   <svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="14" fill="#24251F"/><path d="M11 34c10 0 3-11 12-11s2-11 10-13" fill="none" stroke="#E9B68E" stroke-width="3.5" stroke-linecap="round"/><path d="M11 34c10 0 3-11 12-11" fill="none" stroke="#C86F4A" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 7"/><circle cx="11" cy="34" r="4" fill="#C86F4A"/><circle cx="33" cy="10" r="4.5" fill="#D8B65F"/><circle cx="33" cy="10" r="1.6" fill="#24251F"/></svg>
+   <span><b>دَرب</b><small>DARB</small></span>
+  </a>
+  <nav class="nav" id="nav" aria-label="القائمة الرئيسية">
+   <a href="#home" data-s="home">الرئيسية</a>
+   <a href="#courses" data-s="courses">الكورسات</a>
+   <a href="#path" data-s="path">مسار التعلم</a>
+   <a href="#instructors" data-s="instructors">المدربين</a>
+   <a href="#faq" data-s="faq">الأسئلة الشائعة</a>
+  </nav>
+  <div class="hdr-r">
+   <a class="btn btn-primary" href="#join">ابدأ رحلتك</a>
+   <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="فتح القائمة"><span></span></button>
+  </div>
+ </div>
+</header>
+ 
+<main>
+<!-- HERO -->
+<section class="hero" id="home" aria-labelledby="h1">
+ <div class="wrap hero-g">
+  <div>
+   <span class="eyebrow">Learn · Explore · Grow</span>
+   <h1 id="h1">كل رحلة كبيرة<br><span class="hl">بتبدأ بخطوة.</span></h1>
+   <p class="lead">في دَرب، هتلاقي مساحة تستكشف فيها مهارات جديدة، وتتعلم حاجة بتحبها، وتمشي في طريقك خطوة بخطوة.</p>
+   <div class="hero-act">
+    <a class="btn btn-primary" href="#courses">اكتشف الكورسات</a>
+    <a class="tlink" href="#path">ارسم مسارك <svg class="ic" aria-hidden="true"><use href="#ic-arrow"/></svg></a>
+   </div>
+   <div class="hero-note" aria-hidden="true"><span>برمجة</span><span>تصميم</span><span>لغات</span><span>تسويق</span></div>
+  </div>
+  <div class="hero-art">
+   <svg viewBox="0 0 560 540" role="img" aria-label="رسم لمسار تعلّم متعرّج بيعدّي على نقاط وبينتهي بعلم">
+    <path d="M70 120c40-70 150-80 210-40s130 10 180 70 40 140-20 190-60 120-150 130S60 470 40 360 30 190 70 120z" fill="#E9E0D2"/>
+    <circle class="flt" style="--fd:.5s" cx="450" cy="120" r="64" fill="#E9B68E" opacity=".6"/>
+    <circle class="flt" style="--fd:1.5s" cx="82" cy="150" r="36" fill="#B9A8C9" opacity=".65"/>
+    <circle class="flt" style="--fd:2.5s" cx="470" cy="420" r="46" fill="#A8B69B" opacity=".65"/>
+    <g class="spinr" opacity=".9"><circle cx="300" cy="470" r="30" fill="none" stroke="#24251F" stroke-width="2.5" stroke-dasharray="3 9" stroke-linecap="round"/></g>
+    <path d="M40 300c30 20 20 60 60 70M520 250c-30 10-20 50-60 60" fill="none" stroke="#24251F" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 10" opacity=".5"/>
+    <!-- route -->
+    <path d="M60 460C160 470 220 400 190 340S90 280 160 220 330 250 340 170 400 90 480 80" fill="none" stroke="#24251F" stroke-opacity=".25" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 12"/>
+    <path d="M60 460C160 470 220 400 190 340S90 280 160 220 330 250 340 170 400 90 480 80" fill="none" stroke="#24251F" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="route" opacity=".1" transform="translate(4 6)"/>
+    <path d="M60 460C160 470 220 400 190 340S90 280 160 220 330 250 340 170 400 90 480 80" fill="none" stroke="#C86F4A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="route"/>
+    <path d="M60 460C160 470 220 400 190 340S90 280 160 220 330 250 340 170 400 90 480 80" fill="none" stroke="#F7F2E8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray=".006 .02" pathLength="1" class="route" style="animation-delay:.5s"/>
+    <!-- checkpoints -->
+    <g class="pop" style="--d:.5s"><circle cx="60" cy="460" r="17" fill="#F7F2E8" stroke="#24251F" stroke-width="4.5"/><circle cx="60" cy="460" r="7" fill="#A8B69B"/></g>
+    <g class="pop" style="--d:1.6s"><circle cx="190" cy="340" r="17" fill="#F7F2E8" stroke="#24251F" stroke-width="4.5"/><circle cx="190" cy="340" r="7" fill="#E9B68E"/></g>
+    <g class="pop" style="--d:2.6s"><circle cx="160" cy="220" r="17" fill="#F7F2E8" stroke="#24251F" stroke-width="4.5"/><circle cx="160" cy="220" r="7" fill="#B9A8C9"/></g>
+    <g class="pop" style="--d:3.6s"><circle cx="340" cy="170" r="17" fill="#F7F2E8" stroke="#24251F" stroke-width="4.5"/><circle cx="340" cy="170" r="7" fill="#D8B65F"/></g>
+    <g class="pop" style="--d:4.6s"><circle cx="480" cy="80" r="21" fill="#F7F2E8" stroke="#24251F" stroke-width="4.5"/><circle cx="480" cy="80" r="9" fill="#C86F4A"/></g>
+    <!-- book -->
+    <g class="fadeu" style="--d:.9s" transform="translate(86 384)"><g class="flt"><path d="M0 8c10-4 20-3 28 3v32C20 38 10 37 0 40zM56 8C46 4 36 5 28 11v32c8-6 18-7 28-3z" fill="#F7F2E8" stroke="#24251F" stroke-width="3.5" stroke-linejoin="round"/><path d="M8 18c6-1 12 0 16 2M8 26c6-1 12 0 16 2M48 18c-6-1-12 0-16 2M48 26c-6-1-12 0-16 2" stroke="#A8B69B" stroke-width="3" stroke-linecap="round" fill="none"/></g></g>
+    <!-- pencil -->
+    <g class="fadeu" style="--d:2s" transform="translate(226 300) rotate(35)"><g class="flt" style="--fd:1s"><rect x="0" y="0" width="14" height="62" rx="3" fill="#D8B65F" stroke="#24251F" stroke-width="3.5"/><path d="M0 62l7 16 7-16z" fill="#F7F2E8" stroke="#24251F" stroke-width="3.5" stroke-linejoin="round"/><path d="M4.5 72.5h5L7 78z" fill="#24251F"/><rect x="0" y="-12" width="14" height="12" rx="3" fill="#C86F4A" stroke="#24251F" stroke-width="3.5"/></g></g>
+    <!-- spark -->
+    <g class="fadeu" style="--d:3s" transform="translate(70 196)"><g class="flt" style="--fd:2s"><path d="M24 0l6 18 18 6-18 6-6 18-6-18L0 24l18-6z" fill="#D8B65F" stroke="#24251F" stroke-width="3.5" stroke-linejoin="round"/><circle cx="48" cy="2" r="3.5" fill="#C86F4A"/><circle cx="4" cy="50" r="3" fill="#24251F"/></g></g>
+    <!-- laptop -->
+    <g class="fadeu" style="--d:4s" transform="translate(344 214)"><g class="flt" style="--fd:.8s"><rect x="8" y="0" width="64" height="42" rx="6" fill="#24251F"/><rect x="14" y="6" width="52" height="30" rx="3" fill="#F7F2E8"/><path d="M28 14l-7 7 7 7M52 14l7 7-7 7M43 11l-5 20" stroke="#C86F4A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M0 48h80l-8-6H8z" fill="#B9A8C9" stroke="#24251F" stroke-width="3" stroke-linejoin="round"/></g></g>
+    <!-- flag -->
+    <g class="fadeu" style="--d:5s" transform="translate(470 8)"><g class="flt" style="--fd:.3s"><path d="M8 54V4" stroke="#24251F" stroke-width="4.5" stroke-linecap="round"/><path d="M8 6c14-8 20 8 36 0v26c-16 8-22-8-36 0z" fill="#C86F4A" stroke="#24251F" stroke-width="3.5" stroke-linejoin="round"/><circle cx="26" cy="19" r="5" fill="#F7F2E8"/></g></g>
+    <!-- geometric flower -->
+    <g class="fadeu flt" style="--d:3.4s;--fd:1.2s" transform="translate(400 300)"><g fill="#B9A8C9" stroke="#24251F" stroke-width="3"><circle cx="22" cy="8" r="9"/><circle cx="36" cy="22" r="9"/><circle cx="22" cy="36" r="9"/><circle cx="8" cy="22" r="9"/></g><circle cx="22" cy="22" r="8" fill="#D8B65F" stroke="#24251F" stroke-width="3"/></g>
+    <!-- star -->
+    <g class="fadeu flt" style="--d:2.8s;--fd:.2s" transform="translate(262 40)"><path d="M18 0l5 12 13 1-10 9 3 13-11-7-11 7 3-13L0 13l13-1z" fill="#A8B69B" stroke="#24251F" stroke-width="3" stroke-linejoin="round"/></g>
+    <!-- labels -->
+    <g class="fadeu" style="--d:1s"><rect x="84" y="476" width="76" height="30" rx="15" fill="#24251F"/><text x="122" y="496" text-anchor="middle" font-size="15" font-weight="700" fill="#F7F2E8" font-family="Tahoma,Arial,sans-serif">ابدأ هنا</text></g>
+    <g class="fadeu" style="--d:2.4s"><rect x="222" y="352" width="70" height="30" rx="15" fill="#F7F2E8" stroke="#24251F" stroke-width="3"/><text x="257" y="372" text-anchor="middle" font-size="15" font-weight="700" fill="#24251F" font-family="Tahoma,Arial,sans-serif">فضول</text></g>
+    <g class="fadeu" style="--d:3.8s"><rect x="244" y="124" width="76" height="30" rx="15" fill="#F7F2E8" stroke="#24251F" stroke-width="3"/><text x="282" y="144" text-anchor="middle" font-size="15" font-weight="700" fill="#24251F" font-family="Tahoma,Arial,sans-serif">تجربة</text></g>
+    <g class="fadeu" style="--d:5.2s"><rect x="400" y="116" width="72" height="30" rx="15" fill="#24251F"/><text x="436" y="136" text-anchor="middle" font-size="15" font-weight="700" fill="#F7F2E8" font-family="Tahoma,Arial,sans-serif">وصلت</text></g>
+   </svg>
+  </div>
+ </div>
+</section>
+ 
+<!-- COURSES -->
+<section class="sec" id="courses" style="padding-top:clamp(20px,4vw,40px)" aria-labelledby="h-cats">
+ <div class="wrap">
+  <div class="shead rv">
+   <span class="eyebrow">Fields</span>
+   <h2 class="h2" id="h-cats">اختار الطريق اللي يشدّك</h2>
+   <p class="lead">كل مجال له عالمه، وإنت اختار البداية.</p>
+  </div>
+  <div class="cats rv" id="cats" role="group" aria-label="فلتر المجالات">
+   <button class="cat all" data-cat="all" aria-pressed="true"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#ic-all"/></svg></span>كل المجالات</button>
+   <button class="cat c-code" data-cat="البرمجة" aria-pressed="false"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#ic-code"/></svg></span>البرمجة</button>
+   <button class="cat c-design" data-cat="التصميم" aria-pressed="false"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#ic-design"/></svg></span>التصميم</button>
+   <button class="cat c-lang" data-cat="اللغات" aria-pressed="false"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#ic-lang"/></svg></span>اللغات</button>
+   <button class="cat c-mkt" data-cat="التسويق" aria-pressed="false"><span class="ci"><svg class="ic" aria-hidden="true"><use href="#ic-mkt"/></svg></span>التسويق</button>
+  </div>
+ 
+  <div class="chead rv">
+   <div>
+    <span class="eyebrow">Courses</span>
+    <h2 class="h2" style="margin-bottom:6px">مساحة مليانة بدايات جديدة</h2>
+    <p class="lead">شوف الكورسات، واختار الحاجة اللي نفسك تتعلمها.</p>
+   </div>
+   <button class="favtog" id="favtog" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg>المفضلة <span class="n" id="favn">0</span></button>
+  </div>
+  <p class="status" id="status" role="status" aria-live="polite"></p>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" hidden>
+   <h3>لسه مفيش حاجة هنا</h3>
+   <p style="color:var(--muted);margin-bottom:16px">دوس على القلب في أي كورس عشان تحفظه، أو غيّر المجال المختار.</p>
+   <button class="btn btn-ghost btn-sm" id="resetf">اعرض كل الكورسات</button>
+  </div>
+ </div>
+</section>
+ 
+<!-- MODAL -->
+<div class="ov" id="ov" hidden>
+ <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="m-title" id="dlg">
+  <button class="dlg-x" id="mx" aria-label="إغلاق"><svg class="ic" aria-hidden="true"><use href="#ic-close"/></svg></button>
+  <div class="dlg-art" id="m-art"></div>
+  <div class="dlg-b">
+   <div><span class="tag" id="m-tag"></span></div>
+   <h2 id="m-title"></h2>
+   <ul class="chips" id="m-chips"></ul>
+   <p id="m-desc" style="color:var(--ink2)"></p>
+   <div><h4>هتتعلم إيه</h4><ul class="goals" id="m-goals"></ul></div>
+   <div><h4>محتوى الكورس</h4><div id="m-acc"></div></div>
+   <button class="btn btn-primary" id="m-pick">اختار الكورس ده</button>
+  </div>
+ </div>
+</div>
+ 
+<!-- BUILDER -->
+<section class="builder sec" id="path" aria-labelledby="h-path">
+ <div class="wrap">
+  <div class="shead rv">
+   <span class="eyebrow">Your Path</span>
+   <h2 class="h2" id="h-path">خلّينا نرسم دَربك</h2>
+   <p class="lead">جاوب على كام اختيار، وشوف ترتيب كورسات ممكن تبدأ بيه.</p>
+  </div>
+  <div class="bgrid">
+   <form class="bsteps rv" id="bform" novalidate>
+    <fieldset style="border:0">
+     <legend class="step-t"><b>1</b>اختار المجال</legend>
+     <div class="opts f4">
+      <label class="opt c-code"><input type="radio" name="field" value="البرمجة"><span><i class="ci"><svg class="ic" aria-hidden="true"><use href="#ic-code"/></svg></i>البرمجة</span></label>
+      <label class="opt c-design"><input type="radio" name="field" value="التصميم"><span><i class="ci"><svg class="ic" aria-hidden="true"><use href="#ic-design"/></svg></i>التصميم</span></label>
+      <label class="opt c-lang"><input type="radio" name="field" value="اللغات"><span><i class="ci"><svg class="ic" aria-hidden="true"><use href="#ic-lang"/></svg></i>اللغات</span></label>
+      <label class="opt c-mkt"><input type="radio" name="field" value="التسويق"><span><i class="ci"><svg class="ic" aria-hidden="true"><use href="#ic-mkt"/></svg></i>التسويق</span></label>
+     </div>
+    </fieldset>
+    <fieldset style="border:0">
+     <legend class="step-t"><b>2</b>مستواك الحالي إيه؟</legend>
+     <div class="opts f3">
+      <label class="opt"><input type="radio" name="lvl" value="0"><span>لسه ببدأ</span></label>
+      <label class="opt"><input type="radio" name="lvl" value="1"><span>عندي أساسيات</span></label>
+      <label class="opt"><input type="radio" name="lvl" value="2"><span>عندي خبرة بسيطة</span></label>
+     </div>
+    </fieldset>
+    <fieldset style="border:0">
+     <legend class="step-t"><b>3</b>وقتك الأسبوعي للتعلّم</legend>
+     <div class="opts f3">
+      <label class="opt"><input type="radio" name="time" value="0"><span>ساعة أو ساعتين</span></label>
+      <label class="opt"><input type="radio" name="time" value="1"><span>من 3 لـ 5 ساعات</span></label>
+      <label class="opt"><input type="radio" name="time" value="2"><span>أكتر من 5 ساعات</span></label>
+     </div>
+    </fieldset>
+    <div>
+     <div class="bact">
+      <button type="submit" class="btn btn-primary">ارسملي مساري</button>
+      <button type="button" class="btn btn-ghost" id="breset">ابدأ من جديد</button>
+     </div>
+     <p class="msg" id="bmsg" role="alert"></p>
+    </div>
+   </form>
+   <div class="result rv" id="result" aria-live="polite">
+    <div class="ph">
+     <svg viewBox="0 0 200 130" aria-hidden="true"><path d="M14 112c50 8 70-30 40-48S40 24 86 22s50 20 68 6 24-16 32-14" fill="none" stroke="#24251F" stroke-opacity=".3" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 10"/><circle cx="14" cy="112" r="9" fill="#A8B69B" stroke="#24251F" stroke-width="3"/><circle cx="54" cy="64" r="9" fill="#E9B68E" stroke="#24251F" stroke-width="3"/><circle cx="116" cy="24" r="9" fill="#B9A8C9" stroke="#24251F" stroke-width="3"/><circle cx="186" cy="14" r="11" fill="#C86F4A" stroke="#24251F" stroke-width="3"/></svg>
+     <p>اختار مجالك ومستواك ووقتك، وهنرتبلك كورسات تبدأ بيها.</p>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+ 
+<!-- HOW -->
+<section class="sec" aria-labelledby="h-how">
+ <div class="wrap">
+  <div class="shead rv">
+   <span class="eyebrow">How it works</span>
+   <h2 class="h2" id="h-how">التعلّم في دَرب ماشي بخطوات</h2>
+  </div>
+  <ol class="steps">
+   <li class="step rv"><span class="snum">01</span>
+    <svg class="sym" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="#A8B69B"/><circle cx="32" cy="32" r="21" fill="#F7F2E8" stroke="#24251F" stroke-width="3"/><path d="M32 14l6 18-6 18-6-18z" fill="#C86F4A" stroke="#24251F" stroke-width="3" stroke-linejoin="round"/><circle cx="32" cy="32" r="3" fill="#24251F"/></svg>
+    <h3>اختار اهتمامك</h3><p>ابدأ بالمجال اللي حابب تستكشفه.</p></li>
+   <li class="step rv" style="--d:.12s"><span class="snum">02</span>
+    <svg class="sym" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="#E9B68E"/><path d="M32 56S14 38 14 26a18 18 0 0 1 36 0c0 12-18 30-18 30z" fill="#F7F2E8" stroke="#24251F" stroke-width="3" stroke-linejoin="round"/><circle cx="32" cy="26" r="7" fill="#C86F4A" stroke="#24251F" stroke-width="3"/></svg>
+    <h3>حدد بدايتك</h3><p>شوف مستواك الحالي واختار الكورس المناسب.</p></li>
+   <li class="step rv" style="--d:.24s"><span class="snum">03</span>
+    <svg class="sym" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="#B9A8C9"/><path d="M10 50h12V40h12V30h12V20h8v30z" fill="#F7F2E8" stroke="#24251F" stroke-width="3" stroke-linejoin="round"/><circle cx="46" cy="11" r="5" fill="#D8B65F" stroke="#24251F" stroke-width="3"/></svg>
+    <h3>اتعلم خطوة بخطوة</h3><p>تابع الدروس بالترتيب وخد وقتك في الفهم.</p></li>
+   <li class="step rv" style="--d:.36s"><span class="snum">04</span>
+    <svg class="sym" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="#D8B65F"/><rect x="26" y="8" width="12" height="38" rx="3" transform="rotate(35 32 32)" fill="#F7F2E8" stroke="#24251F" stroke-width="3"/><path d="M13 50l-3 7 8-2z" fill="#C86F4A" stroke="#24251F" stroke-width="3" stroke-linejoin="round"/><path d="M50 12l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#C86F4A" stroke="#24251F" stroke-width="2" stroke-linejoin="round"/></svg>
+    <h3>جرّب وطبّق</h3><p>خصص وقت للتجربة، وارجع للمحتوى وقت ما تحتاج.</p></li>
+  </ol>
+ </div>
+</section>
+ 
+<!-- PLAYER -->
+<section class="psec sec" aria-labelledby="h-play">
+ <div class="wrap">
+  <div class="shead rv">
+   <span class="eyebrow">Lesson preview</span>
+   <h2 class="h2" id="h-play">خد فكرة عن طريقة التعلّم</h2>
+   <p class="lead">شوف شكل الدرس، وإزاي الأفكار بتترتب خطوة بخطوة.</p>
+  </div>
+  <div class="pg">
+   <div class="player rv" id="player">
+    <div class="stage">
+     <span class="pttl">درس: أول خطوة</span>
+     <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <rect width="640" height="400" fill="#F3E6D3"/>
+      <rect x="70" y="40" width="190" height="130" rx="10" fill="#F7F2E8" stroke="#24251F" stroke-width="4"/>
+      <path d="M165 40v130M70 105h190" stroke="#24251F" stroke-width="4"/>
+      <circle cx="115" cy="72" r="14" fill="#D8B65F"/><path d="M200 60l22 22M222 60l-22 22" stroke="#C86F4A" stroke-width="3"/>
+      <circle cx="560" cy="70" r="34" fill="#E9B68E"/><circle cx="560" cy="70" r="16" fill="#F7F2E8"/>
+      <!-- board with 5 idea cards -->
+      <rect x="290" y="30" width="260" height="170" rx="12" fill="#fff" stroke="#24251F" stroke-width="4"/>
+      <g class="pcard" data-i="0"><rect x="304" y="44" width="64" height="44" rx="8" fill="#A8B69B" stroke="#24251F" stroke-width="3"/><circle cx="336" cy="66" r="8" fill="#F7F2E8"/></g>
+      <g class="pcard" data-i="1"><rect x="378" y="44" width="64" height="44" rx="8" fill="#B9A8C9" stroke="#24251F" stroke-width="3"/><path d="M392 66h36" stroke="#F7F2E8" stroke-width="4" stroke-linecap="round"/></g>
+      <g class="pcard" data-i="2"><rect x="452" y="44" width="84" height="44" rx="8" fill="#E9B68E" stroke="#24251F" stroke-width="3"/><path d="M466 60h56M466 72h36" stroke="#24251F" stroke-width="4" stroke-linecap="round"/></g>
+      <g class="pcard" data-i="3"><rect x="304" y="104" width="110" height="44" rx="8" fill="#D8B65F" stroke="#24251F" stroke-width="3"/><path d="M320 126h16l10-10 10 20 10-10h14" stroke="#24251F" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+      <g class="pcard" data-i="4"><path d="M488 160l8 16 18 2-13 12 4 17-17-9-17 9 4-17-13-12 18-2z" transform="translate(-30 -52) scale(.9)" fill="#C86F4A" stroke="#24251F" stroke-width="3.5" stroke-linejoin="round"/></g>
+      <!-- desk -->
+      <rect x="0" y="290" width="640" height="110" fill="#C86F4A"/><rect x="0" y="290" width="640" height="10" fill="#24251F"/>
+      <!-- laptop -->
+      <rect x="230" y="206" width="180" height="88" rx="10" fill="#24251F"/><rect x="242" y="216" width="156" height="68" rx="4" fill="#F7F2E8"/>
+      <path d="M268 236l-12 12 12 12M372 236l12 12-12 12M326 230l-12 36" stroke="#C86F4A" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M210 294h220l-14 14H224z" fill="#3B3C33"/>
+      <!-- notebook & pencil -->
+      <g transform="rotate(-6 100 330)"><rect x="52" y="304" width="120" height="70" rx="6" fill="#F7F2E8" stroke="#24251F" stroke-width="4"/><path d="M70 324h84M70 340h60M70 356h72" stroke="#A8B69B" stroke-width="4" stroke-linecap="round"/></g>
+      <g transform="rotate(30 500 330)"><rect x="470" y="314" width="100" height="14" rx="4" fill="#D8B65F" stroke="#24251F" stroke-width="3.5"/><path d="M470 314l-18 7 18 7z" fill="#F7F2E8" stroke="#24251F" stroke-width="3.5" stroke-linejoin="round"/></g>
+      <!-- plant -->
+      <path d="M580 296c-6-30 0-52 14-70M590 296c10-26 26-40 40-44" stroke="#8FA182" stroke-width="6" fill="none" stroke-linecap="round"/><ellipse cx="594" cy="224" rx="9" ry="16" fill="#A8B69B" stroke="#24251F" stroke-width="3"/><ellipse cx="628" cy="250" rx="14" ry="8" fill="#A8B69B" stroke="#24251F" stroke-width="3"/>
+      <path d="M570 296h50l-6 36h-38z" fill="#B9A8C9" stroke="#24251F" stroke-width="4" stroke-linejoin="round"/>
+     </svg>
+     <button class="bigp" id="bigp" aria-label="تشغيل الدرس"><svg class="ic" aria-hidden="true"><use href="#ic-play"/></svg></button>
+     <div class="sub" id="sub" aria-live="off">دوس تشغيل وابدأ الدرس.</div>
+    </div>
+    <div class="ctrl">
+     <button class="sp" id="sp" aria-label="تشغيل"><svg class="ic" aria-hidden="true"><use href="#ic-play"/></svg></button>
+     <div class="bar" id="bar" role="slider" tabindex="0" aria-label="شريط تقدّم الدرس" aria-valuemin="0" aria-valuemax="30" aria-valuenow="0" aria-valuetext="0:00"><div><i id="fill"></i></div></div>
+     <span class="tm" id="tm">0:00 / 0:30</span>
+    </div>
+   </div>
+   <div class="tr rv" style="--d:.15s">
+    <h3>نص الدرس</h3>
+    <ol id="tlist"></ol>
+   </div>
+  </div>
+ </div>
+</section>
+ 
+<!-- INSTRUCTORS -->
+<section class="sec" id="instructors" aria-labelledby="h-ins">
+ <div class="wrap">
+  <div class="shead rv">
+   <span class="eyebrow">Instructors</span>
+   <h2 class="h2" id="h-ins">ناس بتحب تشارك المعرفة</h2>
+   <p class="lead">اتعرف على بعض الوجوه اللي بتقدم محتوى دَرب.</p>
+  </div>
+  <div class="ins">
+   <article class="ic-card rv">
+    <svg viewBox="0 0 200 210" role="img" aria-label="رسم لمدرّبة اسمها مريم"><rect width="200" height="210" fill="#A8B69B"/><circle cx="165" cy="40" r="26" fill="#C5D0BA"/><path d="M20 210c4-44 34-60 80-60s76 16 80 60z" fill="#24251F"/><path d="M82 140h36v26a18 18 0 0 1-36 0z" fill="#C98B63"/><path d="M58 92c0-34 20-52 44-52s42 18 42 52z" fill="#3B2A22"/><path d="M60 88c-6 40 4 64 10 76 8-14 8-40 8-76zM140 88c6 40-4 64-10 76-8-14-8-40-8-76z" fill="#3B2A22"/><ellipse cx="100" cy="100" rx="35" ry="40" fill="#D9A27A"/><path d="M66 90c14-4 28-18 36-30 10 14 24 24 34 30-2-26-16-40-35-40s-33 14-35 40z" fill="#3B2A22"/><circle cx="87" cy="104" r="3.5" fill="#24251F"/><circle cx="113" cy="104" r="3.5" fill="#24251F"/><path d="M89 122c7 7 15 7 22 0" stroke="#24251F" stroke-width="3.5" fill="none" stroke-linecap="round"/><circle cx="80" cy="116" r="5" fill="#C86F4A" opacity=".5"/><circle cx="120" cy="116" r="5" fill="#C86F4A" opacity=".5"/><path d="M88 178l12 10 12-10" stroke="#F7F2E8" stroke-width="3.5" fill="none" stroke-linecap="round"/><rect x="146" y="150" width="40" height="28" rx="8" fill="#F7F2E8" stroke="#24251F" stroke-width="3"/><path d="M158 158l-6 6 6 6M174 158l6 6-6 6" stroke="#C86F4A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div><h3>مريم</h3><span class="t-code">البرمجة</span></div>
+   </article>
+   <article class="ic-card rv" style="--d:.1s">
+    <svg viewBox="0 0 200 210" role="img" aria-label="رسم لمدرّس اسمه عمر"><rect width="200" height="210" fill="#B9A8C9"/><circle cx="35" cy="48" r="24" fill="#D3C8DE"/><path d="M20 210c4-44 34-60 80-60s76 16 80 60z" fill="#C86F4A"/><path d="M82 140h36v26a18 18 0 0 1-36 0z" fill="#9A6A4A"/><ellipse cx="100" cy="100" rx="34" ry="40" fill="#B07C58"/><path d="M64 92c-4-30 14-50 36-50s42 18 36 50c-8-14-20-20-36-20s-28 6-36 20z" fill="#24251F"/><circle cx="87" cy="104" r="3.5" fill="#24251F"/><circle cx="113" cy="104" r="3.5" fill="#24251F"/><path d="M90 124c6 5 14 5 20 0" stroke="#24251F" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M84 92h-8M124 92h-8" stroke="#24251F" stroke-width="3" stroke-linecap="round"/><path d="M66 150l34 22 34-22" fill="none" stroke="#F7F2E8" stroke-width="4" stroke-linecap="round"/><g transform="rotate(28 160 160)"><rect x="150" y="136" width="14" height="48" rx="3" fill="#D8B65F" stroke="#24251F" stroke-width="3"/><path d="M150 184l7 12 7-12z" fill="#F7F2E8" stroke="#24251F" stroke-width="3" stroke-linejoin="round"/></g></svg>
+    <div><h3>عمر</h3><span class="t-design">التصميم</span></div>
+   </article>
+   <article class="ic-card rv" style="--d:.2s">
+    <svg viewBox="0 0 200 210" role="img" aria-label="رسم لمدرّبة اسمها سلمى"><rect width="200" height="210" fill="#E9B68E"/><circle cx="160" cy="46" r="28" fill="#F3D2B4"/><path d="M20 210c4-44 34-60 80-60s76 16 80 60z" fill="#A8B69B"/><path d="M82 140h36v26a18 18 0 0 1-36 0z" fill="#E4B28C"/><path d="M56 100c-4-40 18-62 44-62s48 22 44 62c-2 18 4 30 12 40-22 6-36-6-40-30h-32c-4 24-18 36-40 30 8-10 14-22 12-40z" fill="#8A4B2F"/><ellipse cx="100" cy="102" rx="33" ry="38" fill="#F0C7A4"/><path d="M68 92c12-2 26-14 34-28 8 14 22 26 32 28-2-22-14-34-33-34s-31 12-33 34z" fill="#8A4B2F"/><circle cx="88" cy="104" r="3.5" fill="#24251F"/><circle cx="112" cy="104" r="3.5" fill="#24251F"/><path d="M90 120c6 6 14 6 20 0" stroke="#24251F" stroke-width="3.5" fill="none" stroke-linecap="round"/><circle cx="82" cy="114" r="5" fill="#C86F4A" opacity=".45"/><circle cx="118" cy="114" r="5" fill="#C86F4A" opacity=".45"/><path d="M140 152h40a8 8 0 0 1 8 8v14a8 8 0 0 1-8 8h-22l-10 9v-9h-8a8 8 0 0 1-8-8v-14a8 8 0 0 1 8-8z" fill="#F7F2E8" stroke="#24251F" stroke-width="3" stroke-linejoin="round" transform="translate(-14 0) scale(.9)"/><path d="M134 166h22M134 174h14" stroke="#C86F4A" stroke-width="3" stroke-linecap="round"/></svg>
+    <div><h3>سلمى</h3><span class="t-lang">اللغات</span></div>
+   </article>
+   <article class="ic-card rv" style="--d:.3s">
+    <svg viewBox="0 0 200 210" role="img" aria-label="رسم لمدرّس اسمه آدم"><rect width="200" height="210" fill="#D8B65F"/><circle cx="40" cy="44" r="26" fill="#E6CD8C"/><path d="M20 210c4-44 34-60 80-60s76 16 80 60z" fill="#B9A8C9"/><path d="M82 140h36v26a18 18 0 0 1-36 0z" fill="#D9A27A"/><ellipse cx="100" cy="100" rx="34" ry="40" fill="#E8B890"/><path d="M66 88c0-24 14-40 34-40s34 16 34 40c-6-10-14-16-26-18-8 4-20 6-30 6-6 4-9 8-12 12z" fill="#5B3A29"/><circle cx="87" cy="104" r="3.5" fill="#24251F"/><circle cx="113" cy="104" r="3.5" fill="#24251F"/><path d="M89 122c7 7 15 7 22 0" stroke="#24251F" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M72 134c10 14 46 14 56 0-4 24-52 24-56 0z" fill="#5B3A29"/><path d="M80 100a8 8 0 1 0 0 .1M120 100a8 8 0 1 0 0 .1" fill="none" stroke="#24251F" stroke-width="2.5" opacity="0"/><g transform="translate(138 148)"><path d="M0 14v14h12l22 12V2L12 14z" fill="#C86F4A" stroke="#24251F" stroke-width="3" stroke-linejoin="round"/><path d="M40 12c4 5 4 15 0 20" stroke="#24251F" stroke-width="3" fill="none" stroke-linecap="round"/></g></svg>
+    <div><h3>آدم</h3><span class="t-mkt">التسويق</span></div>
+   </article>
+  </div>
+ </div>
+</section>
+ 
+<!-- FAQ -->
+<section class="sec faq" id="faq" aria-labelledby="h-faq" style="padding-top:0">
+ <div class="wrap faqg">
+  <div>
+   <div class="shead rv" style="margin-bottom:24px">
+    <span class="eyebrow">FAQ</span>
+    <h2 class="h2" id="h-faq">ممكن تكون بتسأل عن إيه؟</h2>
+   </div>
+   <svg class="faqart rv" viewBox="0 0 260 200" aria-hidden="true"><circle cx="130" cy="100" r="86" fill="#E9E0D2"/><path d="M60 170C100 160 70 120 110 110s40-50 90-60" fill="none" stroke="#C86F4A" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 14"/><circle cx="60" cy="170" r="10" fill="#A8B69B" stroke="#24251F" stroke-width="4"/><circle cx="200" cy="50" r="12" fill="#D8B65F" stroke="#24251F" stroke-width="4"/><text x="130" y="128" text-anchor="middle" font-size="96" font-weight="800" fill="#24251F" font-family="Tahoma,Arial,sans-serif">؟</text></svg>
+  </div>
+  <div id="faqacc" class="rv"></div>
+ </div>
+</section>
+ 
+<!-- CTA / FORM -->
+<section class="cta sec" id="join" aria-labelledby="h-join">
+ <div class="wrap cg">
+  <div>
+   <span class="eyebrow">Start now</span>
+   <h2 id="h-join">مستعد تبدأ دَرب جديد؟</h2>
+   <p class="lead">اختار أول خطوة، وخلي فضولك ياخدك لمكان جديد.</p>
+   <svg class="cta-art" viewBox="0 0 420 200" aria-hidden="true"><path d="M10 180C90 190 110 120 170 130S250 60 310 80 380 30 408 22" fill="none" stroke="#F7F2E8" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 14"/><circle cx="10" cy="180" r="11" fill="#E9B68E" stroke="#24251F" stroke-width="4"/><circle cx="170" cy="130" r="11" fill="#A8B69B" stroke="#24251F" stroke-width="4"/><circle cx="310" cy="80" r="11" fill="#B9A8C9" stroke="#24251F" stroke-width="4"/><path d="M408 56V8" stroke="#24251F" stroke-width="5" stroke-linecap="round"/><path d="M408 10c-18-10-26 10-40 0v28c14 10 22-10 40 0z" fill="#D8B65F" stroke="#24251F" stroke-width="4" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="fcard rv">
+   <div id="formwrap">
+    <h3>ابدأ رحلتك</h3>
+    <form id="jform" novalidate>
+     <div class="fld"><label for="f-name">الاسم</label><input id="f-name" name="name" type="text" autocomplete="given-name" required minlength="2" aria-describedby="e-name"><span class="err" id="e-name"></span></div>
+     <div class="fld"><label for="f-mail">البريد الإلكتروني</label><input id="f-mail" name="email" type="email" autocomplete="email" required dir="ltr" style="text-align:start" aria-describedby="e-mail"><span class="err" id="e-mail"></span></div>
+     <div class="frow">
+      <div class="fld"><label for="f-field">المجال</label><select id="f-field" name="field" required aria-describedby="e-field"><option value="" selected disabled>اختار المجال</option><option>البرمجة</option><option>التصميم</option><option>اللغات</option><option>التسويق</option></select><span class="err" id="e-field"></span></div>
+      <div class="fld"><label for="f-lvl">المستوى</label><select id="f-lvl" name="level" required aria-describedby="e-lvl"><option value="" selected disabled>اختار المستوى</option><option>مبتدئ</option><option>متوسط</option><option>عندي أساسيات</option></select><span class="err" id="e-lvl"></span></div>
+     </div>
+     <button class="btn btn-primary" type="submit">اعرض اختياراتي</button>
+    </form>
+   </div>
+   <div class="conf" id="conf" hidden tabindex="-1">
+    <svg viewBox="0 0 140 100" aria-hidden="true"><path d="M8 88c30 6 40-30 66-32s30-30 58-46" fill="none" stroke="#C86F4A" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 12"/><circle cx="8" cy="88" r="8" fill="#A8B69B" stroke="#24251F" stroke-width="3.5"/><circle cx="74" cy="56" r="8" fill="#E9B68E" stroke="#24251F" stroke-width="3.5"/><circle cx="130" cy="10" r="9" fill="#D8B65F" stroke="#24251F" stroke-width="3.5"/></svg>
+    <p class="msgb" id="cmsg"></p>
+    <dl class="dl">
+     <div><dt>الاسم</dt><dd id="c-name"></dd></div>
+     <div><dt>البريد</dt><dd id="c-mail" dir="ltr"></dd></div>
+     <div><dt>المجال</dt><dd id="c-field"></dd></div>
+     <div><dt>المستوى</dt><dd id="c-lvl"></dd></div>
+    </dl>
+    <div class="cbtn">
+     <button class="btn btn-primary" id="c-see" type="button">شوف كورسات المجال</button>
+     <button class="btn btn-ghost" id="c-edit" type="button">عدّل اختياراتي</button>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+ 
+<footer class="ftr">
+ <div class="wrap">
+  <div class="fg">
+   <div>
+    <a class="brand" href="#home" aria-label="دَرب">
+     <svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="14" fill="#F7F2E8"/><path d="M11 34c10 0 3-11 12-11s2-11 10-13" fill="none" stroke="#24251F" stroke-width="3.5" stroke-linecap="round"/><circle cx="11" cy="34" r="4" fill="#C86F4A"/><circle cx="33" cy="10" r="4.5" fill="#D8B65F"/></svg>
+     <span><b>دَرب</b><small>DARB</small></span>
+    </a>
+    <p class="d">مساحة للتعلّم، والاستكشاف، واكتشاف طرق جديدة.</p>
+   </div>
+   <nav class="fnav" aria-label="روابط الفوتر">
+    <a href="#home">الرئيسية</a><a href="#courses">الكورسات</a><a href="#path">مسار التعلم</a><a href="#instructors">المدربين</a><a href="#faq">الأسئلة الشائعة</a>
+   </nav>
+   <svg class="froute" viewBox="0 0 420 120" aria-hidden="true"><path d="M10 100C70 110 90 60 150 70S230 20 290 36 380 10 410 14" fill="none" stroke="#E9B68E" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 12"/><circle cx="10" cy="100" r="8" fill="#A8B69B"/><circle cx="150" cy="70" r="8" fill="#B9A8C9"/><circle cx="290" cy="36" r="8" fill="#D8B65F"/><circle cx="410" cy="14" r="10" fill="#C86F4A"/></svg>
+  </div>
+  <p class="copy">© دَرب — كل خطوة ليها حكاية.</p>
+ </div>
+</footer>
+ 
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+ 
+<script>
+(function(){
+'use strict';
+document.documentElement.classList.add('js');
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+ 
+/* ---------- data ---------- */
+var CATS={'البرمجة':'code','التصميم':'design','اللغات':'lang','التسويق':'mkt'};
+var COURSES=[
+{id:1,cat:'البرمجة',title:'أول خطوة في عالم البرمجة',level:'مبتدئ',lessons:'12 درس',dur:'4 ساعات',desc:'مقدمة بسيطة لفهم البرمجة وطريقة التفكير المنطقي.',
+ goals:['تفهم يعني إيه برمجة وبتشتغل إزاي','تتدرب على تقسيم المشكلة لخطوات صغيرة','تكتب أمثلة بسيطة وتجربها بنفسك'],
+ units:[['البداية وفهم الأساسيات','تعرّف على فكرة البرمجة والمصطلحات الأولى بأمثلة من الحياة اليومية.'],['التفكير المنطقي','تدريبات قصيرة على ترتيب الخطوات واتخاذ القرارات المنطقية.'],['كتابة أول أجزاء الكود','هتكتب أسطر بسيطة وتشوف نتيجتها خطوة بخطوة.'],['تطبيق عملي بسيط','مشروع صغير بتجمع فيه اللي اتعلمته.']]},
+{id:2,cat:'البرمجة',title:'بناء صفحات الويب',level:'متوسط',lessons:'18 درس',dur:'7 ساعات',desc:'استكشف أساسيات بناء صفحات ويب منظمة وتفاعلية.',
+ goals:['تفهم هيكل صفحة الويب وعناصرها','تنسق الشكل والألوان والمسافات','تضيف تفاعل بسيط للصفحة'],
+ units:[['هيكل الصفحة','إزاي بتترتب العناوين والفقرات والعناصر في صفحة منظمة.'],['تنسيق الشكل والألوان','التحكم في الألوان والخطوط والمسافات بأسلوب واضح.'],['تنظيم العناصر على الشاشة','ترتيب المحتوى بحيث يظهر كويس على الموبايل والكمبيوتر.'],['إضافة تفاعل بسيط','أزرار وقوائم وأجزاء بتتحرك وتستجيب للمستخدم.']]},
+{id:3,cat:'التصميم',title:'أساسيات التصميم البصري',level:'مبتدئ',lessons:'10 دروس',dur:'3 ساعات',desc:'تعرّف على الألوان والتكوين والعناصر البصرية.',
+ goals:['تفهم علاقة الألوان ببعضها','تتعرف على الأشكال والخطوط والمساحات','تبني تكوين بصري متوازن'],
+ units:[['الألوان وعلاقتها ببعض','إزاي تختار ألوان متناسقة وتفهم تأثير كل لون.'],['الأشكال والخطوط','الأشكال الأساسية ودورها في توصيل الفكرة.'],['التكوين والمساحات','توزيع العناصر وتوازن المساحات الفاضية.'],['تجميع الفكرة في تصميم','تطبيق بسيط بتجمع فيه كل العناصر.']]},
+{id:4,cat:'التصميم',title:'حكاية الهوية البصرية',level:'متوسط',lessons:'15 درس',dur:'6 ساعات',desc:'افهم مكونات الهوية البصرية وطريقة تنسيقها.',
+ goals:['تفهم مكونات الهوية البصرية','تختار ألوان وخطوط تعبّر عن فكرة','تنسق الهوية في استخدامات مختلفة'],
+ units:[['يعني إيه هوية بصرية','فكرة الهوية وإزاي بتحكي قصة العلامة.'],['الألوان والخطوط','اختيار مجموعة ألوان وخطوط تشتغل مع بعض.'],['الشعار وعناصره','مكونات الشعار وطرق بناء فكرة بسيطة وواضحة.'],['تنسيق الهوية في استخدامات مختلفة','إزاي تحافظ على نفس الشكل في أكتر من مكان.']]},
+{id:5,cat:'اللغات',title:'الإنجليزي من البداية',level:'مبتدئ',lessons:'20 درس',dur:'8 ساعات',desc:'ابدأ باستكشاف المفردات والتعبيرات اليومية.',
+ goals:['تتعرف على الحروف والنطق الأساسي','تتعلم مفردات من الحياة اليومية','تكوّن جمل بسيطة وتستخدمها'],
+ units:[['الحروف والنطق','البداية من الأصوات والحروف بطريقة سهلة.'],['مفردات الحياة اليومية','كلمات بتقابلها كل يوم في البيت والشارع.'],['جمل بسيطة','تركيب جمل قصيرة وإزاي تسأل وتجاوب.'],['تمارين تثبيت','تدريبات خفيفة ترجع بيها للي اتعلمته.']]},
+{id:6,cat:'اللغات',title:'محادثات إنجليزي يومية',level:'متوسط',lessons:'14 درس',dur:'5 ساعات',desc:'تدرب على مواقف محادثة متنوعة وتعبيرات شائعة.',
+ goals:['تتدرب على مواقف حوار متنوعة','تتعلم تعبيرات شائعة في الكلام اليومي','تحسّن طريقة ردك وتفاعلك'],
+ units:[['التحية والتعارف','بدايات الحوار وطرق التعريف بنفسك.'],['مواقف الخروج والسفر','حوارات في المطعم والمواصلات والأماكن العامة.'],['الشغل والدراسة','تعبيرات للكلام عن اليوم والمهام والمواد.'],['مواقف حرة وتدريب','تمارين محادثة مفتوحة تطبق فيها كل حاجة.']]},
+{id:7,cat:'التسويق',title:'مدخل إلى التسويق الرقمي',level:'مبتدئ',lessons:'13 درس',dur:'4 ساعات',desc:'اكتشف أساسيات التسويق الرقمي والقنوات المختلفة.',
+ goals:['تفهم فكرة التسويق الرقمي','تتعرف على القنوات المختلفة','تبني خطة بسيطة لفكرتك'],
+ units:[['فكرة التسويق الرقمي','يعني إيه تسويق رقمي وإزاي بيوصّل الفكرة للناس.'],['القنوات المختلفة','نظرة على القنوات المتاحة ودور كل واحدة.'],['فهم الجمهور','إزاي تتعرف على اللي بتتكلم معاهم وتحتياجاتهم.'],['خطة بسيطة','خطوات منظمة لوضع أول خطة تسويق صغيرة.']]},
+{id:8,cat:'التسويق',title:'صناعة المحتوى الذكي',level:'متوسط',lessons:'16 درس',dur:'6 ساعات',desc:'تعرّف على أفكار المحتوى والتخطيط والتنظيم.',
+ goals:['تطلّع أفكار محتوى متنوعة','تخطط لجدول محتوى منظم','تراجع وتحسّن اللي كتبته'],
+ units:[['أفكار المحتوى','طرق بسيطة لإيجاد أفكار وتصنيفها.'],['التخطيط لجدول','تنظيم الأفكار في جدول واضح ومريح.'],['كتابة وتنظيم','صياغة المحتوى وترتيبه بشكل يسهل قراءته.'],['مراجعة وتحسين','إزاي تراجع شغلك وتطوره خطوة بخطوة.']]}
+];
+ 
+/* ---------- course art ---------- */
+var S='stroke="#24251F" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"';
+var ART={
+1:'<rect width="320" height="200" fill="#A8B69B"/><circle cx="272" cy="40" r="46" fill="#C5D0BA"/><circle cx="36" cy="172" r="36" fill="#8FA182"/><rect x="88" y="42" width="144" height="98" rx="10" fill="#24251F"/><rect x="98" y="52" width="124" height="78" rx="5" fill="#F7F2E8"/><path d="M138 76l-16 16 16 16M182 76l16 16-16 16M166 70l-12 44" stroke="#C86F4A" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M68 152h184l-14 14H82z" fill="#24251F"/><circle cx="262" cy="146" r="8" fill="#D8B65F" '+S+'/><path d="M46 62h22M46 76h12" stroke="#24251F" stroke-width="4" stroke-linecap="round"/>',
+2:'<rect width="320" height="200" fill="#D9E0D0"/><circle cx="40" cy="40" r="26" fill="#A8B69B"/><rect x="146" y="24" width="150" height="104" rx="10" fill="#fff" '+S+'/><path d="M146 48h150" '+S+'/><circle cx="162" cy="36" r="4" fill="#C86F4A"/><circle cx="176" cy="36" r="4" fill="#D8B65F"/><rect x="160" y="62" width="50" height="50" rx="6" fill="#B9A8C9" '+S+'/><path d="M222 66h58M222 82h40M222 98h50" stroke="#24251F" stroke-width="4" stroke-linecap="round"/><rect x="30" y="68" width="170" height="112" rx="10" fill="#F7F2E8" '+S+'/><path d="M30 94h170" '+S+'/><rect x="30" y="68" width="170" height="26" rx="10" fill="#A8B69B" '+S+'/><circle cx="46" cy="81" r="4" fill="#C86F4A"/><circle cx="60" cy="81" r="4" fill="#D8B65F"/><circle cx="74" cy="81" r="4" fill="#24251F"/><rect x="46" y="108" width="62" height="54" rx="6" fill="#E9B68E" '+S+'/><path d="M122 112h60M122 128h44M122 144h54" stroke="#24251F" stroke-width="4" stroke-linecap="round"/>',
+3:'<rect width="320" height="200" fill="#B9A8C9"/><circle cx="270" cy="170" r="40" fill="#D3C8DE"/><circle cx="120" cy="96" r="52" fill="#C86F4A" '+S+'/><rect x="140" y="52" width="86" height="86" rx="10" fill="#D8B65F" '+S+' transform="rotate(12 183 95)"/><path d="M96 168l40-62 40 62z" fill="#F7F2E8" '+S+'/><g '+S+'><rect x="206" y="148" width="26" height="26" rx="6" fill="#A8B69B"/><rect x="238" y="148" width="26" height="26" rx="6" fill="#E9B68E"/><rect x="270" y="148" width="26" height="26" rx="6" fill="#24251F"/></g><path d="M30 40c20-20 30 20 50 0" stroke="#24251F" stroke-width="4" fill="none" stroke-linecap="round"/>',
+4:'<rect width="320" height="200" fill="#DCD0E6"/><circle cx="40" cy="168" r="34" fill="#B9A8C9"/><rect x="60" y="32" width="200" height="136" rx="14" fill="#F7F2E8" '+S+'/><circle cx="116" cy="88" r="32" fill="#E9B68E" '+S+'/><path d="M98 104c14 0 6-18 20-18s6-14 16-16" fill="none" stroke="#C86F4A" stroke-width="5" stroke-linecap="round"/><circle cx="98" cy="104" r="4.5" fill="#24251F"/><circle cx="134" cy="70" r="4.5" fill="#24251F"/><text x="176" y="100" font-size="50" font-weight="700" fill="#24251F" font-family="Georgia,serif">Aa</text><g '+S+'><circle cx="86" cy="142" r="11" fill="#A8B69B"/><circle cx="116" cy="142" r="11" fill="#D8B65F"/><circle cx="146" cy="142" r="11" fill="#C86F4A"/><circle cx="176" cy="142" r="11" fill="#B9A8C9"/></g><path d="M204 132h40M204 148h26" stroke="#24251F" stroke-width="4" stroke-linecap="round"/>',
+5:'<rect width="320" height="200" fill="#E9B68E"/><circle cx="270" cy="38" r="44" fill="#F3D2B4"/><circle cx="40" cy="170" r="30" fill="#D99C6E"/><path d="M60 52c32-10 64-6 100 14v100c-36-20-68-24-100-14z" fill="#F7F2E8" '+S+'/><path d="M260 52c-32-10-64-6-100 14v100c36-20 68-24 100-14z" fill="#fff" '+S+'/><text x="86" y="112" font-size="44" font-weight="700" fill="#C86F4A" font-family="Georgia,serif">A</text><text x="190" y="112" font-size="44" font-weight="700" fill="#24251F" font-family="Georgia,serif">b</text><path d="M80 134h50M190 134h50M190 150h34" stroke="#A8B69B" stroke-width="4" stroke-linecap="round"/><g transform="rotate(38 270 120)"><rect x="262" y="84" width="16" height="62" rx="4" fill="#D8B65F" '+S+'/><path d="M262 146l8 16 8-16z" fill="#F7F2E8" '+S+'/></g>',
+6:'<rect width="320" height="200" fill="#F3D6BC"/><circle cx="40" cy="40" r="26" fill="#E9B68E"/><path d="M52 30h130a14 14 0 0 1 14 14v46a14 14 0 0 1-14 14h-86l-32 26v-26h-12a14 14 0 0 1-14-14V44a14 14 0 0 1 14-14z" fill="#F7F2E8" '+S+'/><circle cx="84" cy="67" r="6" fill="#24251F"/><circle cx="116" cy="67" r="6" fill="#24251F"/><circle cx="148" cy="67" r="6" fill="#24251F"/><path d="M148 112h112a14 14 0 0 1 14 14v36a14 14 0 0 1-14 14h-12v24l-28-24h-72a14 14 0 0 1-14-14v-36a14 14 0 0 1 14-14z" transform="translate(0 -22)" fill="#C86F4A" '+S+'/><path d="M170 122h80M170 140h52" stroke="#F7F2E8" stroke-width="5" stroke-linecap="round"/>',
+7:'<rect width="320" height="200" fill="#D8B65F"/><circle cx="272" cy="168" r="40" fill="#E6CD8C"/><circle cx="48" cy="40" r="28" fill="#E6CD8C"/><g transform="translate(60 52)"><path d="M0 40v40h42l70 38V2L42 40z" fill="#C86F4A" '+S+'/><path d="M14 80l10 44h24l-8-44" fill="#F7F2E8" '+S+'/><rect x="112" y="2" width="14" height="116" rx="5" fill="#24251F"/></g><path d="M204 76c14 14 14 38 0 52M222 58c24 22 24 66 0 88" fill="none" stroke="#24251F" stroke-width="5" stroke-linecap="round"/><g '+S+'><rect x="248" y="124" width="14" height="34" fill="#F7F2E8"/><rect x="268" y="100" width="14" height="58" fill="#A8B69B"/><rect x="288" y="76" width="14" height="82" fill="#B9A8C9"/></g>',
+8:'<rect width="320" height="200" fill="#EBD69B"/><circle cx="40" cy="170" r="32" fill="#D8B65F"/><g transform="rotate(-8 100 100)"><rect x="40" y="46" width="108" height="124" rx="12" fill="#F7F2E8" '+S+'/><rect x="52" y="58" width="84" height="48" rx="6" fill="#B9A8C9" '+S+'/><circle cx="74" cy="76" r="8" fill="#F7F2E8"/><path d="M52 106l24-20 20 14 18-12 22 18z" fill="#A8B69B"/><path d="M52 124h84M52 140h58" stroke="#24251F" stroke-width="4" stroke-linecap="round"/></g><g transform="rotate(7 220 100)"><rect x="170" y="36" width="112" height="124" rx="12" fill="#fff" '+S+'/><rect x="182" y="48" width="88" height="34" rx="6" fill="#E9B68E" '+S+'/><path d="M182 98h88M182 114h64M182 130h76" stroke="#24251F" stroke-width="4" stroke-linecap="round"/></g><path d="M158 20l7 17 17 7-17 7-7 17-7-17-17-7 17-7z" fill="#C86F4A" '+S+'/>'
+};
+function art(id){return '<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+ART[id]+'</svg>'}
+function ico(n){return '<svg class="ic" aria-hidden="true"><use href="#ic-'+n+'"/></svg>'}
+ 
+/* ---------- toast ---------- */
+var toastEl=$('#toast'),toastT;
+function toast(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove('show')},2200)}
+function goTo(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})}
+ 
+/* ---------- favorites ---------- */
+var favs=new Set();
+try{var sv=JSON.parse(localStorage.getItem('darb-favs')||'[]');if(Array.isArray(sv))sv.forEach(function(x){if(COURSES.some(function(c){return c.id===x}))favs.add(x)})}catch(e){}
+function saveFavs(){try{localStorage.setItem('darb-favs',JSON.stringify(Array.from(favs)))}catch(e){}}
+ 
+/* ---------- courses render ---------- */
+var state={cat:'all',fav:false};
+var grid=$('#grid'),empty=$('#empty'),statusEl=$('#status'),favn=$('#favn'),favtog=$('#favtog');
+function cardHTML(c,i){
+ var on=favs.has(c.id),lv=c.level==='مبتدئ'?1:2;
+ return '<article class="card" style="--i:'+i+'">'+
+ '<div class="card-art">'+art(c.id)+'</div><div class="card-body">'+
+ '<div class="card-top"><span class="tag t-'+CATS[c.cat]+'">'+c.cat+'</span>'+
+ '<button class="fav'+(on?' on':'')+'" data-fav="'+c.id+'" aria-pressed="'+on+'" aria-label="حفظ كورس '+c.title+' في المفضلة">'+ico('heart')+'</button></div>'+
+ '<h3>'+c.title+'</h3><p>'+c.desc+'</p>'+
+ '<ul class="meta"><li><span class="lv" data-l="'+lv+'"><i></i><i></i><i></i></span>'+c.level+'</li><li>'+ico('book')+c.lessons+'</li><li>'+ico('clock')+c.dur+'</li></ul>'+
+ '<button class="btn btn-ghost btn-sm" data-details="'+c.id+'">شوف التفاصيل</button></div></article>';
+}
+function renderCourses(){
+ var list=COURSES.filter(function(c){return(state.cat==='all'||c.cat===state.cat)&&(!state.fav||favs.has(c.id))});
+ grid.innerHTML=list.map(cardHTML).join('');
+ empty.hidden=list.length>0;
+ grid.hidden=list.length===0;
+ var where=state.cat==='all'?'كل المجالات':state.cat;
+ statusEl.textContent='بنعرض '+list.length+' '+(list.length===1?'كورس':'كورسات')+' — '+where+(state.fav?' (المفضلة)':'');
+ favn.textContent=favs.size;
+ favtog.setAttribute('aria-pressed',String(state.fav));
+}
+function setCategory(cat){
+ state.cat=cat;
+ $$('#cats .cat').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-cat')===cat))});
+ renderCourses();
+}
+$('#cats').addEventListener('click',function(e){var b=e.target.closest('.cat');if(b)setCategory(b.getAttribute('data-cat'))});
+favtog.addEventListener('click',function(){state.fav=!state.fav;renderCourses()});
+$('#resetf').addEventListener('click',function(){state.fav=false;setCategory('all')});
+grid.addEventListener('click',function(e){
+ var f=e.target.closest('[data-fav]');
+ if(f){var id=+f.getAttribute('data-fav');
+  if(favs.has(id)){favs.delete(id);toast('اتشالت من المفضلة')}else{favs.add(id);toast('اتحفظت في المفضلة')}
+  saveFavs();
+  if(state.fav){renderCourses()}else{f.classList.toggle('on',favs.has(id));f.setAttribute('aria-pressed',String(favs.has(id)));favn.textContent=favs.size}
+  return}
+ var d=e.target.closest('[data-details]');
+ if(d)openModal(+d.getAttribute('data-details'),d);
+});
+ 
+/* ---------- accordions ---------- */
+function accHTML(items,idp,numbered){
+ return items.map(function(it,i){
+  return '<div class="acc-item"><h3 style="font-size:inherit"><button class="acc-btn" id="'+idp+'b'+i+'" aria-expanded="false" aria-controls="'+idp+'p'+i+'"><span class="u">'+(numbered?'<span class="un">'+(i+1)+'</span>':'')+'<span>'+it[0]+'</span></span><span class="pm" aria-hidden="true"></span></button></h3>'+
+  '<div class="acc-p" id="'+idp+'p'+i+'" role="region" aria-labelledby="'+idp+'b'+i+'"><div><p>'+it[1]+'</p></div></div></div>';
+ }).join('');
+}
+function setupAcc(root,single){
+ root.addEventListener('click',function(e){
+  var b=e.target.closest('.acc-btn');if(!b||!root.contains(b))return;
+  var item=b.closest('.acc-item'),open=!item.classList.contains('open');
+  if(single&&open)$$('.acc-item.open',root).forEach(function(o){o.classList.remove('open');o.querySelector('.acc-btn').setAttribute('aria-expanded','false')});
+  item.classList.toggle('open',open);b.setAttribute('aria-expanded',String(open));
+ });
+ root.addEventListener('keydown',function(e){
+  var b=e.target.closest&&e.target.closest('.acc-btn');if(!b)return;
+  var bs=$$('.acc-btn',root),i=bs.indexOf(b),n=-1;
+  if(e.key==='ArrowDown')n=(i+1)%bs.length;else if(e.key==='ArrowUp')n=(i-1+bs.length)%bs.length;else if(e.key==='Home')n=0;else if(e.key==='End')n=bs.length-1;
+  if(n>=0){e.preventDefault();bs[n].focus()}
+ });
+}
+var FAQ=[
+['أبدأ منين لو معنديش خبرة؟','ممكن تبدأ بكورس من مستوى مبتدئ في المجال اللي مهتم بيه.'],
+['هل أقدر أتعلم على راحتي؟','اختار الوقت المناسب ليك، وارجع للدروس حسب احتياجك.'],
+['إزاي أعرف مستوايا؟','راجع وصف كل كورس والمستوى المكتوب عليه قبل ما تختاره.'],
+['هل لازم أختار مجال واحد؟','مش لازم، تقدر تستكشف أكتر من مجال حسب اهتماماتك.'],
+['أقدر أغيّر مسار التعلم؟','طبعاً، المسار المقترح مجرد ترتيب يساعدك تبدأ، وتقدر تعدّله.'],
+['هل محتاج خبرة تقنية؟','مش بالضرورة، فيه محتوى بيبدأ من الأساسيات.']];
+var faqEl=$('#faqacc');faqEl.innerHTML=accHTML(FAQ,'q',false);setupAcc(faqEl,true);
+var firstItem=$('.acc-item',faqEl);if(firstItem){firstItem.classList.add('open');firstItem.querySelector('.acc-btn').setAttribute('aria-expanded','true')}
+ 
+/* ---------- modal ---------- */
+var ov=$('#ov'),dlg=$('#dlg'),curId=null,lastFocus=null,closeT;
+function openModal(id,trigger){
+ var c=COURSES.filter(function(x){return x.id===id})[0];if(!c)return;
+ clearTimeout(closeT);curId=id;lastFocus=trigger||document.activeElement;
+ $('#m-art').innerHTML=art(id);
+ var tag=$('#m-tag');tag.textContent=c.cat;tag.className='tag t-'+CATS[c.cat];
+ $('#m-title').textContent=c.title;
+ $('#m-chips').innerHTML='<li>'+c.level+'</li><li>'+ico('book')+c.lessons+'</li><li>'+ico('clock')+c.dur+'</li>';
+ $('#m-desc').textContent=c.desc;
+ $('#m-goals').innerHTML=c.goals.map(function(g){return '<li>'+g+'</li>'}).join('');
+ var acc=$('#m-acc');acc.innerHTML=accHTML(c.units,'m'+id,true);
+ if(!acc._set){setupAcc(acc,false);acc._set=true}
+ ov.classList.remove('closing');ov.hidden=false;document.body.classList.add('lock');
+ dlg.scrollTop=0;$('#mx').focus();
+}
+function closeModal(){
+ if(ov.hidden)return;
+ document.body.classList.remove('lock');
+ ov.classList.add('closing');
+ closeT=setTimeout(function(){ov.hidden=true;ov.classList.remove('closing');if(lastFocus&&lastFocus.focus&&document.body.contains(lastFocus))lastFocus.focus()},reduce?0:230);
+}
+$('#mx').addEventListener('click',closeModal);
+ov.addEventListener('mousedown',function(e){if(e.target===ov)closeModal()});
+$('#m-pick').addEventListener('click',function(){
+ var c=COURSES.filter(function(x){return x.id===curId})[0];lastFocus=null;closeModal();
+ if(c){var r=$$('input[name=field]').filter(function(i){return i.value===c.cat})[0];if(r){r.checked=true;$('#bmsg').textContent=''}}
+ setTimeout(function(){goTo('path')},60);
+});
+document.addEventListener('keydown',function(e){
+ if(ov.hidden||ov.classList.contains('closing'))return;
+ if(e.key==='Escape'){e.preventDefault();closeModal();return}
+ if(e.key==='Tab'){
+  var f=$$('button,[href],input,select,[tabindex]:not([tabindex="-1"])',dlg).filter(function(x){return x.offsetParent!==null});
+  if(!f.length)return;var a=f[0],z=f[f.length-1];
+  if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}
+  else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}
+ }
+});
+ 
+/* ---------- path builder ---------- */
+var bform=$('#bform'),result=$('#result'),bmsg=$('#bmsg');
+var PH=result.innerHTML;
+var TIMEW=['مع وقتك ده، ممكن تمشي على مهلك: درس أو اتنين في المرة، وترجع تراجع براحتك.','وقتك ده يسمحلك تتابع كذا درس في الأسبوع وتخصص جزء منه للتطبيق.','وقتك واسع، فتقدر تتنقل بين الدروس وتخصص وقت أكبر للتجربة والمراجعة.'];
+bform.addEventListener('submit',function(e){
+ e.preventDefault();
+ var f=bform.elements.field.value,l=bform.elements.lvl.value,t=bform.elements.time.value;
+ if(!f||l===''||t===''){bmsg.textContent='كمّل الاختيارات التلاتة الأول عشان نرسملك المسار.';return}
+ bmsg.textContent='';
+ var list=COURSES.filter(function(c){return c.cat===f});
+ var beg=list.filter(function(c){return c.level==='مبتدئ'})[0],mid=list.filter(function(c){return c.level==='متوسط'})[0];
+ var seq=[];
+ if(l==='0'){if(beg)seq.push([beg,'نقطة بداية مناسبة']);if(mid)seq.push([mid,'الخطوة اللي بعدها'])}
+ else if(l==='1'){if(mid)seq.push([mid,'نقطة بداية مناسبة لمستواك']);if(beg)seq.push([beg,'ممكن ترجعله للمراجعة'])}
+ else{if(mid)seq.push([mid,'نقطة بداية مناسبة لمستواك'])}
+ var h='<p class="rintro">مسارك المقترح في '+f+'. '+TIMEW[+t]+'</p><ol class="path">';
+ seq.forEach(function(s,i){var c=s[0];
+  h+='<li class="pi" style="--k:'+i+'"><span class="pn">'+(i+1)+'</span><div class="pc"><span class="note">'+s[1]+'</span><h3>'+c.title+'</h3><ul class="meta"><li><span class="lv" data-l="'+(c.level==='مبتدئ'?1:2)+'"><i></i><i></i><i></i></span>'+c.level+'</li><li>'+ico('clock')+c.dur+'</li></ul><button type="button" class="btn btn-ghost btn-sm" data-details="'+c.id+'">شوف التفاصيل</button></div></li>';
+ });
+ h+='</ol><p class="fine">ده ترتيب مقترح يساعدك تختار بداية مناسبة، وتقدر تغيّره حسب اهتمامك ووقتك.</p>';
+ result.innerHTML=h;
+ if(window.innerWidth<960)result.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
+});
+$('#breset').addEventListener('click',function(){bform.reset();bmsg.textContent='';result.innerHTML=PH});
+result.addEventListener('click',function(e){var d=e.target.closest('[data-details]');if(d)openModal(+d.getAttribute('data-details'),d)});
+ 
+/* ---------- player ---------- */
+var LINES=['أهلاً بيك في دَرب.','كل مجال بيبدأ بفكرة بسيطة.','خد وقتك في استكشاف الأساسيات.','قسّم رحلتك لخطوات صغيرة.','والأهم، استمتع بالتعلّم.'];
+var SEG=6,TOTAL=LINES.length*SEG;
+var player=$('#player'),sub=$('#sub'),fill=$('#fill'),tm=$('#tm'),bar=$('#bar'),bigp=$('#bigp'),sp=$('#sp'),tlist=$('#tlist');
+var cards=$$('.pcard');
+tlist.innerHTML=LINES.map(function(l,i){return '<li data-i="'+i+'"><b>'+fmt(i*SEG)+'</b>'+l+'</li>'}).join('');
+var P={t:0,playing:false,last:0,timer:null,ended:false};
+function fmt(s){s=Math.floor(s);return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2)}
+function setIcon(btn,name,label){btn.querySelector('use').setAttribute('href','#ic-'+name);btn.setAttribute('aria-label',label)}
+function paint(){
+ var seg=Math.min(LINES.length-1,Math.floor(P.t/SEG));
+ fill.style.width=(P.t/TOTAL*100)+'%';
+ tm.textContent=fmt(P.t)+' / '+fmt(TOTAL);
+ bar.setAttribute('aria-valuenow',String(Math.floor(P.t)));bar.setAttribute('aria-valuetext',fmt(P.t));
+ if(P.t>0||P.playing||P.ended){sub.textContent=LINES[seg]}
+ $$('li',tlist).forEach(function(li,i){li.classList.toggle('cur',(P.t>0||P.playing||P.ended)&&i===seg)});
+ cards.forEach(function(c,i){c.classList.toggle('on',(P.t>0||P.ended)&&i<=seg)});
+}
+function stop(){clearInterval(P.timer);P.timer=null}
+function pause(){P.playing=false;stop();player.classList.remove('playing');setIcon(bigp,'play','تشغيل');setIcon(sp,'play','تشغيل')}
+function play(){
+ if(P.ended||P.t>=TOTAL){P.t=0;P.ended=false}
+ P.playing=true;P.last=performance.now();player.classList.add('playing');
+ setIcon(bigp,'pause','إيقاف مؤقت');setIcon(sp,'pause','إيقاف مؤقت');
+ stop();P.timer=setInterval(tick,100);paint();
+}
+function tick(){
+ var n=performance.now();P.t+=(n-P.last)/1000;P.last=n;
+ if(P.t>=TOTAL){P.t=TOTAL;P.ended=true;pause();setIcon(bigp,'replay','إعادة التشغيل');setIcon(sp,'replay','إعادة التشغيل');player.classList.remove('playing');sub.textContent='خلص الدرس. دوس إعادة لو حابب تشوفه تاني.'}
+ paint();
+}
+function toggle(){P.playing?pause():play()}
+bigp.addEventListener('click',toggle);sp.addEventListener('click',toggle);
+function seekTo(x){var r=bar.getBoundingClientRect();var f=Math.min(1,Math.max(0,(r.right-x)/r.width));P.t=f*TOTAL;P.ended=false;if(P.t>=TOTAL)P.t=TOTAL-.01;P.last=performance.now();paint()}
+bar.addEventListener('pointerdown',function(e){seekTo(e.clientX)});
+bar.addEventListener('keydown',function(e){
+ var d=0;if(e.key==='ArrowLeft')d=3;else if(e.key==='ArrowRight')d=-3;else if(e.key==='Home'){P.t=0;P.ended=false;paint();return}else return;
+ e.preventDefault();P.t=Math.min(TOTAL-.01,Math.max(0,P.t+d));P.ended=false;P.last=performance.now();paint();
+});
+document.addEventListener('visibilitychange',function(){if(document.hidden&&P.playing)pause()});
+ 
+/* ---------- form ---------- */
+var jform=$('#jform'),conf=$('#conf'),fw=$('#formwrap');
+var F={name:$('#f-name'),mail:$('#f-mail'),field:$('#f-field'),lvl:$('#f-lvl')};
+var E={name:$('#e-name'),mail:$('#e-mail'),field:$('#e-field'),lvl:$('#e-lvl')};
+function setErr(k,m){E[k].textContent=m;if(m)F[k].setAttribute('aria-invalid','true');else F[k].removeAttribute('aria-invalid')}
+function validate(){
+ var ok=true,n=F.name.value.trim(),m=F.mail.value.trim();
+ if(!n){setErr('name','اكتب اسمك الأول.');ok=false}else if(n.length<2){setErr('name','الاسم لازم يكون حرفين على الأقل.');ok=false}else setErr('name','');
+ if(!m){setErr('mail','اكتب بريدك الإلكتروني.');ok=false}else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)||!F.mail.checkValidity()){setErr('mail','البريد ده شكله مش مظبوط، راجعه تاني.');ok=false}else setErr('mail','');
+ if(!F.field.value){setErr('field','اختار المجال.');ok=false}else setErr('field','');
+ if(!F.lvl.value){setErr('lvl','اختار مستواك.');ok=false}else setErr('lvl','');
+ return ok;
+}
+Object.keys(F).forEach(function(k){F[k].addEventListener('input',function(){if(F[k].hasAttribute('aria-invalid'))validate()});F[k].addEventListener('change',function(){if(F[k].hasAttribute('aria-invalid'))validate()})});
+jform.addEventListener('submit',function(e){
+ e.preventDefault();
+ if(!validate()){var bad=$('[aria-invalid="true"]',jform);if(bad)bad.focus();return}
+ var n=F.name.value.trim();
+ $('#cmsg').textContent='أهلاً بيك يا '+n+'، دي اختياراتك اللي تقدر تبدأ منها. نتمنى لك رحلة تعلّم ممتعة!';
+ $('#c-name').textContent=n;$('#c-mail').textContent=F.mail.value.trim();$('#c-field').textContent=F.field.value;$('#c-lvl').textContent=F.lvl.value;
+ fw.hidden=true;conf.hidden=false;conf.focus();
+ conf.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
+});
+$('#c-edit').addEventListener('click',function(){conf.hidden=true;fw.hidden=false;F.name.focus()});
+$('#c-see').addEventListener('click',function(){setCategory(F.field.value);goTo('courses')});
+ 
+/* ---------- nav ---------- */
+var hdr=$('#hdr'),nav=$('#nav'),burger=$('#burger');
+function menu(open){nav.classList.toggle('open',open);burger.setAttribute('aria-expanded',String(open));burger.setAttribute('aria-label',open?'إغلاق القائمة':'فتح القائمة')}
+burger.addEventListener('click',function(){menu(!nav.classList.contains('open'))});
+nav.addEventListener('click',function(e){if(e.target.closest('a'))menu(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){menu(false);burger.focus()}});
+document.addEventListener('click',function(e){if(nav.classList.contains('open')&&!nav.contains(e.target)&&!burger.contains(e.target))menu(false)});
+var secIds=['home','courses','path','instructors','faq'],ticking=false;
+function onScroll(){
+ hdr.classList.toggle('sc',window.scrollY>8);
+ var cur='home',y=window.scrollY+120;
+ secIds.forEach(function(id){var el=document.getElementById(id);if(el&&el.getBoundingClientRect().top+window.scrollY<=y)cur=id});
+ if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4)cur='faq';
+ $$('#nav a').forEach(function(a){var on=a.getAttribute('data-s')===cur;a.classList.toggle('act',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});
+ ticking=false;
+}
+window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
+window.addEventListener('resize',function(){if(window.innerWidth>=960)menu(false)});
+ 
+/* ---------- reveal ---------- */
+var rvs=$$('.rv');
+if('IntersectionObserver' in window){
+ var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+ rvs.forEach(function(el){io.observe(el)});
+}else{rvs.forEach(function(el){el.classList.add('in')})}
+ 
+/* ---------- init ---------- */
+renderCourses();paint();onScroll();
+})();
+</script>
+</body>
+</html>
+ 
