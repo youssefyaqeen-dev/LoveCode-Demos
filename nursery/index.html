@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>براعم | حضانة وروضة أطفال</title>
+<meta name="description" content="براعم: حضانة وروضة أطفال. برامج حسب السن، جدول يومي واضح، وأنشطة تنمي مهارات طفلك.">
+<meta name="theme-color" content="#FFF7EC">
+<style>
+:root{--ink:#33302B;--ink2:#4A463E;--cream:#FFF7EC;--coral:#E2725B;--coral-d:#C85A44;--teal:#2E8B8B;--teal-d:#226B6B;--sun:#F2B544;--rose:#F4C7B8;--mint:#CFE6DF;--sand:#F3E7D3;--muted:#6E695E;--hh:68px;--r:24px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Segoe UI","Tahoma","Noto Naskh Arabic","Noto Sans Arabic","Arial",sans-serif;background:var(--cream);color:var(--ink);line-height:1.85;font-size:17px;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body.lock{overflow:hidden}
+img,svg{display:block;max-width:100%}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit}
+ul,ol{list-style:none}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{width:100%;max-width:1200px;margin-inline:auto;padding-inline:20px}
+section{scroll-margin-top:var(--hh)}
+.sec{padding-block:clamp(52px,8vw,100px)}
+.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:800;letter-spacing:.22em;color:var(--coral-d)}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--coral)}
+.h2{font-size:clamp(1.9rem,5.6vw,3.2rem);line-height:1.3;font-weight:800;margin-block:10px 12px}
+.lead{font-size:1.08rem;color:var(--muted);max-width:34em}
+.shead{margin-bottom:clamp(26px,5vw,48px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:50px;padding:0 26px;border-radius:999px;border:2px solid var(--ink);background:transparent;font-weight:800;text-decoration:none;transition:transform .25s,background .25s,color .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(51,48,43,.14)}
+.btn:active{transform:translateY(0)}
+.btn-primary{background:var(--coral-d);border-color:var(--coral-d);color:#fff}
+.btn-primary:hover{background:var(--ink);border-color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--cream)}
+.btn-sm{min-height:44px;padding:0 20px;font-size:.95rem}
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease;transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+.hdr{position:sticky;top:0;z-index:50;height:var(--hh);background:rgba(255,247,236,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+.hdr.sc{border-color:rgba(51,48,43,.13);background:rgba(255,247,236,.96)}
+.hdr .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:42px;height:42px}
+.brand b{display:block;font-size:1.5rem;line-height:1;font-weight:800}
+.brand small{display:block;font-size:.62rem;letter-spacing:.34em;font-weight:800;color:var(--coral-d);font-family:Arial,sans-serif;direction:ltr;text-align:start;margin-top:3px}
+.nav{position:absolute;top:100%;inset-inline:0;background:var(--cream);border-bottom:2px solid var(--ink);padding:10px 20px 20px;display:grid;gap:2px;visibility:hidden;opacity:0;transform:translateY(-10px);transition:.25s}
+.nav.open{visibility:visible;opacity:1;transform:none}
+.nav a{display:block;padding:12px 6px;font-weight:700;text-decoration:none;border-bottom:1px dashed rgba(51,48,43,.2)}
+.nav a.act{color:var(--coral-d)}
+.hdr-r{display:flex;align-items:center;gap:8px}
+.burger{width:46px;height:46px;border-radius:50%;border:2px solid var(--ink);background:transparent;display:grid;place-items:center}
+.burger span,.burger span::before,.burger span::after{display:block;width:18px;height:2.5px;background:var(--ink);border-radius:2px;transition:.25s;position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;inset-inline-start:0}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.burger[aria-expanded=true] span{background:transparent}
+.burger[aria-expanded=true] span::before{top:0;transform:rotate(45deg)}
+.burger[aria-expanded=true] span::after{top:0;transform:rotate(-45deg)}
+@media(min-width:900px){
+.nav{position:static;display:flex;gap:22px;padding:0;border:0;background:none;visibility:visible;opacity:1;transform:none}
+.nav a{border:0;padding:6px 2px}
+.burger{display:none}
+}
+/* hero */
+.hero{position:relative;padding-block:clamp(40px,7vw,90px);overflow:clip}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr);gap:34px;align-items:center}
+.hero h1{font-size:clamp(2.3rem,7.4vw,4.4rem);line-height:1.22;font-weight:800}
+.hero h1 em{font-style:normal;color:var(--coral-d)}
+.hero p{color:var(--muted);font-size:1.12rem;max-width:32em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.hero-art{position:relative}
+.hero-art svg{width:100%;height:auto}
+.trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.trust span{display:inline-flex;align-items:center;gap:8px;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:8px 16px;font-weight:700;font-size:.92rem}
+.trust .ic{width:18px;height:18px;color:var(--teal)}
+@media(min-width:960px){.hero .wrap{grid-template-columns:1.05fr .95fr}}
+/* programs */
+.prog{background:var(--sand)}
+.cards{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+@media(min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
+.pcard{background:#fff;border:2px solid var(--ink);border-radius:var(--r);padding:26px 22px;position:relative;transition:transform .3s,box-shadow .3s}
+.pcard:hover{transform:translateY(-6px);box-shadow:0 10px 0 rgba(51,48,43,.12)}
+.pcard .dot{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;margin-bottom:16px;border:2px solid var(--ink)}
+.pcard h3{font-size:1.3rem;font-weight:800;margin-bottom:6px}
+.pcard .age{display:inline-block;background:var(--mint);border-radius:999px;padding:3px 14px;font-size:.85rem;font-weight:800;color:var(--teal-d);margin-bottom:10px}
+.pcard p{color:var(--muted);font-size:.98rem}
+.pcard ul{margin-top:12px;display:grid;gap:7px}
+.pcard li{display:flex;gap:9px;align-items:flex-start;font-size:.95rem;font-weight:600}
+.pcard li .ic{width:17px;height:17px;color:var(--coral-d);margin-top:4px}
+/* schedule */
+.sched-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:26px}
+@media(min-width:960px){.sched-grid{grid-template-columns:.9fr 1.1fr;align-items:start}}
+.day{display:grid;grid-template-columns:minmax(0,1fr);gap:0;background:#fff;border:2px solid var(--ink);border-radius:var(--r);overflow:hidden}
+.slot{display:grid;grid-template-columns:86px 1fr;gap:14px;padding:15px 20px;align-items:center}
+.slot+.slot{border-top:1px dashed rgba(51,48,43,.22)}
+.slot time{font-weight:800;color:var(--teal-d);font-size:.95rem;direction:ltr;text-align:end}
+.slot b{display:block;font-weight:800}
+.slot small{color:var(--muted)}
+.note{margin-top:18px;background:var(--mint);border:2px solid var(--teal-d);border-radius:var(--r);padding:18px 20px;font-size:.95rem}
+.note b{color:var(--teal-d)}
+/* activities */
+.acts{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+@media(min-width:700px){.acts{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1020px){.acts{grid-template-columns:repeat(4,1fr)}}
+.acard{border-radius:var(--r);border:2px solid var(--ink);overflow:hidden;background:#fff;transition:transform .3s}
+.acard:hover{transform:translateY(-6px)}
+.acard svg{width:100%;height:auto}
+.acard .t{padding:16px 18px}
+.acard h3{font-size:1.08rem;font-weight:800}
+.acard p{font-size:.9rem;color:var(--muted)}
+/* faq */
+.faq{background:var(--sand)}
+.acc{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;max-width:820px}
+.acc-item{background:#fff;border:2px solid var(--ink);border-radius:18px;overflow:hidden}
+.acc-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:14px;background:none;border:0;padding:18px 20px;font-weight:800;font-size:1.04rem;text-align:start}
+.acc-q .ic{transition:transform .3s;color:var(--coral-d)}
+.acc-item.open .acc-q .ic{transform:rotate(180deg)}
+.acc-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.acc-a p{padding:0 20px 18px;color:var(--muted)}
+/* register */
+.reg-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:30px}
+@media(min-width:960px){.reg-grid{grid-template-columns:1fr 1fr;align-items:start}}
+.form{background:#fff;border:2px solid var(--ink);border-radius:var(--r);padding:clamp(20px,4vw,34px);display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.field{display:grid;grid-template-columns:minmax(0,1fr);gap:7px}
+.field label{font-weight:800;font-size:.95rem}
+.field input,.field select{min-height:50px;border:2px solid var(--ink);border-radius:14px;padding:0 14px;background:var(--cream);font-size:1rem}
+.field input:focus,.field select:focus{outline:3px solid var(--sun);outline-offset:1px}
+.field .err{color:#B0341F;font-size:.85rem;font-weight:700;min-height:1.2em}
+.frow{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+@media(min-width:620px){.frow{grid-template-columns:1fr 1fr}}
+.done{display:none;background:var(--mint);border:2px solid var(--teal-d);border-radius:var(--r);padding:24px;text-align:center}
+.done.show{display:block}
+.done h3{color:var(--teal-d);font-size:1.3rem;margin-bottom:8px}
+.done p{font-size:.98rem}
+.done .sum{margin-top:12px;background:#fff;border-radius:14px;padding:14px 18px;text-align:start;font-size:.94rem;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+/* footer */
+.ftr{background:var(--ink);color:var(--cream);padding-block:clamp(40px,6vw,70px)}
+.ftr .wrap{display:grid;grid-template-columns:minmax(0,1fr);gap:26px}
+.ftr-brand{display:flex;align-items:center;gap:12px}
+.ftr-brand svg{width:46px;height:46px}
+.ftr-brand b{font-size:1.5rem}
+.ftr nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+.ftr nav a{text-decoration:none;font-weight:700;opacity:.85}
+.ftr nav a:hover{opacity:1;color:var(--sun)}
+.ftr .lc{border-top:1px solid rgba(255,247,236,.2);padding-top:20px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.92rem;opacity:.9}
+.ftr .lc b{font-family:Arial,sans-serif;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<script>document.body.classList.add('js')</script>
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="براعم - الرئيسية">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="26" r="16" fill="#F2B544" stroke="#33302B" stroke-width="2.5"/><path d="M24 26c-5-2-8-6-8-11 4 0 7 2 8 5 1-3 4-5 8-5 0 5-3 9-8 11z" fill="#2E8B8B" stroke="#33302B" stroke-width="2"/><path d="M24 26v10" stroke="#33302B" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <span><b>براعم</b><small>BARAEM</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="التنقل الرئيسي">
+      <a href="#programs">البرامج</a>
+      <a href="#day">اليوم في براعم</a>
+      <a href="#activities">الأنشطة</a>
+      <a href="#faq">أسئلة الأهالي</a>
+      <a href="#register">التسجيل</a>
+    </nav>
+    <div class="hdr-r">
+      <a class="btn btn-primary btn-sm" href="#register">سجّل طفلك</a>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="القائمة"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<!-- hero -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow rv">حضانة وروضة أطفال</span>
+      <h1 class="rv" style="--d:.08s">طفلك يكبر، يلعب، <em>ويتعلم</em> كل يوم</h1>
+      <p class="rv" style="--d:.16s">في براعم كل يوم خطة: أنشطة حسب السن، أكلات صحية، قيلولة هادية، ومعلمات بيحبوا شغلهم. وأنت تعرف كل ده أول بأول.</p>
+      <div class="hero-cta rv" style="--d:.24s">
+        <a class="btn btn-primary" href="#register">احجز زيارة</a>
+        <a class="btn btn-ghost" href="#programs">شوف البرامج</a>
+      </div>
+      <div class="trust rv" style="--d:.32s">
+        <span><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>معلمات متخصصات</span>
+        <span><svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>مكان آمن ونضيف</span>
+        <span><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>متابعة يومية للأهل</span>
+      </div>
+    </div>
+    <div class="hero-art rv" style="--d:.2s">
+      <svg viewBox="0 0 520 420" role="img" aria-label="رسمة أطفال بيلعبوا تحت الشمس">
+        <rect x="10" y="10" width="500" height="400" rx="34" fill="#FBEEDC" stroke="#33302B" stroke-width="3"/>
+        <circle cx="420" cy="90" r="44" fill="#F2B544" stroke="#33302B" stroke-width="3"/>
+        <g stroke="#33302B" stroke-width="3" stroke-linecap="round"><path d="M420 24v-14M420 170v-14M486 90h14M340 90h14M466 44l10-10M366 136l-10 10M466 136l10 10M366 44l-10-10"/></g>
+        <ellipse cx="150" cy="330" rx="120" ry="26" fill="#CFE6DF"/>
+        <ellipse cx="380" cy="345" rx="110" ry="22" fill="#F4C7B8"/>
+        <path d="M90 300c0-40 24-70 60-70s60 30 60 70" fill="#E2725B" stroke="#33302B" stroke-width="3"/>
+        <circle cx="150" cy="200" r="34" fill="#FFE0BD" stroke="#33302B" stroke-width="3"/>
+        <path d="M128 186c6-14 38-14 44 0" fill="none" stroke="#33302B" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="139" cy="200" r="3.5" fill="#33302B"/><circle cx="161" cy="200" r="3.5" fill="#33302B"/>
+        <path d="M140 214c6 5 14 5 20 0" fill="none" stroke="#33302B" stroke-width="3" stroke-linecap="round"/>
+        <path d="M310 315c0-34 20-60 52-60s52 26 52 60" fill="#2E8B8B" stroke="#33302B" stroke-width="3"/>
+        <circle cx="362" cy="226" r="30" fill="#FFE0BD" stroke="#33302B" stroke-width="3"/>
+        <circle cx="352" cy="226" r="3.2" fill="#33302B"/><circle cx="372" cy="226" r="3.2" fill="#33302B"/>
+        <path d="M354 239c5 4 12 4 17 0" fill="none" stroke="#33302B" stroke-width="3" stroke-linecap="round"/>
+        <g fill="#FFF" stroke="#33302B" stroke-width="2.5"><circle cx="80" cy="110" r="16"/><circle cx="104" cy="100" r="20"/><circle cx="128" cy="112" r="15"/><rect x="72" y="104" width="70" height="22" rx="11"/></g>
+        <path d="M240 340c10-18 40-18 50 0" fill="none" stroke="#C85A44" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+<!-- programs -->
+<section class="sec prog" id="programs">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="eyebrow">برامجنا</span>
+      <h2 class="h2">برنامج لكل سن</h2>
+      <p class="lead">كل مرحلة عمرية ليها يوم مختلف. اختار اللي يناسب طفلك.</p>
+    </div>
+    <div class="cards">
+      <article class="pcard rv">
+        <div class="dot" style="background:var(--rose)"><svg class="ic" viewBox="0 0 24 24" style="color:var(--coral-d)"><path d="M12 21s-7-4.6-9.3-9A5.4 5.4 0 0 1 12 7a5.4 5.4 0 0 1 9.3 5C19 16.4 12 21 12 21z"/></svg></div>
+        <h3>البراعم الصغيرة</h3>
+        <span class="age">من سنة لسنتين</span>
+        <p>اهتمام هادي وبطيء لأول مرة يبعد فيها طفلك عن البيت.</p>
+        <ul>
+          <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>روتين ثابت يريّح الطفل</li>
+          <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>لعب حسي وتدريب حركة</li>
+          <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>كلمات وأغاني أولى</li>
+        </ul>
+      </article>
+      <article class="pcard rv" style="--d:.1s">
+        <div class="dot" style="background:var(--mint)"><svg class="ic" viewBox="0 0 24 24" style="color:var(--teal-d)"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></div>
+        <h3>المستكشفين</h3>
+        <span class="age">من سنتين لثلاث سنين</span>
+        <p>فضولهم في أعلى مراحله، وإحنا بنوجّهه صح.</p>
+        <ul>
+          <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>ألوان، أشكال، وأرقام باللعب</li>
+          <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>تدريب على الاعتماد على النفس</li>
+          <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>لعب جماعي ومشاركة</li>
+        </ul>
+      </article>
+      <article class="pcard rv" style="--d:.2s">
+        <div class="dot" style="background:var(--sun)"><svg class="ic" viewBox="0 0 24 24" style="color:#8A6414"><path d="M12 2l2.4 6.2H21l-5.2 4 2 6.4L12 14.5 6.2 18.6l2-6.4-5.2-4h6.6z"/></svg></div>
+        <h3>تجهيز المدرسة</h3>
+        <span class="age">من ثلاث لخمس سنين</span>
+        <p>نجهّز طفلك لأول يوم مدرسة وهو واثق ومبسوط.</p>
+        <ul>
+          <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>حروف وأرقام عربي وإنجليزي</li>
+          <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>قصة يومية وتمثيل أدوار</li>
+          <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>مهارات كتابة أولية</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- day schedule -->
+<section class="sec" id="day">
+  <div class="wrap sched-grid">
+    <div class="rv">
+      <span class="eyebrow">يوم طفلك</span>
+      <h2 class="h2">يوم كامل، واضح من أوله لآخره</h2>
+      <p class="lead">الروتين بيطمّن الأطفال، وبيخليك عارف طفلك بيعمل إيه في كل ساعة.</p>
+      <div class="note"><b>للأهالي:</b> التسليم والاستلام بمواعيد ثابتة، وأي تغيير في يوم طفلك بيتقال لك على طول.</div>
+    </div>
+    <div class="day rv" style="--d:.12s">
+      <div class="slot"><time>8:00</time><div><b>استقبال وصحصحة</b><small>أغنية الصباح وترتيب الشنط</small></div></div>
+      <div class="slot"><time>8:30</time><div><b>فطار جماعي</b><small>أكل صحي وعادات مائدة</small></div></div>
+      <div class="slot"><time>9:00</time><div><b>نشاط تعليمي</b><small>حروف وألوان وأرقام حسب المرحلة</small></div></div>
+      <div class="slot"><time>10:30</time><div><b>لعب حر في الحضّانة</b><small>أركان لعب موجّهة</small></div></div>
+      <div class="slot"><time>11:30</time><div><b>قصة وفنون</b><small>قراءة، رسم، وأشغال يدوية</small></div></div>
+      <div class="slot"><time>12:30</time><div><b>غداء ثم قيلولة</b><small>نوم هادي بموسيقى خفيفة</small></div></div>
+      <div class="slot"><time>14:00</time><div><b>نشاط حركي</b><small>رياضة وألعاب جماعية</small></div></div>
+      <div class="slot"><time>15:00</time><div><b>تسليم للأهل</b><small>ملخص سريع عن يوم طفلك</small></div></div>
+    </div>
+  </div>
+</section>
+<!-- activities -->
+<section class="sec" id="activities">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="eyebrow">أنشطة كل يوم</span>
+      <h2 class="h2">بيلعبوا ويتعلموا في نفس الوقت</h2>
+    </div>
+    <div class="acts">
+      <article class="acard rv">
+        <svg viewBox="0 0 300 180" aria-hidden="true"><rect width="300" height="180" fill="#F4C7B8"/><circle cx="150" cy="80" r="34" fill="#FFF" stroke="#33302B" stroke-width="3"/><path d="M150 46v68M116 80h68" stroke="#E2725B" stroke-width="5" stroke-linecap="round"/><path d="M60 150c30-18 60 18 90 0s60 18 90 0" fill="none" stroke="#33302B" stroke-width="3" stroke-linecap="round"/></svg>
+        <div class="t"><h3>رسم وأشغال يدوية</h3><p>إبداع وحركة إيد دقيقة</p></div>
+      </article>
+      <article class="acard rv" style="--d:.08s">
+        <svg viewBox="0 0 300 180" aria-hidden="true"><rect width="300" height="180" fill="#CFE6DF"/><rect x="95" y="45" width="110" height="80" rx="10" fill="#FFF" stroke="#33302B" stroke-width="3"/><path d="M115 70h70M115 90h70M115 110h44" stroke="#2E8B8B" stroke-width="5" stroke-linecap="round"/></svg>
+        <div class="t"><h3>قصة وقراءة</h3><p>حكايات توسّع خيال طفلك</p></div>
+      </article>
+      <article class="acard rv" style="--d:.16s">
+        <svg viewBox="0 0 300 180" aria-hidden="true"><rect width="300" height="180" fill="#F2B544"/><circle cx="110" cy="90" r="26" fill="#FFF" stroke="#33302B" stroke-width="3"/><circle cx="190" cy="90" r="26" fill="#FFF" stroke="#33302B" stroke-width="3"/><path d="M136 90h28" stroke="#33302B" stroke-width="3"/><path d="M100 84l6 6M214 84l-6 6" stroke="#E2725B" stroke-width="4" stroke-linecap="round"/></svg>
+        <div class="t"><h3>رياضة ولعب جماعي</h3><p>طاقة بتتفضفض صح</p></div>
+      </article>
+      <article class="acard rv" style="--d:.24s">
+        <svg viewBox="0 0 300 180" aria-hidden="true"><rect width="300" height="180" fill="#B9A8C9"/><path d="M120 120V70l60-12v50" fill="none" stroke="#FFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="108" cy="120" r="14" fill="#FFF"/><circle cx="168" cy="108" r="14" fill="#FFF"/></svg>
+        <div class="t"><h3>موسيقى وأغاني</h3><p>إيقاع وسَمْع ونطق سليم</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- faq -->
+<section class="sec faq" id="faq">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="eyebrow">أسئلة الأهالي</span>
+      <h2 class="h2">كل اللي بيسألوا عنه، في مكان واحد</h2>
+    </div>
+    <div class="acc rv" id="acc">
+      <div class="acc-item">
+        <button class="acc-q" aria-expanded="false">الحضانة بتستقبل من سن كام؟<svg class="ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="acc-a"><p>من سنة لخمس سنين، وكل سن ليها برنامج ومعلمات مخصوص.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" aria-expanded="false">المواعيد إيه؟ وفيه استضافة بعد المواعيد؟<svg class="ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="acc-a"><p>اليوم من 8 الصبح لـ 3 العصر، وفيه إمكانية ساعة إضافية بالاتفاق.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" aria-expanded="false">الأكل بيتعمل فين؟<svg class="ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="acc-a"><p>وجبات صحية بتتجهز يوم بيوم، والمنيو بيتشارك مع الأهالي أول الأسبوع.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" aria-expanded="false">إزاي أعرف طفلي عمل إيه النهاردة؟<svg class="ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="acc-a"><p>في نهاية كل يوم بيتحكى لك ملخص عن الأكل والنوم والأنشطة، وأي ملاحظة مهمة بتوصلك فورًا.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" aria-expanded="false">أقدر أزور المكان قبل التسجيل؟<svg class="ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="acc-a"><p>طبعًا. احجز زيارة من الفورم اللي تحت وتعالوا شوفوا المكان وقابلوا المعلمات.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- register -->
+<section class="sec" id="register">
+  <div class="wrap reg-grid">
+    <div class="rv">
+      <span class="eyebrow">التسجيل</span>
+      <h2 class="h2">احجز زيارة ليك ولطفلك</h2>
+      <p class="lead">سيب بياناتك وهنتواصل معاك نحدد ميعاد الزيارة. التسجيل النهائي بيتم في المكان بعد ما تشوفوا كل حاجة بنفسكم.</p>
+    </div>
+    <div class="rv" style="--d:.12s">
+      <form class="form" id="regform" novalidate>
+        <div class="frow">
+          <div class="field">
+            <label for="pname">اسم ولي الأمر</label>
+            <input id="pname" name="pname" type="text" autocomplete="name" placeholder="مثال: أحمد محمود">
+            <span class="err" id="e-pname"></span>
+          </div>
+          <div class="field">
+            <label for="phone">رقم الموبايل</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" dir="ltr" placeholder="01xxxxxxxxx">
+            <span class="err" id="e-phone"></span>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="field">
+            <label for="kname">اسم الطفل</label>
+            <input id="kname" name="kname" type="text" placeholder="مثال: يوسف">
+            <span class="err" id="e-kname"></span>
+          </div>
+          <div class="field">
+            <label for="age">سن الطفل</label>
+            <select id="age" name="age">
+              <option value="">اختار السن</option>
+              <option>من سنة لسنتين</option>
+              <option>من سنتين لثلاث سنين</option>
+              <option>من ثلاث لخمس سنين</option>
+            </select>
+            <span class="err" id="e-age"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="vtime">أنسب وقت للزيارة</label>
+          <select id="vtime" name="vtime">
+            <option value="">اختار الوقت</option>
+            <option>الصبح من 10 لـ 12</option>
+            <option>بالليل من 5 لـ 7</option>
+            <option>الجمعة أو السبت</option>
+          </select>
+          <span class="err" id="e-vtime"></span>
+        </div>
+        <button class="btn btn-primary" type="submit">احجز الزيارة</button>
+      </form>
+      <div class="done" id="done" role="status">
+        <h3>وصلنا طلبك</h3>
+        <p>هنتواصل معاك قريب نأكد ميعاد الزيارة.</p>
+        <div class="sum" id="sum"></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-brand">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="26" r="16" fill="#F2B544" stroke="#FFF7EC" stroke-width="2.5"/><path d="M24 26c-5-2-8-6-8-11 4 0 7 2 8 5 1-3 4-5 8-5 0 5-3 9-8 11z" fill="#2E8B8B" stroke="#FFF7EC" stroke-width="2"/><path d="M24 26v10" stroke="#FFF7EC" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <b>براعم</b>
+    </div>
+    <nav aria-label="روابط الفوتر">
+      <a href="#programs">البرامج</a>
+      <a href="#day">اليوم في براعم</a>
+      <a href="#activities">الأنشطة</a>
+      <a href="#faq">أسئلة الأهالي</a>
+      <a href="#register">التسجيل</a>
+    </nav>
+    <div class="lc">نموذج تصميم وتنفيذ <b>LoveCode</b></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var burger=document.getElementById('burger'),nav=document.getElementById('nav'),hdr=document.getElementById('hdr');
+  burger.addEventListener('click',function(){
+    var open=nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open);
+    document.body.classList.toggle('lock',open);
+  });
+  nav.addEventListener('click',function(e){
+    if(e.target.tagName==='A'){nav.classList.remove('open');burger.setAttribute('aria-expanded','false');document.body.classList.remove('lock');}
+  });
+  addEventListener('scroll',function(){hdr.classList.toggle('sc',scrollY>10)},{passive:true});
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}})},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  setTimeout(function(){document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})},1500);
+  document.querySelectorAll('.acc-item').forEach(function(item){
+    var q=item.querySelector('.acc-q'),a=item.querySelector('.acc-a');
+    q.addEventListener('click',function(){
+      var open=item.classList.toggle('open');
+      q.setAttribute('aria-expanded',open);
+      a.style.maxHeight=open?a.scrollHeight+'px':'0';
+    });
+  });
+  var form=document.getElementById('regform'),done=document.getElementById('done'),sum=document.getElementById('sum');
+  function setErr(id,msg){document.getElementById('e-'+id).textContent=msg||''}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var ok=true;
+    var v=function(id){return document.getElementById(id).value.trim()};
+    ['pname','phone','kname','age','vtime'].forEach(function(id){setErr(id)});
+    if(v('pname').length<3){setErr('pname','اكتب اسم ولي الأمر');ok=false}
+    if(!/^01[0-9]{9}$/.test(v('phone').replace(/[\s-]/g,''))){setErr('phone','اكتب رقم موبايل مصري صحيح (11 رقم يبدأ بـ 01)');ok=false}
+    if(v('kname').length<2){setErr('kname','اكتب اسم الطفل');ok=false}
+    if(!v('age')){setErr('age','اختار سن الطفل');ok=false}
+    if(!v('vtime')){setErr('vtime','اختار وقت الزيارة');ok=false}
+    if(!ok)return;
+    sum.innerHTML='';
+    [['ولي الأمر',v('pname')],['الموبايل',v('phone')],['الطفل',v('kname')],['السن',v('age')],['وقت الزيارة',v('vtime')]].forEach(function(p){
+      var d=document.createElement('div');var b=document.createElement('b');b.textContent=p[0]+': ';d.appendChild(b);d.appendChild(document.createTextNode(p[1]));sum.appendChild(d);
+    });
+    form.style.display='none';done.classList.add('show');
+    done.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+})();
+</script>
+</body>
+</html>
