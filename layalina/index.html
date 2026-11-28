@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#1a0f0a" />
+  <meta name="theme-color" content="#faf6f0" />
   <title>Layalina Café | ليالينا كافيه — قهوة مختصة ومشروبات فاخرة</title>
   <meta
     name="description"
-    content="ليالينا كافيه (Layalina Café) — وجهتك الراقية للقهوة المختصة، المشروبات الساخنة والمثلجة، الموهيتو، العصائر الطازجة، والحلويات الفاخرة بإدارة أحمد ريان. اطلب الآن عبر واتساب."
+    content="ليالينا كافيه (Layalina Café) — وجهتك للقهوة المختصة، المشروبات الساخنة والمثلجة، الموهيتو، العصائر الطازجة، والحلويات بإدارة أحمد ريان في قليوب أمام المركز الطبي. اطلب الآن عبر واتساب."
   />
   <meta
     name="keywords"
-    content="ليالينا, ليالينا كافيه, Layalina Cafe, قهوة مختصة, كافيه, منيو ليالينا, آيس لاتيه, موهيتو, أحمد ريان"
+    content="ليالينا, ليالينا كافيه, Layalina Cafe, قهوة مختصة, كافيه قليوب, منيو ليالينا, آيس لاتيه, موهيتو, أحمد ريان"
   />
   <meta name="author" content="Ahmed Rayan | أحمد ريان" />
 
@@ -24,25 +24,25 @@
   />
   <meta property="og:locale" content="ar_EG" />
 
-  <!-- Favicon (Inline SVG Data URI - Relative/No leading slash) -->
+  <!-- Favicon (Warm Espresso & Caramel SVG Data URI) -->
   <link
     rel="icon"
     type="image/svg+xml"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231a0f0a'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23d4a24e' stroke-width='2.5'/%3E%3Cpath d='M22 25h18v11a9 9 0 0 1-18 0V25zm18 3h4a3 3 0 0 1 0 6h-4' fill='none' stroke='%23f5ead9' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M26 17c0-3 3-3 3-6M32 17c0-3 3-3 3-6' stroke='%23c98a4b' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232b1d14'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23c08552' stroke-width='2.5'/%3E%3Cpath d='M22 25h18v11a9 9 0 0 1-18 0V25zm18 3h4a3 3 0 0 1 0 6h-4' fill='none' stroke='%23faf6f0' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M26 17c0-3 3-3 3-6M32 17c0-3 3-3 3-6' stroke='%23c08552' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E"
   />
 
-  <!-- Google Fonts: Arabic Display (Aref Ruqaa / Amiri), Arabic Body (Tajawal), Latin Display (Playfair Display) -->
+  <!-- Google Fonts: Amiri (Display Serif), Cairo & Tajawal (Arabic UI/Body), Playfair Display (Latin Accent) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500&family=Tajawal:wght@300;400;500;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Tajawal:wght@400;500;700&display=swap"
     rel="stylesheet"
   />
 
-  <!-- Stylesheet (Relative path for GitHub Pages subpath compatibility) -->
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Three.js Import Map via jsDelivr CDN -->
+  <!-- Three.js Import Map via jsDelivr CDN (Loaded dynamically only on desktop when WebGL is ready) -->
   <script type="importmap">
     {
       "imports": {
@@ -53,11 +53,8 @@
   </script>
 </head>
 <body>
-  <!-- Skip to Content for Accessibility -->
+  <!-- Skip to Content -->
   <a href="#menu" class="skip-link">انتقل إلى المنيو</a>
-
-  <!-- Ambient Noise / Grain Overlay -->
-  <div class="ambient-grain" aria-hidden="true"></div>
 
   <!-- ==================== NAVIGATION ==================== -->
   <header class="navbar" id="navbar">
@@ -80,10 +77,10 @@
           href="tel:+201200706533"
           class="nav-phone-btn"
           data-config-link="phone"
-          aria-label="اتصل بنا"
+          aria-label="اتصل بنا 01200706533"
           title="اتصل بنا"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
           </svg>
           <span class="nav-phone-text" data-config="phone">01200706533</span>
@@ -95,7 +92,7 @@
           id="nav-cart-btn"
           aria-label="فتح سلة الطلبات"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
             <line x1="3" y1="6" x2="21" y2="6"/>
             <path d="M16 10a4 4 0 0 1-8 0"/>
@@ -130,14 +127,20 @@
   </header>
 
   <main>
-    <!-- ==================== 1. CINEMATIC 3D HERO ==================== -->
+    <!-- ==================== 1. REALISTIC SPECIALTY HERO ==================== -->
     <section class="hero" id="hero">
-      <!-- Procedural Three.js Canvas -->
-      <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+      <!-- Real Photo Hero Backdrop (Active on mobile & fallback when WebGL is unavailable) -->
+      <img
+        src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&q=70&auto=format&fit=crop"
+        alt="أجواء القهوة المختصة في ليالينا كافيه"
+        class="hero-bg-photo"
+        id="hero-bg-photo"
+        fetchpriority="high"
+      />
+      <div class="hero-overlay" aria-hidden="true"></div>
 
-      <!-- Fallback & Depth Gradients -->
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="hero-vignette" aria-hidden="true"></div>
+      <!-- Optional Lightweight Three.js Canvas (Desktop >= 768px only when WebGL succeeds) -->
+      <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true" hidden></canvas>
 
       <div class="container hero-content">
         <div class="hero-text-block">
@@ -158,7 +161,7 @@
             حيث يلتقي عبق القهوة المحمصة بسحر السهر ودفء اللقاءات
           </p>
           <p class="hero-desc">
-            تجربة قهوة استثنائية تُحضّر بشغف من أجود الحبوب، مع تشكيلة منتقاة من المشروبات المثلجة، الموهيتو المنعش، والحلويات الفاخرة في قلب ليالينا.
+            قهوة مختصة تُحضّر بعناية من أجود الحبوب، مع تشكيلة غنية من المشروبات المثلجة، الموهيتو الطازج، والحلويات اليومية في <span data-config="address">قليوب أمام المركز الطبي</span>.
           </p>
 
           <div class="hero-cta-group">
@@ -169,7 +172,7 @@
                 <polyline points="12 19 5 12 12 5"/>
               </svg>
             </a>
-            <button type="button" class="btn btn-outline" id="hero-order-btn">
+            <button type="button" class="btn btn-outline-light" id="hero-order-btn">
               <span>اطلب الآن</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
@@ -198,8 +201,8 @@
         </div>
 
         <div class="hero-visual-spacer" aria-hidden="true">
-          <div class="hero-3d-hint">
-            <span>حرّك المؤشر للتفاعل مع الكوب ثلاثي الأبعاد</span>
+          <div class="hero-3d-hint" id="hero-3d-hint" hidden>
+            <span>معاينة تفاعلية لكوب ليالينا</span>
           </div>
         </div>
       </div>
@@ -210,19 +213,26 @@
       </a>
     </section>
 
-    <!-- ==================== 2. ABOUT (في ليالينا) WITH 3D ACCENTS ==================== -->
+    <!-- ==================== 2. ABOUT (في ليالينا) ==================== -->
     <section class="section about-section" id="about">
       <div class="container about-grid">
-        <!-- 3D Accent Showcase Card -->
+        <!-- Real Café Editorial Photo Frame -->
         <div class="about-visual-col reveal-up">
-          <div class="about-3d-frame glass-card">
-            <canvas id="about-canvas" class="about-canvas" aria-hidden="true"></canvas>
-            <div class="about-3d-overlay">
+          <div class="about-photo-frame">
+            <img
+              src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=900&q=75&auto=format&fit=crop"
+              alt="أجواء ليالينا كافيه للقهوة المختصة"
+              class="about-photo"
+              id="about-photo"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="about-photo-overlay">
               <div class="about-seal">
                 <span class="seal-en">EST. 2026</span>
                 <span class="seal-ar">ليالينا</span>
               </div>
-              <div class="about-owner-tag glass-pill">
+              <div class="about-owner-tag">
                 <span class="tag-label">بإدارة</span>
                 <strong data-config="owner-ar">أحمد ريان</strong>
                 <span class="tag-sep">•</span>
@@ -241,19 +251,19 @@
           </div>
 
           <h2 class="section-title reveal-up">
-            في <span class="text-gold">ليالينا</span>.. كل رشفة تحكي قصة
+            في <span class="text-accent">ليالينا</span>.. كل رشفة تحكي قصة
           </h2>
 
           <p class="about-lead reveal-up">
-            وُلد <strong data-config="full-name-ar">ليالينا كافيه</strong> ليكون ملاذ عشاق القهوة الأصيلة والليالي الهادئة. تحت إشراف <strong data-config="owner-ar">أحمد ريان</strong>، نجمع بين فنون تحضير الإسبريسو الإيطالي ونكهات الضيافة العربية الدافئة في مكان يجمع الأصدقاء والعائلة حتى ساعات الفجر الأولى.
+            وُلد <strong data-config="full-name-ar">ليالينا كافيه</strong> ليكون مساحة دافئة لعشاق القهوة المختصة واللقاءات الهادئة. تحت إشراف <strong data-config="owner-ar">أحمد ريان</strong>، نجمع بين دقة تحضير الإسبريسو وأصالة الضيافة العربية في مكان يرحب بكم من الصباح وحتى ساعات الفجر الأولى.
           </p>
 
           <p class="about-body reveal-up">
-            نختار حبوب القهوة بعناية فائقة لنضمن توازناً غنياً بين الكريمة الذهبية والنكهة العميقة، ونبتكر يومياً مشروبات مثلجة منعشة، موهيتو فواكه طبيعية، وحلويات طازجة تُكمل لحظاتكم الجميلة.
+            نختار حبوب القهوة بعناية لنضمن قواماً مخملياً وتوازناً غنياً في كل كوب، إلى جانب مشروبات مثلجة منعشة، موهيتو فواكه طبيعية، وحلويات طازجة تُحضّر يومياً.
           </p>
 
           <div class="about-pillars">
-            <article class="pillar-card glass-card reveal-up">
+            <article class="pillar-card reveal-up">
               <div class="pillar-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
                   <path d="M12 2C7.5 2 4 6 4 11s3.5 11 8 11 8-6 8-11-3.5-9-8-9z"/>
@@ -262,11 +272,11 @@
               </div>
               <div>
                 <h3>حبوب منتقاة</h3>
-                <p>تحميص متوازن يمنح كل كوب قواماً مخملياً وعبقاً يدوم.</p>
+                <p>تحميص متوازن يمنح كل كوب قواماً ناعماً وعبقاً يدوم.</p>
               </div>
             </article>
 
-            <article class="pillar-card glass-card reveal-up">
+            <article class="pillar-card reveal-up">
               <div class="pillar-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
                   <path d="M8 2h8l1 6H7l1-6z"/>
@@ -280,15 +290,15 @@
               </div>
             </article>
 
-            <article class="pillar-card glass-card reveal-up">
+            <article class="pillar-card reveal-up">
               <div class="pillar-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
                   <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                 </svg>
               </div>
               <div>
-                <h3>سهر بلا حدود</h3>
-                <p>أجواء دافئة وإضاءة سينمائية ترحب بكم يومياً من 9ص حتى 2ص.</p>
+                <h3>سهر وضيافة</h3>
+                <p>أجواء هادئة ومريحة ترحب بكم يومياً من 9ص حتى 2ص.</p>
               </div>
             </article>
           </div>
@@ -307,13 +317,13 @@
             <span class="eyebrow-line"></span>
           </div>
           <h2 class="section-title reveal-up">
-            تشكيلة <span class="text-gold">مختارة</span> لكل الأذواق
+            تشكيلة <span class="text-accent">مختارة</span> لكل الأذواق
           </h2>
           <p class="section-subtitle reveal-up">
             اختر مشروبك أو حلواك المفضلة وأضفها إلى السلة لإرسال طلبك مباشرة عبر واتساب
           </p>
 
-          <!-- Tasteful Price Note required by user -->
+          <!-- Price Disclaimer -->
           <div class="menu-price-note reveal-up" role="note">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <circle cx="12" cy="12" r="10"/>
@@ -336,7 +346,7 @@
                 type="search"
                 id="menu-search"
                 class="search-input"
-                placeholder="ابحث عن مشروب أو صنف بالعربي أو الإنجليزي (مثال: لاتيه، Mojito، وافل)..."
+                placeholder="ابحث عن مشروب أو صنف (لاتيه، Mojito، وافل)..."
                 aria-label="ابحث في المنيو"
               />
               <button
@@ -368,18 +378,18 @@
         </div>
 
         <!-- Empty Search State -->
-        <div id="menu-empty" class="menu-empty glass-card" hidden>
+        <div id="menu-empty" class="menu-empty" hidden>
           <div class="empty-icon" aria-hidden="true">☕</div>
           <h3>لم نجد أصنافاً مطابقة لبحثك</h3>
           <p>جرب كلمة أخرى أو استعرض جميع أقسام المنيو.</p>
-          <button type="button" class="btn btn-outline" id="reset-menu-filter">
+          <button type="button" class="btn btn-outline-dark" id="reset-menu-filter">
             عرض كل المنيو
           </button>
         </div>
       </div>
     </section>
 
-    <!-- ==================== 5. CONTACT SECTION ==================== -->
+    <!-- ==================== 4. CONTACT SECTION ==================== -->
     <section class="section contact-section" id="contact">
       <div class="container">
         <div class="section-header text-center">
@@ -390,7 +400,7 @@
             <span class="eyebrow-line"></span>
           </div>
           <h2 class="section-title reveal-up">
-            نحن في <span class="text-gold">انتظارك</span> في ليالينا
+            نحن في <span class="text-accent">انتظارك</span> في ليالينا
           </h2>
           <p class="section-subtitle reveal-up">
             يسعدنا تواصلك معنا للحجز، الطلبات السريعة، أو الاستفسارات في أي وقت
@@ -400,7 +410,7 @@
         <div class="contact-grid">
           <!-- Contact Info Cards -->
           <div class="contact-cards-col">
-            <div class="contact-card glass-card reveal-up">
+            <div class="contact-card reveal-up">
               <div class="contact-card-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
@@ -410,13 +420,13 @@
               <div class="contact-card-body">
                 <h3>العنوان</h3>
                 <p class="contact-address" data-config="address">
-                  أمام المركز الطبي بجوار صيدلية العزبي
+                  قليوب أمام المركز الطبي
                 </p>
                 <span class="contact-hint">يسعدنا استقبالكم يومياً</span>
               </div>
             </div>
 
-            <div class="contact-card glass-card reveal-up">
+            <div class="contact-card reveal-up">
               <div class="contact-card-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                   <circle cx="12" cy="12" r="10"/>
@@ -430,7 +440,7 @@
               </div>
             </div>
 
-            <div class="contact-card glass-card reveal-up">
+            <div class="contact-card reveal-up">
               <div class="contact-card-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -469,15 +479,15 @@
 
           <!-- Embedded Google Maps Card -->
           <div class="contact-map-col reveal-up">
-            <div class="map-frame glass-card">
+            <div class="map-frame">
               <div class="map-header">
                 <span class="map-title">موقعنا على الخريطة</span>
-                <span class="map-query-badge" data-config="maps-query">Layalina Café</span>
+                <span class="map-query-badge" data-config="maps-query">قليوب أمام المركز الطبي</span>
               </div>
               <div class="map-iframe-wrap">
                 <iframe
                   id="google-map-iframe"
-                  src="https://www.google.com/maps?q=Layalina+Cafe&output=embed"
+                  src="https://www.google.com/maps?q=%D9%82%D9%84%D9%8A%D9%88%D8%A8+%D8%A7%D9%85%D8%A7%D9%85+%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2+%D8%A7%D9%84%D8%B7%D8%A8%D9%8A&output=embed"
                   title="موقع كافيه ليالينا على خرائط جوجل"
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
@@ -491,7 +501,7 @@
     </section>
   </main>
 
-  <!-- ==================== 6. FOOTER ==================== -->
+  <!-- ==================== 5. FOOTER ==================== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -502,7 +512,7 @@
             <span class="brand-en" data-config="brand-en">LAYALINA</span>
           </a>
           <p class="footer-desc">
-            وجهتك المختارة للقهوة المختصة، المشروبات الساخنة والمثلجة، والحلويات الفاخرة في أجواء دافئة تليق بسهرك.
+            وجهتك المختارة للقهوة المختصة، المشروبات الساخنة والمثلجة، والحلويات الطازجة في أجواء دافئة تليق بسهرك.
           </p>
           <p class="footer-owner">
             إدارة: <strong data-config="owner-ar">أحمد ريان</strong>
@@ -529,7 +539,7 @@
             </li>
             <li>
               <span>العنوان:</span>
-              <span data-config="address">أمام المركز الطبي بجوار صيدلية العزبي</span>
+              <span data-config="address">قليوب أمام المركز الطبي</span>
             </li>
             <li>
               <span>المواعيد:</span>
@@ -565,12 +575,12 @@
 
       <div class="footer-bottom">
         <p>© 2026 Layalina Café. جميع الحقوق محفوظة.</p>
-        <p class="footer-crafted">صُمم بعناية لعشاق القهوة الأصيلة</p>
+        <p class="footer-crafted">قهوة مختصة محضّرة بشغف يومياً</p>
       </div>
     </div>
   </footer>
 
-  <!-- ==================== 4. FLOATING CART FAB & SLIDE-IN DRAWER ==================== -->
+  <!-- ==================== FLOATING CART FAB & SLIDE-IN DRAWER ==================== -->
   <button
     type="button"
     class="cart-fab"
@@ -645,7 +655,7 @@
   <!-- Toast Feedback -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <!-- Scripts: Config, GSAP + ScrollTrigger via jsDelivr, App Module -->
+  <!-- Scripts: Config, GSAP (optional subtle reveals), App Module -->
   <script src="config.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
